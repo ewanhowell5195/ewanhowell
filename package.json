@@ -1,0 +1,9 @@
+{
+  "webbuilder": {
+    "cloudflare_spa_router": true,
+    "uglify": true
+  },
+  "devDependencies": {
+    "webbuilder": "github:EvenTorset/WebBuilder"
+  }
+}

@@ -1,0 +1,57 @@
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  flex: 1
+
+#tabs
+  display: flex
+
+.tab
+  background-color: var(--color-green)
+  padding: 10px
+  cursor: pointer
+  user-select: none
+  transition: background-color 0.15s
+  text-shadow: -2px 2px 1px var(--color-text-shadow)
+  text-decoration: none
+  color: var(--color-font-white)
+  
+  &:hover
+    background-color: var(--color-green-light)
+  
+.selected
+  background-color: var(--color-green-dark)!important
+  cursor: default
+  
+.version
+  padding: 0 20px
+  display: none
+
+.shown
+  display: block
+  animation: fadeIn .25s forwards 1
+  opacity: 0
+
+  @keyframes fadeIn
+    from
+      opacity: 0
+    to
+      opacity: 1
+
+.packs
+  display: flex
+  justify-content: space-around
+  gap: 10px
+  flex-wrap: wrap
+  
+.pack
+  min-width: 256px
+  height: 128px
+  background-color: var(--color-green-light)
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  text-decoration: none
+  color: var(--color-font-white)

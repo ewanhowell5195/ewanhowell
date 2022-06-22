@@ -1,0 +1,543 @@
+{
+  "versions": [
+    {
+      "id": "1.19",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful"
+          ]
+        },
+        {
+          "name": "Update Packs",
+          "packs": [
+            "1-18-panorama"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "elephant-ravagers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.18",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful",
+            "oledcraft"
+          ]
+        },
+        {
+          "name": "Other",
+          "packs": [
+            "entity-healthbars"
+          ]
+        },
+        {
+          "name": "Seasonal",
+          "packs": [
+            "snowstorm"
+          ]
+        },
+        {
+          "name": "Addons",
+          "packs": [
+            "entity-healthbars-hearts",
+            "entity-healthbars-dokucraft",
+            "entity-healthbars-faithful"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "overgrowth",
+            "caelesti",
+            "chubby-cheeks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.17",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful",
+            "4thful",
+            "pixelblocks",
+            "oledcraft"
+          ]
+        },
+        {
+          "name": "Tweaks",
+          "packs": [
+            "throwing-axes",
+            "boomerangs",
+            "better-bows"
+          ]
+        },
+        {
+          "name": "Update Packs",
+          "packs": [
+            "1-18-panorama",
+            "deep-dark",
+            "mob-vote"
+          ]
+        },
+        {
+          "name": "Cursed",
+          "packs": [
+            "google-images",
+            "sheep-ender-dragon"
+          ]
+        },
+        {
+          "name": "Seasonal",
+          "packs": [
+            "packtober-remastered"
+          ]
+        },
+        {
+          "name": "Addons",
+          "packs": [
+            "mob-vote-faithful"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "overgrowth",
+            "caelesti"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.16",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful",
+            "flat-packed",
+            "oledcraft",
+            "pack-and-white",
+            "concraft",
+            "borderlined",
+            "tiny-blocks",
+            "scrolling-textures",
+            "dimension-shift"
+          ]
+        },
+        {
+          "name": "Utilities",
+          "packs": [
+            "template-green"
+          ]
+        },
+        {
+          "name": "Tweaks",
+          "packs": [
+            "swarm-of-bees",
+            "quindent",
+            "dragonflies",
+            "butterflies",
+            "solar-eclipse"
+          ]
+        },
+        {
+          "name": "Update Packs",
+          "packs": [
+            "rebearth-remastered",
+            "1-17-entities",
+            "mob-vote",
+            "chillagers",
+            "cave-update"
+          ]
+        },
+        {
+          "name": "Other",
+          "packs": [
+            "entity-healthbars",
+            "fences-plus"
+          ]
+        },
+        {
+          "name": "Cursed",
+          "packs": [
+            "striderchan",
+            "sheepified-remastered",
+            "playermodelmobs",
+            "stevified",
+            "rolling-entities",
+            "cursed-spiders",
+            "glide"
+          ]
+        },
+        {
+          "name": "PvP",
+          "packs": [
+            "mini-items",
+            "translucencraft"
+          ]
+        },
+        {
+          "name": "Seasonal",
+          "packs": [
+            "packtober-remastered",
+            "snowstorm",
+            "craftmas-remastered",
+            "packtober",
+            "craftmas"
+          ]
+        },
+        {
+          "name": "YouTube",
+          "packs": [
+            "pewdiepack-remastered"
+          ]
+        },
+        {
+          "name": "Addons",
+          "packs": [
+            "entity-healthbars-hearts",
+            "entity-healthbars-dokucraft",
+            "entity-healthbars-faithful",
+            "pack-and-white-crimson-chrome",
+            "pack-and-white-faithful",
+            "fences-plus-faithful"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "overgrowth",
+            "caelesti",
+            "chubby-cheeks",
+            "elephant-ravagers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.15",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful",
+            "flat-packed",
+            "oledcraft",
+            "pack-and-white",
+            "concraft",
+            "dimension-shift"
+          ]
+        },
+        {
+          "name": "Other",
+          "packs": [
+            "packommunity",
+            "better-3d",
+            "fluorescence"
+          ]
+        },
+        {
+          "name": "Cursed",
+          "packs": [
+            "stevified",
+            "packstralia"
+          ]
+        },
+        {
+          "name": "YouTube",
+          "packs": [
+            "the-pewdiepack"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "overgrowth",
+            "caelesti"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.14",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "dimension-shift"
+          ]
+        },
+        {
+          "name": "Update Packs",
+          "packs": [
+            "rebearth",
+            "nether-update",
+            "unused-biome"
+          ]
+        },
+        {
+          "name": "Other",
+          "packs": [
+            "packommunity",
+            "better-3d",
+            "fluorescence",
+            "rerender"
+          ]
+        },
+        {
+          "name": "Cursed",
+          "packs": [
+            "playermodelmobs",
+            "stevified",
+            "sheepified",
+            "the-cursed-pack"
+          ]
+        },
+        {
+          "name": "PvP",
+          "packs": [
+            "mini-items"
+          ]
+        },
+        {
+          "name": "Seasonal",
+          "packs": [
+            "packtober",
+            "craftmas"
+          ]
+        },
+        {
+          "name": "YouTube",
+          "packs": [
+            "the-pewdiepack",
+            "packsepticeye"
+          ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "overgrowth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.8",
+      "categories": [
+        {
+          "name": "Texture Packs",
+          "packs": [
+            "f8thful"
+          ]
+        },
+        {
+          "name": "PvP",
+          "packs": [
+            "mini-items"
+          ]
+        }
+      ]
+    }
+  ],
+  "packs": {
+    "1-17-entities": {
+      "name": "1.17 Entities",
+      "optifine": 2
+    },
+    "1-18-panorama": {
+      "name": "1.18 Panorama"
+    },
+    "4thful": {
+      "optifine": 1
+    },
+    "better-3d": {
+      "optifine": 1
+    },
+    "better-bows": {},
+    "boomerangs": {
+      "optifine": 2
+    },
+    "borderlined": {
+      "optifine": 2
+    },
+    "butterflies": {},
+    "caelesti": {
+      "optifine": 2
+    },
+    "cave-update": {
+      "name": "Cave Update [1.17]"
+    },
+    "chillagers": {
+      "optifine": 2
+    },
+    "chubby-cheeks": {
+      "optifine": 2
+    },
+    "concraft": {},
+    "craftmas": {},
+    "craftmas-remastered": {
+      "optifine": 2
+    },
+    "cursed-spiders": {
+      "optifine": 2
+    },
+    "deep-dark": {
+      "optifine": 2
+    },
+    "dimension-shift": {},
+    "dragonflies": {
+      "optifine": 2
+    },
+    "elephant-ravagers": {
+      "optifine": 2
+    },
+    "entity-healthbars": {
+      "optifine": 2
+    },
+    "entity-healthbars-dokucraft": {
+      "name": "Entity Healthbars [Dokucraft]",
+      "optifine": 2
+    },
+    "entity-healthbars-faithful": {
+      "name": "Entity Healthbars [Faithful]",
+      "optifine": 2
+    },
+    "entity-healthbars-hearts": {
+      "name": "Entity Healthbars [Hearts]",
+      "optifine": 2
+    },
+    "f8thful": {
+      "optifine": 1
+    },
+    "fences-plus": {
+      "name": "Fences+"
+    },
+    "fences-plus-faithful": {
+      "name": "Fences+ [Faithful]"
+    },
+    "flat-packed": {},
+    "fluorescence": {
+      "optifine": 2
+    },
+    "glide": {
+      "optifine": 2
+    },
+    "google-images": {},
+    "mini-items": {},
+    "mob-vote": {
+      "optifine": 2
+    },
+    "mob-vote-faithful": {
+      "name": "Mob Vote [Faithful]",
+      "optifine": 2
+    },
+    "nether-update": {
+      "optifine": 2
+    },
+    "oledcraft": {
+      "name": "OLEDcraft"
+    },
+    "overgrowth": {
+      "optifine": 1
+    },
+    "pack-and-white": {
+      "name": "Pack & White",
+      "optifine": 1
+    },
+    "pack-and-white-crimson-chrome": {
+      "name": "Pack & White [Crimson Chrome]",
+      "optifine": 1
+    },
+    "pack-and-white-faithful": {
+      "name": "Pack & White [Faithful]",
+      "optifine": 1
+    },
+    "packommunity": {
+      "optifine": 2
+    },
+    "packsepticeye": {
+      "optifine": 2
+    },
+    "packstralia": {},
+    "packtober": {},
+    "packtober-remastered": {
+      "optifine": 2
+    },
+    "pewdiepack-remastered": {
+      "optifine": 2
+    },
+    "pixelblocks": {
+      "name": "pixelBlocks"
+    },
+    "playermodelmobs": {
+      "name": "PlayerModelMobs",
+      "optifine": 2
+    },
+    "quindent": {
+      "optifine": 2
+    },
+    "rebearth": {
+      "optifine": 2
+    },
+    "rebearth-remastered": {
+      "optifine": 2
+    },
+    "rerender": {
+      "optifine": 2
+    },
+    "rolling-entities": {
+      "optifine": 2
+    },
+    "scrolling-textures": {},
+    "sheep-ender-dragon": {
+      "optifine": 2
+    },
+    "sheepified": {
+      "optifine": 2
+    },
+    "sheepified-remastered": {
+      "optifine": 2
+    },
+    "snowstorm": {
+      "optifine": 2
+    },
+    "solar-eclipse": {
+      "optifine": 2
+    },
+    "stevified": {
+      "optifine": 2
+    },
+    "striderchan": {
+      "optifine": 2
+    },
+    "swarm-of-bees": {
+      "optifine": 2
+    },
+    "template-green": {},
+    "the-cursed-pack": {},
+    "the-pewdiepack": {
+      "name": "The PewDiePack",
+      "optifine": 2
+    },
+    "throwing-axes": {
+      "optifine": 2
+    },
+    "tiny-blocks": {
+      "optifine": 1
+    },
+    "translucencraft": {},
+    "unused-biome": {}
+  }
+}
