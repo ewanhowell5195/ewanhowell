@@ -1,7 +1,14 @@
 {
   "webbuilder": {
     "cloudflare_spa_router": true,
-    "uglify": true
+    "uglify": true,
+    "watch": [
+      "src",
+      "includes"
+    ],
+    "pugLocals": {
+      "domain": "beta.ewanhowell.com"
+    }
   },
   "devDependencies": {
     "webbuilder": "github:EvenTorset/WebBuilder"
