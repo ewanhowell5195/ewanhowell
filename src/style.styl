@@ -6,14 +6,16 @@
 	--color-green-light: #314340
 	--color-green: #23302D
 	--color-green-dark: #17201C
+	--color-text-white: #FFF
 	--color-text-shadow: #00000080
+	--color-text-optifine: #FABD26
+	--color-text-shadow-optifine: #45110E
 	--color-shadow: #00000080
 	--color-grey-light: #232323
 	--color-grey: #121212
 	--color-grey-dark: #090909
-	--color-font-white: #FFF
 	--color-box-shadow: #00000030
-	--color-text-blue: #6C80F6
+	--color-link-blue: #6C80F6
 	--header-height: 40px
 	--content-width: 1280px
 	--box-shadow: 0 10px 10px var(--color-box-shadow)
@@ -25,7 +27,7 @@ body
 
 *
 	font-family: Arial
-	color: var(--color-font-white)
+	color: var(--color-text-white)
 	
 .hidden
 	display: none
@@ -67,7 +69,7 @@ body
 	letter-spacing: 1px
 	padding: 0 10px
 	text-shadow: -2px 2px 1px var(--color-text-shadow)
-	transition: .15s
+	transition: background-color .15s, padding .15s
 	user-select: none
 	
 	&:hover

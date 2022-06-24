@@ -3,17 +3,72 @@
   margin: 0 auto
   flex: 1
   height: 100%
-  
+
+.hidden
+  display: none!important
+
+.spacer
+  flex: 1
+
 #banner
+  position: relative
+  overflow: hidden
+  // box-shadow: var(--box-shadow)
+
+#banner-background
   width: 100%
   height: 300px
   background-size: cover
   background-position: 50% 50%
-  box-shadow: var(--box-shadow)
+  filter: blur(4px)
+  
+#banner-content
+  position: absolute
+  top: 0
+  left: 0
 
 img#logo
   padding: 50px
-  filter: drop-shadow(-10px 10px 1px var(--color-text-shadow));
+  filter: drop-shadow(0 10px 4px var(--color-text-shadow))
+
+#optifine
+  display: flex
+  background-image: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
+  align-items: center
+  min-height: 50px
+  box-shadow: var(--box-shadow)
+  z-index: 0
+  gap: 15px
+  font-weight: 700
+  text-shadow: 0 2px 1px var(--color-text-shadow-optifine)
+  color: var(--color-text-optifine)
+  overflow: hidden
+  
+  img
+    height: 50px
+    
+  a
+    height: 50px
+    display: flex
+    align-items: center
+    padding-right: 15px
+    cursor: pointer
+    transition: background-color .15s, padding-top .15s, margin-bottom .15s
+    user-select: none
+    color: var(--color-text-optifine)
+    text-decoration: none
+
+    svg
+      transform: scale(0.7, 0.7)
+      fill: var(--color-text-optifine)
+      filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+      
+    &:hover
+      background-color: #A93931
+      
+    &:active
+      padding-top: 4px
+      margin-bottom: -4px
 
 #pack-content
   flex: 1

@@ -15,8 +15,13 @@ class PackPage extends Page {
       return
     }
     const $ = this.$
-    $("#banner").css("background-image", `url("/assets/images/resourcepacks/${pack}/banner.webp")`)
+    $("#banner-background").css("background-image", `url("/assets/images/resourcepacks/${pack}/banner.webp")`)
     $("img#logo").attr("src", `/assets/images/resourcepacks/${pack}/logo.webp`)
+    if (resourcepacks.packs[pack].optifine) {
+      $("#optifine").removeClass("hidden")
+      if (resourcepacks.packs[pack].optifine === 1) $("#optional").removeClass("hidden")
+      else $("#required").removeClass("hidden")
+    }
   }
 }
 
