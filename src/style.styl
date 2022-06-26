@@ -1,113 +1,164 @@
 :root
-	color-scheme: dark
-	--color-red-light: #C75949
-	--color-red: #AC3535
-	--color-red-dark: #812838
-	--color-green-light: #314340
-	--color-green: #23302D
-	--color-green-dark: #17201C
-	--color-text-white: #FFF
-	--color-text-shadow: #00000080
-	--color-text-optifine: #FABD26
-	--color-text-shadow-optifine: #45110E
-	--color-shadow: #00000080
-	--color-grey-light: #232323
-	--color-grey: #121212
-	--color-grey-dark: #090909
-	--color-box-shadow: #00000030
-	--color-link-blue: #6C80F6
-	--header-height: 40px
-	--content-width: 1280px
-	--box-shadow: 0 10px 10px var(--color-box-shadow)
+  color-scheme: dark
+  --color-red-light: #C75949
+  --color-red: #AC3535
+  --color-red-dark: #812838
+  --color-green-light: #314340
+  --color-green: #23302D
+  --color-green-dark: #17201C
+  --color-text-white: #FFF
+  --color-text-shadow: #00000080
+  --color-text-optifine: #FABD26
+  --color-text-shadow-optifine: #45110E
+  --color-shadow: #00000080
+  --color-grey-light: #232323
+  --color-grey: #121212
+  --color-grey-dark: #090909
+  --color-box-shadow: #00000030
+  --color-link-blue: #6C80F6
+  --header-height: 40px
+  --content-width: 1280px
+  --box-shadow: 0 10px 10px var(--color-box-shadow)
 
 body
-	margin: 0
-	background-color: var(--color-grey)
-	overflow: hidden
+  margin: 0
+  background-color: var(--color-grey)
+  overflow: hidden
 
 *
-	font-family: Arial
-	color: var(--color-text-white)
-	
+  font-family: Arial
+  color: var(--color-text-white)
+  
 .hidden
-	display: none
+  display: none
 
 .spacer
-	flex: 1
+  flex: 1
 
 // header
 
 #header-container
-	background-color: var(--color-red)
-	width: 100%
-	display: flex
-	justify-content: center
-	height: var(--header-height)
-	position: sticky
-	top: 0
-	box-shadow: var(--box-shadow)
-	z-index: 1
+  background-color: var(--color-red)
+  width: 100%
+  display: flex
+  justify-content: center
+  height: var(--header-height)
+  position: sticky
+  top: 0
+  box-shadow: var(--box-shadow)
+  z-index: 1
 
 #header
-	width: var(--content-width)
-	display: flex
-	position: relative
-	
+  width: var(--content-width)
+  display: flex
+  position: relative
+  
 .logo img
-	height: var(--header-height)
+  height: var(--header-height)
 
 #logo-side
-	position: absolute
-	right: 100%
+  position: absolute
+  right: 100%
 
 .page-button
-	text-decoration: none
-	display: flex
-	align-items: center
-	color: white
-	font-weight: 700
-	letter-spacing: 1px
-	padding: 0 10px
-	text-shadow: -2px 2px 1px var(--color-text-shadow)
-	transition: background-color .15s, padding .15s
-	user-select: none
-	
-	&:hover
-		background-color: var(--color-red-light)
-		
-	&:active
-		padding-top: 6px
-		
-	&.selected
-		background-color: var(--color-red-dark)
-	
+  text-decoration: none
+  display: flex
+  align-items: center
+  color: white
+  font-weight: 700
+  letter-spacing: 1px
+  padding: 0 10px
+  text-shadow: -2px 2px 1px var(--color-text-shadow)
+  transition: background-color .15s, padding .15s
+  user-select: none
+  
+  &:hover
+    background-color: var(--color-red-light)
+    
+  &:active
+    padding-top: 6px
+    
+  &.selected
+    background-color: var(--color-red-dark)
+  
 // page
 
 .page
-	position: relative
-	display: block
-	width: 100%
-	height: 100%
+  position: relative
+  display: block
+  width: 100%
+  height: 100%
 
-	&:not(.loading)
-		@keyframes pageFadeIn
-			from
-				opacity: 0
-			to
-				opacity: 1
-		opacity: 0
-		animation: pageFadeIn 1 250ms forwards
+  &:not(.loading)
+    @keyframes pageFadeIn
+      from
+        opacity: 0
+      to
+        opacity: 1
+    opacity: 0
+    animation: pageFadeIn 1 250ms forwards
 
-	&.loading
-		visibility: hidden
-		pointer-events: none
-		animation: none
-		opacity: 0
-		
+  &.loading
+    visibility: hidden
+    pointer-events: none
+    animation: none
+    opacity: 0
+    
 #content
-	position: relative
-	height: calc(100vh - var(--header-height))
-	
+  position: relative
+  height: calc(100vh - var(--header-height))
+  
 .page-body
-	display: flex!important
-	justify-content: center
+  display: flex!important
+  justify-content: center
+
+// popups
+
+.popup-container
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #00000080
+  z-index: 99
+  display: flex
+  justify-content: center
+  align-items: center
+  animation: fadeIn .25s forwards 1
+  opacity: 0
+
+  @keyframes fadeIn
+    from
+      opacity: 0
+    to
+      opacity: 1    
+
+.popup-image-container
+  position: relative
+  overflow: hidden
+  user-select: none
+  box-shadow: 0 8px 16px black
+
+.popup-image-close
+  fill: white
+  position: absolute
+  top: 0
+  right: -48px
+  filter: drop-shadow(-2px 4px 1px var(--color-text-shadow))
+  cursor: pointer
+  transition: right .15s, opacity .15s
+  opacity: 0
+  
+  &:hover
+    right: 0
+    opacity: 1
+  
+.popup-image
+  max-width: calc(90vw)
+  max-height: calc(90vh)
+  display: block
+
+  &:hover ~ .popup-image-close
+    right: 0
+    opacity: 1
