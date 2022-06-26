@@ -31,18 +31,23 @@ img#logo
   padding: 50px
   filter: drop-shadow(0 10px 4px var(--color-text-shadow))
 
+#pack-links
+  width: 256px
+  background-color: var(--color-grey-light)
+  box-shadow: -10px 0 10px var(--color-box-shadow)
+
 #optifine
   display: flex
   background-image: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
   align-items: center
   min-height: 50px
   box-shadow: var(--box-shadow)
-  z-index: 0
   gap: 15px
   font-weight: 700
   text-shadow: 0 2px 1px var(--color-text-shadow-optifine)
   color: var(--color-text-optifine)
   overflow: hidden
+  width: 100%
   
   img
     height: 50px
@@ -77,9 +82,58 @@ img#logo
 
 #pack-info
   flex: 1
+  display: flex
+  flex-direction: column
+  align-items: center
 
-#pack-links
-  height: 100%
-  width: 256px
-  background-color: var(--color-grey-light)
-  box-shadow: -10px 0 10px var(--color-box-shadow)
+#images
+  max-width: 720px
+  display: flex
+  user-select: none
+  
+  img
+    max-width: 100%
+
+.image-button
+  cursor: pointer
+  
+  &.disabled
+    opacity: 0.5
+    cursor: default
+    
+.showcase-image
+  display: none
+  
+.shown
+  display: block
+  animation: fadeIn .25s forwards 1
+  opacity: 0
+
+  @keyframes fadeIn
+    from
+      opacity: 0
+    to
+      opacity: 1
+      
+#thumbnail-row 
+  display: flex
+  width: 100%
+  
+  div
+    height: 100px
+    flex: 1
+    background-size: cover
+    background-position: 50% 50%
+    filter: grayscale(100%)
+    opacity: 0.6
+    transition: filter .15s, opacity .15s
+    cursor: pointer
+    
+    &:hover
+      filter: grayscale(0)
+      opacity: 1
+    
+
+  .selected
+    filter: grayscale(0)
+    opacity: 1

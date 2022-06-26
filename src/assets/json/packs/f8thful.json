@@ -1,3 +1,28 @@
 {
-  "name": "F8thful"
+  "subtitle": "The Vanilla 8x8 Resource Pack",
+  "description": "F8thful is a vanilla friendly resource pack where every texture has been recreated in 8x8!",
+  "video": "6OHrmIMocjk",
+  "images": [
+    "house",
+    "farm",
+    "underwater",
+    "lush",
+    "swamp",
+    "crimson",
+    "lush2",
+    "warped",
+    "farm2"
+  ],
+  "buttons": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653777112701",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/f8thful/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780626322",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/f8thful-bedrock"
+    }
+  ]
 }
