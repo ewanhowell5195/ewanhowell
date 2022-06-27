@@ -1,0 +1,25 @@
+{
+  "name": "Entity Healthbars: Dokucraft",
+  "subtitle": "The pack where every entity has a healthbar!\nNow Dokucraft style!",
+  "description": "This pack adds healthbars to all of the entities that support OptiFine entity models.",
+  "images": [
+    "creeper",
+    "pig",
+    "villager",
+    "strider"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780368984",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/entity-healthbars-dokucraft/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Original Version",
+      "type": "pack",
+      "name": "entity-healthbars"
+    }
+  ]
+}
