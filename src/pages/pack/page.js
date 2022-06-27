@@ -82,7 +82,7 @@ class PackPage extends Page {
       $(`#thumbnail-${img}`).addClass("selected")
       if (img === 0) prev.addClass("disabled")
       else prev.removeClass("disabled")
-      if (img === data.images.length - 1) next.addClass("disabled")
+      if (img === data.images.length - 1 + offset) next.addClass("disabled")
       else next.removeClass("disabled")
     }
     showImage()
