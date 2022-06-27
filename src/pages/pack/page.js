@@ -32,7 +32,7 @@ class PackPage extends Page {
       offset++
       images.prepend(E("iframe").addClass("showcase-image").attr({
         id: "image-0",
-        "src": `https://www.youtube.com/embed/${data.video}`,
+        "src": `https://www.youtube.com/embed/${data.video}?rel=0`,
         frameborder: 0,
         allow: "picture-in-picture",
         allowfullscreen: true

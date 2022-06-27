@@ -53,10 +53,10 @@ img#logo
   overflow: hidden
   width: 100%
   z-index: 1
-  
+
   img
     height: 50px
-    
+
   a
     height: 50px
     display: flex
@@ -72,10 +72,10 @@ img#logo
       transform: scale(0.7, 0.7)
       fill: var(--color-text-optifine)
       filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
-      
+
     &:hover
       background-color: #A93931
-      
+
     &:active
       padding-top: 4px
       margin-bottom: -4px
@@ -98,7 +98,7 @@ img#logo
   position: relative
   overflow: hidden
   padding: 32px 0
-  
+
   img
     max-width: 100%
 
@@ -112,15 +112,15 @@ img#logo
   z-index: 1
   opacity: 0
   transition: left .15s, right .15s, opacity .15s, transform .15s
-  
+
   &#next
     right: -60px
-  
+
     &:hover
       right: 0
       opacity: 1
       transform: translateY(-50%) scale(1.4)
-      
+
   &#prev
     left: -60px
 
@@ -139,21 +139,21 @@ img#logo
   &.disabled
     opacity: 0!important
     cursor: default
-    
+
 .showcase-image
   display: none
   cursor: pointer
   width: 720px
   height: 405px
-  
+
   &:hover ~ #prev
     left: 0
     opacity: 1
-    
+
   &:hover ~ #next
     right: 0
     opacity: 1
-  
+
 .shown
   display: block
   animation: fadeIn .25s forwards 1
@@ -164,11 +164,11 @@ img#logo
       opacity: 0
     to
       opacity: 1
-      
+
 #thumbnail-row 
   display: flex
   width: 100%
-  
+
   div
     height: 100px
     flex: 1
@@ -182,7 +182,6 @@ img#logo
     &:hover
       filter: grayscale(0)
       opacity: 1
-    
 
   .selected
     filter: grayscale(0)
@@ -197,17 +196,17 @@ img#logo
       right: 0
       height: 5px
       background-color: var(--color-red-light)
-      
+
 #title
   font-size: 4em
   padding-top: 32px
   font-weight: 700
   letter-spacing: 2px
-  
+
 #subtitle
   font-size: 1.5em
   padding-bottom: 16px
-  
+
 #description, #subtitle
   white-space: pre-wrap
   text-align: center
