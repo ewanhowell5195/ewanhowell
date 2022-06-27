@@ -92,6 +92,24 @@ class PackPage extends Page {
       $("#downloads .selected").removeClass("selected")
       $(`#${e.target.getAttribute("id").match(/.+(?=-)/)}`).addClass("selected")
     })
+    const main = $("#main")
+    const mirrors = $("#mirrors")
+    for (const link of data.downloads) {
+      main.append(E("a").attr({
+        href: link.link,
+        target: "_blank"
+      }).append(
+        $("#download-icon").contents().clone(true),
+        E("span").text(link.text)
+      ))
+      if (link.mirror) mirrors.append(E("a").addClass("mirror").attr({
+        href: link.mirror,
+        target: "_blank"
+      }).append(
+        $("#mirror-icon").contents().clone(true),
+        E("span").text(link.text)
+      ))
+    }
   }
 }
 
