@@ -7,13 +7,13 @@ class ResourcepacksPage extends Page {
       const tabs = $("#tabs")
       const versions = $("#versions")
       for (const version of resourcepacks.versions) {
-        tabs.append(E("a").attr("href", `/resourcepacks?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
+        tabs.append(E("a").attr("href", `/resourcepacks/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
           evt.preventDefault()
           $(".version").removeClass("shown")
           $(`#${evt.target.innerHTML.replace(".", "-")}`).addClass("shown")
           $(".selected").removeClass("selected")
           $(evt.target).addClass("selected")
-          history.pushState({}, null, `/resourcepacks?version=${evt.target.innerHTML}`)
+          history.pushState({}, null, `/resourcepacks/?version=${evt.target.innerHTML}`)
           sessionStorage.setItem("resourcepacksVersion", evt.target.innerHTML)
         }))
         const versionDiv = E("div").addClass("version hidden").attr("id", version.id.replace(".", "-")).appendTo(versions)
@@ -45,7 +45,7 @@ class ResourcepacksPage extends Page {
     this.$(`#${version.replace(".", "-")}`).addClass("shown")
     this.$(`.tab:contains("${version}")`).addClass("selected")
     sessionStorage.setItem("resourcepacksVersion", version)
-    history.replaceState({}, null, `/resourcepacks?version=${version}`)
+    history.replaceState({}, null, `/resourcepacks/?version=${version}`)
   }
 }
 

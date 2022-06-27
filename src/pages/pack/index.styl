@@ -35,11 +35,6 @@ img#logo
   image-rendering: pixelated
   filter: drop-shadow(0 10px 4px var(--color-text-shadow))
 
-#pack-links
-  width: 256px
-  background-color: var(--color-grey-light)
-  box-shadow: -10px 0 10px var(--color-box-shadow)
-
 #optifine
   display: flex
   background-image: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
@@ -210,3 +205,52 @@ img#logo
 #description, #subtitle
   white-space: pre-wrap
   text-align: center
+
+#pack-links
+  width: 256px
+
+#pack-links-contents
+  height: calc(100% - 50px)
+  background-color: var(--color-grey)
+  box-shadow: -10px 0 10px var(--color-box-shadow)
+
+#pack-links-tabs
+  display: flex
+  justify-content: space-around
+  padding: 10px 10px 0
+  gap: 10px
+  background-color: var(--color-grey-darker)
+  user-select: none
+  overflow-y: hidden
+
+  div
+    height: 38px
+    flex: 1
+    background-color: var(--color-grey-dark)
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    border-top: 2px solid transparent
+    transition: background-color .15s
+    box-shadow: -10px 0 10px var(--color-box-shadow)
+
+  .selected
+    background-color: var(--color-grey)
+    border-top: 2px solid var(--color-red-light)
+
+#downloads div
+  display: none
+  
+  &.selected
+    display: block
+
+#main
+  width: 100px
+  height: 100px
+  background-color: red
+  
+#mirrors
+  width: 100px
+  height: 100px
+  background-color: blue

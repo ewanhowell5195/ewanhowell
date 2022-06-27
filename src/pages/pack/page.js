@@ -55,8 +55,8 @@ class PackPage extends Page {
             }),
             $("#close-icon").contents().clone(true).addClass("popup-image-close").on("click", e => popup.remove())
           )
-        ).on("click", evt => {
-          if (evt.target.classList[0] === "popup-container") popup.remove()
+        ).on("click", e => {
+          if (e.target.classList[0] === "popup-container") popup.remove()
         }).appendTo(document.body)
       }))
       imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${image}.webp")`).on("click", e => {
@@ -80,12 +80,18 @@ class PackPage extends Page {
       $(`#image-${img}`).addClass("shown")
       $(".thumbnail-image").removeClass("selected")
       $(`#thumbnail-${img}`).addClass("selected")
-      if (img === 0) prev.addClass("disabled")
+      if (!img) prev.addClass("disabled")
       else prev.removeClass("disabled")
       if (img === data.images.length - 1 + offset) next.addClass("disabled")
       else next.removeClass("disabled")
     }
     showImage()
+    $("#pack-links-tabs div").on("click", e => {
+      $("#pack-links-tabs .selected").removeClass("selected")
+      $(e.target).addClass("selected")
+      $("#downloads .selected").removeClass("selected")
+      $(`#${e.target.getAttribute("id").match(/.+(?=-)/)}`).addClass("selected")
+    })
   }
 }
 
