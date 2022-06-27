@@ -27,35 +27,50 @@ class PackPage extends Page {
     $("#description").text(data.description)
     const images = $("#image-container")
     const imageRow = $("#thumbnail-row")
+    let offset = 0
+    if (data.video) {
+      offset++
+      images.prepend(E("iframe").addClass("showcase-image").attr({
+        id: "image-0",
+        "src": `https://www.youtube.com/embed/${data.video}`,
+        frameborder: 0,
+        allow: "picture-in-picture",
+        allowfullscreen: true
+      }))
+      imageRow.append(E("div").attr("id", "thumbnail-0").addClass("thumbnail-image").css("background-image", `url("https://img.youtube.com/vi/${data.video}/maxresdefault.jpg")`).on("click", e => {
+        img = 0
+        showImage()
+      }))
+    }
     for (const [i, image] of data.images.entries()) {
       images.prepend(E("img").attr({
-        id: `image-${i}`,
+        id: `image-${i + offset}`,
         src: `/assets/images/resourcepacks/${pack}/images/${image}.webp`
-      }).addClass("showcase-image").on("click", () => {
+      }).addClass("showcase-image").on("click", e => {
         const popup = E("div").addClass("popup-container").append(
           E("div").addClass("popup-image-container").append(
             E("img").addClass("popup-image").attr("src", `/assets/images/resourcepacks/${pack}/images/${image}.webp`).css({
               "max-width": "calc(90vw)",
               "max-height": "calc(90vh)"
             }),
-            $("#close-icon").contents().clone(true).addClass("popup-image-close").on("click", () => popup.remove())
+            $("#close-icon").contents().clone(true).addClass("popup-image-close").on("click", e => popup.remove())
           )
         ).on("click", evt => {
           if (evt.target.classList[0] === "popup-container") popup.remove()
         }).appendTo(document.body)
       }))
-      imageRow.append(E("div").attr("id", `thumbnail-${i}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${image}.webp")`).on("click", () => {
-        img = i
+      imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${image}.webp")`).on("click", e => {
+        img = i + offset
         showImage()
       }))
     }
     let img = 0
-    const prev = $("#prev").on("click", () => {
+    const prev = $("#prev").on("click", e => {
       if (prev.hasClass("disabled")) return
       img--
       showImage()
     })
-    const next = $("#next").on("click", () => {
+    const next = $("#next").on("click", e => {
       if (next.hasClass("disabled")) return
       img++
       showImage()
