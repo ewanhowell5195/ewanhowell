@@ -114,7 +114,8 @@
           "name": "Packs I Have Contributed To",
           "packs": [
             "overgrowth",
-            "caelesti"
+            "caelesti",
+            "devolution"
           ]
         }
       ]
@@ -394,6 +395,9 @@
       "optifine": 2
     },
     "deep-dark": {
+      "optifine": 2
+    },
+    "devolution": {
       "optifine": 2
     },
     "dimension-shift": {},

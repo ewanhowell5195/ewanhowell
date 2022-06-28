@@ -39,6 +39,7 @@ class Page extends HTMLElement {
       this.shadowBody = E('page-body')
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
+      this.shadowBody.append($("#footer-template").contents().clone(true))
       if (hasStyle) {
         this.shadowRoot.append(
           E('link').attr('rel', 'stylesheet').attr('href', `/pages/${this.name}/index.css`)[0]
@@ -69,6 +70,15 @@ class Page extends HTMLElement {
             height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
+          }
+          #footer-container {
+            position: relative;
+            background-color: var(--color-red);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: var(--header-height);
+            box-shadow: 0 -10px 10px var(--color-box-shadow);
           }
         `)[0],
         E('div').addClass('progress-bar')[0]
