@@ -17,6 +17,10 @@
   ],
   "links": [
     {
+      "text": "Dokucraft",
+      "link": "https://dokucraft.co.uk/"
+    },
+    {
       "text": "Original Version",
       "type": "pack",
       "name": "entity-healthbars"

@@ -24,6 +24,10 @@
   ],
   "links": [
     {
+      "text": "Faithful",
+      "link": "https://faithfulpack.net/"
+    },
+    {
       "text": "Original Version",
       "type": "pack",
       "name": "entity-healthbars"

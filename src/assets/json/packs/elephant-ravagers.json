@@ -1,6 +1,6 @@
 {
   "subtitle": "Ravagers are now Elephants!",
-  "description": "By hatsondogs\n\nThis is a resource pack that replaces the ravager with an Elephant!",
+  "description": "This is a resource pack that replaces the ravager with an Elephant!",
   "video": "DNB-VQmdTxo",
   "images": [
     "elephants",
@@ -12,6 +12,12 @@
       "text": "Download [Java]",
       "link": "http://adfoc.us/54653778765444",
       "mirror": "https://www.curseforge.com/minecraft/texture-packs/elephant-ravagers/"
+    }
+  ],
+  "links": [
+    {
+      "text": "By hatsondogs",
+      "link": "https://twitter.com/hatsondogsmc"
     }
   ]
 }

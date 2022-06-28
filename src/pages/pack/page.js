@@ -93,41 +93,45 @@ class PackPage extends Page {
       $("#downloads .selected").removeClass("selected")
       $(`#${e.target.getAttribute("id").match(/.+(?=-)/)}`).addClass("selected")
     })
-    const main = $("#main")
-    const mirrors = $("#mirrors")
-    const downloadIcon = $("#download-icon").contents()
     const linkIcon = $("#link-icon").contents()
     const localIcon = $("#local-icon").contents()
-    for (const link of data.downloads) {
-      main.append(E("a").attr({
-        href: link.link,
-        target: "_blank"
-      }).append(
-        downloadIcon.clone(true),
-        E("span").text(link.text)
-      ))
-      if (link.mirror) mirrors.append(E("a").addClass("mirror").attr({
-        href: link.mirror,
-        target: "_blank"
-      }).append(
-        linkIcon.clone(true),
-        E("span").text(link.text)
-      ))
+    if (data.downloads) {
+      $("#downloads").removeClass("hidden")
+      const downloadIcon = $("#download-icon").contents()
+      const main = $("#main")
+      const mirrors = $("#mirrors")
+      for (const link of data.downloads) {
+        main.append(E("a").attr({
+          href: link.link,
+          target: "_blank"
+        }).append(
+          downloadIcon.clone(true),
+          E("span").text(link.text)
+        ))
+        if (link.mirror) mirrors.append(E("a").addClass("mirror").attr({
+          href: link.mirror,
+          target: "_blank"
+        }).append(
+          linkIcon.clone(true),
+          E("span").text(link.text)
+        ))
+      }
     }
-    const links = $("#links")
-    for (const link of data.links) {
-      if (link.type === "pack") links.append(E("a", {is: "f-a"}).attr({
-        href: `/resourcepacks/${link.name}`
-      }).append(
-        localIcon.clone(true),
-        E("span").text(link.text)
-      ))
-      else links.append(E("a", {is: "f-a"}).attr({
-        href: `/resourcepacks/${link.name}`
-      }).append(
-        linkIcon.clone(true),
-        E("span").text(link.text)
-      ))
+    if (data.links) {
+      const links = $("#links").removeClass("hidden")
+      for (const link of data.links) {
+        if (link.type === "pack") links.append(E("a", {is: "f-a"}).attr("href", `/resourcepacks/${link.name}`).append(
+          localIcon.clone(true),
+          E("span").text(link.text)
+        ))
+        else links.append(E("a").attr({
+          href: link.link,
+          target: "_blank"
+        }).append(
+          linkIcon.clone(true),
+          E("span").text(link.text)
+        ))
+      }
     }
   }
 }
