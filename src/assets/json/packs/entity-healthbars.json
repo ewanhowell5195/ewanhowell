@@ -16,14 +16,14 @@
   ],
   "links": [
     {
-      "text": "32x & 64x Versions",
-      "type": "pack",
-      "name": "entity-healthbars-hd"
-    },
-    {
       "text": "Hearts Version",
       "type": "pack",
       "name": "entity-healthbars-hearts"
+    },
+    {
+      "text": "32x & 64x Versions",
+      "type": "pack",
+      "name": "entity-healthbars-faithful"
     },
     {
       "text": "Dokucraft Version",

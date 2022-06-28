@@ -42,6 +42,7 @@ class PackPage extends Page {
         showImage()
       }))
     }
+    const closeIcon = $("#close-icon").contents()
     for (const [i, image] of data.images.entries()) {
       images.prepend(E("img").attr({
         id: `image-${i + offset}`,
@@ -53,7 +54,7 @@ class PackPage extends Page {
               "max-width": "calc(90vw)",
               "max-height": "calc(90vh)"
             }),
-            $("#close-icon").contents().clone(true).addClass("popup-image-close").on("click", e => popup.remove())
+            closeIcon.clone(true).addClass("popup-image-close").on("click", e => popup.remove())
           )
         ).on("click", e => {
           if (e.target.classList[0] === "popup-container") popup.remove()
@@ -94,19 +95,37 @@ class PackPage extends Page {
     })
     const main = $("#main")
     const mirrors = $("#mirrors")
+    const downloadIcon = $("#download-icon").contents()
+    const linkIcon = $("#link-icon").contents()
+    const localIcon = $("#local-icon").contents()
     for (const link of data.downloads) {
       main.append(E("a").attr({
         href: link.link,
         target: "_blank"
       }).append(
-        $("#download-icon").contents().clone(true),
+        downloadIcon.clone(true),
         E("span").text(link.text)
       ))
       if (link.mirror) mirrors.append(E("a").addClass("mirror").attr({
         href: link.mirror,
         target: "_blank"
       }).append(
-        $("#mirror-icon").contents().clone(true),
+        linkIcon.clone(true),
+        E("span").text(link.text)
+      ))
+    }
+    const links = $("#links")
+    for (const link of data.links) {
+      if (link.type === "pack") links.append(E("a", {is: "f-a"}).attr({
+        href: `/resourcepacks/${link.name}`
+      }).append(
+        localIcon.clone(true),
+        E("span").text(link.text)
+      ))
+      else links.append(E("a", {is: "f-a"}).attr({
+        href: `/resourcepacks/${link.name}`
+      }).append(
+        linkIcon.clone(true),
         E("span").text(link.text)
       ))
     }

@@ -292,3 +292,45 @@ img#logo
   
   .selected
     display: flex
+    
+#links
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding-top: 15px
+  gap: 15px
+  
+  a
+    text-decoration: none
+    color: var(--color-text-white)
+    padding: 10px
+    background-color: var(--color-grey-light)
+    width: 206px
+    display: flex
+    align-items: center
+    font-weight: 700
+    box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
+    transition: filter .15s, padding-top .15s, padding-bottom .15s
+    filter: brightness(1.8)
+    
+    svg
+      width: 32px
+      height: 32px
+      filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
+
+    path
+      fill: white
+      
+    span
+      text-align: center
+      flex: 1
+      text-shadow: -2px 2px 1px var(--color-text-shadow)
+      letter-spacing: 1px
+
+    &:hover
+      filter: brightness(2.3)
+      
+    &:active
+      padding-top: 15px
+      padding-bottom: 5px
