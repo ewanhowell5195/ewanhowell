@@ -6,7 +6,25 @@ class ResourcepacksPage extends Page {
       await fetchResourcepacks()
       const tabs = $("#tabs")
       const versions = $("#versions")
-      for (const version of resourcepacks.versions) {
+      const allPacks = {
+        id: "all",
+        categories: resourcepacks.versions.reduce((a, e) => {
+          for (const category of e.categories) {
+            let c = a.find(e => e.name === category.name)
+            if (c) {
+              category.packs.forEach(e => c.packs.add(e))
+            } else {
+              c = {
+                name: category.name,
+                packs: new Set(category.packs)
+              }
+              a.push(c)
+            }
+          }
+          return a
+        }, []).map(e => ({name: e.name, packs: Array.from(e.packs)}))
+      }
+      for (const version of [allPacks, ...resourcepacks.versions]) {
         tabs.append(E("a").attr("href", `/resourcepacks/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
           evt.preventDefault()
           $(".version").removeClass("shown")
