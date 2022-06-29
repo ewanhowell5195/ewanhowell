@@ -376,6 +376,7 @@
     },
     "butterflies": {},
     "caelesti": {
+      "image": "twisting-vines",
       "optifine": 2
     },
     "cave-update": {
@@ -385,6 +386,7 @@
       "optifine": 2
     },
     "chubby-cheeks": {
+      "image": "cows",
       "optifine": 2
     },
     "concraft": {},
@@ -463,6 +465,7 @@
       "image": "cave"
     },
     "overgrowth": {
+      "image": "village",
       "optifine": 1
     },
     "pack-and-white": {
@@ -524,6 +527,7 @@
       "optifine": 2
     },
     "snowstorm": {
+      "image": "forest",
       "optifine": 2
     },
     "solar-eclipse": {

@@ -1,0 +1,27 @@
+{
+  "subtitle": "A pack that remakes entity model",
+  "description": "This resource pack makes use of the optifine custom entity models to remake old mob models.",
+  "optifine": "OptiFine is used to add custom models to entities.",
+  "images": [
+    "cows",
+    "pigs",
+    "sheep",
+    "rabbits",
+    "bat",
+    "chickens",
+    "cluckshrooms"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765443",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/chubby-cheeks/"
+    }
+  ],
+  "links": [
+    {
+      "text": "By Ninni",
+      "link": "https://twitter.com/Ninnih_"
+    }
+  ]
+}

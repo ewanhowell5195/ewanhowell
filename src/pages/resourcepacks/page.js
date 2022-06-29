@@ -3,6 +3,7 @@ import { Page } from "/js/pages.js"
 class ResourcepacksPage extends Page {
   constructor() {
     super("resourcepacks", true, async $ => {
+      jQuery("title").text("Ewan Howell - Resource Packs")
       await fetchResourcepacks()
       const tabs = $("#tabs")
       const versions = $("#versions")
@@ -42,11 +43,15 @@ class ResourcepacksPage extends Page {
             ).appendTo(versionDiv)
           )
           for (const pack of category.packs) {
-            const packDiv = E("a", {is: "f-a"}).attr("href", `/resourcepacks/${pack}`).addClass("pack").attr("id", pack).append(
+            const packImages = E("div").addClass("pack-images").attr("id", pack).append(
               E("div").addClass("pack-image").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${resourcepacks.packs[pack].image}.webp")`),
-              E("span").text(resourcepacks.packs[pack].name ?? pack.replace(/-/g, " ").toTitleCase())
+              E("div").addClass("logo").css("background-image", `url("/assets/images/resourcepacks/${pack}/logo.webp")`)
+            )
+            const packDiv = E("a", {is: "f-a"}).attr("href", `/resourcepacks/${pack}`).addClass("pack-container").append(
+              packImages,
+              E("div").addClass("pack-name").text(resourcepacks.packs[pack].name ?? pack.replace(/-/g, " ").toTitleCase())
             ).appendTo(categoryPacksDiv)
-            if (resourcepacks.packs[pack].optifine) packDiv.addClass("optifine").append(E("img").attr("src", "/assets/images/logo/optifine.webp"))
+            if (resourcepacks.packs[pack].optifine) packImages.append(E("img").addClass("optifine").attr("src", "/assets/images/logo/optifine.webp"))
           }
         }
       }
@@ -58,7 +63,7 @@ class ResourcepacksPage extends Page {
     await this.ready
     if (!version) {
       version = sessionStorage.getItem("resourcepacksVersion")
-      if (!version) version = resourcepacks.versions[0].id
+      if (!version) version = "all"
     }
     const tab = this.$(`.tab:contains("${version}")`)
     if (!tab.length) version = resourcepacks.versions[0].id

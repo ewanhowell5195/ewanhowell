@@ -46,16 +46,29 @@
       opacity: 1
 
 .packs
-  display: flex
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
   justify-content: space-around
   gap: 10px
-  flex-wrap: wrap
+
+.pack-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 10px
+  text-decoration: none
   
-.pack
+.pack-name
+  color: var(--color-text-white)
+  font-size: 1.2em
+  letter-spacing: 1px
+  font-weight: 700
+  padding-bottom: 10px
+
+.pack-images
   min-width: 256px
   height: 128px
   background-color: var(--color-green-light)
-  flex: 1
   display: flex
   justify-content: center
   align-items: center
@@ -64,25 +77,29 @@
   color: var(--color-text-white)
   position: relative
   overflow: hidden
+  align-self: stretch
+  
+.pack-image
+  position: absolute
+  width: 100%
+  height: 100%
+  background-size: cover
+  background-position: 50% 50%
 
-  .pack-image
-    position: absolute
-    width: 100%
-    height: 100%
-    background-size: cover
-    background-position: 50% 50%
+.logo
+  position: absolute
+  top: 16px
+  bottom: 16px
+  left: 16px
+  right: 16px
+  background-size: contain
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  filter: drop-shadow(0 10px 4px var(--color-text-shadow))
 
-  span
-    position: absolute
-    width: 100%
-    height: 100%
-    display: flex
-    justify-content: center
-    align-items: center
-
-  img
-    position: absolute
-    bottom: 0
-    right: 0
-    width: 32px
-    height: 32px
+.optifine
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 32px
+  height: 32px

@@ -70,9 +70,10 @@ const routes = [
 
 let isOpeningPage = false
 window.openPage = async function(url, updateHistory = false, forceUpdate = false) {
-  if (isOpeningPage || (!forceUpdate && url.href === location.href)) {
-    return
-  }
+  if (isOpeningPage || (!forceUpdate && url.href === location.href)) return
+  $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
+  $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
+  $("title").text("Ewan Howell")
   isOpeningPage = true
   let foundPage = false
   const ps = url.pathname + url.search

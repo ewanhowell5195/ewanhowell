@@ -1,6 +1,7 @@
 {
   "subtitle": "Ravagers are now Elephants!",
-  "description": "This is a resource pack that replaces the ravager with an Elephant!",
+  "description": "This is a resource pack that replaces the ravager with an elephant!",
+  "optifine": "This pack uses custom entity models to remodel the ravager.",
   "video": "DNB-VQmdTxo",
   "images": [
     "elephants",
