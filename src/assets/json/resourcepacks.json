@@ -358,7 +358,8 @@
       "optifine": 2
     },
     "1-18-panorama": {
-      "name": "1.18 Panorama"
+      "name": "1.18 Panorama",
+      "image": "noui"
     },
     "4thful": {
       "optifine": 1
@@ -398,6 +399,7 @@
       "optifine": 2
     },
     "devolution": {
+      "image": "1.14+5",
       "optifine": 2
     },
     "dimension-shift": {},
@@ -405,24 +407,30 @@
       "optifine": 2
     },
     "elephant-ravagers": {
+      "image": "elephants",
       "optifine": 2
     },
     "entity-healthbars": {
+      "image": "all",
       "optifine": 2
     },
     "entity-healthbars-dokucraft": {
       "name": "Entity Healthbars: Dokucraft",
+      "image": "creeper",
       "optifine": 2
     },
     "entity-healthbars-faithful": {
       "name": "Entity Healthbars: Faithful",
+      "image": "all",
       "optifine": 2
     },
     "entity-healthbars-hearts": {
       "name": "Entity Healthbars: Hearts",
+      "image": "ravager",
       "optifine": 2
     },
     "f8thful": {
+      "image": "house",
       "optifine": 1
     },
     "fences-plus": {
@@ -451,7 +459,8 @@
       "optifine": 2
     },
     "oledcraft": {
-      "name": "OLEDcraft"
+      "name": "OLEDcraft",
+      "image": "cave"
     },
     "overgrowth": {
       "optifine": 1

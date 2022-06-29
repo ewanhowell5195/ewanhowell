@@ -42,9 +42,11 @@ class ResourcepacksPage extends Page {
             ).appendTo(versionDiv)
           )
           for (const pack of category.packs) {
-            categoryPacksDiv.append(
-              E("a", {is: "f-a"}).attr("href", `/resourcepacks/${pack}`).addClass("pack").attr("id", pack).text(resourcepacks.packs[pack].name ?? pack.replace(/-/g, " ").toTitleCase())
-            )
+            const packDiv = E("a", {is: "f-a"}).attr("href", `/resourcepacks/${pack}`).addClass("pack").attr("id", pack).append(
+              E("div").addClass("pack-image").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${resourcepacks.packs[pack].image}.webp")`),
+              E("span").text(resourcepacks.packs[pack].name ?? pack.replace(/-/g, " ").toTitleCase())
+            ).appendTo(categoryPacksDiv)
+            if (resourcepacks.packs[pack].optifine) packDiv.addClass("optifine").append(E("img").attr("src", "/assets/images/logo/optifine.webp"))
           }
         }
       }

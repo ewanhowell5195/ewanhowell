@@ -4,7 +4,8 @@
   "description": "This pack brings the 1.18 panorama into other game versions so you can enjoy it in any version of the game!",
   "images": [
     "panorama",
-    "panorama2"
+    "panorama2",
+    "noui"
   ],
   "downloads": [
     {

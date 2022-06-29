@@ -20,7 +20,7 @@ class PackPage extends Page {
     const localIcon = $("#local-icon").contents()
     const closeIcon = $("#close-icon").contents()
     const downloadIcon = $("#download-icon").contents()
-    $("#banner-background").css("background-image", data.banner ? `url("/assets/images/resourcepacks/${pack}/banner.webp")` : `url("/assets/images/resourcepacks/${pack}/images/${data.images[0]}.webp")`)
+    $("#banner-background").css("background-image", `url("/assets/images/resourcepacks/${pack}/images/${resourcepacks.packs[pack].image}.webp")`)
     $("img#logo").attr("src", `/assets/images/resourcepacks/${pack}/logo.webp`)
     if (resourcepacks.packs[pack].optifine) {
       $("#optifine").removeClass("hidden")
