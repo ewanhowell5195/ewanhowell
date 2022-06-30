@@ -1,4 +1,5 @@
 {
+  "author": "Ninni",
   "subtitle": "A pack that remakes entity model",
   "description": "This resource pack makes use of the optifine custom entity models to remake old mob models.",
   "optifine": "OptiFine is used to add custom models to entities.",

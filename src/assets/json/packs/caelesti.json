@@ -1,4 +1,5 @@
 {
+  "author": "Skaliber",
   "subtitle": "A heavily OptiFine reliant Vanilla+ pack",
   "description": "Caelesti is an advanced vanilla+ pack which takes advantage of many hidden features that are both vanilla, and OptiFine reliant to completely change the way that Minecraft is experienced. The pack has a huge focus on custom flora, and fauna, and attempts to improve the many inconsistencies and flaws of the original look of Minecraft.",
   "optifine": "OptiFine's connected textures are used to add snow onto the tops of blocks which wouldn't usually allow seperate top block only textures.",

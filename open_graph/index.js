@@ -17,7 +17,7 @@ for (const [id, details] of Object.entries(packs)) {
   fs.writeFileSync(`../src/resourcepacks/${id}/index.pug`, `doctype html
 html
   head
-    title Ewan Howell - ${packName}
+    title ${data.author ?? "Ewan Howell"} - ${packName}
     link(rel = "icon", type = "image/png", sizes = "16x16", href = "/assets/images/resourcepacks/${id}/pack.webp")
     link(rel = "icon", type = "image/png", sizes = "32x32", href = "/assets/images/resourcepacks/${id}/pack.webp")
     meta(property = "og:type", content = "website")
