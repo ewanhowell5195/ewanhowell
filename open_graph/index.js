@@ -18,8 +18,8 @@ for (const [id, details] of Object.entries(packs)) {
 html
   head
     title Ewan Howell - ${packName}
-    link(rel = "icon", type = "image/png", sizes = "16x16", href = "/assets/images/resourcepacks/${id}/pack.webp", data-href  =  "/assets/images/logo/eh_16.png")
-    link(rel = "icon", type = "image/png", sizes = "32x32", href = "/assets/images/resourcepacks/${id}/pack.webp", data-href  =  "/assets/images/logo/eh_32.png")
+    link(rel = "icon", type = "image/png", sizes = "16x16", href = "/assets/images/resourcepacks/${id}/pack.webp")
+    link(rel = "icon", type = "image/png", sizes = "32x32", href = "/assets/images/resourcepacks/${id}/pack.webp")
     meta(property = "og:type", content = "website")
     meta(property = "og:title", content = "Ewan Howell - ${packName}")
     meta(property = "og:description", content = "${data.subtitle.replace(/\n/g, " ")}")
