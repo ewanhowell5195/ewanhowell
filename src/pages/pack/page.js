@@ -17,7 +17,7 @@ class PackPage extends Page {
     const packName = data.name ?? pack.replace(/-/g, " ").toTitleCase()
     jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/resourcepacks/${pack}/pack.webp`)
     jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/resourcepacks/${pack}/pack.webp`)
-    jQuery("title").text(packName)
+    jQuery("title").text(`Ewan Howell - ${packName}`)
     const $ = this.$
     const linkIcon = $("#link-icon").contents()
     const localIcon = $("#local-icon").contents()

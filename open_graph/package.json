@@ -1,0 +1,9 @@
+{
+  "name": "open_graph",
+  "type": "module",
+  "exports": "./index.js",
+  "dependencies": {
+    "sharp": "^0.30.7",
+    "skia-canvas": "^0.9.30"
+  }
+}
