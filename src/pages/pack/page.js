@@ -10,11 +10,11 @@ class PackPage extends Page {
     await this.ready
     let data
     try {
-      data = await fetch(`/assets/json/packs/${pack}.json`).then(e => e.json())
+      data = await fetch(`/assets/json/resourcepacks/${pack}.json`).then(e => e.json())
     } catch {
       return
     }
-    const packName = data.name ?? pack.replace(/-/g, " ").toTitleCase()
+    const packName = resourcepacks.packs[pack].name ?? pack.replace(/-/g, " ").toTitleCase()
     jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/resourcepacks/${pack}/pack.webp`)
     jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/resourcepacks/${pack}/pack.webp`)
     jQuery("title").text(`${data.author ?? "Ewan Howell"} - ${packName}`)

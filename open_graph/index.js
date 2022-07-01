@@ -10,8 +10,8 @@ const packs = JSON.parse(fs.readFileSync("../src/assets/json/resourcepacks.json"
 
 for (const [id, details] of Object.entries(packs)) {
   const packName = details.name ?? id.replace(/-/g, " ").toTitleCase()
-  if (!fs.existsSync(`../src/assets/json/packs/${id}.json`)) continue
-  const data = JSON.parse(fs.readFileSync(`../src/assets/json/packs/${id}.json`, "utf-8"))
+  if (!fs.existsSync(`../src/assets/json/resourcepacks/${id}.json`)) continue
+  const data = JSON.parse(fs.readFileSync(`../src/assets/json/resourcepacks/${id}.json`, "utf-8"))
   if (!fs.existsSync(`../src/resourcepacks/${id}`)) fs.mkdirSync(`../src/resourcepacks/${id}`)
   const bgSharp = sharp(fs.readFileSync(`../src/assets/images/resourcepacks/${id}/images/${details.image}.webp`)).resize(640, 360).blur(5)
   fs.writeFileSync(`../src/resourcepacks/${id}/index.pug`, `doctype html
@@ -42,4 +42,5 @@ html
   ctx.shadowOffsetY = 10
   ctx.drawImage(logo, bg.width / 2 - logo.width / 2, bg.height / 2 - logo.height / 2)
   fs.writeFileSync(`../src/assets/images/resourcepacks/${id}/cover.webp`, await sharp(await canvas.png).webp({nearLossless: true}).toBuffer())
+  console.log(id)
 }

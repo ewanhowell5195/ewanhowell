@@ -1,0 +1,21 @@
+{
+  "subtitle": "The pack where every pixel is a block texture!",
+  "description": "This pack makes it so that every pixel in a texture is a block texture!",
+  "video": "4OX-6S5QTHI",
+  "images": [
+    "house",
+    "beach",
+    "warped",
+    "delta",
+    "crimson",
+    "strider",
+    "optifine"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765389",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/pixelblocks/"
+    }
+  ]
+}

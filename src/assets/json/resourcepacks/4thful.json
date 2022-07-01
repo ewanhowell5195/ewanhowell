@@ -1,0 +1,23 @@
+{
+  "subtitle": "The Vanilla 4x4 Resource Pack",
+  "description": "4thful is a vanilla friendly resource pack where every texture has been recreated in 4x4!",
+  "optifine": "OptiFine is used to add connected textures to better hide repeated textures.",
+  "video": "PMVLUDugIqM",
+  "images": [
+    "house",
+    "farm",
+    "forest",
+    "houses",
+    "strider",
+    "crimson",
+    "warped",
+    "menu"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780424123",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/f4thful"
+    }
+  ]
+}

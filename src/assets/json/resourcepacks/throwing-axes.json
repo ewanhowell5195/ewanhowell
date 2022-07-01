@@ -1,0 +1,19 @@
+{
+  "subtitle": "Turn Tridents into Throwing Axes!",
+  "description": "This pack replaces Tridents with Throwing Axes. There's not much more to it.",
+  "video": "P-kZUFLvr74",
+  "images": [
+    "target",
+    "hill",
+    "hand",
+    "wall",
+    "dead"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653781278943",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/throwing-axes"
+    }
+  ]
+}
