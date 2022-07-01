@@ -444,7 +444,7 @@
       "name": "Fences+"
     },
     "fences-plus-faithful": {
-      "name": "Fences+ [Faithful]"
+      "name": "Fences+: Faithful"
     },
     "flat-packed": {},
     "fluorescence": {
@@ -462,7 +462,8 @@
       "optifine": 2
     },
     "mob-vote-faithful": {
-      "name": "Mob Vote [Faithful]",
+      "name": "Mob Vote: Faithful",
+      "image": "moobloom",
       "optifine": 2
     },
     "nether-update": {
@@ -481,11 +482,11 @@
       "optifine": 1
     },
     "pack-and-white-crimson-chrome": {
-      "name": "Pack & White [Crimson Chrome]",
+      "name": "Pack & White: Crimson Chrome",
       "optifine": 1
     },
     "pack-and-white-faithful": {
-      "name": "Pack & White [Faithful]",
+      "name": "Pack & White: Faithful",
       "optifine": 1
     },
     "packommunity": {
