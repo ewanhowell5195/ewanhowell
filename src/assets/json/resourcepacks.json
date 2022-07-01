@@ -368,8 +368,11 @@
     "better-3d": {
       "optifine": 1
     },
-    "better-bows": {},
+    "better-bows": {
+      "image": "ewan"
+    },
     "boomerangs": {
+      "image": "primed",
       "optifine": 2
     },
     "borderlined": {
@@ -399,6 +402,7 @@
       "optifine": 2
     },
     "deep-dark": {
+      "image": "cave",
       "optifine": 2
     },
     "devolution": {
@@ -454,6 +458,7 @@
       "image": "sword"
     },
     "mob-vote": {
+      "image": "moobloom",
       "optifine": 2
     },
     "mob-vote-faithful": {

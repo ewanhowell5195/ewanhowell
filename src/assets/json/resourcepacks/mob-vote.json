@@ -1,0 +1,27 @@
+{
+  "subtitle": "The pack that adds the Mob Vote entities.",
+  "description": "This pack adds the 5 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game.",
+  "optifine": "This pack uses OptiFine CTM to add custom entity models.",
+  "video": "SeSEVDqPE9c",
+  "images": [
+    "iceologer",
+    "great-hunger",
+    "blaze-knight",
+    "lurker",
+    "moobloom"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765398",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/mob-vote/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful Version",
+      "type": "pack",
+      "name": "mob-vote-faithful"
+    }
+  ]
+}

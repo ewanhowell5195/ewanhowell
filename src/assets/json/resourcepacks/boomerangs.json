@@ -1,0 +1,19 @@
+{
+  "subtitle": "Turn Tridents into Boomerangs!",
+  "description": "This pack changes the trident model, texture, and name to resemble a boomerang.",
+  "optifine": "This pack uses OptiFine to remodel the trident.",
+  "video": "JKhWrToOQ60",
+  "images": [
+    "held",
+    "throwing",
+    "hand",
+    "primed"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780417169",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/boomerangs"
+    }
+  ]
+}

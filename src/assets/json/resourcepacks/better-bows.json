@@ -1,0 +1,20 @@
+{
+  "subtitle": "The bow improvement resource pack!",
+  "description": "This pack remodels both the bow and crossbow to have the arrow 3D, like how it is in the world after you fire it!",
+  "video": "1a-_sSSfSwM",
+  "images": [
+    "ewan",
+    "bow",
+    "double",
+    "double2",
+    "crossbow",
+    "firework"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653779838118",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/better-bow"
+    }
+  ]
+}

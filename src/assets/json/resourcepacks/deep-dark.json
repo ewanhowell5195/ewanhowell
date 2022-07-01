@@ -1,0 +1,18 @@
+{
+  "subtitle": "A pack to improve the bottom of the world!",
+  "description": "This pack makes it so that the bottom of the world is made out of deepslate and tuff!",
+  "optifine": "This pack uses OptiFine CTM to randomise textures at different height levels.",
+  "video": "XzPpIJ8rUS4",
+  "images": [
+    "cave",
+    "lava",
+    "wall"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780860829",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/deep-dark"
+    }
+  ]
+}
