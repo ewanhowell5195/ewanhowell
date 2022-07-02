@@ -547,6 +547,7 @@
       "optifine": 2
     },
     "solar-eclipse": {
+      "image": "forest",
       "optifine": 2
     },
     "stevified": {
@@ -556,6 +557,7 @@
       "optifine": 2
     },
     "swarm-of-bees": {
+      "image": "beees",
       "optifine": 2
     },
     "template-green": {},

@@ -1,0 +1,19 @@
+{
+  "subtitle": "A pack where bees come in swarms!",
+  "description": "This pack makes it so that the Bee model is a swarm of 6 small bees!",
+  "optifine": "OptiFine is used to add support for remodelling bees.",
+  "video": "uK8c3BhIxAU",
+  "images": [
+    "bees",
+    "beees",
+    "beeees",
+    "beeeees"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780368981",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/swarm-of-bees/"
+    }
+  ]
+}
