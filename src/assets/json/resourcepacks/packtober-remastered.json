@@ -1,0 +1,34 @@
+{
+  "subtitle": "The ultimate halloween themed resource pack",
+  "description": "This pack adds lots of halloween related features, from ghost Piglins, to chests that jump up and bite you!",
+  "optifine": "OptiFine is used to add support for custom entity models, connected textures, emissive textures, and custom colours.",
+  "video": "447HkFIq93k",
+  "images": [
+    "endermen",
+    "villagers",
+    "beds",
+    "dragon",
+    "bones",
+    "shulkers",
+    "pumpkin",
+    "signs",
+    "end-city",
+    "lanterns",
+    "leaves",
+    "ore"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765419",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/packtober-remastered/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Legacy version",
+      "type": "pack",
+      "name": "packtober"
+    }
+  ]
+}

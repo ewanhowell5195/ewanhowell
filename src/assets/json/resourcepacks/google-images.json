@@ -1,0 +1,17 @@
+{
+  "subtitle": "Every texture is a Google image!",
+  "description": "This pack changes every texture in the game into a Google Image.\n\nIt was not as simple as making a program to take textures from google. I am pretty sure I now hold a world record for the number of Google Captchas solved in 4 hours.",
+  "video": "gT_BS_aZHeY",
+  "images": [
+    "house",
+    "farm",
+    "forest"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653781018025",
+      "mirror": "https://www.planetminecraft.com/texture-pack/google-images/"
+    }
+  ]
+}

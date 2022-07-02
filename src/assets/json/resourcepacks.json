@@ -411,6 +411,7 @@
     },
     "dimension-shift": {},
     "dragonflies": {
+      "image": "dragonflies",
       "optifine": 2
     },
     "elephant-ravagers": {
@@ -453,7 +454,9 @@
     "glide": {
       "optifine": 2
     },
-    "google-images": {},
+    "google-images": {
+      "image": "house"
+    },
     "mini-items": {
       "image": "sword"
     },
@@ -498,6 +501,7 @@
     "packstralia": {},
     "packtober": {},
     "packtober-remastered": {
+      "image": "leaves",
       "optifine": 2
     },
     "pewdiepack-remastered": {
@@ -518,6 +522,7 @@
       "optifine": 2
     },
     "rebearth-remastered": {
+      "image": "swamp",
       "optifine": 2
     },
     "rerender": {
@@ -528,6 +533,7 @@
     },
     "scrolling-textures": {},
     "sheep-ender-dragon": {
+      "image": "pillar",
       "optifine": 2
     },
     "sheepified": {

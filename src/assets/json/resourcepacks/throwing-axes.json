@@ -1,6 +1,7 @@
 {
   "subtitle": "Turn Tridents into Throwing Axes!",
   "description": "This pack replaces Tridents with Throwing Axes. There's not much more to it.",
+  "optifine": "OptiFine is used to add support for remodelling tridents.",
   "video": "P-kZUFLvr74",
   "images": [
     "target",

@@ -1,0 +1,30 @@
+{
+  "subtitle": "The remastered Minecraft Earth themed resource pack!",
+  "description": "This pack aims to port all of the custom mobs and features that are exclusive to Minecraft Earth to Minecraft Java!",
+  "optifine": "OptiFine is used to add support for custom entity models and random entity textures.",
+  "video": "huogvG1TyV0",
+  "images": [
+    "swamp",
+    "mix",
+    "pigs",
+    "sheep",
+    "cows",
+    "chicken",
+    "desert",
+    "llamas"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765395",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/rebearth-remastered/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Legacy version",
+      "type": "pack",
+      "name": "rebearth"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "subtitle": "Turns the Ender Dragon into a Sheep!",
+  "description": "This pack remodels the Ender Dragon into a sheep! The sounds are all changed into sheep sounds too.\n\nThis pack is compatible with any pack that changes the vanilla sheep texture!",
+  "optifine": "OptiFine is used to add support for remodelling the Ender Dragon.",
+  "video": "vvAwfg3A1uE",
+  "images": [
+    "pillar",
+    "hover",
+    "fly"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780903257",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/sheep-ender-dragon"
+    }
+  ]
+}

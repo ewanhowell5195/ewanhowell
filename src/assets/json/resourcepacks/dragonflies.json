@@ -1,0 +1,17 @@
+{
+  "subtitle": "A pack that adds Dragonflies to the game!",
+  "description": "This pack adds dragonflies to the game, which replace the bees.\n\nThere are three different colours of Dragonfly which can be found, all spawning randomly.",
+  "optifine": "OptiFine is used to add support for remodelling bees.",
+  "video": "pCnBhaqKaD4",
+  "images": [
+    "showcase",
+    "dragonflies"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765450",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/dragonflies/"
+    }
+  ]
+}
