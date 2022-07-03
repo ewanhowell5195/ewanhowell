@@ -1,0 +1,31 @@
+{
+  "subtitle": "The black and white resource pack",
+  "description": "This pack is the regular vanilla Minecraft, but everything is now black and white!\n\nThis pack is compatible with almost any other resource pack.\n\nFor the Nether fog to work, either enable Fabulous graphics, or use OptiFine.",
+  "video": "vehclKJo_1o",
+  "images": [
+    "house",
+    "farm",
+    "houses",
+    "forest",
+    "ice",
+    "cave",
+    "lava",
+    "lush",
+    "crimson",
+    "warped"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765387",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/pack-and-white/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Crimson Chrome Version",
+      "type": "pack",
+      "name": "pack-and-white-crimson-chrome"
+    }
+  ]
+}

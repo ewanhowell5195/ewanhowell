@@ -6,7 +6,8 @@
         {
           "name": "Texture Packs",
           "packs": [
-            "f8thful"
+            "f8thful",
+            "pack-and-white"
           ]
         },
         {
@@ -482,7 +483,7 @@
     },
     "pack-and-white": {
       "name": "Pack & White",
-      "optifine": 1
+      "image": "house"
     },
     "pack-and-white-crimson-chrome": {
       "name": "Pack & White: Crimson Chrome",
