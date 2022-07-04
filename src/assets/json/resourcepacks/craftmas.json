@@ -1,0 +1,23 @@
+{
+  "subtitle": "The Christmas themed resource pack",
+  "description": "This is a resource pack that is perfect for Christmas and Winter Time as it makes the entire world snowy! A lot of other christmas references are in there too, such as Candy Cane Fences.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "w-ZKOcfPeNA",
+  "images": [
+    "fence"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765434",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/craftmas/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Remastered Version",
+      "type": "pack",
+      "name": "craftmas-remastered"
+    }
+  ]
+}

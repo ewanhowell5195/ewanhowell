@@ -1,0 +1,20 @@
+{
+  "subtitle": "This pack aims to add in all the 1.16 nether features",
+  "description": "This pack brings recreations of all of the 1.16 nether blocks into 1.14. This pack is not survival friendly.",
+  "video": "wciHohfHXJU",
+  "images": [
+    "blocks"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765437",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/nether-update/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780671032",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/nether-update-bedrock/"
+    }
+  ]
+}

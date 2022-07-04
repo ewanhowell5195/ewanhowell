@@ -1,0 +1,18 @@
+{
+  "subtitle": "A pack to replace Evokers with Chillagers (Iceologers)",
+  "description": "This pack replaces the Evokers with the Minecraft Dungeons Chillager! Also known as the Iceologer.",
+  "optifine": "OptiFine is used to add support for remodelling evokers.",
+  "video": "h6Bq9H9s9Mc",
+  "images": [
+    "chillager",
+    "attacks",
+    "attacking"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765399",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/chillagers/"
+    }
+  ]
+}

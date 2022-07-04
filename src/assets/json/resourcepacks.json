@@ -377,6 +377,7 @@
       "optifine": 2
     },
     "borderlined": {
+      "image": "stone",
       "optifine": 2
     },
     "butterflies": {},
@@ -385,18 +386,25 @@
       "optifine": 2
     },
     "cave-update": {
-      "name": "Cave Update [1.17]"
+      "image": "plants"
     },
     "chillagers": {
+      "image": "chillager",
       "optifine": 2
     },
     "chubby-cheeks": {
       "image": "cows",
       "optifine": 2
     },
-    "concraft": {},
-    "craftmas": {},
+    "concraft": {
+      "image": "forest"
+    },
+    "craftmas": {
+      "image": "fence",
+      "optifine": 2
+    },
     "craftmas-remastered": {
+      "image": "cane",
       "optifine": 2
     },
     "cursed-spiders": {
@@ -448,7 +456,9 @@
     "fences-plus-faithful": {
       "name": "Fences+: Faithful"
     },
-    "flat-packed": {},
+    "flat-packed": {
+      "image": "grass"
+    },
     "fluorescence": {
       "optifine": 2
     },
@@ -471,6 +481,7 @@
       "optifine": 2
     },
     "nether-update": {
+      "image": "art",
       "optifine": 2
     },
     "oledcraft": {
@@ -500,12 +511,15 @@
       "optifine": 2
     },
     "packstralia": {},
-    "packtober": {},
+    "packtober": {
+      "image": "trumpet-skeleton"
+    },
     "packtober-remastered": {
       "image": "leaves",
       "optifine": 2
     },
     "pewdiepack-remastered": {
+      "name": "PewDiePack Remastered",
       "optifine": 2
     },
     "pixelblocks": {
@@ -520,6 +534,7 @@
       "optifine": 2
     },
     "rebearth": {
+      "image": "mobs",
       "optifine": 2
     },
     "rebearth-remastered": {
@@ -532,7 +547,9 @@
     "rolling-entities": {
       "optifine": 2
     },
-    "scrolling-textures": {},
+    "scrolling-textures": {
+      "image": "scroll"
+    },
     "sheep-ender-dragon": {
       "image": "pillar",
       "optifine": 2
@@ -541,6 +558,7 @@
       "optifine": 2
     },
     "sheepified-remastered": {
+      "image": "group1",
       "optifine": 2
     },
     "snowstorm": {
@@ -572,6 +590,7 @@
       "optifine": 2
     },
     "tiny-blocks": {
+      "image": "ground",
       "optifine": 1
     },
     "translucencraft": {},

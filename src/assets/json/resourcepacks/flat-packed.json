@@ -1,0 +1,23 @@
+{
+  "subtitle": "A Flat, Vanilla Style Resource Pack",
+  "description": "This pack flattens every texture in the game down to just a few colours per block, while keeping the vanilla style.",
+  "video": "Lv9HAJvZk7E",
+  "images": [
+    "grass",
+    "house",
+    "farm",
+    "underwater"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765385",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/flat-packed/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780670597",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/flat-packed-bedrock/"
+    }
+  ]
+}

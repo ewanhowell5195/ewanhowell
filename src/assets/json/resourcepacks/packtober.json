@@ -1,0 +1,24 @@
+{
+  "subtitle": "The Halloween themed resource pack",
+  "description": "This is a halloween themed resource pack themed around halloween. Full feature list on download page.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "PAYQjrzt1vI",
+  "images": [
+    "trumpet-skeleton",
+    "coffin"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765433",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/packtober/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Remastered Version",
+      "type": "pack",
+      "name": "packtober-remastered"
+    }
+  ]
+}

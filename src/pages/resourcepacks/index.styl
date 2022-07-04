@@ -6,10 +6,16 @@
 
 #tabs
   display: flex
+  position: sticky
+  top: 0
+  z-index: 1
+  background-color: var(--color-green)
+  box-shadow: var(--box-shadow)
+  height: var(--header-height)
 
 .tab
-  background-color: var(--color-green)
-  padding: 10px
+  display: flex
+  padding: 0 10px
   cursor: pointer
   user-select: none
   transition: background-color 0.15s
@@ -18,7 +24,9 @@
   color: var(--color-text-white)
   text-transform: capitalize
   min-width: 50px
-  text-align: center
+  height: 100%
+  align-items: center
+  justify-content: center
   
   &:hover
     background-color: var(--color-green-light)
@@ -50,6 +58,7 @@
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
   justify-content: space-around
   gap: 10px
+  padding: 0 20px
 
 .pack-container
   display: flex
@@ -78,6 +87,7 @@
   position: relative
   overflow: hidden
   align-self: stretch
+  box-shadow: var(--box-shadow)
   
 .pack-image
   position: absolute
@@ -103,3 +113,11 @@
   right: 0
   width: 32px
   height: 32px
+  
+.category h1
+  position: sticky
+  top: var(--header-height)
+  z-index: 1
+  margin: 0
+  padding: 20px 0
+  background-color: var(--color-grey-darker)

@@ -1,0 +1,19 @@
+{
+  "subtitle": "A pack that adds an outline to everything!",
+  "description": "This pack aims to immitate the look of the Minecraft Dungeons shader where all the blocks have a lighter outline around the edge of the blocks. Some blocks do not connect to eachother due to technical limitations.",
+  "optifine": "This pack uses OptiFine connected textures.",
+  "video": "ZC1psRU9b4Y",
+  "images": [
+    "stone",
+    "spruce",
+    "house",
+    "oak"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765390",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/minecraft-borderlined/"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "subtitle": "The remastered Christmas resource pack!",
+  "description": "This is a resource pack that is perfect for Christmas and Winter Time as it makes the entire world snowy, adds christmas presents, skiing villagers, and more!",
+  "optifine": "OptiFine is used to add support for remodelling entities, connected textures, and colormaps.",
+  "video": "dRrkDLrZ-As",
+  "images": [
+    "oak",
+    "spruce",
+    "crimson",
+    "warped",
+    "village",
+    "dragon",
+    "house",
+    "cane",
+    "nether"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765418",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/craftmas-remastered/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Lagacy Version",
+      "type": "pack",
+      "name": "craftmas"
+    }
+  ]
+}

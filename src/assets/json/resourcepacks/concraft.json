@@ -1,0 +1,19 @@
+{
+  "subtitle": "A Flat, Concrete Like Resource Pack",
+  "description": "This pack turns every block texture into a 1x1 resolution, resulting in a Concrete appearance.",
+  "video": "m9yx6oATSQM",
+  "images": [
+    "forest",
+    "nether",
+    "crimson",
+    "house",
+    "warped"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765388",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/concraft/"
+    }
+  ]
+}

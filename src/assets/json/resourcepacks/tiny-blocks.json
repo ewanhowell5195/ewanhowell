@@ -1,0 +1,20 @@
+{
+  "subtitle": "A pack that makes all blocks tiny!",
+  "description": "This pack changes the block textures and models to make them look half the size!",
+  "optifine": "Custom entity models are used to remodel chests to be smaller.",
+  "video": "JIqoX6-L9fY",
+  "images": [
+    "farm",
+    "warped",
+    "crimson",
+    "house",
+    "ground"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765391",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/tiny-blocks/"
+    }
+  ]
+}
