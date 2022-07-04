@@ -59,6 +59,9 @@
   justify-content: space-around
   gap: 10px
   padding: 0 20px
+  
+  &.collapsed
+    display: none
 
 .pack-container
   display: flex
@@ -113,11 +116,33 @@
   right: 0
   width: 32px
   height: 32px
-  
-.category h1
+
+.category-header
   position: sticky
   top: var(--header-height)
-  z-index: 1
-  margin: 0
-  padding: 20px 0
   background-color: var(--color-grey-darker)
+  z-index: 1
+  padding: 20px 0
+  
+  &:hover svg
+    fill: #fff
+  
+  h1
+    margin: 0
+    text-shadow: -4px 4px 1px var(--color-text-shadow)
+    
+  svg
+    user-select: none
+    fill: #00000000
+    position: absolute
+    top: 14px
+    right: 0
+    width: 38px
+    transform: rotateZ(90deg)
+    cursor: pointer
+    filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
+    transition: fill .15s, transform .15s, filter .15s
+      
+    &.collapsed
+      transform: rotateZ(0)
+      filter: drop-shadow(-4px 4px 1px var(--color-text-shadow))

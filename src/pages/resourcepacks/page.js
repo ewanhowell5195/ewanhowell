@@ -25,6 +25,7 @@ class ResourcepacksPage extends Page {
           return a
         }, []).map(e => ({name: e.name, packs: Array.from(e.packs)}))
       }
+      const arrowIcon = $("#arrow-icon").contents()
       for (const version of [allPacks, ...resourcepacks.versions]) {
         tabs.append(E("a").attr("href", `/resourcepacks/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
           evt.preventDefault()
@@ -37,9 +38,21 @@ class ResourcepacksPage extends Page {
         }))
         const versionDiv = E("div").addClass("version hidden").attr("id", version.id.replace(".", "-")).appendTo(versions)
         for (const category of version.categories) {
-          const categoryPacksDiv = E("div").addClass("packs").appendTo(
+          const categoryPacksDiv = E("div").addClass(`packs category-${category.name.replace(/ /g, "-")}`).appendTo(
             E("div").addClass("category").attr("id", category.name).append(
-              E("h1").text(category.name)
+              E("div").addClass("category-header").append(
+                E("h1").text(category.name),
+                arrowIcon.clone(true).addClass(`arrow-${category.name.replace(/ /g, "-")}`).on("click", e => {
+                  const arrow = $(e.currentTarget)
+                  if (arrow.hasClass("collapsed")) {
+                    $(`.arrow-${category.name.replace(/ /g, "-")}`).removeClass("collapsed")
+                    $(`.category-${category.name.replace(/ /g, "-")}`).removeClass("collapsed")
+                  } else {
+                    $(`.arrow-${category.name.replace(/ /g, "-")}`).addClass("collapsed")
+                    $(`.category-${category.name.replace(/ /g, "-")}`).addClass("collapsed")
+                  }
+                })
+              )
             ).appendTo(versionDiv)
           )
           for (const pack of category.packs) {
