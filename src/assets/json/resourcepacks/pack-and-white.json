@@ -26,6 +26,11 @@
       "text": "Crimson Chrome Version",
       "type": "pack",
       "name": "pack-and-white-crimson-chrome"
+    },
+    {
+      "text": "Faithful Version",
+      "type": "pack",
+      "name": "pack-and-white-faithful"
     }
   ]
 }

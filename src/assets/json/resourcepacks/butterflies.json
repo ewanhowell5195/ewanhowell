@@ -1,0 +1,21 @@
+{
+  "subtitle": "A pack to replace bees with butterflies",
+  "description": "This pack remodeles the Trident into a Quindent, which is a Trident with 5 prongs!",
+  "video": "5mtykgHM6NQ",
+  "images": [
+    "multiple",
+    "single"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765403",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/butterflies/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780671028",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/butterflies-bedrock"
+    }
+  ]
+}

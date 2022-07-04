@@ -1,0 +1,27 @@
+{
+  "subtitle": "This is Pewdiepack Remastered!",
+  "description": "The complete remaster of the PewDiePie themed resource pack!",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "hAmZDoVQjbs",
+  "images": [
+    "menu",
+    "dj",
+    "cake",
+    "beds",
+    "acacia"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765421",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/pewdiepack-remastered/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Legacy version",
+      "type": "pack",
+      "name": "the-pewdiepack"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "subtitle": "A subtle 3D resource pack",
+  "description": "This pack makes some small improvements to the games models to improve them.\n\nThis pack is not as over the top as some of the other 3D packs, just enough to keep it vanilla!",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "JtDNVgh6-4I",
+  "images": [
+    "brewing-stand",
+    "redstone",
+    "furnace",
+    "ladder",
+    "rails"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765406",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/better-3d/"
+    },
+    {
+      "text": "Better 3D Foliage",
+      "link": "http://adfoc.us/54653778765407",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/better-3d-foliage/"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "subtitle": "The fence improvement resource pack",
+  "description": "This pack changes all of the fence models to be more unique and exciting!",
+  "video": "EtTvagq7-B4",
+  "images": [
+    "oak",
+    "bridge",
+    "spruce",
+    "all"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765405",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/fences/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful Version",
+      "type": "pack",
+      "name": "fences-plus-faithful"
+    }
+  ]
+}

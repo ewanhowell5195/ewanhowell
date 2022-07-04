@@ -1,0 +1,15 @@
+{
+  "subtitle": "The template textures for the grayscaled blocks",
+  "description": "This resource pack contains all the normally greyscaled textures in their coloured format, so that it is easy to use them for whatever you need to use them for.",
+  "images": [
+    "blocks",
+    "files"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765394",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/template-green/"
+    }
+  ]
+}

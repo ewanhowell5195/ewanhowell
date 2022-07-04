@@ -1,0 +1,17 @@
+{
+  "subtitle": "The interdimensional improvement pack",
+  "description": "This pack greatly improves the End and Nether dimensions",
+  "optifine": "OptiFine is used to add support for connected textures.",
+  "video": "hYS0kEceuEo",
+  "images": [
+    "end",
+    "nether"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765409",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/rerender/"
+    }
+  ]
+}

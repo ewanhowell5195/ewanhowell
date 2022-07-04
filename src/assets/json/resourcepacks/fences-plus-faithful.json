@@ -1,0 +1,25 @@
+{
+  "subtitle": "The fence improvement resource pack",
+  "description": "This pack changes all of the fence models to be more unique and exciting!",
+  "images": [
+    "fences"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653784892017",
+      "mirror": "https://faithfulpack.net/addons/fences-plus"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful",
+      "link": "https://faithfulpack.net/"
+    },
+    {
+      "text": "Original Version",
+      "type": "pack",
+      "name": "fences-plus"
+    }
+  ]
+}

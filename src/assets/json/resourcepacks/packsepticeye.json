@@ -1,0 +1,22 @@
+{
+  "subtitle": "This is Packsepticeye",
+  "description": "The official Jacksepticeye themed Resource Pack.",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "wjsFcWSnr2c",
+  "images": [
+    "logo",
+    "menu"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765422",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/packsepticeye/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780671029",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/packsepticeye-bedrock/"
+    }
+  ]
+}

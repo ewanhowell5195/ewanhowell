@@ -1,0 +1,29 @@
+{
+  "subtitle": "The pack where everything is a Sheep!",
+  "description": "This is a resource pack that makes every mob textrue into a sheep!",
+  "optifine": "OptiFine is used to remodel the Ender Dragon and dragon head.",
+  "video": "1S4UHJgiwH8",
+  "images": [
+    "group1",
+    "dragon"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765439",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/sheepified/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780671033",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/sheepified-bedrock/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Remastered version",
+      "type": "pack",
+      "name": "sheepified-remastered"
+    }
+  ]
+}

@@ -60,7 +60,7 @@ class PackPage extends Page {
     }
     $("#title").text(packName)
     $("#subtitle").text(data.subtitle)
-    $("#description").text(data.description)
+    $("#description").html(data.description)
     const images = $("#image-container")
     const imageRow = $("#thumbnail-row")
     let offset = 0

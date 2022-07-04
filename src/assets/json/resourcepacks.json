@@ -286,7 +286,7 @@
           "packs": [
             "rebearth",
             "nether-update",
-            "unused-biome"
+            "unused-biome-update"
           ]
         },
         {
@@ -328,6 +328,12 @@
           ]
         },
         {
+          "name": "Addons",
+          "packs": [
+            "the-pewdiepack-faithful"
+          ]
+        },
+        {
           "name": "Packs I Have Contributed To",
           "packs": [
             "overgrowth"
@@ -356,6 +362,7 @@
   "packs": {
     "1-17-entities": {
       "name": "1.17 Entities",
+      "image": "sand",
       "optifine": 2
     },
     "1-18-panorama": {
@@ -367,6 +374,8 @@
       "optifine": 1
     },
     "better-3d": {
+      "name": "Better 3D",
+      "image": "redstone",
       "optifine": 1
     },
     "better-bows": {
@@ -380,7 +389,9 @@
       "image": "stone",
       "optifine": 2
     },
-    "butterflies": {},
+    "butterflies": {
+      "image": "multiple"
+    },
     "caelesti": {
       "image": "twisting-vines",
       "optifine": 2
@@ -408,6 +419,7 @@
       "optifine": 2
     },
     "cursed-spiders": {
+      "image": "spiders",
       "optifine": 2
     },
     "deep-dark": {
@@ -418,7 +430,9 @@
       "image": "1.14+5",
       "optifine": 2
     },
-    "dimension-shift": {},
+    "dimension-shift": {
+      "image": "crimson"
+    },
     "dragonflies": {
       "image": "dragonflies",
       "optifine": 2
@@ -451,18 +465,22 @@
       "optifine": 1
     },
     "fences-plus": {
+      "image": "oak",
       "name": "Fences+"
     },
     "fences-plus-faithful": {
-      "name": "Fences+: Faithful"
+      "name": "Fences+: Faithful",
+      "image": "fences"
     },
     "flat-packed": {
       "image": "grass"
     },
     "fluorescence": {
+      "image": "forest",
       "optifine": 2
     },
     "glide": {
+      "image": "dragon",
       "optifine": 2
     },
     "google-images": {
@@ -498,19 +516,25 @@
     },
     "pack-and-white-crimson-chrome": {
       "name": "Pack & White: Crimson Chrome",
+      "image": "forest",
       "optifine": 1
     },
     "pack-and-white-faithful": {
       "name": "Pack & White: Faithful",
+      "image": "entities",
       "optifine": 1
     },
     "packommunity": {
+      "image": "dragon",
       "optifine": 2
     },
     "packsepticeye": {
+      "image": "flag",
       "optifine": 2
     },
-    "packstralia": {},
+    "packstralia": {
+      "image": "kitchen"
+    },
     "packtober": {
       "image": "trumpet-skeleton"
     },
@@ -520,6 +544,7 @@
     },
     "pewdiepack-remastered": {
       "name": "PewDiePack Remastered",
+      "image": "acacia",
       "optifine": 2
     },
     "pixelblocks": {
@@ -528,9 +553,11 @@
     },
     "playermodelmobs": {
       "name": "PlayerModelMobs",
+      "image": "mobs2",
       "optifine": 2
     },
     "quindent": {
+      "image": "game",
       "optifine": 2
     },
     "rebearth": {
@@ -542,9 +569,11 @@
       "optifine": 2
     },
     "rerender": {
+      "image": "end",
       "optifine": 2
     },
     "rolling-entities": {
+      "image": "cows",
       "optifine": 2
     },
     "scrolling-textures": {
@@ -555,6 +584,7 @@
       "optifine": 2
     },
     "sheepified": {
+      "image": "dragon",
       "optifine": 2
     },
     "sheepified-remastered": {
@@ -570,19 +600,31 @@
       "optifine": 2
     },
     "stevified": {
+      "image": "steve",
       "optifine": 2
     },
     "striderchan": {
+      "image": "group",
       "optifine": 2
     },
     "swarm-of-bees": {
       "image": "beees",
       "optifine": 2
     },
-    "template-green": {},
-    "the-cursed-pack": {},
+    "template-green": {
+      "image": "blocks"
+    },
+    "the-cursed-pack": {
+      "image": "mobs"
+    },
     "the-pewdiepack": {
       "name": "The PewDiePack",
+      "image": "creeper",
+      "optifine": 2
+    },
+    "the-pewdiepack-faithful": {
+      "name": "The PewDiePack: Faithful",
+      "image": "elytra",
       "optifine": 2
     },
     "throwing-axes": {
@@ -593,7 +635,12 @@
       "image": "ground",
       "optifine": 1
     },
-    "translucencraft": {},
-    "unused-biome": {}
+    "translucencraft": {
+      "image": "bow"
+    },
+    "unused-biome-update": {
+      "image": "both",
+      "optifine": 2
+    }
   }
 }

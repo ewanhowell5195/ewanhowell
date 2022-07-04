@@ -1,0 +1,19 @@
+{
+  "subtitle": "The Pack where every entity is a Player Model!",
+  "description": "This pack replaces all the entities that can be modelled with Player Models!",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "vJd6FPbVEHU",
+  "images": [
+    "mobs",
+    "skeletons",
+    "mobs1",
+    "mobs2"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765411",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/playermodelmobs/"
+    }
+  ]
+}

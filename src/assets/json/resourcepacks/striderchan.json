@@ -1,0 +1,24 @@
+{
+  "subtitle": "The Pack where every entity is a Player Model!",
+  "description": "This pack replaces all the entities that can be modelled with Player Models!",
+  "optifine": "OptiFine is used to add support for remodelling striders.",
+  "video": "169FdqyYAfc",
+  "images": [
+    "strider",
+    "group",
+    "render"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653780368982",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/striderchan/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Model By MCVinnyQ",
+      "link": "https://twitter.com/MCVinnyq"
+    }
+  ]
+}

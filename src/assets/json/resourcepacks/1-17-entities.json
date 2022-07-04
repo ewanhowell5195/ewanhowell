@@ -1,0 +1,25 @@
+{
+  "subtitle": "The pack that adds the 1.17 entities to the game.",
+  "description": "This pack adds the Warden, the Axolotl, the Goat, and the Glow Squid, as a Ravager, Salmon, Sheep, and Squid replacement.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "J1TOi3IehIM",
+  "images": [
+    "lava",
+    "water",
+    "goat",
+    "sand",
+    "nether"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765397",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/the-1-17-entities/"
+    },
+    {
+      "text": "Wardens Only",
+      "link": "http://adfoc.us/54653778853347",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/wardens/"
+    }
+  ]
+}

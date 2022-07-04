@@ -1,0 +1,26 @@
+{
+  "subtitle": "The Black & White pack where only the colour red remains!",
+  "description": "This resource pack makes all the in game textures black and white, except for the red block.",
+  "optifine": "OptiFine is used to add support for custom colours.",
+  "video": "IGg_Aiytxp0",
+  "images": [
+    "forest",
+    "poppies",
+    "nether",
+    "glass"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653776374800",
+      "mirror": "https://www.planetminecraft.com/texture-pack/pack-amp-white-crimson-chrome/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Original Version",
+      "type": "pack",
+      "name": "pack-and-white"
+    }
+  ]
+}

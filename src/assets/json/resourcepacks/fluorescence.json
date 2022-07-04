@@ -1,0 +1,18 @@
+{
+  "subtitle": "The pack where everything glows!",
+  "description": "This pack uses emissive textures to make lots of blocks in the game glow.\n\nDuring the day everything looks normal, but at night everything comes alive!",
+  "optifine": "OptiFine is used to add support for emissive textures.",
+  "video": "4EGAwIG4HZ0",
+  "images": [
+    "forest",
+    "monument",
+    "bees"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765408",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/fluorescence/"
+    }
+  ]
+}

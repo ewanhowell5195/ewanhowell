@@ -1,7 +1,7 @@
 {
   "subtitle": "The pack that adds the Mob Vote entities.\nNow in 32x!",
   "description": "This pack adds the 5 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game. Now with 32x32 textures",
-  "optifine": "This pack uses OptiFine CEM to add custom entity models.",
+  "optifine": "OptiFine is used to add support for custom entity models.",
   "video": "zZY43ZrUqg0",
   "images": [
     "blaze",

@@ -1,0 +1,47 @@
+{
+  "subtitle": "This is The PewDiePack",
+  "description": "The PewDiePie themed resource pack.",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "_ll3arLm9No",
+  "images": [
+    "menu",
+    "paintings",
+    "wolves",
+    "brofist",
+    "creeper",
+    "music",
+    "gui",
+    "zombie",
+    "golem",
+    "cats",
+    "hotbar",
+    "wavy",
+    "beds",
+    "barrels",
+    "bottles"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765429",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/the-pewdiepack/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653780671038",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/the-pewdiepack-bedrock"
+    }
+  ],
+  "links": [
+    {
+      "text": "Remastered version",
+      "type": "pack",
+      "name": "pewdiepack-remastered"
+    },
+    {
+      "text": "Faithful version",
+      "type": "pack",
+      "name": "the-pewdiepack-faithful"
+    }
+  ]
+}

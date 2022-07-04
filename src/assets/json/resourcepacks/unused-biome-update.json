@@ -1,0 +1,24 @@
+{
+  "subtitle": "A pack to bring the biome vote features into the game",
+  "description": "This pack aims to bring in all the features from the biome vote biomes that were not chosen.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "HuDg-Lj4i18",
+  "images": [
+    "both",
+    "frog",
+    "boat",
+    "cactus"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653784871545",
+      "mirror": "https://www.mediafire.com/file/dvxkeynw63k8m88/Unused_Biome_Pack.zip/file"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653784892012",
+      "mirror": "https://www.mediafire.com/file/ohs6lh9ww2zs4qt/Unused_Biome_Pack.mcpack/file"
+    }
+  ]
+}

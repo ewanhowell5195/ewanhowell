@@ -1,0 +1,28 @@
+{
+  "subtitle": "The black and white resource pack.\nNow in 32x!",
+  "description": "<strong>This pack is deprecated. The main pack now supports overlaying other resource packs.</strong>\n\nThis pack is the regular vanilla Minecraft, but everything is now black and white!\n\nThis pack makes all the blocks, items, entities, and ui completely black and white!",
+  "optifine": "OptiFine is used to add support for custom colours.",
+  "images": [
+    "house",
+    "entities",
+    "menu"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653776454449",
+      "mirror": "https://www.planetminecraft.com/texture-pack/pack-amp-white-faithful/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful",
+      "link": "https://faithfulpack.net/"
+    },
+    {
+      "text": "Original Version",
+      "type": "pack",
+      "name": "pack-and-white"
+    }
+  ]
+}

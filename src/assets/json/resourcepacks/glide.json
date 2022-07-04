@@ -1,0 +1,16 @@
+{
+  "subtitle": "A pack where entities glide along...",
+  "description": "This pack removes all the entity animations so that they... glide... along.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "K74u8bXTPY0",
+  "images": [
+    "dragon"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778853349",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/glide/"
+    }
+  ]
+}

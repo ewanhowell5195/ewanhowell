@@ -1,0 +1,21 @@
+{
+  "subtitle": "A cursed resource pack",
+  "description": "This pack is cursed.",
+  "video": "jRM_BhxIaTQ",
+  "images": [
+    "mobs",
+    "mobs2"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778765416",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/cursed-pack/"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "http://adfoc.us/54653781018077",
+      "mirror": "https://www.curseforge.com/minecraft-bedrock/addons/the-cursed-pack-bedrock/"
+    }
+  ]
+}

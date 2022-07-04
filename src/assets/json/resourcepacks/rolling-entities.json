@@ -1,0 +1,19 @@
+{
+  "subtitle": "The pack where every entity rolls.",
+  "description": "This pack makes it so that all of the entities roll along instead of walking!",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "rdoLuRISiRw",
+  "images": [
+    "cows",
+    "sheep",
+    "villagers",
+    "dragon"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653778853348",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/rolling-entities/"
+    }
+  ]
+}
