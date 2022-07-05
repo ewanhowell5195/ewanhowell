@@ -13,7 +13,8 @@
         {
           "name": "Pack Development",
           "packs": [
-            "flipped-uvs"
+            "flipped-uvs",
+            "template-green"
           ]
         },
         {
@@ -622,7 +623,7 @@
       "optifine": 2
     },
     "template-green": {
-      "image": "blocks"
+      "image": "bg"
     },
     "the-cursed-pack": {
       "image": "mobs"
