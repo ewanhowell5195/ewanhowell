@@ -1,0 +1,19 @@
+{
+  "subtitle": "Give all entities flipped opposite UVs",
+  "description": "This pack flips the UVs of entities which have opposite UVs that are not usually flipped, such as cows, sheep, pigs, chickens, wolves, and more.\n\nYou are allowed to include these models in any resource pack.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "images": [
+    "cow",
+    "pig",
+    "cat",
+    "donkey",
+    "panda"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653784895309",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/flipped-uvs"
+    }
+  ]
+}

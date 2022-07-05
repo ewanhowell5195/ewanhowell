@@ -38,6 +38,20 @@ body
 .spacer
   flex: 1
 
+// scrollbar
+
+body::-webkit-scrollbar
+  width: 10px
+
+body::-webkit-scrollbar-thumb
+  background-color: var(--banner-active)
+
+  &:hover
+    background-color: var(--banner-hover)
+
+    &:active
+      background-color: var(--banner-active)
+
 // header
 
 #header-container

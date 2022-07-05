@@ -21,7 +21,7 @@ html
     link(rel = "icon", type = "image/png", sizes = "16x16", href = "/assets/images/resourcepacks/${id}/pack.webp")
     link(rel = "icon", type = "image/png", sizes = "32x32", href = "/assets/images/resourcepacks/${id}/pack.webp")
     meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Ewan Howell - ${packName}")
+    meta(property = "og:title", content = "${data.author ?? "Ewan Howell"} - ${packName}")
     meta(property = "og:description", content = "${data.subtitle.replace(/\n/g, " ")}")
     meta(property = "og:image", content = \`https://\${self.domain}/assets/images/resourcepacks/${id}/cover.webp\`)
     meta(property = "twitter:image", content = \`https://\${self.domain}/assets/images/resourcepacks/${id}/cover.webp\`)

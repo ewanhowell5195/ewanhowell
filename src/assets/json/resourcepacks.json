@@ -11,6 +11,12 @@
           ]
         },
         {
+          "name": "Pack Development",
+          "packs": [
+            "flipped-uvs"
+          ]
+        },
+        {
           "name": "Update Packs",
           "packs": [
             "1-18-panorama"
@@ -139,7 +145,7 @@
           ]
         },
         {
-          "name": "Utilities",
+          "name": "Pack Development",
           "packs": [
             "template-green"
           ]
@@ -474,6 +480,10 @@
     },
     "flat-packed": {
       "image": "grass"
+    },
+    "flipped-uvs": {
+      "image": "bg",
+      "optifine": 2
     },
     "fluorescence": {
       "image": "forest",
