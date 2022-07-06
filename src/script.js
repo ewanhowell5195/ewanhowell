@@ -125,6 +125,30 @@ class FastAnchorElement extends HTMLAnchorElement {
 
 customElements.define("f-a", FastAnchorElement, { extends: "a" })
 
+{
+  let cbieTestRegistered = false
+  window.supportsCBIE = () => {
+    if (!cbieTestRegistered) {
+      class TestElement extends HTMLAnchorElement {
+        constructor() {
+          super()
+          this.output = true
+        }
+      }
+      customElements.define("cbie-test", TestElement, { extends: "a" })
+      cbieTestRegistered = true
+    }
+    return !!document.createElement("a", { is: "cbie-test" }).output
+  }
+
+  if (!supportsCBIE()) {
+    $(document).on("click", 'a[is="f-a"]', evt => {
+      evt.preventDefault()
+      openPage(new URL(evt.currentTarget.href), true)
+    })
+  }
+}
+
 // files
 
 let resourcepacksFetch

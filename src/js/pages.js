@@ -37,6 +37,12 @@ class Page extends HTMLElement {
     this.attachShadow({mode: "open"})
     this.ready = fetch(`/pages/${this.name}/`).then(e => e.text()).then(async content => {
       this.shadowBody = E("page-body")
+      if (!supportsCBIE()) {
+        $(this.shadowBody).on("click", 'a[is="f-a"]', evt => {
+          evt.preventDefault()
+          openPage(new URL(evt.currentTarget.href), true)
+        })
+      }
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
       this.shadowBody.append($("#footer-template").contents().clone(true))
