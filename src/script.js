@@ -26,6 +26,16 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
 }
 
+// header
+
+$("#mobile-menu").on("click", e => {
+  if (e.target.id === "mobile-menu") e.target.classList.add("hidden")
+})
+
+$("#mobile-menu-button").on("click", e => $("#mobile-menu").removeClass("hidden"))
+
+$("#mobile-menu-close-button").on("click", e => $("#mobile-menu").addClass("hidden"))
+
 // pages
 
 function setupPage(name, container, data) {
@@ -71,6 +81,7 @@ const routes = [
 let isOpeningPage = false
 window.openPage = async function(url, updateHistory = false, forceUpdate = false) {
   if (isOpeningPage || (!forceUpdate && url.href === location.href)) return
+  $("#mobile-menu").addClass("hidden")
   $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
   $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
   $("title").text("Ewan Howell")

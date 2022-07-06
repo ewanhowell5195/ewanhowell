@@ -12,9 +12,8 @@ body
     #header
       .logo#logo-side
         img(src = "/assets/images/logo/logo_side.webp")
-      .logo
-        a(href = "/", is = "f-a")
-          img(src = "/assets/images/logo/logo.webp")
+      a.logo(href = "/", is = "f-a")
+        img(src = "/assets/images/logo/logo.webp")
       a.page-button(href = "/", is = "f-a") Home
       a.page-button(href = "/resourcepacks", is = "f-a") Resource Packs
       a.page-button(href = "/maps", is = "f-a") Maps
@@ -22,4 +21,20 @@ body
       .spacer
       a.page-button(href = "https://www.wynem.com/", target = "_blank") Wynem
       a.page-button(href = "https://discord.com/invite/pkRxtGw", target = "_blank") Discord
+    #mobile-header
+      a.logo(href = "/", is = "f-a")
+        img(src = "/assets/images/logo/logo.webp")
+        span Ewan Howell
+      .spacer
+      #mobile-menu-button: include /svg/menu.svg
   #content
+  #mobile-menu.hidden
+    #mobile-menu-close-button: include /svg/close.svg
+    #mobile-menu-link-container
+      a.mobile-menu-link(href = "/", is = "f-a"): span Home
+      a.mobile-menu-link(href = "/resourcepacks", is = "f-a"): span Resource Packs
+      a.mobile-menu-link(href = "/maps", is = "f-a") Maps
+      a.mobile-menu-link(href = "/plugins", is = "f-a"): span Plugins
+      .mobile-line
+      a.mobile-menu-link(href = "https://www.wynem.com/", target = "_blank"): span Wynem
+      a.mobile-menu-link(href = "https://discord.com/invite/pkRxtGw", target = "_blank"): span Discord

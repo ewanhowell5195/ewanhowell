@@ -69,8 +69,8 @@ class ResourcepacksPage extends Page {
         }
       }
     })
-    $(".page-button").removeClass("selected")
-    $('.page-button[href="/resourcepacks"]').addClass("selected")
+    $("a").removeClass("selected")
+    $('[href="/resourcepacks"]').addClass("selected")
   }
   async setData({version}) {
     await this.ready

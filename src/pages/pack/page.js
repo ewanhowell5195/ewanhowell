@@ -3,8 +3,8 @@ import { Page } from "/js/pages.js"
 class PackPage extends Page {
   constructor() {
     super("pack")
-    $(".page-button").removeClass("selected")
-    $('.page-button[href="/resourcepacks"]').addClass("selected")
+    $("a").removeClass("selected")
+    $('[href="/resourcepacks"]').addClass("selected")
   }
   async setData({pack}) {
     await this.ready
