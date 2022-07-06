@@ -68,6 +68,8 @@ class ResourcepacksPage extends Page {
           }
         }
       }
+      window.addEventListener("resize", e => $(".category-header").css("top", `${$("#tabs").outerHeight()}px`))
+      window.dispatchEvent(new Event("resize"))
     })
     $("a").removeClass("selected")
     $('[href="/resourcepacks"]').addClass("selected")

@@ -18,16 +18,10 @@
   --color-grey-dark: #1A1A1A
   --color-grey-darker: #121212
   --color-link-blue: #6C80F6
-  --color-popup-background: #00000080
   --header-height: 40px
   --content-width: 1280px
   --box-shadow: 0 10px 10px var(--color-box-shadow)
   --gradient-optifine: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
-
-html, body
-  padding-top: env(safe-area-inset-top)
-  padding-bottom: env(safe-area-inset-bottom)
-  height: 100vh
 
 body
   margin: 0
@@ -143,7 +137,7 @@ body::-webkit-scrollbar-thumb
   left: 0
   width: 100vw
   height: 100vh
-  background-color: var(--color-popup-background)
+  background-color: #000000d0
   z-index: 1
   display: flex
   justify-content: center
@@ -226,7 +220,7 @@ body::-webkit-scrollbar-thumb
   left: 0
   width: 100%
   height: 100%
-  background-color: var(--color-popup-background)
+  background-color: #00000080
   z-index: 99
   display: flex
   justify-content: center
@@ -358,7 +352,15 @@ body::-webkit-scrollbar-thumb
 
         &:active > *
           transform: translateY(4px)
-          
+
+// animations
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
 // mobile
 
 @media only screen and (max-width: 768px)
@@ -367,18 +369,10 @@ body::-webkit-scrollbar-thumb
 
   #mobile-header
     display: flex
-    
+
 @media only screen and (min-width: 768px)
   #header
     display: flex
     
   #mobile-header
-    display: none
-    
-// animations
-
-@keyframes fadeIn
-  from
-    opacity: 0
-  to
-    opacity: 1
+    display: none  
