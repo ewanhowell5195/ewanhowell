@@ -363,6 +363,13 @@ body::-webkit-scrollbar-thumb
 
 // mobile
 
+@media only screen and (min-width: 768px)
+  #header
+    display: flex
+
+  #mobile-header
+    display: none
+
 @media only screen and (max-width: 768px)
   #header
     display: none
@@ -370,9 +377,6 @@ body::-webkit-scrollbar-thumb
   #mobile-header
     display: flex
 
-@media only screen and (min-width: 768px)
-  #header
-    display: flex
-    
-  #mobile-header
-    display: none  
+  .popup-image-close
+    right: 0
+    opacity: 1
