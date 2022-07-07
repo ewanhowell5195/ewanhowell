@@ -18,9 +18,21 @@
           ]
         },
         {
+          "name": "Tweaks",
+          "packs": [
+            "minecarts-with-wheels"
+          ]
+        },
+        {
           "name": "Update Packs",
           "packs": [
             "1-18-panorama"
+          ]
+        },
+        {
+          "name": "Addons",
+          "packs": [
+            "minecarts-with-wheels-faithful"
           ]
         },
         {
@@ -496,6 +508,16 @@
     },
     "google-images": {
       "image": "house"
+    },
+    "minecarts-with-wheels": {
+      "name": "Minecarts with Wheels",
+      "image": "left",
+      "optifine": 2
+    },
+    "minecarts-with-wheels-faithful": {
+      "name": "Minecarts with Wheels: Faithful",
+      "image": "left",
+      "optifine": 2
     },
     "mini-items": {
       "image": "sword"

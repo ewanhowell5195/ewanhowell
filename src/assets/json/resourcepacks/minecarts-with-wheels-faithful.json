@@ -1,0 +1,27 @@
+{
+  "subtitle": "Add wheels to Minecarts",
+  "description": "This pack adds working wheels to Minecarts!",
+  "optifine": "OptiFine is used to add support for remodelling minecarts.",
+  "images": [
+    "left",
+    "right"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653784912407",
+      "mirror": "https://www.planetminecraft.com/texture-pack/minecarts-with-wheels-faithful/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful",
+      "link": "https://faithfulpack.net/"
+    },
+    {
+      "text": "Original Version",
+      "type": "pack",
+      "name": "minecarts-with-wheels"
+    }
+  ]
+}
