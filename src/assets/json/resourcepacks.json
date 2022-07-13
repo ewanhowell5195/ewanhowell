@@ -38,7 +38,8 @@
         {
           "name": "Packs I Have Contributed To",
           "packs": [
-            "elephant-ravagers"
+            "elephant-ravagers",
+            "barely-default"
           ]
         }
       ]
@@ -78,7 +79,8 @@
           "packs": [
             "overgrowth",
             "caelesti",
-            "chubby-cheeks"
+            "chubby-cheeks",
+            "barely-default"
           ]
         }
       ]
@@ -135,7 +137,8 @@
           "packs": [
             "overgrowth",
             "caelesti",
-            "devolution"
+            "devolution",
+            "barely-default"
           ]
         }
       ]
@@ -242,7 +245,8 @@
             "overgrowth",
             "caelesti",
             "chubby-cheeks",
-            "elephant-ravagers"
+            "elephant-ravagers",
+            "barely-default"
           ]
         }
       ]
@@ -355,7 +359,19 @@
         {
           "name": "Packs I Have Contributed To",
           "packs": [
-            "overgrowth"
+            "overgrowth",
+            "barely-default"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.13",
+      "categories": [
+        {
+          "name": "Packs I Have Contributed To",
+          "packs": [
+            "barely-default"
           ]
         }
       ]
@@ -390,6 +406,10 @@
     },
     "4thful": {
       "image": "house",
+      "optifine": 1
+    },
+    "barely-default": {
+      "image": "banner",
       "optifine": 1
     },
     "better-3d": {
