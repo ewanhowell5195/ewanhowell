@@ -1,8 +1,6 @@
 import { Page } from "/js/pages.js"
 import * as Brotli from "/js/brotli/index.js"
 
-await Brotli.default("/js/brotli/index_bg.wasm")
-
 const Base64Binary = {
   _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
   removePaddingChars(input) {
@@ -38,6 +36,7 @@ class ColoursPage extends Page {
     super("colours")
   }
   async setData({c}) {
+    await Brotli.default("/js/brotli/index_bg.wasm")
     await this.ready
     if (!c) {
       c = "GxcA+KVgzJIHQySJBxjuAQ=="
