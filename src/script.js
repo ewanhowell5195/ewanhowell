@@ -63,6 +63,7 @@ function basicPageRoute(name, rgx) {
 const routes = [
   basicPageRoute("resourcepacks"),
   basicPageRoute("colours"),
+  basicPageRoute("test"),
   [ /^\/resourcepacks\/.+/i,
     async (url, container, updateHistory) => {
       await fetchResourcepacks()
