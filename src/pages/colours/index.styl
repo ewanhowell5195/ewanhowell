@@ -14,7 +14,28 @@
   flex: 1
   background-image: url("/assets/images/misc/transparent.webp")
   background-attachment: fixed
+  cursor: pointer
+  
+  &:hover
+    .hex
+      border-color: var(--color-link-blue)!important
+
+    .text
+      opacity: 1
   
 .hex
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0px 0px 2px rgba(0, 0, 0, 1)
   height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  box-sizing: border-box
+  border: 4px solid transparent
+  
+.text
+  opacity: 0
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0px 0px 2px rgba(0, 0, 0, 1)
+  user-select: none
+  
+#text-copier
+  position: fixed
+  top: -100vh

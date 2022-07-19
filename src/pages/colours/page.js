@@ -46,10 +46,21 @@ class ColoursPage extends Page {
     const container = this.$(".color-container")
     const colours = new TextDecoder().decode(Brotli.brotliDec(Base64Binary.decode(c)))
     for (const col of colours.match(/.{8}/g)) {
+      const hex = `#${col.replace(/(.{6})(ff)/, "$1")}`
       container.append(
         E("div").addClass("colour").append(
-          E("div").addClass("hex").css("background-color", `#${col}`).text(`#${col}`)
-        )
+          E("div").addClass("hex").css("background-color", hex).append(
+            E("div").addClass("text").text(hex)
+          )
+        ).on("click", async e => {
+          const input = this.$("#text-copier")
+          input.val(hex).select()
+          document.execCommand("Copy")
+          input.blur()
+          this.$(e.currentTarget).find(".text").text("copied...")
+          await new Promise(fulfil => setTimeout(fulfil, 1000))
+          this.$(e.currentTarget).find(".text").text(hex)
+        })
       )
     }
   }
