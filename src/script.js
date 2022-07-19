@@ -91,7 +91,6 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   const ps = url.pathname + url.search
   for (const [rgx, func] of routes) {
     if (ps.match(rgx)) {
-      console.log(updateHistory)
       if (!(await func(url, $("#content"), updateHistory))) {
         await import("/pages/home/page.js")
         $("#content").empty().append(E("home-page"))
