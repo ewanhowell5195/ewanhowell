@@ -64,7 +64,8 @@ const routes = [
   basicPageRoute("resourcepacks"),
   basicPageRoute("colours"),
   basicPageRoute("test"),
-  [ /^\/resourcepacks\/.+/i,
+  [ 
+    /^\/resourcepacks\/.+/i,
     async (url, container, updateHistory) => {
       await fetchResourcepacks()
       const pack = url.pathname.slice(15).replace(/\/$/, "").toLowerCase()
@@ -77,12 +78,14 @@ const routes = [
         return true
       }
     }
-  ]
+  ],
+
 ]
 
 let isOpeningPage = false
 window.openPage = async function(url, updateHistory = false, forceUpdate = false) {
   if (isOpeningPage || (!forceUpdate && url.href === location.href)) return
+  console.log(url)
   $("#mobile-menu").addClass("hidden")
   $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
   $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
@@ -94,7 +97,7 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
     if (ps.match(rgx)) {
       if (!(await func(url, $("#content"), updateHistory))) {
         await import("/pages/home/page.js")
-        $("#content").empty().append(E("home-page"))
+        setupPage("home", $("#content"), Object.fromEntries(url.searchParams))
         history.replaceState({}, "", "/")
       }
       foundPage = true
@@ -103,7 +106,7 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   }
   if (!foundPage) {
     await import("/pages/home/page.js")
-    $("#content").empty().append(E("home-page"))
+    setupPage("home", $("#content"), Object.fromEntries(url.searchParams))
     if (updateHistory) {
       history.pushState({}, "", "/")
     }
