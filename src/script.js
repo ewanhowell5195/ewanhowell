@@ -85,7 +85,6 @@ const routes = [
 let isOpeningPage = false
 window.openPage = async function(url, updateHistory = false, forceUpdate = false) {
   if (isOpeningPage || (!forceUpdate && url.href === location.href)) return
-  console.log(url)
   $("#mobile-menu").addClass("hidden")
   $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
   $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
