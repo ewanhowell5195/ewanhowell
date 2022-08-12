@@ -7,7 +7,7 @@ class HomePage extends Page {
     $('[href="/"]').addClass("selected")
   }
   async setData(params) {
-    setTimeout(() => {
+    if (Object.keys(params).length) setTimeout(() => {
       if (params.pack) openPage(new URL(`/resourcepacks/${params.pack}`, location.origin))
       else if (params.resourcepacks !== undefined || params.pack !== undefined) openPage(new URL("/resourcepacks", location.origin))
       else location.href = `https://old.ewanhowell.com/?${Object.entries(params).map(e => `${e[0]}=${e[1]}`).join("&")}`
