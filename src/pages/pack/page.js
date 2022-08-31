@@ -66,13 +66,18 @@ class PackPage extends Page {
     let offset = 0
     if (data.video) {
       offset++
-      images.prepend(E("iframe").addClass("showcase-image").attr({
-        id: "image-0",
-        "src": `https://www.youtube.com/embed/${data.video}?rel=0`,
-        frameborder: 0,
-        allow: "picture-in-picture",
-        allowfullscreen: true
-      }))
+      images.prepend(
+        E("div").addClass("video-container showcase-image").attr("id", "image-0").append(
+          E("iframe").attr({
+            "src": `https://www.youtube.com/embed/${data.video}?rel=0`,
+            frameborder: 0,
+            allow: "picture-in-picture",
+            allowfullscreen: true,
+            width: "100%",
+            height: "100%"
+          })
+        )
+      )
       imageRow.append(E("div").attr("id", "thumbnail-0").addClass("thumbnail-image").css("background-image", `url("https://img.youtube.com/vi/${data.video}/maxresdefault.jpg")`).on("click", e => {
         img = 0
         showImage()
@@ -150,7 +155,7 @@ class PackPage extends Page {
       }
     }
     if (data.links) {
-      const links = $("#links").removeClass("hidden")
+      const links = $("#links").removeClass("hidden").find("div")
       for (const link of data.links) {
         if (link.type === "pack") links.append(E("a", {is: "f-a"}).attr("href", `/resourcepacks/${link.name}`).append(
           localIcon.clone(true),

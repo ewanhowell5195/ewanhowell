@@ -17,7 +17,6 @@
   flex: 1
   display: flex
   min-height: var(--header-height)
-  padding: 0 10px
   cursor: pointer
   user-select: none
   transition: background-color 0.15s
@@ -126,16 +125,13 @@
   z-index: 1
   padding: 20px 0
   
-  &:hover svg
-    fill: #fff
-  
   h1
     margin: 0
     text-shadow: -4px 4px 1px var(--color-text-shadow)
     
   svg
     user-select: none
-    fill: #00000000
+    fill: #fff
     position: absolute
     top: 14px
     right: 0
@@ -159,7 +155,6 @@
     svg
       top: 0
       width: 24px
-      fill: #fff
     
   .packs
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))

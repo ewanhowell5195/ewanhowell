@@ -26,9 +26,10 @@
   
 #banner-content
   position: absolute
-  width: 100%
   top: 0
   left: 0
+  right: 0
+  bottom: 0
 
   img
     padding: 50px
@@ -48,10 +49,8 @@
 #optifine
   display: flex
   background-image: var(--gradient-optifine)
-  align-items: center
   min-height: 50px
   box-shadow: var(--box-shadow)
-  gap: 15px
   font-weight: 700
   text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
   color: var(--color-text-optifine)
@@ -59,14 +58,30 @@
   width: 100%
   z-index: 1
 
-  img
-    height: 50px
+  .optifine-desc
+    padding: 10px
+    display: flex
+    align-items: center
+
+  #optifine-img
+    width: 50px
+    display: flex
+    align-items: center
+    
+    img
+      height: 50px
 
   #optifine-info
-    margin-right: -15px
+    display: flex
+    align-items: center
+
+    .text::after
+      content: "More Information"
+      
+  a .text::after
+    content: "Download OptiFine"
 
   a, #optifine-info
-    height: 50px
     display: flex
     align-items: center
     padding: 0 15px
@@ -104,15 +119,16 @@
   display: flex
   flex-direction: column
   align-items: center
-  padding-bottom: 60px
+  padding: 20px 20px 60px
 
 #images
-  max-width: 720px
   display: flex
   user-select: none
   position: relative
   overflow: hidden
-  padding: 30px 0 60px
+  margin: 30px 40px 60px
+  max-width: 720px
+  width: clamp(50vw, 50vw, 80vw)
 
   img
     max-width: 100%
@@ -158,8 +174,8 @@
 .showcase-image
   display: none
   cursor: pointer
-  width: 720px
-  height: 405px
+  max-width: 720px
+  width: clamp(50vw, 50vw, 80vw)
 
   &:hover ~ #prev
     left: 0
@@ -168,6 +184,18 @@
   &:hover ~ #next
     right: 0
     opacity: 1
+
+.video-container
+  position: relative
+  padding-bottom: 56.25%
+  height: 0
+  
+  iframe
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
 
 .shown
   display: block
@@ -217,6 +245,7 @@
   padding: 32px 0 10px
   font-weight: 700
   letter-spacing: 2px
+  text-align: center
 
 #subtitle
   font-size: 1.5em
@@ -274,6 +303,7 @@
     align-items: center
     padding: 15px 0
     gap: 15px
+    flex-wrap: wrap
     
     a
       text-decoration: none
@@ -281,6 +311,7 @@
       padding: 10px
       background-color: var(--color-link-blue)
       width: 206px
+      min-width: 100px
       display: flex
       align-items: center
       font-weight: 700
@@ -324,43 +355,92 @@
   display: flex
   flex-direction: column
   align-items: center
-  padding-top: 15px
+  padding: 15px 0
   gap: 15px
   
   h3
     margin: 0
 
-  a
-    text-decoration: none
-    color: var(--color-text-white)
-    padding: 5px 10px
-    background-color: var(--color-grey-light)
-    width: 206px
+  div
+    gap: 15px
     display: flex
-    align-items: center
-    font-weight: 700
-    box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
-    transition: filter .15s
-    filter: brightness(1.8)
-    gap: 4px
+    flex-direction: column
+    flex-wrap: wrap
+
+    a
+      text-decoration: none
+      color: var(--color-text-white)
+      padding: 5px 10px
+      background-color: var(--color-grey-light)
+      width: 206px
+      display: flex
+      align-items: center
+      font-weight: 700
+      box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
+      transition: filter .15s
+      filter: brightness(1.8)
+      gap: 4px
+      
+      & > *
+          transition: transform .15s
+
+      svg
+        width: 28px
+        height: 28px
+        filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
+        fill: white
+        
+      span
+        text-align: center
+        flex: 1
+        text-shadow: -2px 2px 1px var(--color-text-shadow)
+        letter-spacing: 1px
+
+      &:hover
+        filter: brightness(2.3)
+        
+      &:active > *
+        transform: translateY(3px)
+      
+// mobile
+
+@media only screen and (max-width: 768px)
+  #pack-content
+    flex-flow: column
     
-    & > *
-        transition: transform .15s
-
-    svg
-      width: 28px
-      height: 28px
-      filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
-      fill: white
+  #pack-info
+    order: 2
+    
+  #pack-links
+    order: 1
+    
+  #pack-links-contents
+    padding: 0
+  
+  #downloads div, #links div
+    flex-direction: row
+    justify-content: center
+    
+  .optifine-desc
+    display: none!important
+    
+  #optifine-info .text::after
+    content: "Requirement Info"!important
+    
+  a .text::after
+    content: "Download"!important
+    
+  #banner-content
+    display: flex
+    justify-content: center
+    align-items: center
+    
+    img
+      max-width: 80vw
+      height: auto
       
-    span
-      text-align: center
-      flex: 1
-      text-shadow: -2px 2px 1px var(--color-text-shadow)
-      letter-spacing: 1px
-
-    &:hover
-      filter: brightness(2.3)
-      
-    &:active > *
-      transform: translateY(3px)
+  #category-name
+    right: initial
+    
+  #images, .showcase-image
+    width: 80vw

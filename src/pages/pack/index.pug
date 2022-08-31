@@ -8,19 +8,18 @@ template#local-icon: include /svg/local_link.svg
     #banner-content
       img#logo
       #category-name
-      #versions.hidden VERSIONS
-        #versions-dropdown
   #optifine.hidden
-    img(src = "/assets/images/logo/optifine.webp")
-    #required.hidden This pack requires OptiFine to function correctly.
-    #optional.hidden OptiFine can be used to enhance this pack, but it is not a requirement.
+    #optifine-img
+      img(src = "/assets/images/logo/optifine.webp")
+    .optifine-desc#required.hidden This pack requires OptiFine to function correctly.
+    .optifine-desc#optional.hidden OptiFine can be used to enhance this pack, but it is not a requirement.
     .spacer
     #optifine-info
       include /svg/info.svg
-      span More Info
+      span.text
     a(href = "https://optifine.net/downloads", target = "_blank")
       include /svg/download.svg
-      span Download OptiFine
+      span.text
   #pack-content
     #pack-info
       #title
@@ -42,3 +41,4 @@ template#local-icon: include /svg/local_link.svg
           #mirrors
         #links.hidden
           h3 Other Links
+          div
