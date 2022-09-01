@@ -44,7 +44,7 @@
     border-radius: 0
     
     &:focus
-      width: calc(100vw - 40px)
+      width: clamp(128px, calc(100vw - 40px), calc(var(--content-width) - 40px))
 
 .tab
   flex: 1
