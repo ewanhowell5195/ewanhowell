@@ -9,6 +9,38 @@ window.E = (tagName, options) => $(document.createElement(tagName, options))
 
 // lazy loading
 
+const rgxURLParams = /(?:^\?|&)([A-z0-9-]+)(?:=([^&]+)|(?=&)|$|=)/g
+
+window.getURLParams = s => {
+  let str = s
+  if (!str) str = location.search
+  if (str.length < 2) return null
+  let params = {}
+  let m; while (m = rgxURLParams.exec(str)) {
+    params[m[1]] = m[2] ? decodeURIComponent(m[2].replace(/\+/g, "%20")) : true
+  }
+  return params
+}
+
+window.toURLParams = o => {
+  let arr = []
+  for (let k in o) if (o.hasOwnProperty(k) && o[k] != null) {
+    if (o[k] === true) {
+      arr.push(`${arr.length == 0 ? "?" : "&"}${k}`)
+    } else {
+      let encodedVal = encodeURIComponent(o[k])
+        .replace(/%3A/g, ':')
+        .replace(/%3B/g, ';')
+        .replace(/%20/g, '+')
+        .replace(/%2C/g, ',')
+        .replace(/%2F/g, '/')
+        .replace(/%40/g, '@')
+      arr.push(`${arr.length == 0 ? "?" : "&"}${k}=${encodedVal}`)
+    }
+  }
+  return arr.join("")
+}
+
 window.imageObserver  =  new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if ("src" in entry.target.dataset) {
