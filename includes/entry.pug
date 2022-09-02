@@ -1,0 +1,45 @@
+link(href = "/css/entry.css" rel = "stylesheet")
+template#close-icon: include /svg/close.svg
+template#download-icon: include /svg/download.svg
+template#link-icon: include /svg/open_in_new.svg
+template#local-icon: include /svg/local_link.svg
+.container
+  #banner
+    #banner-background
+    #banner-content
+      img#logo
+      #category-name
+  #optifine.hidden
+    #optifine-img
+      img(src = "/assets/images/logo/optifine.webp")
+    .optifine-desc#required.hidden This pack requires OptiFine to function correctly.
+    .optifine-desc#optional.hidden OptiFine can be used to enhance this pack, but it is not a requirement.
+    .spacer
+    #optifine-info
+      include /svg/info.svg
+      span.text
+    a(href = "https://optifine.net/downloads", target = "_blank")
+      include /svg/download.svg
+      span.text
+  #entry-content
+    #entry-info
+      #title
+      #subtitle
+      #images
+        #image-box
+          #image-container
+            #prev.image-button: include /svg/arrow_left.svg
+            #next.image-button: include /svg/arrow_right.svg
+          #thumbnail-row
+      #description
+    #entry-links
+      #entry-links-tabs
+        div#main-tab.selected Downloads
+        div#mirrors-tab Mirrors
+      #entry-links-contents
+        #downloads.hidden
+          #main.selected
+          #mirrors
+        #links.hidden
+          h3 Other Links
+          div

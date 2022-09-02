@@ -73,9 +73,7 @@ $("#mobile-menu-close-button").on("click", e => $("#mobile-menu").addClass("hidd
 function setupPage(name, container, data) {
   const page = E(`${name}-page`)
   container.empty().append(page)
-  if (data) {
-    page[0].setData(data)
-  }
+  if (data) page[0].setData(data)
 }
 
 function basicPageRoute(name, rgx) {
@@ -92,26 +90,31 @@ function basicPageRoute(name, rgx) {
   ]
 }
 
-const routes = [
-  basicPageRoute("resourcepacks"),
-  basicPageRoute("colours"),
-  basicPageRoute("test"),
-  [ 
-    /^\/resourcepacks\/.+/i,
+function entriesPageRoute(name, singular) {
+  return [
+    new RegExp(`^\\/${name}\\/.+`, "i"),
     async (url, container, updateHistory) => {
-      await fetchResourcepacks()
-      const pack = url.pathname.slice(15).replace(/\/$/, "").toLowerCase()
-      if (Object.keys(resourcepacks.packs).includes(pack)) {
-        await import("/pages/pack/page.js")
-        setupPage("pack", container, {pack})
+      await fetchEntries(name)
+      const entry = url.pathname.slice(name.length + 2).replace(/\/$/, "").toLowerCase()
+      console.log(entry)
+      if (Object.keys(window[name].entries).includes(entry)) {
+        await import(`/pages/${singular}/page.js`)
+        setupPage(singular, container, {[singular]: entry})
         if (updateHistory) {
           history.pushState({}, "", url)
         }
         return true
       }
     }
-  ],
+  ]
+}
 
+const routes = [
+  basicPageRoute("resourcepacks"),
+  entriesPageRoute("resourcepacks", "pack"),
+  basicPageRoute("maps"),
+  entriesPageRoute("maps", "map"),
+  basicPageRoute("colours")
 ]
 
 let isOpeningPage = false
@@ -187,14 +190,10 @@ customElements.define("f-a", FastAnchorElement, { extends: "a" })
 
 // files
 
-let resourcepacksFetch
-window.fetchResourcepacks = async () => {
-  if (window.resourcepacks === undefined) {
-    if (resourcepacksFetch === undefined) {
-      resourcepacksFetch = fetch('/assets/json/resourcepacks.json').then(e => e.json()).then(e => window.resourcepacks = e)
-    }
-    await resourcepacksFetch
-  }
+const entriesFetch = {}
+window.fetchEntries = async type => {
+  if (window[type] === undefined && entriesFetch[type] === undefined) entriesFetch[type] = fetch(`/assets/json/${type}.json`).then(e => e.json())
+  window[type] = await entriesFetch[type]
 }
 
 // end

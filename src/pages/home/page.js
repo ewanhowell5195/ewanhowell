@@ -9,8 +9,8 @@ class HomePage extends Page {
   async setData(params) {
     if (Object.keys(params).length) setTimeout(() => {
       if (params.pack) openPage(new URL(`/resourcepacks/${params.pack}`, location.origin), true)
+      else if (params.map) openPage(new URL(`/maps/${params.map}`, location.origin), true)
       else if (params.resourcepacks !== undefined || params.pack !== undefined) openPage(new URL("/resourcepacks", location.origin), true)
-      else location.href = `https://old.ewanhowell.com/?${Object.entries(params).map(e => `${e[0]}=${e[1]}`).join("&")}`
     }, 0)
   }
 }

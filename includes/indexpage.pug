@@ -1,0 +1,10 @@
+link(href = "/css/indexpage.css" rel = "stylesheet")
+template#arrow-icon: include /svg/arrow_right.svg
+.container
+  #tabs
+    #search(onclick = "this.children[1].focus()")
+      include /svg/search.svg
+      input(placeholder = "Search...")
+  #versions
+    #no-results
+      #no-results-text No results

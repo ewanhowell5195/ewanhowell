@@ -35,12 +35,12 @@
   "links": [
     {
       "text": "Remastered version",
-      "type": "pack",
+      "type": "entry",
       "name": "pewdiepack-remastered"
     },
     {
       "text": "Faithful version",
-      "type": "pack",
+      "type": "entry",
       "name": "the-pewdiepack-faithful"
     }
   ]

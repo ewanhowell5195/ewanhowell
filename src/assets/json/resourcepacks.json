@@ -5,39 +5,39 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful",
             "pack-and-white"
           ]
         },
         {
           "name": "Pack Development",
-          "packs": [
+          "entries": [
             "flipped-uvs",
             "template-green"
           ]
         },
         {
           "name": "Tweaks",
-          "packs": [
+          "entries": [
             "minecarts-with-wheels"
           ]
         },
         {
           "name": "Update Packs",
-          "packs": [
+          "entries": [
             "1-18-panorama"
           ]
         },
         {
           "name": "Addons",
-          "packs": [
+          "entries": [
             "minecarts-with-wheels-faithful"
           ]
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "elephant-ravagers",
             "barely-default"
           ]
@@ -49,26 +49,26 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful",
             "oledcraft"
           ]
         },
         {
           "name": "Other",
-          "packs": [
+          "entries": [
             "entity-healthbars"
           ]
         },
         {
           "name": "Seasonal",
-          "packs": [
+          "entries": [
             "snowstorm"
           ]
         },
         {
           "name": "Addons",
-          "packs": [
+          "entries": [
             "entity-healthbars-hearts",
             "entity-healthbars-dokucraft",
             "entity-healthbars-faithful"
@@ -76,7 +76,7 @@
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "overgrowth",
             "caelesti",
             "chubby-cheeks",
@@ -90,7 +90,7 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful",
             "4thful",
             "pixelblocks",
@@ -99,7 +99,7 @@
         },
         {
           "name": "Tweaks",
-          "packs": [
+          "entries": [
             "throwing-axes",
             "boomerangs",
             "better-bows"
@@ -107,7 +107,7 @@
         },
         {
           "name": "Update Packs",
-          "packs": [
+          "entries": [
             "1-18-panorama",
             "deep-dark",
             "mob-vote"
@@ -115,26 +115,26 @@
         },
         {
           "name": "Cursed",
-          "packs": [
+          "entries": [
             "google-images",
             "sheep-ender-dragon"
           ]
         },
         {
           "name": "Seasonal",
-          "packs": [
+          "entries": [
             "packtober-remastered"
           ]
         },
         {
           "name": "Addons",
-          "packs": [
+          "entries": [
             "mob-vote-faithful"
           ]
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "overgrowth",
             "caelesti",
             "devolution",
@@ -148,7 +148,7 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful",
             "flat-packed",
             "oledcraft",
@@ -162,13 +162,13 @@
         },
         {
           "name": "Pack Development",
-          "packs": [
+          "entries": [
             "template-green"
           ]
         },
         {
           "name": "Tweaks",
-          "packs": [
+          "entries": [
             "swarm-of-bees",
             "quindent",
             "dragonflies",
@@ -178,7 +178,7 @@
         },
         {
           "name": "Update Packs",
-          "packs": [
+          "entries": [
             "rebearth-remastered",
             "1-17-entities",
             "mob-vote",
@@ -188,14 +188,14 @@
         },
         {
           "name": "Other",
-          "packs": [
+          "entries": [
             "entity-healthbars",
             "fences-plus"
           ]
         },
         {
           "name": "Cursed",
-          "packs": [
+          "entries": [
             "striderchan",
             "sheepified-remastered",
             "playermodelmobs",
@@ -207,14 +207,14 @@
         },
         {
           "name": "PvP",
-          "packs": [
+          "entries": [
             "mini-items",
             "translucencraft"
           ]
         },
         {
           "name": "Seasonal",
-          "packs": [
+          "entries": [
             "packtober-remastered",
             "snowstorm",
             "craftmas-remastered",
@@ -224,13 +224,13 @@
         },
         {
           "name": "YouTube",
-          "packs": [
+          "entries": [
             "pewdiepack-remastered"
           ]
         },
         {
           "name": "Addons",
-          "packs": [
+          "entries": [
             "entity-healthbars-hearts",
             "entity-healthbars-dokucraft",
             "entity-healthbars-faithful",
@@ -241,7 +241,7 @@
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "overgrowth",
             "caelesti",
             "chubby-cheeks",
@@ -256,7 +256,7 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful",
             "flat-packed",
             "oledcraft",
@@ -267,7 +267,7 @@
         },
         {
           "name": "Other",
-          "packs": [
+          "entries": [
             "packommunity",
             "better-3d",
             "fluorescence"
@@ -275,20 +275,20 @@
         },
         {
           "name": "Cursed",
-          "packs": [
+          "entries": [
             "stevified",
             "packstralia"
           ]
         },
         {
           "name": "YouTube",
-          "packs": [
+          "entries": [
             "the-pewdiepack"
           ]
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "overgrowth",
             "caelesti"
           ]
@@ -300,13 +300,13 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "dimension-shift"
           ]
         },
         {
           "name": "Update Packs",
-          "packs": [
+          "entries": [
             "rebearth",
             "nether-update",
             "unused-biome-update"
@@ -314,7 +314,7 @@
         },
         {
           "name": "Other",
-          "packs": [
+          "entries": [
             "packommunity",
             "better-3d",
             "fluorescence",
@@ -323,7 +323,7 @@
         },
         {
           "name": "Cursed",
-          "packs": [
+          "entries": [
             "playermodelmobs",
             "stevified",
             "sheepified",
@@ -332,33 +332,33 @@
         },
         {
           "name": "PvP",
-          "packs": [
+          "entries": [
             "mini-items"
           ]
         },
         {
           "name": "Seasonal",
-          "packs": [
+          "entries": [
             "packtober",
             "craftmas"
           ]
         },
         {
           "name": "YouTube",
-          "packs": [
+          "entries": [
             "the-pewdiepack",
             "packsepticeye"
           ]
         },
         {
           "name": "Addons",
-          "packs": [
+          "entries": [
             "the-pewdiepack-faithful"
           ]
         },
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "overgrowth",
             "barely-default"
           ]
@@ -370,7 +370,7 @@
       "categories": [
         {
           "name": "Packs I Have Contributed To",
-          "packs": [
+          "entries": [
             "barely-default"
           ]
         }
@@ -381,20 +381,20 @@
       "categories": [
         {
           "name": "Texture Packs",
-          "packs": [
+          "entries": [
             "f8thful"
           ]
         },
         {
           "name": "PvP",
-          "packs": [
+          "entries": [
             "mini-items"
           ]
         }
       ]
     }
   ],
-  "packs": {
+  "entries": {
     "1-17-entities": {
       "name": "1.17 Entities",
       "image": "sand",

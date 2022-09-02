@@ -18,7 +18,7 @@
   "links": [
     {
       "text": "Faithful Version",
-      "type": "pack",
+      "type": "entry",
       "name": "fences-plus-faithful"
     }
   ]

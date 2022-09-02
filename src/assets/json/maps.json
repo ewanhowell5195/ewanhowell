@@ -1,0 +1,42 @@
+{
+  "versions": [
+    {
+      "id": "1.19",
+      "categories": [
+        {
+          "name": "Pack Development",
+          "entries": [
+            "entity-tester"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.18",
+      "categories": [
+        {
+          "name": "Pack Development",
+          "entries": [
+            "entity-tester"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.16",
+      "categories": [
+        {
+          "name": "Pack Development",
+          "entries": [
+            "entity-tester"
+          ]
+        }
+      ]
+    }
+  ],
+  "entries": {
+    "entity-tester": {
+      "image": "entities"
+    }
+  }
+}

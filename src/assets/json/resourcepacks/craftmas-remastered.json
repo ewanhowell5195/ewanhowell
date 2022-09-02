@@ -24,7 +24,7 @@
   "links": [
     {
       "text": "Lagacy Version",
-      "type": "pack",
+      "type": "entry",
       "name": "craftmas"
     }
   ]

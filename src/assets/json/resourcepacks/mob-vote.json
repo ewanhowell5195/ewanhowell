@@ -20,7 +20,7 @@
   "links": [
     {
       "text": "Faithful Version",
-      "type": "pack",
+      "type": "entry",
       "name": "mob-vote-faithful"
     }
   ]

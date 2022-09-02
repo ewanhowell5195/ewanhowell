@@ -17,7 +17,7 @@
   "links": [
     {
       "text": "Original Version",
-      "type": "pack",
+      "type": "entry",
       "name": "entity-healthbars"
     }
   ]

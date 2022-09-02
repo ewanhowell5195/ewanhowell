@@ -17,17 +17,17 @@
   "links": [
     {
       "text": "Hearts Version",
-      "type": "pack",
+      "type": "entry",
       "name": "entity-healthbars-hearts"
     },
     {
       "text": "Faithful Versions",
-      "type": "pack",
+      "type": "entry",
       "name": "entity-healthbars-faithful"
     },
     {
       "text": "Dokucraft Version",
-      "type": "pack",
+      "type": "entry",
       "name": "entity-healthbars-dokucraft"
     }
   ]

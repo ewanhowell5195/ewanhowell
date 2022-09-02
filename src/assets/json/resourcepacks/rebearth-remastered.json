@@ -23,7 +23,7 @@
   "links": [
     {
       "text": "Legacy version",
-      "type": "pack",
+      "type": "entry",
       "name": "rebearth"
     }
   ]

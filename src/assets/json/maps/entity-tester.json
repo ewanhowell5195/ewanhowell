@@ -1,0 +1,18 @@
+{
+  "subtitle": "A world to test your entity textures and models!",
+  "description": "This map has every entity laid out in a small area for easy access for testing models and textures!",
+  "video": "P-P_k7ihvZ8",
+  "images": [
+    "entities",
+    "map",
+    "floor",
+    "options"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://adfoc.us/54653778765445",
+      "mirror": "https://www.curseforge.com/minecraft/worlds/entity-tester/"
+    }
+  ]
+}
