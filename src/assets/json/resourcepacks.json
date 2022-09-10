@@ -24,6 +24,12 @@
           ]
         },
         {
+          "name": "Utilities",
+          "entries": [
+            "visual-shulker-labels"
+          ]
+        },
+        {
           "name": "Update Packs",
           "entries": [
             "1-18-panorama"
@@ -55,7 +61,7 @@
           ]
         },
         {
-          "name": "Other",
+          "name": "Utilities",
           "entries": [
             "entity-healthbars"
           ]
@@ -177,6 +183,12 @@
           ]
         },
         {
+          "name": "Utilities",
+          "entries": [
+            "entity-healthbars"
+          ]
+        },
+        {
           "name": "Update Packs",
           "entries": [
             "rebearth-remastered",
@@ -189,7 +201,6 @@
         {
           "name": "Other",
           "entries": [
-            "entity-healthbars",
             "fences-plus"
           ]
         },
@@ -693,6 +704,10 @@
     },
     "unused-biome-update": {
       "image": "both",
+      "optifine": 2
+    },
+    "visual-shulker-labels": {
+      "image": "gui",
       "optifine": 2
     }
   }
