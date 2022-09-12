@@ -21,7 +21,10 @@
           "name": "Tweaks",
           "entries": [
             "minecarts-with-wheels",
-            "better-bows"
+            "throwing-axes",
+            "boomerangs",
+            "better-bows",
+            "quindent"
           ]
         },
         {
@@ -64,7 +67,10 @@
         {
           "name": "Tweaks",
           "entries": [
-            "better-bows"
+            "throwing-axes",
+            "boomerangs",
+            "better-bows",
+            "quindent"
           ]
         },
         {
@@ -115,7 +121,8 @@
           "entries": [
             "throwing-axes",
             "boomerangs",
-            "better-bows"
+            "better-bows",
+            "quindent"
           ]
         },
         {
