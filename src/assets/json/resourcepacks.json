@@ -20,7 +20,8 @@
         {
           "name": "Tweaks",
           "entries": [
-            "minecarts-with-wheels"
+            "minecarts-with-wheels",
+            "better-bows"
           ]
         },
         {
@@ -58,6 +59,12 @@
           "entries": [
             "f8thful",
             "oledcraft"
+          ]
+        },
+        {
+          "name": "Tweaks",
+          "entries": [
+            "better-bows"
           ]
         },
         {
