@@ -4,7 +4,7 @@ export function indexPageClass(type, title) {
   return class extends Page {
     constructor() {
       super(type, false, async $ => {
-        jQuery("title").text(`Ewan Howell - ${title}`)
+        jQuery("title").text(`${title} - Ewan Howell`)
         await fetchEntries(type)
         const tabs = $("#tabs")
         const versions = $("#versions")

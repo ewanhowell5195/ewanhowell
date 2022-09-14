@@ -33,7 +33,7 @@ const Base64Binary = {
 
 class ColoursPage extends Page {
   constructor() {
-    super("colours")
+    super("colours", true, $ => jQuery("title").text(`Colours - Ewan Howell`))
   }
   async setData({c}) {
     await Brotli.default("/js/brotli/index_bg.wasm")

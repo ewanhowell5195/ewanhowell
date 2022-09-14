@@ -18,7 +18,7 @@ export function entryPageClass(page, type) {
       const entryName = window[type].entries[args[page]].name ?? args[page].replace(/-/g, " ").toTitleCase()
       jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args[page]}/icon.webp`)
       jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args[page]}/icon.webp`)
-      jQuery("title").text(`${data.author ?? "Ewan Howell"} - ${entryName}`)
+      jQuery("title").text(`${entryName} - ${data.author ?? "Ewan Howell"}`)
       const $ = this.$
       const linkIcon = $("#link-icon").contents()
       const localIcon = $("#local-icon").contents()

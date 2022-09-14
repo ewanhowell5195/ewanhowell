@@ -1,0 +1,16 @@
+{
+  "subtitle": "Bring parity to the sheep of Minecraft!",
+  "description": "In Minecraft Bedrock edition, the sheep get dyed on both the wool layer and the skin layer of the their texture. This pack brings consistency to the game by making the Minecraft Java edition sheep work the same way, instead of only having the wool texture dyed and the skin texture untouched.\n\nThe sheep will also show the dyed wool colour after they have been sheared, allowing you to now identify their colour while sheared.",
+  "optifine": "OptiFine is used to add the ability to change the sheep texture based on the wool colour.",
+  "images": [
+    "sheep",
+    "sheep2"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653785346480",
+      "mirror": "https://www.curseforge.com/minecraft/texture-packs/paritysheep"
+    }
+  ]
+}
