@@ -79,7 +79,7 @@ export function entryPageClass(page, type) {
             })
           )
         )
-        imageRow.append(E("div").attr("id", "thumbnail-0").addClass("thumbnail-image").css("background-image", `url("https://img.youtube.com/vi/${data.video}/maxresdefault.jpg")`).on("click", e => {
+        imageRow.append(E("div").attr("id", "thumbnail-0").addClass("thumbnail-image").css("background-image", `url("https://img.youtube.com/vi/${data.video.split("?")[0]}/maxresdefault.jpg")`).on("click", e => {
           img = 0
           showImage()
         }))

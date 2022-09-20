@@ -43,6 +43,7 @@
         {
           "name": "Addons",
           "entries": [
+            "visual-shulker-labels-2d-display",
             "minecarts-with-wheels-faithful"
           ]
         },
@@ -727,6 +728,11 @@
       "optifine": 2
     },
     "visual-shulker-labels": {
+      "image": "gui",
+      "optifine": 2
+    },
+    "visual-shulker-labels-2d-display": {
+      "name": "Visual Shulker Labels: 2D Display",
       "image": "gui",
       "optifine": 2
     }
