@@ -27,7 +27,7 @@ export function indexPageClass(type, title) {
         }
         const arrowIcon = $("#arrow-icon").contents()
         for (const version of [allEntries, ...window[type].versions]) {
-          tabs.append(E("a").attr("href", `/${type}/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
+          if (window[type].versions.length > 1) tabs.append(E("a").attr("href", `/${type}/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
             evt.preventDefault()
             $(".version").removeClass("shown")
             $(`#${evt.target.innerHTML.replace(".", "-")}`).addClass("shown")
@@ -58,10 +58,9 @@ export function indexPageClass(type, title) {
               ).appendTo(versionDiv)
             )
             for (const entry of category.entries) {
-              const entryImages = E("div").addClass("entry-images").attr("id", entry).append(
-                E("div").addClass("entry-image").css("background-image", `url("/assets/images/${type}/${entry}/images/${window[type].entries[entry].image}.webp")`),
-                E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`)
-              )
+              const entryImages = E("div").addClass("entry-images").attr("id", entry)
+              entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${type}/${entry}/images/${window[type].entries[entry].image}.webp")`))
+              if (!window[type].entries[entry].logoLess) entryImages.append(E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`))
               const entryDiv = E("a", {is: "f-a"}).attr("href", `/${type}/${entry}`).addClass("entry-container").append(
                 entryImages,
                 E("div").addClass("entry-name").text(window[type].entries[entry].name ?? entry.replace(/-/g, " ").toTitleCase())
@@ -76,7 +75,7 @@ export function indexPageClass(type, title) {
           },
           input(e) {
             const text = e.currentTarget.value.toLowerCase().replace(/&/g, "and")
-            const params = getURLParams()
+            const params = getURLParams() ?? {}
             params.search = text
             if (!params.search) delete params.search
             history.replaceState({}, null, `/${type}/${toURLParams(params)}`)
@@ -107,7 +106,8 @@ export function indexPageClass(type, title) {
     }
     async setData({version, search}) {
       await this.ready
-      if (!version) {
+      if (window[type].versions.length === 1) version = "all"
+      else if (!version) {
         version = sessionStorage.getItem(`${type}Version`)
         if (!version) version = "all"
       }
@@ -120,6 +120,7 @@ export function indexPageClass(type, title) {
         this.$("#search input").val(search)
         setTimeout(() => this.$("#search input").trigger("input"), 0)
       }
+      if (window[type].versions.length === 1) version = undefined
       history.replaceState({}, null, `/${type}/${toURLParams({version, search})}`)
     }
   }

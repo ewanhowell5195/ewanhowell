@@ -1,0 +1,15 @@
+{
+  "subtitle": "Adds a new format that allows you to create OptiFine player models.",
+  "description": "<p>This plugin adds a new format that allows you to make you own custom OptiFine player models.</p><h2>Setup</h2><ol><li>Open your launcher and go to the <strong>Installations</strong> tab.</li><li>Find your installation, click the triple dot, and slect <strong>Edit</strong>.</li><li>Select <strong>More Options</strong>.</li><li>Inside the <strong>JVM ARGUMENTS</strong> field, add:<code>-Dplayer.models.local=true -Dplayer.models.reload=true</code>Note:\t<strong>player.models.reload</strong> reloads the model every 5 seconds in game, and can be disabled after you finish making the model.</li><li>Make a folder named <code>playermodels</code> inside your <strong>.minecraft</strong> folder.</li><li>Inside that folder, make 2 more folders named <code>items</code> and <code>users</code>.</li></ol><h2>Usage</h2><ul><li>You need a config file for every player with a player model. This config file must be the players username, and needs to go in the <strong>users</strong> folder.<strong>Example</strong>: <code>.minecraft/playermodels/users/ewanhowell5195.cfg</code></li><li>You can create a user config by going to <strong>File &gt; Export &gt; Create OptiFine Player Model Config</strong>.</li><li>Exported player models should go in a folder named what the player model is, inside the <strong>items</strong> folder, and be named <code>model.cfg</code>.<strong>Example</strong>: <code>.minecraft/playermodels/items/horns/model.cfg</code></li><li>If not using <strong>Use Player Texture</strong>, textures must go inside a folder named <code>users</code> located next to the model file, and be named the players username.<strong>Example</strong>: <code>.minecraft/playermodels/items/horns/users/ewanhowell5195.png</code></li></ul><h2>Limitations</h2><ul><li>They are client side only.</li><li>They are not part of resource packs.</li><li>They require OptiFine, and JVM args set in the launcher.</li><li>Animations are not supported.</li><li>You can only target specific players, not all players.</li></ul><h2>Important</h2><p>Enabling the player model JVM arguments <strong>will disable any online player models</strong>, usually being seasonal cosmetics like the Santa and Witch hats.</p>",
+  "video": "0rT-q95dpV0",
+  "images": [
+    "edit",
+    "blockbench"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/optifine_player_models"
+    }
+  ]
+}

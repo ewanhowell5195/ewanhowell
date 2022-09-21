@@ -6,7 +6,7 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
 }
 
-const types = ["resourcepacks", "maps"]
+const types = ["resourcepacks", "maps", "plugins"]
 
 for (const type of types) {
   const entries = JSON.parse(fs.readFileSync(`../src/assets/json/${type}.json`, "utf-8")).entries
@@ -33,7 +33,7 @@ html
     include /../includes/head.pug
   include /../includes/body.pug`)
     const bg = await bgSharp.png().toBuffer().then(s => loadImage(s))
-    const logo = await sharp(fs.readFileSync(`../src/assets/images/${type}/${id}/logo.webp`)).resize(576, 128, {
+    const logo = await sharp(fs.readFileSync(`../src/assets/images/${type}/${id}/logo.webp`)).resize(576, 192, {
       background: "#00000000",
       fit: "contain"
     }).png().toBuffer().then(s => loadImage(s))

@@ -154,6 +154,10 @@ export function entryPageClass(page, type) {
             E("span").text(link.text)
           ))
         }
+      } else {
+        $("#entry-links-tabs").css("display", "none")
+        $("#entry-links-contents").css("height", "calc(100% - 60px)")
+        $("#links>h3").text("Links")
       }
       if (data.links) {
         const links = $("#links").removeClass("hidden").find("div")

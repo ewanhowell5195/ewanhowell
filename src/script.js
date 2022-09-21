@@ -96,7 +96,6 @@ function entriesPageRoute(name, singular) {
     async (url, container, updateHistory) => {
       await fetchEntries(name)
       const entry = url.pathname.slice(name.length + 2).replace(/\/$/, "").toLowerCase()
-      console.log(entry)
       if (Object.keys(window[name].entries).includes(entry)) {
         await import(`/pages/${singular}/page.js`)
         setupPage(singular, container, {[singular]: entry})
@@ -114,6 +113,8 @@ const routes = [
   entriesPageRoute("resourcepacks", "pack"),
   basicPageRoute("maps"),
   entriesPageRoute("maps", "map"),
+  basicPageRoute("plugins"),
+  entriesPageRoute("plugins", "plugin"),
   basicPageRoute("colours")
 ]
 

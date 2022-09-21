@@ -1,0 +1,14 @@
+{
+  "subtitle": "Add the ability to collapse the start screen categories.",
+  "description": "This plugin adds a small dropdown arrow next to each category on the start screen, allowing you to collapse each category and hide their respective formats.",
+  "images": [
+    "start",
+    "blockbench"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/optifine_player_models"
+    }
+  ]
+}

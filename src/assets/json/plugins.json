@@ -1,0 +1,44 @@
+{
+  "versions": [
+    {
+      "id": "Blockbench",
+      "categories": [
+        {
+          "name": "OptiFine",
+          "entries": [
+            "cem-template-loader",
+            "optifine-player-models"
+          ]
+        },
+        {
+          "name": "Paint",
+          "entries": [
+            "colour-gradient-generator"
+          ]
+        },
+        {
+          "name": "General",
+          "entries": [
+            "collapsible-start-screen-categories"
+          ]
+        }
+      ]
+    }
+  ],
+  "entries": {
+    "cem-template-loader": {
+      "name": "CEM Template Loader",
+      "image": "entities"
+    },
+    "optifine-player-models": {
+      "name": "OptiFine Player Models",
+      "image": "edit"
+    },
+    "colour-gradient-generator": {
+      "image": "colours"
+    },
+    "collapsible-start-screen-categories": {
+      "image": "start"
+    }
+  }
+}
