@@ -7,8 +7,6 @@ window.E = (tagName, options) => $(document.createElement(tagName, options))
 // gtag("js", new Date())
 // gtag("config", "UA-155158328-2")
 
-// lazy loading
-
 const rgxURLParams = /(?:^\?|&)([A-z0-9-]+)(?:=([^&]+)|(?=&)|$|=)/g
 
 window.getURLParams = s => {
@@ -41,6 +39,12 @@ window.toURLParams = o => {
   return arr.join("")
 }
 
+if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
+  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
+}
+
+// lazy loading
+
 window.imageObserver  =  new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if ("src" in entry.target.dataset) {
@@ -53,10 +57,6 @@ window.imageObserver  =  new IntersectionObserver((entries, observer) => {
 		}
 	})
 })
-
-if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
-  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
-}
 
 // header
 
