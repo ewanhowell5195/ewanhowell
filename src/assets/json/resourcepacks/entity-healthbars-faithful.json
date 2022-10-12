@@ -3,9 +3,8 @@
   "description": "These packs add 32x & 64x resolution healthbars to all of the entities that support OptiFine entity models.",
   "images": [
     "all",
-    "wolf",
     "creeper",
-    "sheep",
+    "wolf",
     "enderman",
     "fish"
   ],
