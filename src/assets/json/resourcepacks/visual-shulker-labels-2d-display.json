@@ -2,6 +2,7 @@
   "subtitle": "Label your shulkers with style",
   "description": "This addon requires the base pack to function.\n\nThis pack makes it so that you can give a shulker box an item name and the shulker gets a visual label of the item on it!\n\n<h2>How to name your shulkers:</h2>This list shows all of the valid names for a shulker box.\nIn these examples, I will be using the item \"Apple\".<ul><li>Apple</li>\n<li>Apple Shulker</li>\n<li>Apple Box</li>\n<li>Apple Shulker Box</li>\n<li>Any Prefix You Want Apple</li>\n<li>Any Prefix You Want Apple Shulker</li>\n<li>Any Prefix You Want Apple Box</li>\n<li>Any Prefix You Want Apple Shulker Box</li></ul>\nAll of these are case insensitive!",
   "optifine": "OptiFine is used to add the ability to change item models by renaming the item.",
+  "video": "BOBpQRMauQ4",
   "images": [
     "gui2",
     "inventory"
