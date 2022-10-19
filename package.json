@@ -7,7 +7,7 @@
       "includes"
     ],
     "pugLocals": {
-      "domain": "beta.ewanhowell.com"
+      "domain": "ewanhowell.com"
     }
   },
   "devDependencies": {

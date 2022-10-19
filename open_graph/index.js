@@ -21,8 +21,8 @@ for (const type of types) {
 html
   head
     title ${entryName} - ${data.author ?? "Ewan Howell"}
-    link(rel = "icon", type = "image/png", sizes = "16x16", href = "/assets/images/${type}/${id}/icon.webp")
-    link(rel = "icon", type = "image/png", sizes = "32x32", href = "/assets/images/${type}/${id}/icon.webp")
+    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/${type}/${id}/icon.webp")
+    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/${type}/${id}/icon.webp")
     meta(property = "og:type", content = "website")
     meta(property = "og:title", content = "${entryName} - ${data.author ?? "Ewan Howell"}")
     meta(property = "og:description", content = "${data.subtitle.replace(/\n/g, " ")}")
