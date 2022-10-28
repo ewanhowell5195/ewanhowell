@@ -1,0 +1,17 @@
+{
+  "subtitle": "Give skeletons physics!",
+  "description": "This pack makes it so that when any of the skeleton entities die, instead of falling over to the side like normal, they collapse into a pile of bones!\n\n<h2>The entities this applies to are as follows:</h2><ul><li>Skeleton</li><li>Skeleton Horse</li><li>Stray</li><li>Wither Skeleton</li><li>The Wither</li></ul><img src=\"https://i.imgur.com/TKOBnK8.gif\">",
+  "optifine": "OptiFine is required so that entity models can be customised.",
+  "video": "26GUodU9zjg",
+  "images": [
+    "skeleton",
+    "bones"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "http://adfoc.us/54653785700587",
+      "mirror": "https://www.mediafire.com/file/g38ae11t74zjrlq/Skeleton+Physics.zip/file"
+    }
+  ]
+}

@@ -20,6 +20,7 @@
         {
           "name": "Tweaks",
           "entries": [
+            "skeleton-physics",
             "minecarts-with-wheels",
             "paritysheep",
             "throwing-axes",
@@ -675,6 +676,10 @@
     "sheepified-remastered": {
       "image": "group1",
       "optifine": 2
+    },
+    "skeleton-physics": {
+      "image": "bones",
+      "optifine": true
     },
     "snowstorm": {
       "image": "forest",
