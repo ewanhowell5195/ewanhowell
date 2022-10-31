@@ -42,6 +42,12 @@
           ]
         },
         {
+          "name": "Seasonal",
+          "entries": [
+            "packtober-remastered"
+          ]
+        },
+        {
           "name": "Addons",
           "entries": [
             "visual-shulker-labels-2d-display",
