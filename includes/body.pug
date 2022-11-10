@@ -12,22 +12,35 @@ body
     #header
       .logo#logo-side
         img(src = "/assets/images/logo/logo_side.webp")
-      a.logo(href = "/", is = "f-a")
+      a.page-button.logo(href = "/", is = "f-a")
         img(src = "/assets/images/logo/logo.webp")
-      a.page-button(href = "/", is = "f-a") Home
-      a.page-button(href = "/resourcepacks", is = "f-a") Resource Packs
-      a.page-button(href = "/plugins", is = "f-a") Blockbench Plugins
-      a.page-button(href = "/maps", is = "f-a") Maps
-      a.page-button(href = "https://old.ewanhowell.com/", target = "_blank") Old Website
+        span
+      a.page-button(href = "/resourcepacks", is = "f-a"): span Resource Packs
+      a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
+      a.page-button(href = "/maps", is = "f-a"): span Maps
       .spacer
-      a.page-button(href = "https://www.wynem.com/", target = "_blank") Wynem
-      a.page-button(href = "https://discord.com/invite/pkRxtGw", target = "_blank") Discord
-    #mobile-header
-      a.logo(href = "/", is = "f-a")
-        img(src = "/assets/images/logo/logo.webp")
-        span Ewan Howell
-      .spacer
-      #mobile-menu-button: include /svg/menu.svg
+      a.page-button(href = "https://www.wynem.com/", target = "_blank"): span Wynem
+      a.page-button(href = "https://discord.com/invite/pkRxtGw", target = "_blank"): span Discord
+    .sidebar-button.hamburger-container.outside
+        .hamburger
+          .hamburger-line
+  #sidebar
+    a.page-button(href = "/", is = "f-a"): span Home
+    .line
+    a.page-button(href = "/resourcepacks", is = "f-a"): span Resource Packs
+    a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
+    a.page-button(href = "/maps", is = "f-a"): span Maps
+    a.page-button(href = "https://old.ewanhowell.com/?dungeons", target = "_blank"): span Dungeons Mods
+    .line
+    a.page-button(href = "https://old.ewanhowell.com/?renders", target = "_blank"): span Renders
+    a.page-button(href = "https://sketchfab.com/ewanhowell5195/models", target = "_blank"): span Models
+    a.page-button(href = "https://github.com/ewanhowell5195/ewanhowell5195.github.io/releases", target = "_blank"): span Programs
+    .line
+    a.page-button(href = "https://www.wynem.com/", target = "_blank"): span Wynem
+    a.page-button(href = "https://discord.com/invite/pkRxtGw", target = "_blank"): span Discord
+    .spacer
+    .line
+    a.page-button(href = "https://old.ewanhowell.com/", target = "_blank"): span Old Website
   #content
   #mobile-menu.hidden
     #mobile-menu-close-button: include /svg/close.svg

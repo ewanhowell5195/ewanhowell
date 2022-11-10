@@ -58,15 +58,22 @@ window.imageObserver  =  new IntersectionObserver((entries, observer) => {
 	})
 })
 
-// header
+// sidebar
 
-$("#mobile-menu").on("click", e => {
-  if (e.target.id === "mobile-menu") e.target.classList.add("hidden")
+const sidebarButton = $(".sidebar-button")
+const sidebar = $("#sidebar")
+sidebarButton.on("click", e => {
+  sidebarButton.toggleClass("active")
+  sidebar.toggleClass("active")
 })
 
-$("#mobile-menu-button").on("click", e => $("#mobile-menu").removeClass("hidden"))
-
-$("#mobile-menu-close-button").on("click", e => $("#mobile-menu").addClass("hidden"))
+$(document).on("click", e => {
+  const target = $(e.target)
+  if (sidebar.hasClass("active") && !(e.target === sidebar[0] || target.parents("#sidebar").length) && !(e.target === sidebarButton[0] || target.parents(".sidebar-button").length)) {
+    sidebarButton.removeClass("active")
+    sidebar.removeClass("active")
+  }
+})
 
 // pages
 
