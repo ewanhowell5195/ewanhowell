@@ -67,11 +67,19 @@ sidebarButton.on("click", e => {
   sidebar.toggleClass("active")
 })
 
-$(document).on("click", e => {
-  const target = $(e.target)
-  if (sidebar.hasClass("active") && !(e.target === sidebar[0] || target.parents("#sidebar").length) && !(e.target === sidebarButton[0] || target.parents(".sidebar-button").length)) {
-    sidebarButton.removeClass("active")
-    sidebar.removeClass("active")
+$(window).on({
+  click(e) {
+    const target = $(e.target)
+    if (globalThis.innerWidth < 1330 + sidebar.width() * 2 + 200 && ((target.hasClass("page-button") || target.parents(".page-button").length && target.parents("#sidebar").length) || sidebar.hasClass("active") && !(e.target === sidebar[0] || target.parents("#sidebar").length) && !(e.target === sidebarButton[0] || target.parents(".sidebar-button").length))) {
+      sidebarButton.removeClass("active")
+      sidebar.removeClass("active")
+    }
+  },
+  resize() {
+    if (globalThis.innerWidth < 1330 + sidebar.width() * 2 + 200 && sidebar.hasClass("active")) {
+      sidebarButton.removeClass("active")
+      sidebar.removeClass("active")
+    }
   }
 })
 
