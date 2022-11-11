@@ -67,7 +67,7 @@ class Page extends HTMLElement {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #fcfcfc;
+            background-color: var(--color-text-white);
             transition: width 100ms, height 250ms;
             z-index: 9999;
           }
@@ -97,12 +97,11 @@ class Page extends HTMLElement {
             text-decoration: none;
             display: flex;
             align-items: center;
-            color: white;
+            color: var(--color-text-white);;
             font-weight: 700;
             letter-spacing: 1px;
             padding: 0 10px;
             transition: background-color .15s, padding .15s;
-            user-select: none;
             fill: var(--color-text-white);
             gap: 5px;
             text-shadow: -2px 2px 1px var(--color-text-shadow)
@@ -110,23 +109,26 @@ class Page extends HTMLElement {
           .footer-button > svg {
             filter: drop-shadow(-2px 2px 1px var(--color-text-shadow));
           }
-          .footer-button:hover {
+          a.footer-button {
+            user-select: none;
+          }
+          a.footer-button:hover {
             background-color: var(--color-red-light);
           }
-          .footer-button:active {
+          a.footer-button:active {
             padding-top: 6px;
           }
           ::-webkit-scrollbar {
-              width:10px
+            width:10px
           }
           ::-webkit-scrollbar-thumb {
-              background-color: var(--color-red)
+            background-color: var(--color-red)
           }
           ::-webkit-scrollbar-thumb:hover {
-              background-color: var(--color-red-light)
+            background-color: var(--color-red-light)
           }
           ::-webkit-scrollbar-thumb:hover:active {
-              background-color: var(--color-red-dark)
+            background-color: var(--color-red-dark)
           }
         `)[0],
         E("div").addClass("progress-bar")[0]

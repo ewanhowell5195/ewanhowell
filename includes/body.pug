@@ -1,13 +1,4 @@
 body
-  template#footer-template
-    #footer-container
-      #footer
-        a.footer-button(href = "https://twitter.com/ewanhowell5195", target = "_blank")
-          include /svg/twitter.svg
-          span @ewanhowell5195
-        #footer-spacer
-        a.footer-button(href = "https://ko-fi.com/ewanhowell", target = "_blank") Donate
-        a.footer-button(href = "mailto:contact@ewanhowell.com", target = "_blank") Contact
   #header-container
     #header
       .logo#logo-side
@@ -41,15 +32,33 @@ body
     .spacer
     .line
     a.page-button(href = "https://old.ewanhowell.com/", target = "_blank"): span Old Website
+    .line
+    .sidebar-link-icons
+      a(href = "https://www.youtube.com/ewanhowell", target = "_blank")
+        include /svg/youtube.svg
+      a(href = "https://twitter.com/ewanhowell5195", target = "_blank")
+        include /svg/twitter.svg
+      a(href = "https://github.com/ewanhowell5195", target = "_blank")
+        include /svg/github.svg
+      a(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
+        include /svg/reddit.svg
+      a(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
+        include /svg/instagram.svg
   #content
-  #mobile-menu.hidden
-    #mobile-menu-close-button: include /svg/close.svg
-    #mobile-menu-link-container
-      a.mobile-menu-link(href = "/", is = "f-a"): span Home
-      a.mobile-menu-link(href = "/resourcepacks", is = "f-a"): span Resource Packs
-      a.mobile-menu-link(href = "/plugins", is = "f-a"): span Blockbench Plugins
-      a.mobile-menu-link(href = "/maps", is = "f-a"): span Maps
-      a.mobile-menu-link(href = "https://old.ewanhowell.com/", target = "_blank"): span Old Website
-      .mobile-line
-      a.mobile-menu-link(href = "https://www.wynem.com/", target = "_blank"): span Wynem
-      a.mobile-menu-link(href = "https://discord.com/invite/pkRxtGw", target = "_blank"): span Discord
+  template#footer-template
+    #footer-container
+      #footer
+        a.footer-button(href = "https://www.youtube.com/ewanhowell", target = "_blank")
+          include /svg/youtube.svg
+        a.footer-button(href = "https://twitter.com/ewanhowell5195", target = "_blank")
+          include /svg/twitter.svg
+        a.footer-button(href = "https://github.com/ewanhowell5195", target = "_blank")
+          include /svg/github.svg
+        a.footer-button(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
+          include /svg/reddit.svg
+        a.footer-button(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
+          include /svg/instagram.svg
+        span.footer-button @ewanhowell5195
+        #footer-spacer
+        a.footer-button(href = "https://ko-fi.com/ewanhowell", target = "_blank") Donate
+        a.footer-button(href = "mailto:contact@ewanhowell.com", target = "_blank") Contact
