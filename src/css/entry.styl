@@ -31,11 +31,16 @@
   right: 0
   bottom: 0
 
-  img
-    padding: 50px
-    height: 128px
-    image-rendering: pixelated
-    filter: drop-shadow(0 10px 4px var(--color-text-shadow))
+#logo
+  padding: 50px
+  height: 128px
+  image-rendering: pixelated
+  filter: drop-shadow(0 10px 4px var(--color-text-shadow))
+  font-size: 3.25rem
+  text-align: center
+  display: flex
+  align-items: center
+  font-weight: 700
     
 #category-name
   position: absolute
@@ -270,6 +275,9 @@
     
   img
     image-rendering: pixelated
+    
+  p
+    margin-top: 0
 
 #description, #subtitle
   white-space: pre-wrap
@@ -401,11 +409,11 @@
       & > *
           transition: transform .15s
 
-      svg
+      svg, img
         width: 28px
         height: 28px
-        filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
-        fill: white
+        filter: invert() drop-shadow(-2px 2px 1px var(--color-svg-shadow))
+        fill: black
         
       span
         text-align: center

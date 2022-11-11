@@ -1,0 +1,16 @@
+{
+  "subtitle": "Replace the default Blockbench Plugin Loader interface with an improved and redesigned Plugin Loader interface.",
+  "description": "This plugin replaces the built in Blockbench Plugin Loader interface with a new and improved Plugin Loader.<h2>Plugin Pages</h2>Each plugin now gets its own page where you can view all of its information, as well as install/uninstall/reload it.<h2>Plugin Tabs</h2>All of the tags used across the plugins are now shown as a list of tabs up the side of the Plugin Loader, allowing you to quickly and easily browse and filter by the tags.",
+  "images": [
+    "plugin",
+    "plugin-loader2.0",
+    "cem-template-loader",
+    "entity-wizard"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/plugin_loader_2.0"
+    }
+  ]
+}

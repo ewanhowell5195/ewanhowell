@@ -3,7 +3,8 @@
   "type": "module",
   "exports": "./index.js",
   "dependencies": {
-    "sharp": "^0.30.7",
-    "skia-canvas": "^0.9.30"
+    "sharp": "^0.31.0",
+    "skia-canvas": "^1.0.0",
+    "skia-canvas-twemoji": "github:ewanhowell5195/skia-canvas-twemoji"
   }
 }

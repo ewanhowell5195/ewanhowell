@@ -1,0 +1,21 @@
+{
+  "subtitle": "Create your very own preview scenes. Download preview scenes from the Preview Scene Store. Edit and manage existing preview scenes.",
+  "description": "<h2>Creating your own preview scenes</h2>With this plugin, you can create your own preview scenes that you can use with any model in Blockbench. A new format has been added that allows you to create, export, and install your very own preview scenes.<h2>Downloading preview scenes</h2><p>A preview scene store is included, that allows you to browse and download preview scenes created by other people. Any downloaded scenes can be edited and customised as you wish from the preview scene management menu. You can submit your own preview scenes to the <a href=\"https://github.com/ewanhowell5195/preview-scene-customiser/\">GitHub Repository</a>.</p><h2>How to use</h2><p>You can find all the options to manage, import, and download custom preview scenes under the <code>View > Preview Scene Customiser</code> menu.</p><p>To create custom preview scenes, use the new Preview Scene model format, and then export or install them from the <code>File > Export</code> menu.</p>",
+  "images": [
+    "scene",
+    "settings",
+    "manage",
+    "store"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/preview_scene_customiser"
+    },
+    {
+      "text": "Github Repository",
+      "link": "https://github.com/ewanhowell5195/preview-scene-customiser/",
+      "icon": "github"
+    }
+  ]
+}

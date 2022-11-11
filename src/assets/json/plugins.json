@@ -4,22 +4,24 @@
       "id": "Blockbench",
       "categories": [
         {
-          "name": "OptiFine",
+          "name": "Minecraft",
           "entries": [
             "cem-template-loader",
             "optifine-player-models"
           ]
         },
         {
-          "name": "Paint",
+          "name": "Blockbench",
           "entries": [
-            "colour-gradient-generator"
+            "preview-scene-customiser",
+            "plugin-loader-2.0",
+            "collapsible-start-screen-categories"
           ]
         },
         {
-          "name": "General",
+          "name": "Paint",
           "entries": [
-            "collapsible-start-screen-categories"
+            "colour-gradient-generator"
           ]
         }
       ]
@@ -30,15 +32,23 @@
       "name": "CEM Template Loader",
       "image": "entities"
     },
-    "optifine-player-models": {
-      "name": "OptiFine Player Models",
-      "image": "edit"
+    "collapsible-start-screen-categories": {
+      "image": "start"
     },
     "colour-gradient-generator": {
       "image": "colours"
     },
-    "collapsible-start-screen-categories": {
-      "image": "start"
+    "optifine-player-models": {
+      "name": "OptiFine Player Models",
+      "image": "edit"
+    },
+    "plugin-loader-2.0": {
+      "image": "plugin",
+      "logoless": true
+    },
+    "preview-scene-customiser": {
+      "image": "scene",
+      "logoless": true
     }
   }
 }

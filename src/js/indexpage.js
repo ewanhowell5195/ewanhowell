@@ -58,12 +58,18 @@ export function indexPageClass(type, title) {
               ).appendTo(versionDiv)
             )
             for (const entry of category.entries) {
+              const entryName = window[type].entries[entry].name ?? entry.replace(/-/g, " ").toTitleCase()
               const entryImages = E("div").addClass("entry-images").attr("id", entry)
-              entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${type}/${entry}/images/${window[type].entries[entry].image}.webp")`))
-              if (!window[type].entries[entry].logoLess) entryImages.append(E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`))
+              entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${window[type].entries[entry].image ? `${type}/${entry}/images/${window[type].entries[entry].image}` : "/home/logo_3d"}.webp")`))
+              if (window[type].entries[entry].logoless) entryImages.append(
+                E("div").addClass("logo").text(entryName)
+              )
+              else entryImages.append(
+                E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`)
+              )
               const entryDiv = E("a", {is: "f-a"}).attr("href", `/${type}/${entry}`).addClass("entry-container").append(
                 entryImages,
-                E("div").addClass("entry-name").text(window[type].entries[entry].name ?? entry.replace(/-/g, " ").toTitleCase())
+                E("div").addClass("entry-name").text(entryName)
               ).appendTo(categoryEntriesDiv)
               if (window[type].entries[entry].optifine) entryImages.append(E("img").addClass("optifine").attr("src", "/assets/images/logo/optifine.webp"))
             }

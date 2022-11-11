@@ -24,8 +24,16 @@ export function entryPageClass(page, type) {
       const localIcon = $("#local-icon").contents()
       const closeIcon = $("#close-icon").contents()
       const downloadIcon = $("#download-icon").contents()
-      $("#banner-background").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${window[type].entries[args[page]].image}.webp")`)
-      $("img#logo").attr("src", `/assets/images/${type}/${args[page]}/logo.webp`)
+      $("#banner-background").css("background-image", `url("/assets/images/${window[type].entries[args[page]].image ? `${type}/${args[page]}/images/${window[type].entries[args[page]].image}` : "/home/logo_3d"}.webp")`)
+      if (window[type].entries[args[page]].logoless) $("#banner-content").prepend(
+        E("div").attr("id", "logo").text(entryName)
+      )
+      else $("#banner-content").prepend(
+       E("img").attr({
+          id: "logo",
+          src: `/assets/images/${type}/${args[page]}/logo.webp`
+       })
+      )
       if (window[type].entries[args[page]].optifine) {
         $("#optifine").removeClass("hidden")
         if (window[type].entries[args[page]].optifine === 1) $("#optional").removeClass("hidden")
@@ -84,50 +92,52 @@ export function entryPageClass(page, type) {
           showImage()
         }))
       }
-      for (const [i, image] of data.images.entries()) {
-        images.prepend(E("img").attr({
-          id: `image-${i + offset}`,
-          src: `/assets/images/${type}/${args[page]}/images/${image}.webp`
-        }).addClass("showcase-image").on("click", e => {
-          const popup = E("div").addClass("popup").append(
-            E("div").addClass("popup-container").append(
-              E("img").addClass("popup-image").attr("src", `/assets/images/${type}/${args[page]}/images/${image}.webp`).css({
-                "max-width": "calc(90vw)",
-                "max-height": "calc(90vh)"
-              }),
-              closeIcon.clone(true).addClass("popup-image-close").on("click", e => popup.remove())
-            )
-          ).on("click", e => {
-            if (e.target.classList[0] === "popup") popup.remove()
-          }).appendTo(document.body)
-        }))
-        imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${image}.webp")`).on("click", e => {
-          img = i + offset
+      if (data.images) {
+        for (const [i, image] of data.images.entries()) {
+          images.prepend(E("img").attr({
+            id: `image-${i + offset}`,
+            src: `/assets/images/${type}/${args[page]}/images/${image}.webp`
+          }).addClass("showcase-image").on("click", e => {
+            const popup = E("div").addClass("popup").append(
+              E("div").addClass("popup-container").append(
+                E("img").addClass("popup-image").attr("src", `/assets/images/${type}/${args[page]}/images/${image}.webp`).css({
+                  "max-width": "calc(90vw)",
+                  "max-height": "calc(90vh)"
+                }),
+                closeIcon.clone(true).addClass("popup-image-close").on("click", e => popup.remove())
+              )
+            ).on("click", e => {
+              if (e.target.classList[0] === "popup") popup.remove()
+            }).appendTo(document.body)
+          }))
+          imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${image}.webp")`).on("click", e => {
+            img = i + offset
+            showImage()
+          }))
+        }
+        let img = 0
+        const prev = $("#prev").on("click", e => {
+          if (prev.hasClass("disabled")) return
+          img--
           showImage()
-        }))
-      }
-      let img = 0
-      const prev = $("#prev").on("click", e => {
-        if (prev.hasClass("disabled")) return
-        img--
+        })
+        const next = $("#next").on("click", e => {
+          if (next.hasClass("disabled")) return
+          img++
+          showImage()
+        })
+        function showImage() {
+          $(".showcase-image").removeClass("shown")
+          $(`#image-${img}`).addClass("shown")
+          $(".thumbnail-image").removeClass("selected")
+          $(`#thumbnail-${img}`).addClass("selected")
+          if (!img) prev.addClass("disabled")
+          else prev.removeClass("disabled")
+          if (img === data.images.length - 1 + offset) next.addClass("disabled")
+          else next.removeClass("disabled")
+        }
         showImage()
-      })
-      const next = $("#next").on("click", e => {
-        if (next.hasClass("disabled")) return
-        img++
-        showImage()
-      })
-      function showImage() {
-        $(".showcase-image").removeClass("shown")
-        $(`#image-${img}`).addClass("shown")
-        $(".thumbnail-image").removeClass("selected")
-        $(`#thumbnail-${img}`).addClass("selected")
-        if (!img) prev.addClass("disabled")
-        else prev.removeClass("disabled")
-        if (img === data.images.length - 1 + offset) next.addClass("disabled")
-        else next.removeClass("disabled")
       }
-      showImage()
       $("#entry-links-tabs div").on("click", e => {
         $("#entry-links-tabs .selected").removeClass("selected")
         $(e.target).addClass("selected")
@@ -166,13 +176,15 @@ export function entryPageClass(page, type) {
             localIcon.clone(true),
             E("span").text(link.text)
           ))
-          else links.append(E("a").attr({
-            href: link.link,
-            target: "_blank"
-          }).append(
-            linkIcon.clone(true),
-            E("span").text(link.text)
-          ))
+          else {
+            const linkElement = E("a").attr({
+              href: link.link,
+              target: "_blank"
+            }).appendTo(links)
+            if (link.icon) linkElement.append(E("img").attr("src", `../assets/images/svg/${link.icon}.svg`))
+            else linkElement.append(linkIcon.clone(true))
+            linkElement.append( E("span").text(link.text))
+          }
         }
       }
       const categoryName = window[type].versions.map(e => e.categories.find(e => e.entries.includes(args[page]))).find(e => e?.name)?.name
