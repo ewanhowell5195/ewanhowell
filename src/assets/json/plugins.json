@@ -14,7 +14,7 @@
           "name": "Blockbench",
           "entries": [
             "preview-scene-customiser",
-            "plugin-loader-2.0",
+            "plugin-loader-2-0",
             "collapsible-start-screen-categories"
           ]
         },
@@ -42,7 +42,8 @@
       "name": "OptiFine Player Models",
       "image": "edit"
     },
-    "plugin-loader-2.0": {
+    "plugin-loader-2-0": {
+      "name": "Plugin Loader 2.0",
       "image": "plugin",
       "logoless": true
     },
