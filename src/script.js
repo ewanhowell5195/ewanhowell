@@ -130,6 +130,8 @@ const routes = [
   entriesPageRoute("maps", "map"),
   basicPageRoute("plugins"),
   entriesPageRoute("plugins", "plugin"),
+  basicPageRoute("dungeonsmods"),
+  entriesPageRoute("dungeonsmods", "dungeonsmod"),
   basicPageRoute("colours"),
   basicPageRoute("renders")
 ]

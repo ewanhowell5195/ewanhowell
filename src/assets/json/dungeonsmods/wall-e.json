@@ -1,0 +1,16 @@
+{
+  "subtitle": "The WALL-E pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the chicken pet with WALL-E!",
+  "images": [
+    "render",
+    "menu",
+    "game"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780368987",
+      "mirror": "https://www.curseforge.com/minecraft-dungeons/mods/wall-e"
+    }
+  ]
+}

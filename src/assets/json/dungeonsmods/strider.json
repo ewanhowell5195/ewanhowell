@@ -1,0 +1,16 @@
+{
+  "subtitle": "The Strider pet mod for Minecraft Dungeons",
+  "description": "This is a mod which replaces the baby chicken pet with a strider!<h2>Available Versions</h2><ul><li>Strider - A regular strider as a pet</li><li>Baby Strider - A half resolution baby strider texture to acompany you on your travels</li><li>Strider Steve - It's a strider, with a steve skin. What more do you want</li></ul>",
+  "images": [
+    "strider",
+    "f8thful",
+    "steve"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780368990",
+      "mirror": "https://www.curseforge.com/minecraft-dungeons/mods/strider"
+    }
+  ]
+}

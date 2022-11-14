@@ -1,0 +1,94 @@
+{
+  "versions": [
+    {
+      "id": "Dungeons",
+      "categories": [
+        {
+          "name": "Pet Mods",
+          "entries": [
+            "companion-cube",
+            "wall-e",
+            "bb-8",
+            "claptrap",
+            "worm",
+            "strider",
+            "glados"
+          ]
+        },
+        {
+          "name": "Texture Packs",
+          "entries": [
+            "f8thful-dungeons"
+          ]
+        },
+        {
+          "name": "Utility",
+          "entries": [
+            "invisible-steve"
+          ]
+        },
+        {
+          "name": "Mods I've Contributed To",
+          "entries": [
+            "the-warden",
+            "striderchan",
+            "manhacks"
+          ]
+        }
+      ]
+    }
+  ],
+  "entries": {
+    "bb-8": {
+      "name": "BB-8",
+      "image": "render",
+      "logoless": true
+    },
+    "claptrap": {
+      "name": "ClapTrap",
+      "image": "render",
+      "logoless": true
+    },
+    "companion-cube": {
+      "image": "render",
+      "logoless": true
+    },
+    "f8thful-dungeons": {
+      "image": "zombie",
+      "logoless": true
+    },
+    "glados": {
+      "name": "GLaDOS",
+      "image": "glados",
+      "logoless": true
+    },
+    "invisible-steve": {
+      "image": "steve",
+      "logoless": true
+    },
+    "manhacks": {
+      "image": "render",
+      "logoless": true
+    },
+    "strider": {
+      "image": "strider",
+      "logoless": true
+    },
+    "striderchan": {
+      "image": "nether",
+      "logoless": true
+    },
+    "the-warden": {
+      "image": "warden",
+      "logoless": true
+    },
+    "wall-e": {
+      "name": "WALL-E",
+      "logoless": true
+    },
+    "worm": {
+      "image": "render",
+      "logoless": true
+    }
+  }
+}

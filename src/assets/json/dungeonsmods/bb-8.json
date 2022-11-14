@@ -1,0 +1,17 @@
+{
+  "subtitle": "The BB-8 pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the baby chicken pet with BB-8!",
+  "images": [
+    "render",
+    "game",
+    "menu",
+    "ui"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780368988",
+      "mirror": "https://www.curseforge.com/minecraft-dungeons/mods/bb-8"
+    }
+  ]
+}

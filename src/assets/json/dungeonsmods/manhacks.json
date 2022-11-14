@@ -1,0 +1,16 @@
+{
+  "subtitle": "The Manhack pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the parrot pet with manhacks!\nModel by Ewan Howell, put in game by PinkuRinku",
+  "images": [
+    "render",
+    "above",
+    "front"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780413640",
+      "mirror": "https://www.nexusmods.com/minecraftdungeons/mods/114"
+    }
+  ]
+}

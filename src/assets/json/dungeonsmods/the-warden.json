@@ -1,0 +1,16 @@
+{
+  "subtitle": "The Warden pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the Iron Golem artifact with a warden!\nModel recreation by Ewan Howell, texture by Toxteer, put in game by PinkuRinku",
+  "images": [
+    "warden",
+    "swamp",
+    "skeletons"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780411750",
+      "mirror": "https://www.nexusmods.com/minecraftdungeons/mods/93"
+    }
+  ]
+}

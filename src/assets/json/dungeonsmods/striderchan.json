@@ -1,0 +1,22 @@
+{
+  "subtitle": "The Striderchan pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the the Iron Golem artifact with Striderchan!\nModel recreation by Ewan Howell, put in game by PinkuRinku",
+  "images": [
+    "thumbnail",
+    "nether",
+    "squidcoast"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://adfoc.us/54653780413641",
+      "mirror": "https://www.nexusmods.com/minecraftdungeons/mods/102"
+    }
+  ],
+  "links": [
+    {
+      "text": "Model By MCVinnyq",
+      "link": "https://twitter.com/MCVinnyq"
+    }
+  ]
+}

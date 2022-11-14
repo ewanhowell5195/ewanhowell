@@ -118,6 +118,14 @@ class Page extends HTMLElement {
           a.footer-button:active {
             padding-top: 6px;
           }
+          .footer-button.username::before {
+            content: "@ewanhowell5195"
+          }
+          @media only screen and (max-width: 768px) {
+            .footer-button.username::before {
+              content: ""
+            }
+          }
           ::-webkit-scrollbar {
             width:10px
           }

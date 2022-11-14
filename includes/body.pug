@@ -10,18 +10,18 @@ body
       a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
       a.page-button(href = "/maps", is = "f-a"): span Maps
       .spacer
-      a.page-button(href = "https://www.wynem.com/", target = "_blank"): span Wynem
-      a.page-button(href = "https://discord.com/invite/pkRxtGw", target = "_blank"): span Discord
+      a.page-button(href = "https://wynem.com/", target = "_blank"): span Wynem
+      a.page-button(href = `https://discord.${self.domain}/`, target = "_blank"): span Discord
     .sidebar-button.hamburger-container.outside
-        .hamburger
-          .hamburger-line
+      .hamburger
+        .hamburger-line
   #sidebar
     a.page-button(href = "/", is = "f-a"): span Home
     .line
     a.page-button(href = "/resourcepacks", is = "f-a"): span Resource Packs
     a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
     a.page-button(href = "/maps", is = "f-a"): span Maps
-    a.page-button(href = "https://old.ewanhowell.com/?dungeons", target = "_blank"): span Dungeons Mods
+    a.page-button(href = "/dungeonsmods", is = "f-a"): span Dungeons Mods
     .line
     a.page-button(href = "/renders", is = "f-a"): span Renders
     a.page-button(href = "https://sketchfab.com/ewanhowell5195/models", target = "_blank"): span Models
@@ -58,7 +58,7 @@ body
           include /assets/images/svg/reddit.svg
         a.footer-button(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
           include /assets/images/svg/instagram.svg
-        span.footer-button @ewanhowell5195
+        span.footer-button.username
         #footer-spacer
         a.footer-button(href = "https://ko-fi.com/ewanhowell", target = "_blank") Donate
         a.footer-button(href = "mailto:contact@ewanhowell.com", target = "_blank") Contact
