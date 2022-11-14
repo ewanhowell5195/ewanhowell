@@ -13,6 +13,7 @@
         {
           "name": "Blockbench",
           "entries": [
+            "splash-art-customiser",
             "preview-scene-customiser",
             "plugin-loader-2-0",
             "collapsible-start-screen-categories"
@@ -49,6 +50,10 @@
     },
     "preview-scene-customiser": {
       "image": "scene",
+      "logoless": true
+    },
+    "splash-art-customiser": {
+      "image": "snowplough",
       "logoless": true
     }
   }

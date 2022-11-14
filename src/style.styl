@@ -274,7 +274,7 @@ body::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb
   position: absolute
   top: 0
   right: -48px
-  filter: drop-shadow(-2px 4px 1px var(--color-text-shadow))
+  filter: invert() drop-shadow(-2px 4px 1px var(--color-text-shadow))
   cursor: pointer
   transition: right .15s, opacity .15s
   opacity: 0
@@ -289,6 +289,7 @@ body::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb
   max-width: calc(90vw)
   max-height: calc(90vh)
   display: block
+  background-color: var(--color-grey-dark)
 
   &:hover ~ .popup-image-close
     right: 0

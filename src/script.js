@@ -130,7 +130,8 @@ const routes = [
   entriesPageRoute("maps", "map"),
   basicPageRoute("plugins"),
   entriesPageRoute("plugins", "plugin"),
-  basicPageRoute("colours")
+  basicPageRoute("colours"),
+  basicPageRoute("renders")
 ]
 
 let isOpeningPage = false

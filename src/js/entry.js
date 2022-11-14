@@ -1,3 +1,4 @@
+import { popupImage } from "/js/popupImage.js"
 import { Page } from "/js/pages.js"
 
 export function entryPageClass(page, type) {
@@ -98,17 +99,7 @@ export function entryPageClass(page, type) {
             id: `image-${i + offset}`,
             src: `/assets/images/${type}/${args[page]}/images/${image}.webp`
           }).addClass("showcase-image").on("click", e => {
-            const popup = E("div").addClass("popup").append(
-              E("div").addClass("popup-container").append(
-                E("img").addClass("popup-image").attr("src", `/assets/images/${type}/${args[page]}/images/${image}.webp`).css({
-                  "max-width": "calc(90vw)",
-                  "max-height": "calc(90vh)"
-                }),
-                closeIcon.clone(true).addClass("popup-image-close").on("click", e => popup.remove())
-              )
-            ).on("click", e => {
-              if (e.target.classList[0] === "popup") popup.remove()
-            }).appendTo(document.body)
+            popupImage(`/assets/images/${type}/${args[page]}/images/${image}.webp`)
           }))
           imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${image}.webp")`).on("click", e => {
             img = i + offset

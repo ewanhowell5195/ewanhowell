@@ -1,0 +1,19 @@
+{
+  "subtitle": "Customise the start screen's splash art, by adding your own!",
+  "description": "This plugin allows you to customise the start screen's splash art by adding your own! If you add multiple splash art images, you can set it to pick a random one every time your launch Blockbench.<h2>How to use</h2>On the top left corner of the splash art, you will find a gear icon. From here you can manage your custom splash arts.<h2>Splash art types</h2><ul><li>URL - A splash art can be loaded from a URL (faster loading)</li><li>File - A splash art can be loaded from a file (slower loading)</li><li>Gallery - Pick an image from the <a href=\"https://www.blockbench.net/gallery\">Blockbench Gallery</a></li></ul><h2>Supported file types</h2><ul><li>PNG</li><li>JPG/JPEG</li><li>GIF</li><li>WebP</li><li>SVG</li></ul>",
+  "images": [
+    "splash",
+    "manage",
+    "settings"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/splash_art_customiser"
+    },
+    {
+      "text": "Blockbench Gallery",
+      "link": "https://www.blockbench.net/gallery"
+    }
+  ]
+}
