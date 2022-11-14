@@ -7,7 +7,7 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
 }
 
-const types = ["resourcepacks", "maps", "plugins"]
+const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
 
 for (const type of types) {
   const entries = JSON.parse(fs.readFileSync(`../src/assets/json/${type}.json`, "utf-8")).entries
