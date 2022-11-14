@@ -83,6 +83,7 @@
     },
     "wall-e": {
       "name": "WALL-E",
+      "image": "render",
       "logoless": true
     },
     "worm": {

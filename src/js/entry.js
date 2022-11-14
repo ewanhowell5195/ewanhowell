@@ -128,6 +128,7 @@ export function entryPageClass(page, type) {
           else next.removeClass("disabled")
         }
         showImage()
+        if (data.images.length === 1) imageRow.addClass("hidden")
       }
       $("#entry-links-tabs div").on("click", e => {
         $("#entry-links-tabs .selected").removeClass("selected")
