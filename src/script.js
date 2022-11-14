@@ -91,15 +91,21 @@ function setupPage(name, container, data) {
   if (data) page[0].setData(data)
 }
 
+function historyHandler(updateHistory, url) {
+  if (updateHistory === "replace") {
+    history.replaceState({}, "", url)
+  } else if (updateHistory) {
+    history.pushState({}, "", url)
+  }
+}
+
 function basicPageRoute(name, rgx) {
   return [
     rgx ?? new RegExp(`^\/${name}\/?(?:\\?.*)?$`,"i"),
     async (url, container, updateHistory) => {
       await import(`/pages/${name}/page.js`)
       setupPage(name, container, Object.fromEntries(url.searchParams))
-      if (updateHistory) {
-        history.pushState({}, "", url)
-      }
+      historyHandler(updateHistory, url)
       return true
     }
   ]
@@ -114,9 +120,7 @@ function entriesPageRoute(name, singular) {
       if (Object.keys(window[name].entries).includes(entry)) {
         await import(`/pages/${singular}/page.js`)
         setupPage(singular, container, {[singular]: entry})
-        if (updateHistory) {
-          history.pushState({}, "", url)
-        }
+        historyHandler(updateHistory, url)
         return true
       }
     }
@@ -160,9 +164,7 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   if (!foundPage) {
     await import("/pages/home/page.js")
     setupPage("home", $("#content"), Object.fromEntries(url.searchParams))
-    if (updateHistory) {
-      history.pushState({}, "", "/")
-    }
+    historyHandler(updateHistory, "/")
   }
   isOpeningPage = false
 }
