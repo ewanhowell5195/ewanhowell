@@ -8,9 +8,9 @@ html
     -
       const defaults = Object.assign({
         title: "Ewan Howell",
-        description: "ewanhowell.com",
+        description: "Home to all of Ewan Howell's projects. From Minecraft resource packs, to Blockbench plugins, to Discord bots, everything is here!",
         colour: "#AC3535",
-        image: "home/logo_3d.webp",
+        image: "logo/logo.webp",
         icon16: "logo/logo_16.webp",
         icon32: "logo/logo_32.webp"
       }, meta)
@@ -28,7 +28,8 @@ html
     meta(property = "og:description", content = defaults.description)
     meta(property = "og:image", content = `https://${self.domain}/assets/images/${defaults.image}`)
     meta(property = "twitter:image", content = `https://${self.domain}/assets/images/${defaults.image}`)
-    meta(property = "twitter:card", content = "summary_large_image")
+    - if ("image" in meta)
+      meta(property = "twitter:card", content = "summary_large_image")
     meta(name = "theme-color", content = defaults.colour)
     meta(name = "viewport", content = "width=device-width")
     script(data-ad-client = "ca-pub-2999169357819471", async, src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
