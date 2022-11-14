@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Deep Dark - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/deep-dark/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/deep-dark/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Deep Dark - Ewan Howell")
-    meta(property = "og:description", content = "A pack to improve the bottom of the world!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/deep-dark/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/deep-dark/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#5d361f")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Deep Dark - Ewan Howell",
+      description: "A pack to improve the bottom of the world!",
+      image: "resourcepacks/deep-dark/cover.webp",
+      colour: "#5d361f",
+      icon: "resourcepacks/deep-dark/icon.webp"
+    }

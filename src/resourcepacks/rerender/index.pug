@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Rerender - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/rerender/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/rerender/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Rerender - Ewan Howell")
-    meta(property = "og:description", content = "The interdimensional improvement pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/rerender/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/rerender/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#493c4e")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Rerender - Ewan Howell",
+      description: "The interdimensional improvement pack",
+      image: "resourcepacks/rerender/cover.webp",
+      colour: "#493c4e",
+      icon: "resourcepacks/rerender/icon.webp"
+    }

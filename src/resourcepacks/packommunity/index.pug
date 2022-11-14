@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Packommunity - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/packommunity/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/packommunity/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Packommunity - Ewan Howell")
-    meta(property = "og:description", content = "A pack made entirely from community suggestions")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/packommunity/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/packommunity/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#252513")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Packommunity - Ewan Howell",
+      description: "A pack made entirely from community suggestions",
+      image: "resourcepacks/packommunity/cover.webp",
+      colour: "#252513",
+      icon: "resourcepacks/packommunity/icon.webp"
+    }

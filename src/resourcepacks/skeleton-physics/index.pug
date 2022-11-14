@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Skeleton Physics - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/skeleton-physics/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/skeleton-physics/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Skeleton Physics - Ewan Howell")
-    meta(property = "og:description", content = "Give skeletons physics!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/skeleton-physics/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/skeleton-physics/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#617349")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Skeleton Physics - Ewan Howell",
+      description: "Give skeletons physics!",
+      image: "resourcepacks/skeleton-physics/cover.webp",
+      colour: "#617349",
+      icon: "resourcepacks/skeleton-physics/icon.webp"
+    }

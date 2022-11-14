@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Google Images - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/google-images/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/google-images/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Google Images - Ewan Howell")
-    meta(property = "og:description", content = "Every texture is a Google image!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/google-images/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/google-images/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#5f6746")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Google Images - Ewan Howell",
+      description: "Every texture is a Google image!",
+      image: "resourcepacks/google-images/cover.webp",
+      colour: "#5f6746",
+      icon: "resourcepacks/google-images/icon.webp"
+    }

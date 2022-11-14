@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Scrolling Textures - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/scrolling-textures/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/scrolling-textures/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Scrolling Textures - Ewan Howell")
-    meta(property = "og:description", content = "A pack where all the textures are animated to move!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/scrolling-textures/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/scrolling-textures/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#757475")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Scrolling Textures - Ewan Howell",
+      description: "A pack where all the textures are animated to move!",
+      image: "resourcepacks/scrolling-textures/cover.webp",
+      colour: "#757475",
+      icon: "resourcepacks/scrolling-textures/icon.webp"
+    }

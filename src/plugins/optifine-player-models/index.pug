@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title OptiFine Player Models - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/plugins/optifine-player-models/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/plugins/optifine-player-models/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "OptiFine Player Models - Ewan Howell")
-    meta(property = "og:description", content = "Adds a new format that allows you to create OptiFine player models.")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/plugins/optifine-player-models/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/plugins/optifine-player-models/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#1b2028")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "OptiFine Player Models - Ewan Howell",
+      description: "Adds a new format that allows you to create OptiFine player models.",
+      image: "plugins/optifine-player-models/cover.webp",
+      colour: "#1b2028",
+      icon: "plugins/optifine-player-models/icon.webp"
+    }

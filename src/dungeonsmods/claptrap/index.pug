@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title ClapTrap - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/dungeonsmods/claptrap/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/dungeonsmods/claptrap/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "ClapTrap - Ewan Howell")
-    meta(property = "og:description", content = "The ClapTrap pet mod for Minecraft Dungeons")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/dungeonsmods/claptrap/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/dungeonsmods/claptrap/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#3c2b31")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "ClapTrap - Ewan Howell",
+      description: "The ClapTrap pet mod for Minecraft Dungeons",
+      image: "dungeonsmods/claptrap/cover.webp",
+      colour: "#3c2b31",
+      icon: "dungeonsmods/claptrap/icon.webp"
+    }

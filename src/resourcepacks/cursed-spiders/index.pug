@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Cursed Spiders - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/cursed-spiders/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/cursed-spiders/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Cursed Spiders - Ewan Howell")
-    meta(property = "og:description", content = "The cursed spiders resource pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/cursed-spiders/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/cursed-spiders/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#434e26")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Cursed Spiders - Ewan Howell",
+      description: "The cursed spiders resource pack",
+      image: "resourcepacks/cursed-spiders/cover.webp",
+      colour: "#434e26",
+      icon: "resourcepacks/cursed-spiders/icon.webp"
+    }

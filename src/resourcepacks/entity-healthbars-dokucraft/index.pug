@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Entity Healthbars: Dokucraft - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/entity-healthbars-dokucraft/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/entity-healthbars-dokucraft/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Entity Healthbars: Dokucraft - Ewan Howell")
-    meta(property = "og:description", content = "The pack where every entity has a healthbar! Now Dokucraft style!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/entity-healthbars-dokucraft/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/entity-healthbars-dokucraft/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#3a4828")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Entity Healthbars: Dokucraft - Ewan Howell",
+      description: "The pack where every entity has a healthbar! Now Dokucraft style!",
+      image: "resourcepacks/entity-healthbars-dokucraft/cover.webp",
+      colour: "#3a4828",
+      icon: "resourcepacks/entity-healthbars-dokucraft/icon.webp"
+    }

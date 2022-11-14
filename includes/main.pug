@@ -1,0 +1,102 @@
+doctype html
+html
+  head
+    - let meta
+    block meta
+      - meta = {}
+
+    -
+      const defaults = Object.assign({
+        title: "Ewan Howell",
+        description: "ewanhowell.com",
+        colour: "#AC3535",
+        image: "home/logo_3d.webp",
+        icon16: "logo/logo_16.webp",
+        icon32: "logo/logo_32.webp"
+      }, meta)
+
+      if ("icon" in meta) {
+        defaults.icon16 = meta.icon
+        defaults.icon32 = meta.icon
+      }
+
+    title=meta.title
+    link(rel = "icon", type = "image/webp", sizes = "16x16", href = `/assets/images/logo/${defaults.icon16}`)
+    link(rel = "icon", type = "image/webp", sizes = "32x32", href = `/assets/images/logo/${defaults.icon32}`)
+    meta(property = "og:type", content = "website")
+    meta(property = "og:title", content = defaults.title)
+    meta(property = "og:description", content = defaults.description)
+    meta(property = "og:image", content = `https://${self.domain}/assets/images/${defaults.image}`)
+    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/${defaults.image}`)
+    meta(property = "twitter:card", content = "summary_large_image")
+    meta(name = "theme-color", content = defaults.colour)
+    meta(name = "viewport", content = "width=device-width")
+    script(data-ad-client = "ca-pub-2999169357819471", async, src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+    script(async, src = "https://www.googletagmanager.com/gtag/js?id = UA-155158328-2")
+    link(rel = "stylesheet", href = "/style.css")
+    script(data-cfasync="false", type = "text/javascript", src = "https://code.jquery.com/jquery-3.6.0.slim.min.js")
+    script(data-cfasync="false", src = "/script.js", type = "module")
+    link(rel = "modulepreload", href = "/pages/home/page.js")
+    link(rel = "modulepreload", href = "/js/pages.js")
+  body
+    #header-container
+      #header
+        .logo#logo-side
+          img(src = "/assets/images/logo/logo_side.webp")
+        a.page-button.logo(href = "/", is = "f-a")
+          img(src = "/assets/images/logo/logo.webp")
+          span
+        a.page-button(href = "/resourcepacks", is = "f-a"): span Resource Packs
+        a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
+        a.page-button(href = "/maps", is = "f-a"): span Maps
+        .spacer
+        a.page-button(href = "https://wynem.com/", target = "_blank"): span Wynem
+        a.page-button(href = `https://discord.${self.domain}/`, target = "_blank"): span Discord
+      .sidebar-button.hamburger-container.outside
+        .hamburger
+          .hamburger-line
+    #sidebar
+      a.page-button(href = "/", is = "f-a"): span Home
+      .line
+      a.page-button(href = "/resourcepacks", is = "f-a"): span Resource Packs
+      a.page-button(href = "/plugins", is = "f-a"): span Blockbench Plugins
+      a.page-button(href = "/maps", is = "f-a"): span Maps
+      a.page-button(href = "/dungeonsmods", is = "f-a"): span Dungeons Mods
+      .line
+      a.page-button(href = "/renders", is = "f-a"): span Renders
+      a.page-button(href = "https://sketchfab.com/ewanhowell5195/models", target = "_blank"): span Models
+      a.page-button(href = "https://github.com/ewanhowell5195/ewanhowell5195.github.io/releases", target = "_blank"): span Programs
+      .line
+      a.page-button(href = "https://wynem.com/", target = "_blank"): span Wynem
+      a.page-button(href = `https://discord.${self.domain}/`, target = "_blank"): span Discord
+      .spacer
+      .line
+      .sidebar-link-icons
+        a(href = "https://www.youtube.com/ewanhowell", target = "_blank")
+          include /assets/images/svg/youtube.svg
+        a(href = "https://twitter.com/ewanhowell5195", target = "_blank")
+          include /assets/images/svg/twitter.svg
+        a(href = "https://github.com/ewanhowell5195", target = "_blank")
+          include /assets/images/svg/github.svg
+        a(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
+          include /assets/images/svg/reddit.svg
+        a(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
+          include /assets/images/svg/instagram.svg
+    #content
+    template#footer-template
+      #footer-container
+        #footer
+          a.footer-button(href = "https://www.youtube.com/ewanhowell", target = "_blank")
+            include /assets/images/svg/youtube.svg
+          a.footer-button(href = "https://twitter.com/ewanhowell5195", target = "_blank")
+            include /assets/images/svg/twitter.svg
+          a.footer-button(href = "https://github.com/ewanhowell5195", target = "_blank")
+            include /assets/images/svg/github.svg
+          a.footer-button(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
+            include /assets/images/svg/reddit.svg
+          a.footer-button(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
+            include /assets/images/svg/instagram.svg
+          span.footer-button.username
+          #footer-spacer
+          a.footer-button(href = "https://ko-fi.com/ewanhowell", target = "_blank") Donate
+          a.footer-button(href = "mailto:contact@ewanhowell.com", target = "_blank") Contact

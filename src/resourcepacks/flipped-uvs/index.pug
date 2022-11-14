@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Flipped Uvs - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/flipped-uvs/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/flipped-uvs/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Flipped Uvs - Ewan Howell")
-    meta(property = "og:description", content = "Give all entities flipped opposite UVs")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/flipped-uvs/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/flipped-uvs/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#5b6966")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Flipped Uvs - Ewan Howell",
+      description: "Give all entities flipped opposite UVs",
+      image: "resourcepacks/flipped-uvs/cover.webp",
+      colour: "#5b6966",
+      icon: "resourcepacks/flipped-uvs/icon.webp"
+    }

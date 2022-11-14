@@ -21,21 +21,19 @@ for (const type of types) {
     if (details.image) bgPath = `../src/assets/images/${type}/${id}/images/${details.image}.webp`
     else bgPath = "../src/assets/images/home/logo_3d.webp"
     const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
-    fs.writeFileSync(`../src/${type}/${id}/index.pug`, `doctype html
-html
-  head
-    title ${entryName} - ${data.author ?? "Ewan Howell"}
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/${type}/${id}/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/${type}/${id}/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "${entryName} - ${data.author ?? "Ewan Howell"}")
-    meta(property = "og:description", content = "${data.subtitle.replace(/\n/g, " ")}")
-    meta(property = "og:image", content = \`https://\${self.domain}/assets/images/${type}/${id}/cover.webp\`)
-    meta(property = "twitter:image", content = \`https://\${self.domain}/assets/images/${type}/${id}/cover.webp\`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "${`#${(await bgSharp.clone().resize(1, 1).raw().toBuffer()).toString("hex")}`.slice(0, 7)}")
-    include /../includes/head.pug
-  include /../includes/body.pug`)
+    
+
+    fs.writeFileSync(`../src/${type}/${id}/index.pug`, `extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "${entryName} - ${data.author ?? "Ewan Howell"}",
+      description: "${data.subtitle.replace(/\n/g, " ")}",
+      image: "${type}/${id}/cover.webp",
+      colour: "#${(await bgSharp.clone().resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}",
+      icon: "${type}/${id}/icon.webp"
+    }`, "utf-8")
     const bg = await bgSharp.png().toBuffer().then(s => loadImage(s))
     const canvas = new Canvas(bg.width, bg.height)
     const ctx = canvas.getContext("2d")

@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title 4thful - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/4thful/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/4thful/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "4thful - Ewan Howell")
-    meta(property = "og:description", content = "The Vanilla 4x4 Resource Pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/4thful/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/4thful/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#605537")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "4thful - Ewan Howell",
+      description: "The Vanilla 4x4 Resource Pack",
+      image: "resourcepacks/4thful/cover.webp",
+      colour: "#605537",
+      icon: "resourcepacks/4thful/icon.webp"
+    }

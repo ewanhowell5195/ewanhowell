@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Craftmas - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/craftmas/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/craftmas/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Craftmas - Ewan Howell")
-    meta(property = "og:description", content = "The Christmas themed resource pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/craftmas/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/craftmas/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#cab1a3")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Craftmas - Ewan Howell",
+      description: "The Christmas themed resource pack",
+      image: "resourcepacks/craftmas/cover.webp",
+      colour: "#cab1a3",
+      icon: "resourcepacks/craftmas/icon.webp"
+    }

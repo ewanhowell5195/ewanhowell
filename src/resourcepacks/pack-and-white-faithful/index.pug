@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Pack & White: Faithful - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/pack-and-white-faithful/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/pack-and-white-faithful/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Pack & White: Faithful - Ewan Howell")
-    meta(property = "og:description", content = "The black and white resource pack. Now in 32x!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/pack-and-white-faithful/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/pack-and-white-faithful/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#302e2d")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Pack & White: Faithful - Ewan Howell",
+      description: "The black and white resource pack. Now in 32x!",
+      image: "resourcepacks/pack-and-white-faithful/cover.webp",
+      colour: "#302e2d",
+      icon: "resourcepacks/pack-and-white-faithful/icon.webp"
+    }

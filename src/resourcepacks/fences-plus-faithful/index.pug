@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Fences+: Faithful - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/fences-plus-faithful/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/fences-plus-faithful/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Fences+: Faithful - Ewan Howell")
-    meta(property = "og:description", content = "The fence improvement resource pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/fences-plus-faithful/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/fences-plus-faithful/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#404e3e")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Fences+: Faithful - Ewan Howell",
+      description: "The fence improvement resource pack",
+      image: "resourcepacks/fences-plus-faithful/cover.webp",
+      colour: "#404e3e",
+      icon: "resourcepacks/fences-plus-faithful/icon.webp"
+    }

@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title ParitySheep - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/paritysheep/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/paritysheep/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "ParitySheep - Ewan Howell")
-    meta(property = "og:description", content = "Bring parity to the sheep of Minecraft!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/paritysheep/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/paritysheep/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#a9b2a1")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "ParitySheep - Ewan Howell",
+      description: "Bring parity to the sheep of Minecraft!",
+      image: "resourcepacks/paritysheep/cover.webp",
+      colour: "#a9b2a1",
+      icon: "resourcepacks/paritysheep/icon.webp"
+    }

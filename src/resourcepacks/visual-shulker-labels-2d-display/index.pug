@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Visual Shulker Labels: 2D Display - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/visual-shulker-labels-2d-display/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/visual-shulker-labels-2d-display/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Visual Shulker Labels: 2D Display - Ewan Howell")
-    meta(property = "og:description", content = "Label your shulkers with style")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/visual-shulker-labels-2d-display/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/visual-shulker-labels-2d-display/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#453634")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Visual Shulker Labels: 2D Display - Ewan Howell",
+      description: "Label your shulkers with style",
+      image: "resourcepacks/visual-shulker-labels-2d-display/cover.webp",
+      colour: "#453634",
+      icon: "resourcepacks/visual-shulker-labels-2d-display/icon.webp"
+    }

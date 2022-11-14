@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Sheep Ender Dragon - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/sheep-ender-dragon/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/sheep-ender-dragon/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Sheep Ender Dragon - Ewan Howell")
-    meta(property = "og:description", content = "Turns the Ender Dragon into a Sheep!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/sheep-ender-dragon/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/sheep-ender-dragon/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#3e2955")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Sheep Ender Dragon - Ewan Howell",
+      description: "Turns the Ender Dragon into a Sheep!",
+      image: "resourcepacks/sheep-ender-dragon/cover.webp",
+      colour: "#3e2955",
+      icon: "resourcepacks/sheep-ender-dragon/icon.webp"
+    }

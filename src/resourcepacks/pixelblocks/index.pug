@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title pixelBlocks - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/pixelblocks/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/pixelblocks/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "pixelBlocks - Ewan Howell")
-    meta(property = "og:description", content = "The pack where every pixel is a block texture!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/pixelblocks/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/pixelblocks/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#4d492d")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "pixelBlocks - Ewan Howell",
+      description: "The pack where every pixel is a block texture!",
+      image: "resourcepacks/pixelblocks/cover.webp",
+      colour: "#4d492d",
+      icon: "resourcepacks/pixelblocks/icon.webp"
+    }

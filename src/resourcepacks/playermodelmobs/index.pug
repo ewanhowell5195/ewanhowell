@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title PlayerModelMobs - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/playermodelmobs/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/playermodelmobs/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "PlayerModelMobs - Ewan Howell")
-    meta(property = "og:description", content = "The Pack where every entity is a Player Model!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/playermodelmobs/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/playermodelmobs/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#453323")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "PlayerModelMobs - Ewan Howell",
+      description: "The Pack where every entity is a Player Model!",
+      image: "resourcepacks/playermodelmobs/cover.webp",
+      colour: "#453323",
+      icon: "resourcepacks/playermodelmobs/icon.webp"
+    }

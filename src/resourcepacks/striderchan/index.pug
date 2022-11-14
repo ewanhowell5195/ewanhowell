@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Striderchan - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/striderchan/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/striderchan/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Striderchan - Ewan Howell")
-    meta(property = "og:description", content = "The Pack where every entity is a Player Model!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/striderchan/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/striderchan/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#6b2d14")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Striderchan - Ewan Howell",
+      description: "The Pack where every entity is a Player Model!",
+      image: "resourcepacks/striderchan/cover.webp",
+      colour: "#6b2d14",
+      icon: "resourcepacks/striderchan/icon.webp"
+    }

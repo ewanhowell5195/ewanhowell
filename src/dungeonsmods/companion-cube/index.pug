@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Companion Cube - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/dungeonsmods/companion-cube/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/dungeonsmods/companion-cube/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Companion Cube - Ewan Howell")
-    meta(property = "og:description", content = "The Companion Cube pet mod for Minecraft Dungeons")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/dungeonsmods/companion-cube/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/dungeonsmods/companion-cube/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#26182a")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Companion Cube - Ewan Howell",
+      description: "The Companion Cube pet mod for Minecraft Dungeons",
+      image: "dungeonsmods/companion-cube/cover.webp",
+      colour: "#26182a",
+      icon: "dungeonsmods/companion-cube/icon.webp"
+    }

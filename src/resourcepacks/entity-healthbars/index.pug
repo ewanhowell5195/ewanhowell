@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Entity Healthbars - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/entity-healthbars/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/entity-healthbars/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Entity Healthbars - Ewan Howell")
-    meta(property = "og:description", content = "The pack where every entity has a healthbar!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/entity-healthbars/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/entity-healthbars/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#63482b")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Entity Healthbars - Ewan Howell",
+      description: "The pack where every entity has a healthbar!",
+      image: "resourcepacks/entity-healthbars/cover.webp",
+      colour: "#63482b",
+      icon: "resourcepacks/entity-healthbars/icon.webp"
+    }

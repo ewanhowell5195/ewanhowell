@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title The Cursed Pack - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/the-cursed-pack/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/the-cursed-pack/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "The Cursed Pack - Ewan Howell")
-    meta(property = "og:description", content = "A cursed resource pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/the-cursed-pack/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/the-cursed-pack/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#866833")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "The Cursed Pack - Ewan Howell",
+      description: "A cursed resource pack",
+      image: "resourcepacks/the-cursed-pack/cover.webp",
+      colour: "#866833",
+      icon: "resourcepacks/the-cursed-pack/icon.webp"
+    }

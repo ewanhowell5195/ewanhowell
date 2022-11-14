@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Pack & White - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/pack-and-white/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/pack-and-white/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Pack & White - Ewan Howell")
-    meta(property = "og:description", content = "The black and white resource pack")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/pack-and-white/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/pack-and-white/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#585858")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Pack & White - Ewan Howell",
+      description: "The black and white resource pack",
+      image: "resourcepacks/pack-and-white/cover.webp",
+      colour: "#585858",
+      icon: "resourcepacks/pack-and-white/icon.webp"
+    }

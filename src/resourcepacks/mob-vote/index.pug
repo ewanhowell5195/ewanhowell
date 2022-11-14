@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Mob Vote - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/mob-vote/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/mob-vote/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Mob Vote - Ewan Howell")
-    meta(property = "og:description", content = "The pack that adds the Mob Vote entities.")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/mob-vote/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/mob-vote/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#45552d")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Mob Vote - Ewan Howell",
+      description: "The pack that adds the Mob Vote entities.",
+      image: "resourcepacks/mob-vote/cover.webp",
+      colour: "#45552d",
+      icon: "resourcepacks/mob-vote/icon.webp"
+    }

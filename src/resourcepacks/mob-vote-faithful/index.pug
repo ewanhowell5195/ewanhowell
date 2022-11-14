@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Mob Vote: Faithful - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/mob-vote-faithful/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/mob-vote-faithful/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Mob Vote: Faithful - Ewan Howell")
-    meta(property = "og:description", content = "The pack that adds the Mob Vote entities. Now in 32x!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/mob-vote-faithful/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/mob-vote-faithful/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#3b4920")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Mob Vote: Faithful - Ewan Howell",
+      description: "The pack that adds the Mob Vote entities. Now in 32x!",
+      image: "resourcepacks/mob-vote-faithful/cover.webp",
+      colour: "#3b4920",
+      icon: "resourcepacks/mob-vote-faithful/icon.webp"
+    }

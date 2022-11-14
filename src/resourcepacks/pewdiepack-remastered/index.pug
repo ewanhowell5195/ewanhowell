@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title PewDiePack Remastered - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/pewdiepack-remastered/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/pewdiepack-remastered/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "PewDiePack Remastered - Ewan Howell")
-    meta(property = "og:description", content = "This is Pewdiepack Remastered!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/pewdiepack-remastered/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/pewdiepack-remastered/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#6e7469")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "PewDiePack Remastered - Ewan Howell",
+      description: "This is Pewdiepack Remastered!",
+      image: "resourcepacks/pewdiepack-remastered/cover.webp",
+      colour: "#6e7469",
+      icon: "resourcepacks/pewdiepack-remastered/icon.webp"
+    }

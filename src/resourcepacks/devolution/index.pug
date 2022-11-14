@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Devolution - Bold Muddy
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/devolution/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/devolution/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Devolution - Bold Muddy")
-    meta(property = "og:description", content = "Restoring Minecraft to its origins")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/devolution/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/devolution/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#776530")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Devolution - Bold Muddy",
+      description: "Restoring Minecraft to its origins",
+      image: "resourcepacks/devolution/cover.webp",
+      colour: "#776530",
+      icon: "resourcepacks/devolution/icon.webp"
+    }

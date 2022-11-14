@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Splash Art Customiser - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/plugins/splash-art-customiser/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/plugins/splash-art-customiser/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Splash Art Customiser - Ewan Howell")
-    meta(property = "og:description", content = "Customise the start screen's splash art, by adding your own!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/plugins/splash-art-customiser/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/plugins/splash-art-customiser/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#4a4e61")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Splash Art Customiser - Ewan Howell",
+      description: "Customise the start screen's splash art, by adding your own!",
+      image: "plugins/splash-art-customiser/cover.webp",
+      colour: "#4a4e61",
+      icon: "plugins/splash-art-customiser/icon.webp"
+    }

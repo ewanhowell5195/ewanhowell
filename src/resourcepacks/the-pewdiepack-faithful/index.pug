@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title The PewDiePack: Faithful - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/the-pewdiepack-faithful/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/the-pewdiepack-faithful/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "The PewDiePack: Faithful - Ewan Howell")
-    meta(property = "og:description", content = "This is The PewDiePack: Faithful")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/the-pewdiepack-faithful/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/the-pewdiepack-faithful/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#695764")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "The PewDiePack: Faithful - Ewan Howell",
+      description: "This is The PewDiePack: Faithful",
+      image: "resourcepacks/the-pewdiepack-faithful/cover.webp",
+      colour: "#695764",
+      icon: "resourcepacks/the-pewdiepack-faithful/icon.webp"
+    }

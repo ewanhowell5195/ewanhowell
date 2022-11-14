@@ -1,12 +1,8 @@
-doctype html
-html
-  head
-    title Colours - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/logo/logo_16.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/logo/logo_32.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Colours - Ewan Howell")
-    meta(property = "og:description", content = "View a colour palette")
-    meta(name = "theme-color", content = "#AC3535")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Colours - Ewan Howell",
+      description: "View a colour palette"
+    }

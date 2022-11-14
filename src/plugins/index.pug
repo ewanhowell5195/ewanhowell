@@ -1,15 +1,10 @@
-doctype html
-html
-  head
-    title Plugins - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/logo/logo_16.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/logo/logo_32.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Plugins - Ewan Howell")
-    meta(property = "og:description", content = "View all of Ewan Howell's plugins")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/plugins/cem-template-loader/images/dialog.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/plugins/cem-template-loader/images/dialog.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#21252A")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Plugins - Ewan Howell",
+      description: "View all of Ewan Howell's Blockbench plugins",
+      image: "plugins/cem-template-loader/images/dialog.webp",
+      colour: "#21252A"
+    }

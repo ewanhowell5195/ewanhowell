@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Barely Default - Mickey Joe Alpha
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/barely-default/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/barely-default/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Barely Default - Mickey Joe Alpha")
-    meta(property = "og:description", content = "Relatively Improved Default experience")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/barely-default/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/barely-default/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#363430")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Barely Default - Mickey Joe Alpha",
+      description: "Relatively Improved Default experience",
+      image: "resourcepacks/barely-default/cover.webp",
+      colour: "#363430",
+      icon: "resourcepacks/barely-default/icon.webp"
+    }

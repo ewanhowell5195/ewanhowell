@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Dimension Shift - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/dimension-shift/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/dimension-shift/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Dimension Shift - Ewan Howell")
-    meta(property = "og:description", content = "The dimension switching resource pack!")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/dimension-shift/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/dimension-shift/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#221907")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Dimension Shift - Ewan Howell",
+      description: "The dimension switching resource pack!",
+      image: "resourcepacks/dimension-shift/cover.webp",
+      colour: "#221907",
+      icon: "resourcepacks/dimension-shift/icon.webp"
+    }

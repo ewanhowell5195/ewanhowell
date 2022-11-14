@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title WALL-E - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/dungeonsmods/wall-e/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/dungeonsmods/wall-e/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "WALL-E - Ewan Howell")
-    meta(property = "og:description", content = "The WALL-E pet mod for Minecraft Dungeons")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/dungeonsmods/wall-e/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/dungeonsmods/wall-e/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#1a251f")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "WALL-E - Ewan Howell",
+      description: "The WALL-E pet mod for Minecraft Dungeons",
+      image: "dungeonsmods/wall-e/cover.webp",
+      colour: "#131313",
+      icon: "dungeonsmods/wall-e/icon.webp"
+    }

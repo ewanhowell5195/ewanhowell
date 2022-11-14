@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Template Green - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/template-green/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/template-green/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Template Green - Ewan Howell")
-    meta(property = "og:description", content = "The template textures for the grayscaled blocks")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/template-green/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/template-green/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#1c3d10")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Template Green - Ewan Howell",
+      description: "The template textures for the grayscaled blocks",
+      image: "resourcepacks/template-green/cover.webp",
+      colour: "#1c3d10",
+      icon: "resourcepacks/template-green/icon.webp"
+    }

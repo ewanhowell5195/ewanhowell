@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Packsepticeye - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/packsepticeye/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/packsepticeye/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Packsepticeye - Ewan Howell")
-    meta(property = "og:description", content = "This is Packsepticeye")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/packsepticeye/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/packsepticeye/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#feaf7f")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Packsepticeye - Ewan Howell",
+      description: "This is Packsepticeye",
+      image: "resourcepacks/packsepticeye/cover.webp",
+      colour: "#feaf7f",
+      icon: "resourcepacks/packsepticeye/icon.webp"
+    }

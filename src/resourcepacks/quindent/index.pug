@@ -1,15 +1,11 @@
-doctype html
-html
-  head
-    title Quindent - Ewan Howell
-    link(rel = "icon", type = "image/webp", sizes = "16x16", href = "/assets/images/resourcepacks/quindent/icon.webp")
-    link(rel = "icon", type = "image/webp", sizes = "32x32", href = "/assets/images/resourcepacks/quindent/icon.webp")
-    meta(property = "og:type", content = "website")
-    meta(property = "og:title", content = "Quindent - Ewan Howell")
-    meta(property = "og:description", content = "The 5 pronged Trident")
-    meta(property = "og:image", content = `https://${self.domain}/assets/images/resourcepacks/quindent/cover.webp`)
-    meta(property = "twitter:image", content = `https://${self.domain}/assets/images/resourcepacks/quindent/cover.webp`)
-    meta(property = "twitter:card", content="summary_large_image")
-    meta(name = "theme-color", content = "#23324f")
-    include /../includes/head.pug
-  include /../includes/body.pug
+extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "Quindent - Ewan Howell",
+      description: "The 5 pronged Trident",
+      image: "resourcepacks/quindent/cover.webp",
+      colour: "#23324f",
+      icon: "resourcepacks/quindent/icon.webp"
+    }
