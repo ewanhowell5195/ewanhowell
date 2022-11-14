@@ -11,12 +11,17 @@
           ]
         },
         {
-          "name": "Blockbench",
+          "name": "Start Screen",
           "entries": [
             "splash-art-customiser",
-            "preview-scene-customiser",
-            "plugin-loader-2-0",
             "collapsible-start-screen-categories"
+          ]
+        },
+        {
+          "name": "Blockbench",
+          "entries": [
+            "preview-scene-customiser",
+            "plugin-loader-2-0"
           ]
         },
         {
