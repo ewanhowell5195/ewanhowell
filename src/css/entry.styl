@@ -41,14 +41,36 @@
   align-items: center
   font-weight: 700
     
-#category-name
+#category-name, #back-button
   position: absolute
-  top: 20px
-  right: 20px
   text-transform: uppercase
   font-weight: 700
+  filter: drop-shadow(-2px 2px 1px var(--color-text-shadow))
+  
+#category-name
+  top: 20px
+  right: 20px
   letter-spacing: 5px
-  text-shadow: -2px 2px 1px var(--color-text-shadow)
+
+#back-button
+  top: 15px
+  left: 30px
+  letter-spacing: 2px
+  cursor: pointer
+  user-select: none
+  transition: transform .15s
+  color: var(--color-text-white)
+  text-decoration: none
+  
+  svg
+    left: -36px
+    top: -8px
+    position: absolute
+    height: 32px
+    fill: var(--color-text-white)
+    
+  &:active
+    transform: translateY(3px)
 
 #optifine
   display: flex

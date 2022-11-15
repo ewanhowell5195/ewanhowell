@@ -35,6 +35,7 @@ export function entryPageClass(page, type) {
           src: `/assets/images/${type}/${args[page]}/logo.webp`
        })
       )
+      $("#back-button").attr("href",`/${type}`)
       if (window[type].entries[args[page]].optifine) {
         $("#optifine").removeClass("hidden")
         if (window[type].entries[args[page]].optifine === 1) $("#optional").removeClass("hidden")
