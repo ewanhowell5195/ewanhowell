@@ -69,7 +69,7 @@ class FileInput extends HTMLElement {
       `)[0],
       fileDrop = E("div").addClass("file-drop").append(
         E("span").addClass("file-drop-button").append(
-          E("img").attr("src", "../assets/images/svg/upload.svg"),
+          E("img").attr("src", "/../assets/images/svg/upload.svg"),
           E("span").text("Choose files")
         ),
         textContainer = E("span").addClass("file-drop-text").append().text("or drag and drop files here"),
