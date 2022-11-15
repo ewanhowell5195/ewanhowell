@@ -99,12 +99,12 @@ function historyHandler(updateHistory, url) {
   }
 }
 
-function basicPageRoute(name, rgx) {
+function basicPageRoute(path, rgx) {
   return [
-    rgx ?? new RegExp(`^\/${name}\/?(?:\\?.*)?$`,"i"),
+    rgx ?? new RegExp(`^/${path}/?(?:\\?.*)?$`,"i"),
     async (url, container, updateHistory) => {
-      await import(`/pages/${name}/page.js`)
-      setupPage(name, container, Object.fromEntries(url.searchParams))
+      await import(`/pages/${path}/page.js`)
+      setupPage(path.split("/").at(-1), container, Object.fromEntries(url.searchParams))
       historyHandler(updateHistory, url)
       return true
     }
@@ -137,7 +137,9 @@ const routes = [
   basicPageRoute("dungeonsmods"),
   entriesPageRoute("dungeonsmods", "dungeonsmod"),
   basicPageRoute("colours"),
-  basicPageRoute("renders")
+  basicPageRoute("renders"),
+  basicPageRoute("tools"),
+  basicPageRoute("tools/ctmconverter")
 ]
 
 let isOpeningPage = false
