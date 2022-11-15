@@ -1,5 +1,19 @@
+script(src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js", integrity = "sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==", crossorigin = "anonymous", referrerpolicy = "no-referrer")
+template#download-icon: include /assets/images/svg/download.svg
+template#arrow-left: include /assets/images/svg/arrow_left.svg
+template#arrow-right: include /assets/images/svg/arrow_right.svg
 .container
   h1 CTM Converter
-  p Please provide either a CTM compact template, or the 5 individual CTM compact tiles
+  p
+    | This is a tool that allows you to convert 
+    a(href = "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/ctm.properties#L192", target = "_blank") compact CTM
+    |  to either 
+    a(href = "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/ctm.properties#L181", target = "_blank") full CTM
+    | , or 
+    a(href = "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/ctm.properties#L74", target = "_blank") overlay CTM
+    | .
+  h3 CTM Compact Template:
+  img.ctm-compact-template(src = "/../assets/images/minecraft/compact.png")
+  p Please provide either a CTM compact template, or the 5 individual CTM compact tiles.
   file-input
   #output

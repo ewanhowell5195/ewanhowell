@@ -1,7 +1,8 @@
-export function popupImage(url) {
+export function popupImage(url, width = "initial") {
+  if (url[0] instanceof HTMLCanvasElement) url = url[0].toDataURL()
   const popup = E("div").addClass("popup").append(
     E("div").addClass("popup-container").append(
-      E("img").addClass("popup-image").attr("src", url),
+      E("img").addClass("popup-image").attr("src", url).css("width", width),
       E("img").attr("src", "../assets/images/svg/close.svg").addClass("popup-image-close").on("click", e => popup.remove())
     )
   ).on("click", e => {

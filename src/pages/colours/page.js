@@ -1,5 +1,5 @@
-import { Page } from "/js/pages.js"
 import * as Brotli from "/js/brotli/index.js"
+import { Page } from "/js/libs/pages.js"
 
 const Base64Binary = {
   _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",

@@ -1,5 +1,5 @@
 import { popupImage } from "/js/popupImage.js"
-import { Page } from "/js/pages.js"
+import { Page } from "/js/libs/pages.js"
 
 export function entryPageClass(page, type) {
   return class extends Page {

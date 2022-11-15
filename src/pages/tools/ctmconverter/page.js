@@ -1,102 +1,82 @@
+import { popupImage } from "/js/popupImage.js"
 import { loadImage } from "/js/loadImage.js"
+import { Page } from "/js/libs/pages.js"
 import "/js/components/file-input.js"
-import { Page } from "/js/pages.js"
+import "/js/libs/FileSaver.js"
 
 class CTMConverterPage extends Page {
   constructor() {
     super("tools/ctmconverter", true, $ => {
       jQuery("title").text("CTM Converter - Ewan Howell")
+      const arrowLeft = $("#arrow-left").contents()
+      const arrowRight = $("#arrow-right").contents()
+      $(".ctm-compact-template").on("click", e => popupImage($(e.target).attr("src"), 1024))
       const output = $("#output")
       $("file-input").on("change", async e => {
         const files = e.currentTarget.files.filter(e => e.type === "image/png")
         output.empty()
         if (!files.length || !(files.length === 1 || files.length === 5)) return output.text("Please provide either 1 PNG file, or 5 PNG files")
-        output.append(E("h2").text("Input Compact CTM"),)
-        let img
+        const images = []
         if (files.length === 1) {
-          img = await loadImage(files[0])
+          const img = await loadImage(files[0])
           if (img.width !== img.height * 5) return output.html(`
-            <div>
+            <div id="error">
               <h2>Invalid compact CTM</h2>
               <p>The provided image is an invalid compact CTM format.</p>
               <p>Here is a template image for reference:</p>
-              <img class="ctm-compact-template" src="https://www.wynem.com/bot_assets/images/minecraft/ctm/compact.png">
+              <img class="ctm-compact-template ctm" src="/../assets/images/minecraft/compact.png">
             </div>
           `)
-        }
-        else {
-          const images = []
+          for (let x = 0; x < 5; x++) {
+            const canvas = E("canvas").attr({
+              width: img.height,
+              height: img.height
+            })[0]
+            canvas.getContext("2d").drawImage(img, -x * img.height, 0)
+            images.push(canvas)
+          }
+        } else {
           for (let i = 0; i < files.length; i++) {
             const image = await loadImage(files[i])
             if (image.width !== image.height)  return output.html(`
-              <div>
+              <div id="error">
                 <h2>Invalid CTM tile</h2>
                 <p>CTM tiles must be square. Tile <strong>${i + 1}</strong> is <strong>${image.width}x${image.height}</strong>.</p>
               </div>
             `)
             if (images.length !== 0) if (image.width !== images[0].width || image.height !== images[0].height) return output.html(`
-              <div>
+              <div id="error">
                 <h2>Invalid CTM tile</h2>
                 <p>Make sure all the tiles are the same size. Tile <strong>1</strong> is <strong>${images[0].width}x${images[0].height}</strong>, while tile <strong>${i}</strong> is <strong>${image.width}x${image.height}</strong>.</p>
               </div>
             `)
-            images.push(image)
-          }
-          img = E("canvas").attr({
-            width: images[0].width * 5,
-            height: images[0].height
-          })[0]
-          const ctx = img.getContext("2d")
-          for (let i = 0; i < images.length; i++) {
-            ctx.drawImage(images[i], i * images[0].width, 0)
+            const canvas = E("canvas").attr({
+              width: image.width,
+              height: image.height
+            })[0]
+            canvas.getContext("2d").drawImage(image, 0, 0)
+            images.push(canvas)
           }
         }
-        const canvas = E("canvas").attr({
-          width: img.width,
-          height: img.height
-        }).addClass("ctm-compact-template").appendTo(output)
-        const ctx = canvas[0].getContext("2d")
-        ctx.imageSmoothingEnabled = false
-        ctx.drawImage(img, 0, 0)
-        const multiplier = img.width / 80
-        output.append(E("h2").text("Full CTM"))
-        const fullCanvas = E("canvas").attr({
-          width: Math.floor(192 * multiplier),
-          height: Math.floor(64 * multiplier)
-        }).addClass("ctm-full-template").appendTo(output)
-        fullCanvas[0].scrollIntoView({
-          block: "start",
-          behavior: "smooth"
-        })
-        const fullCtx = fullCanvas[0].getContext("2d")
-        for (const [area, x, y] of fullMap) await paste(fullCtx, img, multiplier, area, x, y)
-        output.append(E("h2").text("Overlay CTM"))
-        const overlayCanvas = E("canvas").attr({
-          width: Math.floor(112 * multiplier),
-          height: Math.floor(48 * multiplier)
-        }).addClass("ctm-overlay-template").appendTo(output)
-        overlayCanvas[0].scrollIntoView({
-          block: "start",
-          behavior: "smooth"
-        })
-        const overlayCtx = overlayCanvas[0].getContext("2d")
-        for (const [area, x, y] of overlayMap) await paste(overlayCtx, img, multiplier, area, x, y)
-        output.append(E("h2").text("CTM Preview"))
-        const previewCanvas = E("canvas").attr({
-          width: Math.floor(320 * multiplier),
-          height: Math.floor(176 * multiplier)
-        }).addClass("ctm-preview-template").appendTo(output)
-        previewCanvas[0].scrollIntoView({
-          block: "start",
-          behavior: "smooth"
-        })
-        const previewCtx = previewCanvas[0].getContext("2d")
-        const m = multiplier * 16
-        for (const coord of previewCoords) {
-          const [x, y, x2, y2] = coord.map(e => Math.floor(e * m))
-          previewCtx.drawImage(fullCanvas[0], x, y, m, m, x2, y2, m, m)
-          await new Promise(fulfil => setTimeout(fulfil, 10))
+        output.append(E("div").text("Reorder the tiles below to adjust the CTM output"))
+        const tiles = E("div").addClass("ctm-compact-tiles ctm").appendTo(output)
+        for (const image of images) {
+          const tile = E("div").append(
+            E("div").addClass("tile-buttons").append(
+              arrowLeft.clone(true).on("click", e => {
+                tile.insertBefore(tile.prev())
+                generateCTM($)
+              }),
+              arrowRight.clone(true).on("click", e => {
+                tile.insertAfter(tile.next())
+                generateCTM($)
+              })
+            ),
+            image
+          ).appendTo(tiles)
         }
+        output.append(E("div").attr("id", "generated"))
+        generateCTM($, true)
       })
     })
     $("a").removeClass("selected")
@@ -108,10 +88,93 @@ customElements.define("ctmconverter-page", CTMConverterPage)
 
 export { CTMConverterPage }
 
-async function paste(ctx, img, multiplier, area, x, y) {
+async function generateCTM($, animate) {
+  const downloadIcon = $("#download-icon").contents()
+  const tiles = $(".ctm-compact-tiles > div > canvas")
+  const img = E("canvas").attr({
+    width: tiles[0].width * 5,
+    height: tiles[0].height
+  })[0]
+  const ctx = img.getContext("2d")
+  for (let i = 0; i < tiles.length; i++) {
+    ctx.drawImage(tiles[i], i * tiles[i].width, 0)
+  }
+  const output = $("#generated").empty()
+  const multiplier = img.width / 80
+  const fullDetails = E("div").addClass("details").append(
+    E("h2").text("Full CTM")
+  ).appendTo(output)
+  const fullCanvas = E("canvas").attr({
+    width: Math.floor(192 * multiplier),
+    height: Math.floor(64 * multiplier)
+  }).addClass("ctm-full-template ctm").appendTo(output).on("click", e => popupImage(fullCanvas, 1024))
+  if (animate) fullCanvas[0].scrollIntoView({
+    block: "start",
+    behavior: "smooth"
+  })
+  const fullCtx = fullCanvas[0].getContext("2d")
+  for (const [area, x, y] of fullMap) await paste(fullCtx, img, multiplier, area, x, y, animate)
+  fullDetails.append(downloadIcon.clone(true).on("click", e => {
+    downloadCTM(fullCanvas[0], img.height, 47, "full")
+  }))
+  const overlayDetails = E("div").addClass("details").append(
+    E("h2").text("Overlay CTM")
+  ).appendTo(output)
+  const overlayCanvas = E("canvas").attr({
+    width: Math.floor(112 * multiplier),
+    height: Math.floor(48 * multiplier)
+  }).addClass("ctm-overlay-template ctm").appendTo(output).on("click", e => popupImage(overlayCanvas, 1024))
+  if (animate) overlayCanvas[0].scrollIntoView({
+    block: "start",
+    behavior: "smooth"
+  })
+  const overlayCtx = overlayCanvas[0].getContext("2d")
+  for (const [area, x, y] of overlayMap) await paste(overlayCtx, img, multiplier, area, x, y, animate)
+  overlayDetails.append(downloadIcon.clone(true).on("click", e => {
+    downloadCTM(overlayCanvas[0], img.height, 17, "overlay")
+  }))
+  output.append(E("h2").text("CTM Preview"))
+  const previewCanvas = E("canvas").attr({
+    width: Math.floor(320 * multiplier),
+    height: Math.floor(176 * multiplier)
+  }).addClass("ctm-preview-template ctm").appendTo(output).on("click", e => popupImage(previewCanvas, 1024))
+  if (animate) previewCanvas[0].scrollIntoView({
+    block: "start",
+    behavior: "smooth"
+  })
+  const previewCtx = previewCanvas[0].getContext("2d")
+  const m = multiplier * 16
+  for (const coord of previewCoords) {
+    const [x, y, x2, y2] = coord.map(e => Math.floor(e * m))
+    previewCtx.drawImage(fullCanvas[0], x, y, m, m, x2, y2, m, m)
+    if (animate) await new Promise(fulfil => setTimeout(fulfil, 5))
+  }
+}
+
+async function downloadCTM(img, res, tiles, type) {
+  const width = Math.floor(img.width / res)
+  const zip = new JSZip()
+  const canvas = E("canvas").attr({
+    width: res,
+    height: res
+  })[0]
+  const ctx = canvas.getContext("2d")
+  for (let h = 0; h < img.height; h += res) for (let w = 0; w < img.width; w += res) {
+    const file = width * h / res + w / res
+    if (file === tiles) break
+    ctx.drawImage(img, w, h, res, res, 0, 0, res, res)
+    zip.file(`${file}.png`, await new Promise(fulfil => canvas.toBlob(fulfil)))
+    ctx.clearRect(0, 0, res, res)
+  }
+  zip.generateAsync({ type: "blob" }).then(content => {
+    saveAs(content, `${type}_ctm.zip`)
+  })
+}
+
+async function paste(ctx, img, multiplier, area, x, y, animate) {
   const [x2, y2, w, h] = coords[area].map(e => Math.floor(e * multiplier))
   ctx.drawImage(img, x2, y2, w, h, Math.floor(x * multiplier), Math.floor(y * multiplier), w, h)
-  await new Promise(fulfil => setTimeout(fulfil, 10))
+  if (animate) await new Promise(fulfil => setTimeout(fulfil, 5))
 }
 
 const coords = {
@@ -297,8 +360,8 @@ const fullMap = [
   ["emptyBottomLeft", 160, 40],
   ["emptyTopLeft", 176, 32],
   ["cornersTopRight", 184, 32],
-  ["cornersBottomLeft", 176, 40],
   ["emptyBottomRight", 184, 40],
+  ["cornersBottomLeft", 176, 40],
   ["corners", 160, 48]
 ]
 

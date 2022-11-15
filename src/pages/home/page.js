@@ -1,4 +1,4 @@
-import { Page } from "/js/pages.js"
+import { Page } from "/js/libs/pages.js"
 
 class HomePage extends Page {
   constructor() {

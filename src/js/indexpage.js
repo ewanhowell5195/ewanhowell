@@ -1,4 +1,4 @@
-import { Page } from "/js/pages.js"
+import { Page } from "/js/libs/pages.js"
 
 export function indexPageClass(type, title) {
   return class extends Page {
