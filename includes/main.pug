@@ -40,7 +40,7 @@ html
     script(async, src = "https://www.googletagmanager.com/gtag/js?id=G-VSJF1VRJHW")
     script.
       window.dataLayer = window.dataLayer || []
-      const gtag = () => dataLayer.push(arguments)
+      function gtag(){dataLayer.push(arguments)}
       gtag("js", new Date())
       gtag("config", "G-VSJF1VRJHW")
   body
