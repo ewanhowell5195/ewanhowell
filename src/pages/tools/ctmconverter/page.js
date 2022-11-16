@@ -3,6 +3,7 @@ import { loadImage } from "/js/loadImage.js"
 import { Page } from "/js/libs/pages.js"
 import "/js/components/file-input.js"
 import "/js/libs/FileSaver.js"
+import "/js/libs/jszip.js"
 
 class CTMConverterPage extends Page {
   constructor() {
