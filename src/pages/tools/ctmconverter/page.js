@@ -24,8 +24,6 @@ class CTMConverterPage extends Page {
             <div id="error">
               <h2>Invalid compact CTM</h2>
               <p>The provided image is an invalid compact CTM format.</p>
-              <p>Here is a template image for reference:</p>
-              <img class="ctm-compact-template ctm" src="/../assets/images/minecraft/compact.png">
             </div>
           `)
           for (let x = 0; x < 5; x++) {
