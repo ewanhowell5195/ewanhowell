@@ -1,5 +1,5 @@
 export function popupImage(url, width = "initial") {
-  if (url[0] instanceof HTMLCanvasElement) url = url[0].toDataURL()
+  if (url instanceof HTMLCanvasElement) url = url.toDataURL()
   const popup = E("div").addClass("popup").append(
     E("div").addClass("popup-container").append(
       E("img").addClass("popup-image").attr("src", url).css("width", width),
