@@ -382,41 +382,10 @@
     flex-direction: column
     flex-wrap: wrap
 
-    a
-      text-decoration: none
-      color: var(--color-text-white)
-      padding: 5px 10px
-      background-color: var(--color-grey-light)
-      width: 206px
-      display: flex
-      align-items: center
-      font-weight: 700
-      box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
-      transition: filter .15s
-      filter: brightness(1.8)
-      gap: 4px
-      
-      & > *
-          transition: transform .15s
+.button
+  width: 206px
+  padding: 5px 10px
 
-      svg, img
-        width: 28px
-        height: 28px
-        filter: invert() drop-shadow(-2px 2px 1px var(--color-svg-shadow))
-        fill: black
-        
-      span
-        text-align: center
-        flex: 1
-        text-shadow: -2px 2px 1px var(--color-text-shadow)
-        letter-spacing: 1px
-
-      &:hover
-        filter: brightness(2.3)
-        
-      &:active > *
-        transform: translateY(3px)
-      
 // mobile
 
 @media only screen and (max-width: 768px)

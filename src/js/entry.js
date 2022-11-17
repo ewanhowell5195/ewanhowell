@@ -162,12 +162,12 @@ export function entryPageClass(page, type) {
       if (data.links) {
         const links = $("#links").removeClass("hidden").find("div")
         for (const link of data.links) {
-          if (link.type === "entry") links.append(E("a", {is: "f-a"}).attr("href", `/${type}/${link.name}`).append(
+          if (link.type === "entry") links.append(E("a", {is: "f-a"}).addClass("button").attr("href", `/${type}/${link.name}`).append(
             localIcon.clone(true),
             E("span").text(link.text)
           ))
           else {
-            const linkElement = E("a").attr({
+            const linkElement = E("a").addClass("button").attr({
               href: link.link,
               target: "_blank"
             }).appendTo(links)
