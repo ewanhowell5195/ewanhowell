@@ -1,4 +1,3 @@
-import { popupImage } from "/js/popupImage.js"
 import { Page } from "/js/libs/pages.js"
 
 export function entryPageClass(page, type) {
@@ -75,6 +74,27 @@ export function entryPageClass(page, type) {
       const images = $("#image-container")
       const imageRow = $("#thumbnail-row")
       let offset = 0
+      let img = 0
+      const prev = $("#prev").on("click", e => {
+        if (prev.hasClass("disabled")) return
+        img--
+        showImage()
+      })
+      const next = $("#next").on("click", e => {
+        if (next.hasClass("disabled")) return
+        img++
+        showImage()
+      })
+      function showImage() {
+        $(".showcase-image").removeClass("shown")
+        $(`#image-${img}`).addClass("shown")
+        $(".thumbnail-image").removeClass("selected")
+        $(`#thumbnail-${img}`).addClass("selected")
+        if (!img) prev.addClass("disabled")
+        else prev.removeClass("disabled")
+        if (img === data.images.length - 1 + offset) next.addClass("disabled")
+        else next.removeClass("disabled")
+      }
       if (data.video) {
         offset++
         images.prepend(
@@ -99,34 +119,11 @@ export function entryPageClass(page, type) {
           images.prepend(E("img").attr({
             id: `image-${i + offset}`,
             src: `/assets/images/${type}/${args[page]}/images/${image}.webp`
-          }).addClass("showcase-image").on("click", e => {
-            popupImage(`/assets/images/${type}/${args[page]}/images/${image}.webp`)
-          }))
+          }).addClass("showcase-image popupable"))
           imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${image}.webp")`).on("click", e => {
             img = i + offset
             showImage()
           }))
-        }
-        let img = 0
-        const prev = $("#prev").on("click", e => {
-          if (prev.hasClass("disabled")) return
-          img--
-          showImage()
-        })
-        const next = $("#next").on("click", e => {
-          if (next.hasClass("disabled")) return
-          img++
-          showImage()
-        })
-        function showImage() {
-          $(".showcase-image").removeClass("shown")
-          $(`#image-${img}`).addClass("shown")
-          $(".thumbnail-image").removeClass("selected")
-          $(`#thumbnail-${img}`).addClass("selected")
-          if (!img) prev.addClass("disabled")
-          else prev.removeClass("disabled")
-          if (img === data.images.length - 1 + offset) next.addClass("disabled")
-          else next.removeClass("disabled")
         }
         showImage()
         if (data.images.length === 1) imageRow.addClass("hidden")
@@ -142,14 +139,14 @@ export function entryPageClass(page, type) {
         const main = $("#main")
         const mirrors = $("#mirrors")
         for (const link of data.downloads) {
-          main.append(E("a").addClass("download-button").attr({
+          main.append(E("a").addClass("button-download").attr({
             href: link.link,
             target: "_blank"
           }).append(
             downloadIcon.clone(true),
             E("span").text(link.text)
           ))
-          if (link.mirror) mirrors.append(E("a").addClass("download-button mirror").attr({
+          if (link.mirror) mirrors.append(E("a").addClass("button-download mirror").attr({
             href: link.mirror,
             target: "_blank"
           }).append(

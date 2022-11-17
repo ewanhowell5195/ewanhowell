@@ -1,4 +1,21 @@
 .container
   h1 Tools
-  a(href = "/tools/ctmconverter", is = "f-a") CTM Converter
-  a(href = "/tools/mojangconverter", is = "f-a") Mojang Converter
+  #tools
+    .tool
+      .details
+        h2 CTM Converter
+        p This is a tool that allows you to convert compact CTM to either full CTM, or overlay CTM.
+        .spacer
+        a.button(href = "/tools/ctmconverter", is = "f-a")
+          include /assets/images/svg/local_link.svg
+          span CTM Converter
+      img.popupable(scale = "1024", src = "/assets/images/minecraft/ctm.webp")
+    .tool
+      .details
+        h2 Mojang Converter
+        p This is a tool that allows you to convert the Mojang Studios logo texture between the 1.15 and 1.16 formats.
+        .spacer
+        a.button(href = "/tools/mojangconverter", is = "f-a")
+          include /assets/images/svg/local_link.svg
+          span Mojang Converter
+      img.popupable(scale = "1024", src = "/assets/images/minecraft/mojangstudios.webp")

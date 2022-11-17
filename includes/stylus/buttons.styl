@@ -1,13 +1,18 @@
-.download-button
+.button
+  background-color: var(--color-grey-lighter)
+
+.button-download
+  background-color: var(--color-download)
+
+.button, .button-download
   color: white
   text-decoration: none
   padding: 10px
-  background-color: var(--color-download)
   align-items: center
   font-weight: 700
   box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
   transition: filter .15s
-  display: flex
+  display: inline-flex
   gap: 4px
   cursor: pointer
   user-select: none
@@ -24,6 +29,8 @@
   span
     text-shadow: -2px 2px 1px var(--color-text-shadow)
     letter-spacing: 1px
+    flex: 1
+    text-align: center
 
   svg
     width: 28px

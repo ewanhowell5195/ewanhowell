@@ -1,3 +1,5 @@
+import { popupImage } from "/js/popupImage.js"
+
 function setInnerHTML(elm, html) {
   elm.innerHTML = html
   for (const oldScript of elm.querySelectorAll("script")) {
@@ -25,9 +27,12 @@ class PageBody extends HTMLElement {
     super()
   }
 }
-customElements.define('page-body', PageBody)
+customElements.define("page-body", PageBody)
 
 class Page extends HTMLElement {
+  #popupHandler
+  #popupHandlerFunc
+
   constructor(name, hasStyle = true, onReady = () => {}) {
     super()
     this.name = name
@@ -35,23 +40,23 @@ class Page extends HTMLElement {
     this.hasLoaded = false
     this.setProgress = () => {}
     this.attachShadow({mode: "open"})
+    this.#popupHandlerFunc = e => this.$("img.popupable").css("cursor", "pointer").on("click", e => popupImage(e.currentTarget.getAttribute("src"), e.currentTarget.getAttribute("scale")))
     this.ready = fetch(`/pages/${this.name}/`).then(e => e.text()).then(async content => {
       this.shadowBody = E("page-body")
-      if (!supportsCBIE()) {
-        $(this.shadowBody).on("click", 'a[is="f-a"]', evt => {
-          evt.preventDefault()
-          openPage(new URL(evt.currentTarget.href), true)
-        })
-      }
+      if (!supportsCBIE()) $(this.shadowBody).on("click", 'a[is="f-a"]', evt => {
+        evt.preventDefault()
+        openPage(new URL(evt.currentTarget.href), true)
+      })
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
       this.shadowBody.append($("#footer-template").contents().clone(true))
-      if (hasStyle) {
-        this.shadowRoot.append(
-          E('link').attr("rel", "stylesheet").attr("href", `/pages/${this.name}/index.css`)[0]
-        )
-      }
+      if (hasStyle) this.shadowRoot.append(
+        E("link").attr("rel", "stylesheet").attr("href", `/pages/${this.name}/index.css`)[0]
+      )
       this.$ = (...args) => $(...args, this.shadowRoot)
+      this.#popupHandler = new MutationObserver(this.#popupHandlerFunc)
+      this.#popupHandler.observe(this.shadowRoot, { subtree: true, childList: true })
+      this.#popupHandlerFunc()
       await onReady(this.$)
       this.hasLoaded = true
       this.classList.remove("loading")
@@ -143,10 +148,12 @@ class Page extends HTMLElement {
       )
       this.setProgress = setProgressFor(this)
       this.classList.add("page")
-      if (!this.hasLoaded) {
-        this.classList.add("loading")
-      }
+      if (!this.hasLoaded) this.classList.add("loading")
     }
+  }
+
+  disconnectedCallback() {
+    this.#popupHandler.disconnect()
   }
 
   async fetch(url) {

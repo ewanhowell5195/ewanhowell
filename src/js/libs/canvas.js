@@ -1,3 +1,4 @@
+import { popupImage } from "/js/popupImage.js"
 import "/js/libs/FileSaver.js"
 
 export async function loadImage(file) {
@@ -14,10 +15,14 @@ export async function loadImage(file) {
 }
 
 export class Canvas extends HTMLCanvasElement {
-  constructor(width, height) {
+  constructor(width, height, popupable, scale) {
     super()
     this.width = width
     this.height = height
+    if (popupable) {
+      this.style.cursor = "pointer"
+      this.addEventListener("click", e => popupImage(this, scale))
+    }
   }
 
   addClass(classNames) {

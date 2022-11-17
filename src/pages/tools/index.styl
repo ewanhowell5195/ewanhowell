@@ -1,3 +1,5 @@
+@import "buttons.styl"
+
 .container
   max-width: var(--content-width)
   margin: 0 auto
@@ -9,3 +11,46 @@
 h1
   margin: 0
   padding: 22px 0
+
+h2
+  margin: 0
+
+#tools
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+.tool
+  background-color: var(--color-grey)
+  padding: 20px
+  display: flex
+  gap: 20px
+  justify-content: space-between
+  box-shadow: var(--box-shadow)
+
+.details
+  display: flex
+  flex-direction: column
+  flex: 1
+
+.spacer
+  flex: 1
+  
+img
+  max-height: 224px
+  box-shadow: var(--box-shadow)
+  
+@media only screen and (max-width: 768px)
+  .tool
+    flex-direction: column
+    align-items: center
+    padding-bottom: 90px
+    
+  .details
+    width: 100%
+    
+  .button
+    margin-top: 264px
+
+  img
+    margin-top: -312px

@@ -28,12 +28,12 @@ class FileInput extends HTMLElement {
           min-width: 130px;
           color: var(--color-text-white);
           padding: 10px;
-          background-color: var(--color-link-blue);
+          background-color: var(--color-download);
           align-items: center;
           font-weight: 700;
           box-shadow: 0 8px 5px rgba(0, 0, 0, .314);
           transition: filter .15s;
-          filter: hue-rotate(-90deg);
+          filter: hue-rotate(90deg);
           display: flex;
           gap: 4px;
           margin-right: 10px;
@@ -44,7 +44,7 @@ class FileInput extends HTMLElement {
         }
 
         .file-drop.active > .file-drop-button {
-          filter: hue-rotate(-100deg) brightness(1.2)
+          filter: hue-rotate(100deg) brightness(1.2)
         }
 
         .file-drop:active > .file-drop-button > * {
