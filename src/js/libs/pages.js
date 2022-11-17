@@ -78,58 +78,8 @@ class Page extends HTMLElement {
           }
           page-body {
             display: block;
-            height: 100%;
-            overflow-y: auto;
+            min-height: calc(100vh - var(--header-height) * 2);
             overflow-x: hidden;
-          }
-          #footer-container {
-            position: relative;
-            background-color: var(--color-red);
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            height: var(--header-height);
-            box-shadow: 0 -10px 10px var(--color-box-shadow);
-          }
-          #footer {
-            width: var(--content-width);
-            display: flex;
-          }
-          #footer-spacer {
-            flex: 1;
-          }
-          .footer-button {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            color: var(--color-text-white);;
-            font-weight: 700;
-            letter-spacing: 1px;
-            padding: 0 10px;
-            transition: background-color .15s, padding .15s;
-            fill: var(--color-text-white);
-            gap: 5px;
-            text-shadow: -2px 2px 1px var(--color-text-shadow)
-          }
-          .footer-button > svg {
-            filter: drop-shadow(-2px 2px 1px var(--color-text-shadow));
-          }
-          a.footer-button {
-            user-select: none;
-          }
-          a.footer-button:hover {
-            background-color: var(--color-red-light);
-          }
-          a.footer-button:active {
-            padding-top: 6px;
-          }
-          .footer-button.username::before {
-            content: "@ewanhowell5195"
-          }
-          @media only screen and (max-width: 768px) {
-            .footer-button.username::before {
-              content: ""
-            }
           }
           ::-webkit-scrollbar {
             width:10px

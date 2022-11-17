@@ -78,31 +78,20 @@ html
       .spacer
       .line
       .sidebar-link-icons
-        a(href = "https://www.youtube.com/ewanhowell", target = "_blank")
-          include /assets/images/svg/youtube.svg
-        a(href = "https://twitter.com/ewanhowell5195", target = "_blank")
-          include /assets/images/svg/twitter.svg
-        a(href = "https://github.com/ewanhowell5195", target = "_blank")
-          include /assets/images/svg/github.svg
-        a(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
-          include /assets/images/svg/reddit.svg
-        a(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
-          include /assets/images/svg/instagram.svg
+        a(href = "https://www.youtube.com/ewanhowell", target = "_blank"): include /assets/images/svg/youtube.svg
+        a(href = "https://twitter.com/ewanhowell5195", target = "_blank"): include /assets/images/svg/twitter.svg
+        a(href = "https://github.com/ewanhowell5195", target = "_blank"): include /assets/images/svg/github.svg
+        a(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank"): include /assets/images/svg/reddit.svg
+        a(href = "https://www.instagram.com/ewan.howell/", target = "_blank"): include /assets/images/svg/instagram.svg
     #content
-    template#footer-template
-      #footer-container
-        #footer
-          a.footer-button(href = "https://www.youtube.com/ewanhowell", target = "_blank")
-            include /assets/images/svg/youtube.svg
-          a.footer-button(href = "https://twitter.com/ewanhowell5195", target = "_blank")
-            include /assets/images/svg/twitter.svg
-          a.footer-button(href = "https://github.com/ewanhowell5195", target = "_blank")
-            include /assets/images/svg/github.svg
-          a.footer-button(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank")
-            include /assets/images/svg/reddit.svg
-          a.footer-button(href = "https://www.instagram.com/ewan.howell/", target = "_blank")
-            include /assets/images/svg/instagram.svg
-          span.footer-button.username
-          #footer-spacer
-          a.footer-button(href = "https://ko-fi.com/ewanhowell", target = "_blank") Donate
-          a.footer-button(href = "mailto:contact@ewanhowell.com", target = "_blank") Contact
+    #footer-container
+      #footer
+        a.page-button(href = "https://www.youtube.com/ewanhowell", target = "_blank"): include /assets/images/svg/youtube.svg
+        a.page-button(href = "https://twitter.com/ewanhowell5195", target = "_blank"): include /assets/images/svg/twitter.svg
+        a.page-button(href = "https://github.com/ewanhowell5195", target = "_blank"): include /assets/images/svg/github.svg
+        a.page-button(href = "https://www.reddit.com/r/ewanhowell5195/", target = "_blank"): include /assets/images/svg/reddit.svg
+        a.page-button(href = "https://www.instagram.com/ewan.howell/", target = "_blank"): include /assets/images/svg/instagram.svg
+        #footer-username
+        .spacer
+        a.page-button(href = "https://ko-fi.com/ewanhowell", target = "_blank"): span Donate
+        a.page-button(href = "mailto:contact@ewanhowell.com", target = "_blank"): span Contact
