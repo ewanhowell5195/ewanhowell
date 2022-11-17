@@ -30,18 +30,17 @@ class PageBody extends HTMLElement {
 customElements.define("page-body", PageBody)
 
 class Page extends HTMLElement {
-  #popupHandler
-  #popupHandlerFunc
-
-  constructor(name, hasStyle = true, onReady = () => {}) {
+  constructor(path, hasStyle = true, onReady = () => {}) {
     super()
-    this.name = name
+    this.path = path
     this.hasBeenConnected = false
     this.hasLoaded = false
     this.setProgress = () => {}
     this.attachShadow({mode: "open"})
-    this.#popupHandlerFunc = e => this.$("img.popupable").css("cursor", "pointer").on("click", e => popupImage(e.currentTarget.getAttribute("src"), e.currentTarget.getAttribute("scale")))
-    this.ready = fetch(`/pages/${this.name}/`).then(e => e.text()).then(async content => {
+    if (hasStyle) this.shadowRoot.append(
+      E("link").attr("rel", "stylesheet").attr("href", `/pages/${this.path}/index.css`)[0]
+    )
+    this.ready = fetch(`/pages/${this.path}/`).then(e => e.text()).then(async content => {
       this.shadowBody = E("page-body")
       if (!supportsCBIE()) $(this.shadowBody).on("click", 'a[is="f-a"]', evt => {
         evt.preventDefault()
@@ -50,13 +49,8 @@ class Page extends HTMLElement {
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
       this.shadowBody.append($("#footer-template").contents().clone(true))
-      if (hasStyle) this.shadowRoot.append(
-        E("link").attr("rel", "stylesheet").attr("href", `/pages/${this.name}/index.css`)[0]
-      )
       this.$ = (...args) => $(...args, this.shadowRoot)
-      this.#popupHandler = new MutationObserver(this.#popupHandlerFunc)
-      this.#popupHandler.observe(this.shadowRoot, { subtree: true, childList: true })
-      this.#popupHandlerFunc()
+      this.$(this.shadowBody).on("click", "img.popupable", e => popupImage(e.currentTarget.getAttribute("src"), e.currentTarget.getAttribute("scale")))
       await onReady(this.$)
       this.hasLoaded = true
       this.classList.remove("loading")
@@ -78,20 +72,22 @@ class Page extends HTMLElement {
           }
           page-body {
             display: block;
-            min-height: calc(100vh - var(--header-height) * 2);
             overflow-x: hidden;
           }
+          img.popupable {
+            cursor: pointer;
+          }
           ::-webkit-scrollbar {
-            width:10px
+            width:10px;
           }
           ::-webkit-scrollbar-thumb {
-            background-color: var(--color-red)
+            background-color: var(--color-red);
           }
           ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--color-red-light)
+            background-color: var(--color-red-light);
           }
           ::-webkit-scrollbar-thumb:hover:active {
-            background-color: var(--color-red-dark)
+            background-color: var(--color-red-dark);
           }
         `)[0],
         E("div").addClass("progress-bar")[0]
@@ -100,10 +96,6 @@ class Page extends HTMLElement {
       this.classList.add("page")
       if (!this.hasLoaded) this.classList.add("loading")
     }
-  }
-
-  disconnectedCallback() {
-    this.#popupHandler.disconnect()
   }
 
   async fetch(url) {
@@ -148,6 +140,4 @@ class Page extends HTMLElement {
   setData() {}
 }
 
-export {
-  Page
-}
+export { Page }

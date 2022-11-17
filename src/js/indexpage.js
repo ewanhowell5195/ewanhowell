@@ -1,7 +1,5 @@
-import { Page } from "/js/libs/pages.js"
-
 export function indexPageClass(type, title) {
-  return class extends Page {
+  const IndexPage = class extends Page {
     constructor() {
       super(type, false, async $ => {
         jQuery("title").text(`${title} - Ewan Howell`)
@@ -110,6 +108,9 @@ export function indexPageClass(type, title) {
       $("a").removeClass("selected")
       $(`[href="/${type}"]`).addClass("selected")
     }
+
+    static tag = `${type}-page`
+
     async setData({version, search}) {
       await this.ready
       if (window[type].versions.length === 1) version = "all"
@@ -130,4 +131,8 @@ export function indexPageClass(type, title) {
       history.replaceState({}, null, `/${type}/${toURLParams({version, search})}`)
     }
   }
+
+  customElements.define(IndexPage.tag, IndexPage)
+
+  return IndexPage
 }

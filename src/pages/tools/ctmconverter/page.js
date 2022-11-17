@@ -1,13 +1,11 @@
 import { Canvas, loadImage } from "/js/libs/canvas.js"
-import { Page } from "/js/libs/pages.js"
 import "/js/components/file-input.js"
 import "/js/libs/FileSaver.js"
 import "/js/libs/jszip.js"
 
-class CTMConverterPage extends Page {
+export default class CTMConverterPage extends Page {
   constructor() {
     super("tools/ctmconverter", true, $ => {
-      jQuery("title").text("CTM Converter - Ewan Howell")
       const arrowLeft = $("#arrow-left").contents()
       const arrowRight = $("#arrow-right").contents()
       const output = $("#output")
@@ -73,11 +71,12 @@ class CTMConverterPage extends Page {
     $("a").removeClass("selected")
     $('[href="/ctmconverter"]').addClass("selected")
   }
+
+  static tag = "ctmconverter-page"
+  static title = "CTM Converter - Ewan Howell"
 }
 
-customElements.define("ctmconverter-page", CTMConverterPage)
-
-export { CTMConverterPage }
+customElements.define(CTMConverterPage.tag, CTMConverterPage)
 
 async function generateCTM($, animate) {
   const downloadIcon = $("#download-icon").contents()

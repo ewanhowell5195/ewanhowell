@@ -1,11 +1,9 @@
 import { Canvas, loadImage } from "/js/libs/canvas.js"
-import { Page } from "/js/libs/pages.js"
 import "/js/components/file-input.js"
 
-class MojangConverterPage extends Page {
+export default class MojangConverterPage extends Page {
   constructor() {
     super("tools/mojangconverter", true, $ => {
-      jQuery("title").text("Mojang Converter - Ewan Howell")
       const output = $("#output")
       $("file-input").on("change", async e => {
         output.empty()
@@ -78,8 +76,9 @@ class MojangConverterPage extends Page {
     $("a").removeClass("selected")
     $('[href="/mojangconverter"]').addClass("selected")
   }
+
+  static tag = "mojangconverter-page"
+  static title = "Mojang Converter - Ewan Howell"
 }
 
-customElements.define("mojangconverter-page", MojangConverterPage)
-
-export { MojangConverterPage }
+customElements.define(MojangConverterPage.tag, MojangConverterPage)

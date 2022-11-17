@@ -1,13 +1,12 @@
-import { Page } from "/js/libs/pages.js"
-
-class ToolsPage extends Page {
+export default class ToolsPage extends Page {
   constructor() {
-    super("tools", true, $ => jQuery("title").text("Tools - Ewan Howell"))
+    super("tools")
     $("a").removeClass("selected")
     $('[href="/tools"]').addClass("selected")
   }
+
+  static tag = "tools-page"
+  static title = "Tools - Ewan Howell"
 }
 
-customElements.define("tools-page", ToolsPage)
-
-export { ToolsPage }
+customElements.define(ToolsPage.tag, ToolsPage)

@@ -1,3 +1,5 @@
+window.Page = (await import("/js/libs/pages.js")).Page
+
 window.E = (tagName, options) => $(document.createElement(tagName, options))
 
 const rgxURLParams = /(?:^\?|&)([A-z0-9-]+)(?:=([^&]+)|(?=&)|$|=)/g
@@ -20,12 +22,12 @@ window.toURLParams = o => {
       arr.push(`${arr.length == 0 ? "?" : "&"}${k}`)
     } else {
       let encodedVal = encodeURIComponent(o[k])
-        .replace(/%3A/g, ':')
-        .replace(/%3B/g, ';')
-        .replace(/%20/g, '+')
-        .replace(/%2C/g, ',')
-        .replace(/%2F/g, '/')
-        .replace(/%40/g, '@')
+        .replace(/%3A/g, ":")
+        .replace(/%3B/g, ";")
+        .replace(/%20/g, "+")
+        .replace(/%2C/g, ",")
+        .replace(/%2F/g, "/")
+        .replace(/%40/g, "@")
       arr.push(`${arr.length == 0 ? "?" : "&"}${k}=${encodedVal}`)
     }
   }
@@ -78,8 +80,9 @@ $(window).on({
 
 // pages
 
-function setupPage(name, container, data) {
-  const page = E(`${name}-page`)
+function setupPage(PageClass, container, data) {
+  const page = E(PageClass.tag)
+  if (PageClass.title) document.title = PageClass.title
   container.empty().append(page)
   if (data) page[0].setData(data)
 }
@@ -96,23 +99,21 @@ function basicPageRoute(path, rgx) {
   return [
     rgx ?? new RegExp(`^/${path}/?(?:\\?.*)?$`,"i"),
     async (url, container, updateHistory) => {
-      await import(`/pages/${path}/page.js`)
-      setupPage(path.split("/").at(-1), container, Object.fromEntries(url.searchParams))
+      setupPage((await import(`/pages/${path}/page.js`)).default, container, Object.fromEntries(url.searchParams))
       historyHandler(updateHistory, url)
       return true
     }
   ]
 }
 
-function entriesPageRoute(name, singular) {
+function entriesPageRoute(path, singular) {
   return [
-    new RegExp(`^\\/${name}\\/.+`, "i"),
+    new RegExp(`^/${path}/.+`, "i"),
     async (url, container, updateHistory) => {
-      await fetchEntries(name)
-      const entry = url.pathname.slice(name.length + 2).replace(/\/$/, "").toLowerCase()
-      if (Object.keys(window[name].entries).includes(entry)) {
-        await import(`/pages/${singular}/page.js`)
-        setupPage(singular, container, {[singular]: entry})
+      await fetchEntries(path)
+      const entry = url.pathname.slice(path.length + 2).replace(/\/$/, "").toLowerCase()
+      if (Object.keys(window[path].entries).includes(entry)) {
+        setupPage((await import(`/pages/${singular}/page.js`)).default, container, {[singular]: entry})
         historyHandler(updateHistory, url)
         return true
       }
@@ -149,8 +150,7 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   for (const [rgx, func] of routes) {
     if (ps.match(rgx)) {
       if (!(await func(url, $("#content"), updateHistory))) {
-        await import("/pages/home/page.js")
-        setupPage("home", $("#content"), Object.fromEntries(url.searchParams))
+        setupPage((await import("/pages/home/page.js")).default, $("#content"), Object.fromEntries(url.searchParams))
         history.replaceState({}, "", "/")
       }
       foundPage = true
@@ -158,11 +158,11 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
     }
   }
   if (!foundPage) {
-    await import("/pages/home/page.js")
-    setupPage("home", $("#content"), Object.fromEntries(url.searchParams))
+    setupPage((await import("/pages/home/page.js")).default, $("#content"), Object.fromEntries(url.searchParams))
     historyHandler(updateHistory, "/")
   }
   isOpeningPage = false
+  $('meta[name="theme-color"]').attr("content", "#AE3535")
 }
 
 const onLoad = () => openPage(new URL(location.href), false, true)

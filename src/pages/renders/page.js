@@ -1,10 +1,8 @@
 import { popupImage } from "/js/popupImage.js"
-import { Page } from "/js/libs/pages.js"
 
-class RendersPage extends Page {
+export default class RendersPage extends Page {
   constructor() {
     super("renders", true, $ => {
-      jQuery("title").text("Renders - Ewan Howell")
       $(".renders > div").each(function() {
         const img = $(this)
         img.css("background-image", `url(/assets/images/renders/${img.attr("id")}.webp)`).on("click", e => {
@@ -15,8 +13,9 @@ class RendersPage extends Page {
     $("a").removeClass("selected")
     $('[href="/renders"]').addClass("selected")
   }
+
+  static tag = "renders-page"
+  static title = "Renders - Ewan Howell"
 }
 
-customElements.define("renders-page", RendersPage)
-
-export { RendersPage }
+customElements.define(RendersPage.tag, RendersPage)

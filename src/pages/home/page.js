@@ -1,11 +1,12 @@
-import { Page } from "/js/libs/pages.js"
-
-class HomePage extends Page {
+export default class HomePage extends Page {
   constructor() {
     super("home")
     $("a").removeClass("selected")
     $('[href="/"]').addClass("selected")
   }
+
+  static tag = "home-page"
+
   async setData(params) {
     if (Object.keys(params).length) setTimeout(() => {
       if (params.pack) openPage(new URL(`/resourcepacks/${params.pack}`, location.origin), "replace")
@@ -19,6 +20,4 @@ class HomePage extends Page {
   }
 }
 
-customElements.define("home-page", HomePage)
-
-export { HomePage }
+customElements.define(HomePage.tag, HomePage)

@@ -1,12 +1,13 @@
-import { Page } from "/js/libs/pages.js"
-
 export function entryPageClass(page, type) {
-  return class extends Page {
+  const EntryPage = class extends Page {
     constructor() {
       super(page, false)
       $("a").removeClass("selected")
       $(`[href="/${type}"]`).addClass("selected")
     }
+
+    static tag = `${page}-page`
+
     async setData(args) {
       await this.ready
       let data
@@ -181,4 +182,8 @@ export function entryPageClass(page, type) {
       if (categoryName) $("#category-name").text(categoryName)
     }
   }
+
+  customElements.define(EntryPage.tag, EntryPage)
+
+  return EntryPage
 }

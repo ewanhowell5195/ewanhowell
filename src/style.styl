@@ -41,6 +41,9 @@ body
 .spacer
   flex: 1
 
+.no-scroll
+  overflow: hidden
+
 // scrollbar
 
 ::-webkit-scrollbar
@@ -75,6 +78,7 @@ body::-webkit-scrollbar-thumb
   top: 0
   box-shadow: var(--box-shadow)
   z-index: 2
+  overflow: hidden
 
 #header
   width: var(--content-width)
@@ -236,6 +240,9 @@ body::-webkit-scrollbar-thumb
 
 // page
 
+#content
+  min-height: calc(100vh - var(--header-height) * 2)
+
 .page
   position: relative
   display: block
@@ -261,6 +268,7 @@ body::-webkit-scrollbar-thumb
   justify-content: center
   height: var(--header-height)
   box-shadow: 0 -10px 10px var(--color-box-shadow)
+  overflow: hidden
 
 #footer
   width: var(--content-width)
@@ -283,7 +291,7 @@ body::-webkit-scrollbar-thumb
 // popups
 
 .popup
-  position: absolute
+  position: fixed
   top: 0
   left: 0
   width: 100%

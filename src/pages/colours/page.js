@@ -31,10 +31,14 @@ const Base64Binary = {
   }
 }
 
-class ColoursPage extends Page {
+export default class ColoursPage extends Page {
   constructor() {
-    super("colours", true, $ => jQuery("title").text(`Colours - Ewan Howell`))
+    super("colours")
   }
+
+  static tag = "colours-page"
+  static title = "Colours - Ewan Howell"
+
   async setData({c}) {
     await Brotli.default("/js/brotli/index_bg.wasm")
     await this.ready
@@ -66,6 +70,4 @@ class ColoursPage extends Page {
   }
 }
 
-customElements.define("colours-page", ColoursPage)
-
-export { ColoursPage }
+customElements.define(ColoursPage.tag, ColoursPage)
