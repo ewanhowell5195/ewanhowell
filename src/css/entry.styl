@@ -1,3 +1,5 @@
+@import "downloadButton.styl"
+
 .container
   max-width: var(--content-width)
   margin: 0 auto
@@ -351,53 +353,19 @@
     padding: 15px 0
     gap: 15px
     flex-wrap: wrap
-    
-    a
-      user-select: none
-      text-decoration: none
-      color: var(--color-text-white)
-      padding: 10px
-      background-color: var(--color-link-blue)
-      width: 206px
-      min-width: 100px
-      display: flex
-      align-items: center
-      font-weight: 700
-      box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
-      transition: filter .15s
-      filter: hue-rotate(-90deg)
-      gap: 4px
-      
-      & > *
-        transition: transform .15s
-
-      svg
-        width: 28px
-        height: 28px
-        filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
-        fill: white
-        
-      span
-        text-align: center
-        flex: 1
-        text-shadow: -2px 2px 1px var(--color-text-shadow)
-        letter-spacing: 1px
-        
-      &.mirror
-        filter: hue-rotate(0)
-
-      &:hover
-        filter: hue-rotate(-100deg) brightness(1.2)
-        
-        &.mirror
-          filter: hue-rotate(-10deg) brightness(1.2)
-        
-      &:active > *
-        transform: translateY(4px)
   
   .selected
     display: flex
+
+.download-button
+  width: 206px
+  
+  &.mirror
+    filter: hue-rotate(90deg)
     
+  &:hover.mirror
+      filter: hue-rotate(80deg) brightness(1.2)
+
 #links
   width: 100%
   display: flex

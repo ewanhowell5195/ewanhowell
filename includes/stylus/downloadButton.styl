@@ -1,0 +1,32 @@
+.download-button
+  color: white
+  text-decoration: none
+  padding: 10px
+  background-color: var(--color-download)
+  align-items: center
+  font-weight: 700
+  box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
+  transition: filter .15s
+  display: flex
+  gap: 4px
+  cursor: pointer
+  user-select: none
+  
+  & > *
+    transition: transform .15s
+
+  &:hover
+    filter: hue-rotate(-10deg) brightness(1.2)
+  
+  &:active > *
+    transform: translateY(4px)
+
+  span
+    text-shadow: -2px 2px 1px var(--color-text-shadow)
+    letter-spacing: 1px
+
+  svg
+    width: 28px
+    height: 28px
+    fill: white
+    filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))

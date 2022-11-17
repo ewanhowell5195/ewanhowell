@@ -1,12 +1,5 @@
 window.E = (tagName, options) => $(document.createElement(tagName, options))
 
-// google analytics
-
-// window.dataLayer  =  window.dataLayer || []
-// const gtag = (...args) => dataLayer.push(args)
-// gtag("js", new Date())
-// gtag("config", "UA-155158328-2")
-
 const rgxURLParams = /(?:^\?|&)([A-z0-9-]+)(?:=([^&]+)|(?=&)|$|=)/g
 
 window.getURLParams = s => {
@@ -139,7 +132,8 @@ const routes = [
   basicPageRoute("colours"),
   basicPageRoute("renders"),
   basicPageRoute("tools"),
-  basicPageRoute("tools/ctmconverter")
+  basicPageRoute("tools/ctmconverter"),
+  basicPageRoute("tools/mojangconverter")
 ]
 
 let isOpeningPage = false

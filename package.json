@@ -8,7 +8,10 @@
     ],
     "pugLocals": {
       "domain": "ewanhowell.com"
-    }
+    },
+    "stylusPaths": [
+      "includes/stylus"
+    ]
   },
   "devDependencies": {
     "webbuilder": "github:EvenTorset/WebBuilder"

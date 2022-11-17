@@ -1,9 +1,12 @@
 class FileInput extends HTMLElement {
   #files
+  #pasteHandler
 
   constructor() {
     super()
     let fileDrop, textContainer, fileDropInput
+    const multiple = this.getAttribute("multiple")
+    const fileLimit = parseInt(this.getAttribute("limit"))
     this.attachShadow({mode: "open"}).append(
       E("style").text(`
         .file-drop {
@@ -22,7 +25,7 @@ class FileInput extends HTMLElement {
         }
 
         .file-drop-button {
-          min-width: 140px;
+          min-width: 130px;
           color: var(--color-text-white);
           padding: 10px;
           background-color: var(--color-link-blue);
@@ -36,8 +39,16 @@ class FileInput extends HTMLElement {
           margin-right: 10px;
         }
 
+        .file-drop-button > * {
+          transition: transform .15s;
+        }
+
         .file-drop.active > .file-drop-button {
           filter: hue-rotate(-100deg) brightness(1.2)
+        }
+
+        .file-drop:active > .file-drop-button > * {
+          transform: translateY(4px);
         }
 
         .file-drop-button > img {
@@ -70,12 +81,14 @@ class FileInput extends HTMLElement {
       fileDrop = E("div").addClass("file-drop").append(
         E("span").addClass("file-drop-button").append(
           E("img").attr("src", "/../assets/images/svg/upload.svg"),
-          E("span").text("Choose files")
+          E("span").text(`Choose file${multiple ? "s" : ""}`)
         ),
-        textContainer = E("span").addClass("file-drop-text").append().text("or drag and drop files here"),
-        fileDropInput = E("input").addClass("file-drop-input").attr("type", "file").prop("multiple", true)
+        textContainer = E("span").addClass("file-drop-text").append().text(`or drag and drop ${fileLimit ? `up to ${fileLimit}` : ""} ${multiple ? "files" : "a file"} here`),
+        fileDropInput = E("input").addClass("file-drop-input").attr("type", "file")
       )[0]
     )
+
+    if (multiple) fileDropInput.prop("multiple", true)
 
     $(fileDropInput).on({
       "dragenter focus click mouseenter": _ => fileDrop.classList.add("active"),
@@ -90,7 +103,7 @@ class FileInput extends HTMLElement {
 
     this.addEventListener("drop", evt => {
       evt.preventDefault()
-      this.#files = Array.from(evt.dataTransfer.items).filter(e => e.kind === "file").map(e => e.getAsFile())
+      this.#files = Array.from(evt.dataTransfer.items).filter(e => e.kind === "file").map(e => e.getAsFile()).slice(0, !multiple ? 1 : fileLimit || Infinity)
       fileChange(this)
     })
 
@@ -99,9 +112,23 @@ class FileInput extends HTMLElement {
     })
 
     fileDropInput.on("change", e => {
-      this.#files = Array.from(e.currentTarget.files)
+      this.#files = Array.from(e.currentTarget.files).slice(0, fileLimit || Infinity)
       fileChange(this)
     })
+
+    this.#pasteHandler = e => {
+      this.#files = Array.from(e.clipboardData.files)
+      if (!this.#files.length) return
+      fileChange(this)
+    }
+  }
+
+  connectedCallback() {
+    window.addEventListener("paste", this.#pasteHandler)
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("paste", this.#pasteHandler)
   }
 
   get files() {

@@ -1,0 +1,49 @@
+@import "downloadButton.styl"
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  min-height: calc(100% - var(--header-height))
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+  
+h1
+  margin: 0
+  padding: 22px 0 0
+
+p
+  white-space: pre-wrap
+  
+a
+  color: var(--color-link-blue)
+
+#output
+  padding: 20px 20px 40px
+
+#output, #generated
+  display: flex
+  gap: 20px
+  flex-wrap: wrap
+  align-items: flex-start
+  flex-direction: column
+
+canvas
+  image-rendering: pixelated
+  background-image: url("/assets/images/misc/transparent_dark.webp")
+  box-shadow: var(--box-shadow)
+  width: 256px
+  cursor: pointer
+
+#output
+  display: flex
+
+.output-container
+  width: 100%
+  display: flex
+  justify-content: space-between
+  gap: 20px
+  flex-wrap: wrap
+  
+.download-button
+  width: 117px

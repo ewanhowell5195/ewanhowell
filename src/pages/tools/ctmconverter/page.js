@@ -14,8 +14,8 @@ class CTMConverterPage extends Page {
       $(".ctm-compact-template").on("click", e => popupImage($(e.target).attr("src"), 1024))
       const output = $("#output")
       $("file-input").on("change", async e => {
-        const files = e.currentTarget.files.filter(e => e.type === "image/png")
         output.empty()
+        const files = e.currentTarget.files.filter(e => e.type === "image/png")
         if (!files.length || !(files.length === 1 || files.length === 5)) return output.text("Please provide either 1 PNG file, or 5 PNG files")
         const images = []
         if (files.length === 1) {
@@ -91,7 +91,7 @@ async function generateCTM($, animate) {
   }
   const output = $("#generated").empty()
   const multiplier = img.width / 80
-  const fullDetails = E("div").addClass("details").append(
+  const fullDetails = E("div").append(
     E("h2").text("Full CTM")
   ).appendTo(output)
   const fullCanvas = new Canvas(Math.floor(192 * multiplier), Math.floor(64 * multiplier)).addClass("ctm-full-template ctm").appendTo(output).on("click", e => popupImage(fullCanvas, 1024))
@@ -101,10 +101,13 @@ async function generateCTM($, animate) {
   })
   const fullCtx = fullCanvas.getContext("2d")
   for (const [area, x, y] of fullMap) await paste(fullCtx, img, multiplier, area, x, y, animate)
-  fullDetails.append(downloadIcon.clone(true).on("click", e => {
-    downloadCTM(fullcanvas, img.height, 47, "full")
-  }))
-  const overlayDetails = E("div").addClass("details").append(
+  fullDetails.append(
+    E("div").addClass("download-button").append(
+      downloadIcon.clone(),
+      E("span").text("Download")
+    ).on("click", e => downloadCTM(fullCanvas, img.height, 47, "full"))
+  )
+  const overlayDetails = E("div").append(
     E("h2").text("Overlay CTM")
   ).appendTo(output)
   const overlayCanvas = new Canvas(Math.floor(112 * multiplier), Math.floor(48 * multiplier)).addClass("ctm-overlay-template ctm").appendTo(output).on("click", e => popupImage(overlayCanvas, 1024))
@@ -114,9 +117,12 @@ async function generateCTM($, animate) {
   })
   const overlayCtx = overlayCanvas.getContext("2d")
   for (const [area, x, y] of overlayMap) await paste(overlayCtx, img, multiplier, area, x, y, animate)
-  overlayDetails.append(downloadIcon.clone(true).on("click", e => {
-    downloadCTM(overlayCanvas, img.height, 17, "overlay")
-  }))
+  overlayDetails.append(
+    E("div").addClass("download-button").append(
+      downloadIcon.clone(),
+      E("span").text("Download")
+    ).on("click", e => downloadCTM(overlayCanvas, img.height, 17, "overlay"))
+  )
   output.append(E("h2").text("CTM Preview"))
   const previewCanvas = new Canvas(Math.floor(320 * multiplier), Math.floor(176 * multiplier)).addClass("ctm-preview-template ctm").appendTo(output).on("click", e => popupImage(previewCanvas, 1024))
   if (animate) previewCanvas.scrollIntoView({

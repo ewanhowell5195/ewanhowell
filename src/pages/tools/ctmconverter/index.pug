@@ -11,8 +11,15 @@ template#arrow-right: include /assets/images/svg/arrow_right.svg
     | , or 
     a(href = "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/ctm.properties#L74", target = "_blank") overlay CTM
     | .
+  p
+    | This is also available through some commands on Discord: 
+    a(href = "https://www.wynem.com?commands=minecraft/resourcepacks&command=ctmconverter" target = "_blank") ctmconverter
+    | , 
+    a(href = "https://www.wynem.com?commands=minecraft/resourcepacks&command=ctmpreviewer" target = "_blank") ctmpreviewer
+    | , and 
+    a(href = "https://www.wynem.com?commands=minecraft/resourcepacks&command=ctmsplitter" target = "_blank") ctmsplitter
   h3 CTM Compact Template:
   img.ctm-compact-template(src = "/../assets/images/minecraft/compact.png")
   p Please provide either a CTM compact template, or the 5 individual CTM compact tiles.
-  file-input
+  file-input(multiple, limit = "5")
   #output

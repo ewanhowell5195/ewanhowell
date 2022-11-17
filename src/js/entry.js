@@ -142,14 +142,14 @@ export function entryPageClass(page, type) {
         const main = $("#main")
         const mirrors = $("#mirrors")
         for (const link of data.downloads) {
-          main.append(E("a").attr({
+          main.append(E("a").addClass("download-button").attr({
             href: link.link,
             target: "_blank"
           }).append(
             downloadIcon.clone(true),
             E("span").text(link.text)
           ))
-          if (link.mirror) mirrors.append(E("a").addClass("mirror").attr({
+          if (link.mirror) mirrors.append(E("a").addClass("download-button mirror").attr({
             href: link.mirror,
             target: "_blank"
           }).append(
