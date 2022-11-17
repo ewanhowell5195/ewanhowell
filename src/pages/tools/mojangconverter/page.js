@@ -16,15 +16,23 @@ class MojangConverterPage extends Page {
         const image = await loadImage(file)
         const img = new Canvas(image.width, image.height)
         img.getContext("2d").drawImage(image, 0, 0)
-        img.trim()
         const size = Math.max(img.width, img.height)
         const canvas = new Canvas(size, size)
         canvas.getContext("2d").drawImage(img, -img.width / 2 + size / 2, -img.height / 2 + size / 2)
+        canvas.trim()
         output.append(
           E("h2").text("Input image"),
           canvas.on("click", e => popupImage(e.target, 1024)),
           E("p").text("Only one of the following outputs will be correct, depending on if the input image was in the 1.15 or 1.14 format.")
         )
+        const oldCanvas = new Canvas(img.width * 2, Math.floor(img.width / 2))
+        const oldCanvasCtx = oldCanvas.getContext("2d")
+        oldCanvasCtx.drawImage(img, 0, 0, img.width, Math.floor(img.width / 2), 0, 0, img.width, Math.floor(img.width / 2))
+        oldCanvasCtx.drawImage(img, 0, Math.floor(img.width / 2), img.width, Math.floor(img.width / 2), img.width, 0, img.width, Math.floor(img.width / 2))
+        oldCanvas.trim()
+        const oldCanvasOutput = new Canvas(oldCanvas.width, oldCanvas.width)
+        oldCanvasOutput.getContext("2d").drawImage(oldCanvas, 0, Math.floor((oldCanvas.width - oldCanvas.height) / 2))
+        img.trim()
         let newCanvas
         if (img.width < img.height * 4) {
           newCanvas = new Canvas(img.height * 4 + 8, img.height + 2)
@@ -40,12 +48,6 @@ class MojangConverterPage extends Page {
         const newCanvasOutputCtx = newCanvasOutput.getContext("2d")
         newCanvasOutputCtx.drawImage(newCanvas, 0, 0)
         newCanvasOutputCtx.drawImage(newCanvas, Math.floor(-newCanvas.width / 2), Math.floor(newCanvas.width / 4))
-        const oldCanvas = new Canvas(img.width * 2, Math.floor(img.width / 2))
-        const oldCanvasCtx = oldCanvas.getContext("2d")
-        oldCanvasCtx.drawImage(img, 0, 0, img.width, Math.floor(img.width / 2), 0, 0, img.width, Math.floor(img.width / 2))
-        oldCanvasCtx.drawImage(img, 0, Math.floor(img.width / 2), img.width, Math.floor(img.width / 2), img.width, 0, img.width, Math.floor(img.width / 2))
-        const oldCanvasOutput = new Canvas(oldCanvas.width, oldCanvas.width)
-        oldCanvasOutput.getContext("2d").drawImage(oldCanvas, 0, Math.floor((oldCanvas.width - oldCanvas.height) / 2))
         const downloadIcon = $("#download-icon").contents()
         output.append(
           E("div").attr("id", "generated").append(
