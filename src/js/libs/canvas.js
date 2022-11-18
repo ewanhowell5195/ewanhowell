@@ -2,14 +2,22 @@ import { popupImage } from "/js/popupImage.js"
 import "/js/libs/FileSaver.js"
 
 export async function loadImage(file) {
+  if (typeof file === "string") {
+    return new Promise((fulfil, reject) => {
+      const image = new Image()
+      image.src = file
+      image.onload = e => fulfil(image)
+      image.onerror = reject
+    })
+  }
   const reader = new FileReader()
   reader.readAsDataURL(file)
   return await new Promise((fulfil, reject) => {
     reader.onloadend = e => {
-      const img = new Image()
-      img.src = e.target.result
-      img.onload = _ => fulfil(img)
-      img.onerror = reject
+      const image = new Image()
+      image.onload = e => fulfil(image)
+      image.src = e.target.result
+      image.onerror = reject
     }
   })
 }

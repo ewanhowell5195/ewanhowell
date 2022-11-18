@@ -134,7 +134,8 @@ const routes = [
   basicPageRoute("renders"),
   basicPageRoute("tools"),
   basicPageRoute("tools/ctmconverter"),
-  basicPageRoute("tools/mojangconverter")
+  basicPageRoute("tools/mojangconverter"),
+  basicPageRoute("tools/minecrafttitleconverter")
 ]
 
 let isOpeningPage = false
