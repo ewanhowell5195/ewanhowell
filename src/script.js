@@ -80,11 +80,12 @@ $(window).on({
 
 // pages
 
-function setupPage(PageClass, container, data) {
+async function setupPage(PageClass, container, data) {
   const page = E(PageClass.tag)
   if (PageClass.title) document.title = PageClass.title
   container.empty().append(page)
-  if (data) page[0].setData(data)
+  if (data) return await page[0].setData(data) ?? true
+  return true
 }
 
 function historyHandler(updateHistory, url) {
@@ -95,47 +96,37 @@ function historyHandler(updateHistory, url) {
   }
 }
 
-function basicPageRoute(path, rgx) {
+function pageRoute(path, rgx) {
   return [
-    rgx ?? new RegExp(`^/${path}/?(?:\\?.*)?$`,"i"),
-    async (url, container, updateHistory) => {
-      setupPage((await import(`/pages/${path}/page.js`)).default, container, Object.fromEntries(url.searchParams))
-      historyHandler(updateHistory, url)
-      return true
-    }
-  ]
-}
-
-function entriesPageRoute(path, singular) {
-  return [
-    new RegExp(`^/${path}/.+`, "i"),
-    async (url, container, updateHistory) => {
-      await fetchEntries(path)
-      const entry = url.pathname.slice(path.length + 2).replace(/\/$/, "").toLowerCase()
-      if (Object.keys(window[path].entries).includes(entry)) {
-        setupPage((await import(`/pages/${singular}/page.js`)).default, container, {[singular]: entry})
+    typeof rgx === "string" ? new RegExp(`^${rgx.replace(/:(?<name>[^/?.]+)/g, (m, name) => `(?<${name}>[^/?.]+)(?=$|/|\\?|.)`).replace(/\./g, "\\$&")}/?(?:\\?.*)?$`, "i") : rgx ?? new RegExp(`^/${path}/?(?:\\?.*)?$`, "i"),
+    async (url, container, updateHistory, params) => {
+      const searchParams = Object.fromEntries(url.searchParams)
+      if (await setupPage((await import(`/pages/${path}/page.js`)).default, container, params !== undefined ? Object.assign(params, {searchParams}) : searchParams)) {
         historyHandler(updateHistory, url)
         return true
+      } else {
+        return false
       }
     }
   ]
 }
 
 const routes = [
-  basicPageRoute("resourcepacks"),
-  entriesPageRoute("resourcepacks", "pack"),
-  basicPageRoute("maps"),
-  entriesPageRoute("maps", "map"),
-  basicPageRoute("plugins"),
-  entriesPageRoute("plugins", "plugin"),
-  basicPageRoute("dungeonsmods"),
-  entriesPageRoute("dungeonsmods", "dungeonsmod"),
-  basicPageRoute("colours"),
-  basicPageRoute("renders"),
-  basicPageRoute("tools"),
-  basicPageRoute("tools/ctmconverter"),
-  basicPageRoute("tools/mojangconverter"),
-  basicPageRoute("tools/minecrafttitleconverter")
+  pageRoute("home", "/"),
+  pageRoute("resourcepacks"),
+  pageRoute("pack", "/resourcepacks/:name"),
+  pageRoute("maps"),
+  pageRoute("map", "/maps/:name"),
+  pageRoute("plugins"),
+  pageRoute("plugin", "/plugins/:name"),
+  pageRoute("dungeonsmods"),
+  pageRoute("dungeonsmod", "/dungeonsmods/:name"),
+  pageRoute("colours"),
+  pageRoute("renders"),
+  pageRoute("tools"),
+  pageRoute("tools/ctmconverter"),
+  pageRoute("tools/mojangconverter"),
+  pageRoute("tools/minecrafttitleconverter")
 ]
 
 let isOpeningPage = false
@@ -144,29 +135,30 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   $("#mobile-menu").addClass("hidden")
   $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
   $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
-  $("title").text("Ewan Howell")
+  document.title = "Ewan Howell"
   isOpeningPage = true
-  let foundPage = false
-  const ps = url.pathname + url.search
-  for (const [rgx, func] of routes) {
-    if (ps.match(rgx)) {
-      if (!(await func(url, $("#content"), updateHistory))) {
-        setupPage((await import("/pages/home/page.js")).default, $("#content"), Object.fromEntries(url.searchParams))
-        history.replaceState({}, "", "/")
-      }
-      foundPage = true
-      break
+  const findPage = async ps => {
+    for (const [rgx, func] of routes) {
+      const m = ps.match(rgx)
+      if (m !== null) return await func(url, $("#content"), updateHistory, m.groups)
     }
   }
+  let foundPage = await findPage(url.pathname + url.search)
   if (!foundPage) {
-    setupPage((await import("/pages/home/page.js")).default, $("#content"), Object.fromEntries(url.searchParams))
-    historyHandler(updateHistory, "/")
+    let i = 1
+    const parts = url.pathname.split("/")
+    while (!foundPage && parts.length > i) {
+      const path = parts.slice(0, -i++).join('/')
+      const ps = (path.length ? path : '/') + url.search
+      foundPage = await findPage(ps)
+      if (foundPage) historyHandler("replace", ps)
+    }
   }
   isOpeningPage = false
   $('meta[name="theme-color"]').attr("content", "#AE3535")
 }
 
-const onLoad = () => openPage(new URL(location.href), false, true)
+const onLoad = () => openPage(new URL(location.href), "replace", true)
 
 class FastAnchorElement extends HTMLAnchorElement {
   constructor() {

@@ -12,33 +12,34 @@ export function entryPageClass(page, type) {
       await this.ready
       let data
       try {
-        data = await fetch(`/assets/json/${type}/${args[page]}.json`).then(e => e.json())
+        data = await fetch(`/assets/json/${type}/${args.name}.json`).then(e => e.json())
       } catch {
-        return
+        return false
       }
-      const entryName = window[type].entries[args[page]].name ?? args[page].replace(/-/g, " ").toTitleCase()
-      jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args[page]}/icon.webp`)
-      jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args[page]}/icon.webp`)
+      await fetchEntries(type)
+      const entryName = window[type].entries[args.name].name ?? args.name.replace(/-/g, " ").toTitleCase()
+      jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
+      jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
       jQuery("title").text(`${entryName} - ${data.author ?? "Ewan Howell"}`)
       const $ = this.$
       const linkIcon = $("#link-icon").contents()
       const localIcon = $("#local-icon").contents()
       const closeIcon = $("#close-icon").contents()
       const downloadIcon = $("#download-icon").contents()
-      $("#banner-background").css("background-image", `url("/assets/images/${window[type].entries[args[page]].image ? `${type}/${args[page]}/images/${window[type].entries[args[page]].image}` : "/home/logo_3d"}.webp")`)
-      if (window[type].entries[args[page]].logoless) $("#banner-content").prepend(
+      $("#banner-background").css("background-image", `url("/assets/images/${window[type].entries[args.name].image ? `${type}/${args.name}/images/${window[type].entries[args.name].image}` : "/home/logo_3d"}.webp")`)
+      if (window[type].entries[args.name].logoless) $("#banner-content").prepend(
         E("div").attr("id", "logo").text(entryName)
       )
       else $("#banner-content").prepend(
        E("img").attr({
           id: "logo",
-          src: `/assets/images/${type}/${args[page]}/logo.webp`
+          src: `/assets/images/${type}/${args.name}/logo.webp`
        })
       )
       $("#back-button").attr("href",`/${type}`)
-      if (window[type].entries[args[page]].optifine) {
+      if (window[type].entries[args.name].optifine) {
         $("#optifine").removeClass("hidden")
-        if (window[type].entries[args[page]].optifine === 1) $("#optional").removeClass("hidden")
+        if (window[type].entries[args.name].optifine === 1) $("#optional").removeClass("hidden")
         else $("#required").removeClass("hidden")
         $("#optifine-info").on("click", e => {
           const popup = E("div").addClass("popup").append(
@@ -52,7 +53,7 @@ export function entryPageClass(page, type) {
                     closeIcon.clone(true)
                   ).on("click", e => popup.remove())
                 ),
-                E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${window[type].entries[args[page]].optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
+                E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${window[type].entries[args.name].optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
                 E("div").attr("id", "popup-optifine-download").append(E("div").append(
                   E("a").attr({
                     href: "https://optifine.net/downloads",
@@ -119,9 +120,9 @@ export function entryPageClass(page, type) {
         for (const [i, image] of data.images.entries()) {
           images.prepend(E("img").attr({
             id: `image-${i + offset}`,
-            src: `/assets/images/${type}/${args[page]}/images/${image}.webp`
+            src: `/assets/images/${type}/${args.name}/images/${image}.webp`
           }).addClass("showcase-image popupable"))
-          imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args[page]}/images/${image}.webp")`).on("click", e => {
+          imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args.name}/images/${image}.webp")`).on("click", e => {
             img = i + offset
             showImage()
           }))
@@ -178,7 +179,7 @@ export function entryPageClass(page, type) {
           }
         }
       }
-      const categoryName = window[type].versions.map(e => e.categories.find(e => e.entries.includes(args[page]))).find(e => e?.name)?.name
+      const categoryName = window[type].versions.map(e => e.categories.find(e => e.entries.includes(args.name))).find(e => e?.name)?.name
       if (categoryName) $("#category-name").text(categoryName)
     }
   }

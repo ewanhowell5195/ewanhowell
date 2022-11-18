@@ -48,7 +48,6 @@ class Page extends HTMLElement {
       })
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
-      this.shadowBody.append($("#footer-template").contents().clone(true))
       this.$ = (...args) => $(...args, this.shadowRoot)
       this.$(this.shadowBody).on("click", "img.popupable", e => popupImage(e.currentTarget.getAttribute("src"), e.currentTarget.getAttribute("scale")))
       await onReady(this.$)
