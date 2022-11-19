@@ -47,7 +47,7 @@ export default class CTMConverterPage extends Page {
             images.push(canvas)
           }
         }
-        output.append(E("div").text("Reorder the tiles below to adjust the CTM output"))
+        output.append(E("div").text("Reorder the tiles below to adjust the CTM output."))
         const tiles = E("div").addClass("ctm-compact-tiles ctm").appendTo(output)
         for (const image of images) {
           const tile = E("div").append(
@@ -69,14 +69,11 @@ export default class CTMConverterPage extends Page {
       })
     })
     $("a").removeClass("selected")
-    $('[href="/ctmconverter"]').addClass("selected")
   }
 
   static tag = "ctmconverter-page"
   static title = "CTM Converter - Ewan Howell"
 }
-
-customElements.define(CTMConverterPage.tag, CTMConverterPage)
 
 async function generateCTM($, animate) {
   const downloadIcon = $("#download-icon").contents()

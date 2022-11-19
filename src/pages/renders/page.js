@@ -17,5 +17,3 @@ export default class RendersPage extends Page {
   static tag = "renders-page"
   static title = "Renders - Ewan Howell"
 }
-
-customElements.define(RendersPage.tag, RendersPage)

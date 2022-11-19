@@ -37,7 +37,7 @@ export default class MinecraftTitleConverterPage extends Page {
           E("div").addClass("output-container").append(
             E("div").append(
               E("h2").text("minecraft.png"),
-              E("p").text("Your converted Minecraft title texture"),
+              E("p").text("Your converted Minecraft title texture."),
               E("div").addClass("button-download").append(
                 $("#download-icon").contents().clone(true),
                 E("span").text("Download")
@@ -49,11 +49,8 @@ export default class MinecraftTitleConverterPage extends Page {
       })
     })
     $("a").removeClass("selected")
-    $('[href="/minecrafttitleconverter"]').addClass("selected")
   }
 
   static tag = "minecrafttitleconverter-page"
   static title = "Minecraft Title Converter - Ewan Howell"
 }
-
-customElements.define(MinecraftTitleConverterPage.tag, MinecraftTitleConverterPage)

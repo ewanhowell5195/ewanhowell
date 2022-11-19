@@ -8,5 +8,3 @@ export default class ToolsPage extends Page {
   static tag = "tools-page"
   static title = "Tools - Ewan Howell"
 }
-
-customElements.define(ToolsPage.tag, ToolsPage)

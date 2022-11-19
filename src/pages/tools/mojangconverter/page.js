@@ -50,7 +50,7 @@ export default class MojangConverterPage extends Page {
             E("div").addClass("output-container").append(
               E("div").append(
                 E("h2").text("mojangstudios.png"),
-                E("p").text("This texture is used in 1.16 and newer versions"),
+                E("p").text("This texture is used in 1.16 and newer versions."),
                 E("div").addClass("button-download").append(
                   downloadIcon.clone(true),
                   E("span").text("Download")
@@ -61,7 +61,7 @@ export default class MojangConverterPage extends Page {
             E("div").addClass("output-container").append(
               E("div").append(
                 E("h2").text("mojang.png"),
-                E("p").text("This texture is used in 1.15 and older versions"),
+                E("p").text("This texture is used in 1.15 and older versions."),
                 E("div").addClass("button-download").append(
                   downloadIcon.clone(true),
                   E("span").text("Download")
@@ -74,11 +74,8 @@ export default class MojangConverterPage extends Page {
       })
     })
     $("a").removeClass("selected")
-    $('[href="/mojangconverter"]').addClass("selected")
   }
 
   static tag = "mojangconverter-page"
   static title = "Mojang Converter - Ewan Howell"
 }
-
-customElements.define(MojangConverterPage.tag, MojangConverterPage)

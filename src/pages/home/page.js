@@ -19,5 +19,3 @@ export default class HomePage extends Page {
     }, 0)
   }
 }
-
-customElements.define(HomePage.tag, HomePage)

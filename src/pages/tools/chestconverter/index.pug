@@ -1,0 +1,16 @@
+template#download-icon: include /assets/images/svg/download.svg
+template#arrow-left: include /assets/images/svg/arrow_left.svg
+template#arrow-right: include /assets/images/svg/arrow_right.svg
+.container
+  h1 Chest Converter
+  p
+    | This is a tool that allows you to convert the chest textures between the 1.14 and 1.15 formats.
+  p
+    | This is also available as a 
+    a(href = "https://www.wynem.com?commands=minecraft/resourcepacks&command=chestconverter" target = "_blank") command on Discord
+    | .
+  br
+  p
+    | Please provide either a single chest texture (1.14/15 format), a single double chest texture (1.14 format), or both halves of the double chest texture (1.15 format).
+  file-input(multiple, limit = "2")
+  #output

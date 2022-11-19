@@ -1,0 +1,109 @@
+@import "buttons.styl"
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  min-height: calc(100% - var(--header-height))
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+  
+h1
+  margin: 0
+  padding: 22px 0 0
+
+p
+  white-space: pre-wrap
+  
+a
+  color: var(--color-link-blue)
+  
+#output
+  padding: 20px 20px 40px
+
+#output, #generated
+  display: flex
+  gap: 20px
+  align-items: flex-start
+  flex-direction: column
+
+canvas
+  image-rendering: pixelated
+
+.output-container
+  width: 100%
+  display: flex
+  justify-content: space-between
+  gap: 20px
+  flex-wrap: wrap
+  
+  canvas
+    background-image: url("/assets/images/misc/transparent_dark.webp")
+    max-width: 100%
+    box-shadow: var(--box-shadow)
+    width: 256px
+      
+    &.large
+      width: 512px
+
+.chest-textures
+  display: flex
+  box-shadow: var(--box-shadow)
+  max-width: 100%
+  background-image: url("/assets/images/misc/transparent_dark.webp")
+  
+  > div
+    position: relative
+    display: flex
+    flex: 1
+  
+  canvas
+    flex: 1
+    display: block
+    width: 256px
+  
+  &.double canvas
+    max-width: calc(50vw - 40px)
+
+.chest-buttons
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  justify-content: space-between
+  align-items: center
+  overflow: hidden
+  user-select: none
+
+  svg
+    fill: white
+    filter: drop-shadow(0 0 4px black)
+    position: absolute
+    transition: left .15s, right .15s, width .15s
+    cursor: pointer
+    width: 32px
+
+    &:first-child
+      left: -40px
+      
+    &:last-child
+      right: -40px
+      
+    &:hover
+      width: 48px
+      
+  &:hover > svg
+    &:first-child
+      left: 0
+      
+    &:last-child
+      right: 0
+
+.chest-textures
+  > div:first-child svg:first-child
+    display: none
+    
+  > div:last-child svg:last-child
+    display: none
