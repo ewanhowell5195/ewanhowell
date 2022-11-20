@@ -72,7 +72,6 @@ class Page extends HTMLElement {
           page-body {
             display: block;
             overflow-x: hidden;
-            min-height: calc(100vh - var(--header-height) * 2);
           }
           img.popupable {
             cursor: pointer;
