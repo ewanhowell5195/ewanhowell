@@ -1,5 +1,5 @@
-import { popupImage } from "../../js/popupImage.js"
-import "../../js/libs/FileSaver.js"
+import { popupImage } from "/js/popupImage.js"
+import "/js/libs/FileSaver.js"
 
 export async function loadImage(file) {
   if (typeof file === "string") {

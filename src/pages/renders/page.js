@@ -1,4 +1,4 @@
-import { popupImage } from "../../js/popupImage.js"
+import { popupImage } from "/js/popupImage.js"
 
 export default class RendersPage extends Page {
   constructor() {

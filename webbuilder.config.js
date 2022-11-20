@@ -33,13 +33,6 @@ block meta
   }
 }
 
-globalThis.navigator = {}
-globalThis.customElements = { define() {} }
-
-globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {
-  constructor() {}
-}
-
 globalThis.getFiles = async function*(dir) {
   const dirents = await fs.promises.readdir(dir, {withFileTypes: true})
   for (const dirent of dirents) {
@@ -50,6 +43,13 @@ globalThis.getFiles = async function*(dir) {
       yield res
     }
   }
+}
+
+globalThis.navigator = {}
+globalThis.customElements = { define() {} }
+
+globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {
+  constructor() {}
 }
 
 String.prototype.toTitleCase = function() {

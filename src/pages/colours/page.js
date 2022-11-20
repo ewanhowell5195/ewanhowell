@@ -1,4 +1,4 @@
-import * as Brotli from "../../js/libs/brotli/index.js"
+import * as Brotli from "/js/libs/brotli/index.js"
 
 const Base64Binary = {
   _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",

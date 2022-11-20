@@ -1,7 +1,7 @@
-import { Canvas, loadImage } from "../../../js/libs/canvas.js"
-import "../../../js/components/file-input.js"
-import "../../../js/libs/FileSaver.js"
-import "../../../js/libs/jszip.js"
+import { Canvas, loadImage } from "/js/libs/canvas.js"
+import "/js/components/file-input.js"
+import "/js/libs/FileSaver.js"
+import "/js/libs/jszip.js"
 
 export default class CTMConverterPage extends Page {
   constructor() {

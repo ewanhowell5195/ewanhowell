@@ -1,5 +1,5 @@
-import { Canvas, loadImage } from "../../../js/libs/canvas.js"
-import "../../../js/components/file-input.js"
+import { Canvas, loadImage } from "/js/libs/canvas.js"
+import "/js/components/file-input.js"
 
 export default class ChestConverterPage extends Page {
   constructor() {

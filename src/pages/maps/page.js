@@ -1,4 +1,4 @@
-import { indexPageClass } from "../../js/indexpage.js"
+import { indexPageClass } from "/js/indexpage.js"
 
 const PageClass = indexPageClass("maps", "Maps")
 
