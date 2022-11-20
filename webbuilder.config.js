@@ -1,4 +1,3 @@
-import { Canvas, loadImage } from "skia-canvas"
 import path from "node:path"
 import sharp from "sharp"
 import fs from "node:fs"
@@ -72,7 +71,8 @@ async function generateEntry(type, entries, [id, details]) {
   let bgPath
   if (details.image) bgPath = `src/assets/images/${type}/${id}/images/${details.image}.webp`
   else bgPath = "src/assets/images/home/logo_3d.webp"
-  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
+  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360)
+  if (!details.logoless) bgSharp.blur(5)
 
   await fs.promises.writeFile(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
 
@@ -86,34 +86,31 @@ block meta
       icon: "${type}/${id}/icon.webp"
     }`), "utf-8")
 
-  const bg = await bgSharp.png().toBuffer().then(s => loadImage(s))
-  const canvas = new Canvas(bg.width, bg.height)
-  const ctx = canvas.getContext("2d")
-  ctx.drawImage(bg, 0, 0, bg.width, bg.height)
-  ctx.shadowColor = "rgba(0,0,0,0.75)"
-  ctx.shadowBlur = 10
-  ctx.shadowOffsetY = 10
-  if (details.logoless) {
-    const text = await drawText(entries[id].name ?? id.replace(/-/g, " ").toTitleCase(), {
-      colour: "#fff",
-      fontSize: 100,
-      fontFamily: "Arial",
-      align: "center",
-      width: 576,
-      height: 192,
-      wrap: true,
-      bold: true
-    })
-    ctx.drawImage(text, bg.width / 2 - text.width / 2, bg.height / 2 - text.height / 2)
-  } else {
-    const logo = await sharp(fs.readFileSync(`src/assets/images/${type}/${id}/logo.webp`)).resize(576, 192, {
+  if (!details.logoless) {
+    const logoSharp = sharp(await sharp(`src/assets/images/${type}/${id}/logo.webp`).resize(576, 192, {
       background: "#00000000",
       fit: "contain"
-    }).png().toBuffer().then(s => loadImage(s))
-    ctx.drawImage(logo, bg.width / 2 - logo.width / 2, bg.height / 2 - logo.height / 2)
+    }).toBuffer())
+    const logoMeta = await logoSharp.clone().metadata()
+
+    bgSharp.composite([
+      {
+        input: await sharp(await logoSharp.clone().extend(20).blur(10).extractChannel("alpha").negate().toBuffer()).modulate({
+          lightness: 8
+        }).toBuffer(),
+        top: 170 - logoMeta.height / 2,
+        left: 300 - logoMeta.width / 2,
+        blend: "multiply"
+      },
+      {
+        input: await logoSharp.toBuffer(),
+        top: 180 - logoMeta.height / 2,
+        left: 320 - logoMeta.width / 2
+      }
+    ])
   }
   fs.mkdirSync(`dist/assets/images/${type}/${id}`, { recursive: true })
-  await fs.promises.writeFile(`dist/assets/images/${type}/${id}/cover.webp`, await sharp(await canvas.png).webp({nearLossless: true}).toBuffer())
+  await bgSharp.webp({nearLossless: true}).toFile(`dist/assets/images/${type}/${id}/cover.webp`)
 }
 
 async function drawText(text, args) {
