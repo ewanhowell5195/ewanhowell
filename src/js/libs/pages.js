@@ -137,6 +137,8 @@ class Page extends HTMLElement {
   }
 
   setData() {}
+
+  opOpened() {}
 }
 
 export { Page }

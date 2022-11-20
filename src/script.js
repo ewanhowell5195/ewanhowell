@@ -158,6 +158,7 @@ window.openPage = async function(url, updateHistory = false, forceUpdate = false
   }
   isOpeningPage = false
   $('meta[name="theme-color"]').attr("content", "#AE3535")
+  $("#content > *")[0].onOpened()
 }
 
 const onLoad = () => openPage(new URL(location.href), "replace", true)

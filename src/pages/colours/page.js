@@ -42,10 +42,7 @@ export default class ColoursPage extends Page {
   async setData({c}) {
     await Brotli.default("/js/libs/brotli/index_bg.wasm")
     await this.ready
-    if (!c) {
-      c = "GxcA+KVgzJIHQySJBxjuAQ=="
-      history.replaceState({}, null, `/colours/?c=${c}`)
-    }
+    if (!c) this.newState = `/colours/?c=${c = "GxcA+KVgzJIHQySJBxjuAQ=="}`
     c = c.replace(/ /g, "+")
     const container = this.$(".color-container")
     const colours = new TextDecoder().decode(Brotli.brotliDec(Base64Binary.decode(c)))
@@ -67,5 +64,9 @@ export default class ColoursPage extends Page {
         })
       )
     }
+  }
+
+  onOpened() {
+    if (this.newState) history.replaceState({}, null, this.newState)
   }
 }

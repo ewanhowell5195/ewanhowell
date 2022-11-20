@@ -128,7 +128,11 @@ export function indexPageClass(type, title) {
         setTimeout(() => this.$("#search input").trigger("input"), 0)
       }
       if (window[type].versions.length === 1) version = undefined
-      history.replaceState({}, null, `/${type}/${toURLParams({version, search})}`)
+      this.newState = `/${type}/${toURLParams({version, search})}`
+    }
+
+    onOpened() {
+      history.replaceState({}, null, this.newState)
     }
   }
 
