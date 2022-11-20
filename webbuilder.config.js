@@ -71,8 +71,7 @@ async function generateEntry(type, entries, [id, details]) {
   let bgPath
   if (details.image) bgPath = `src/assets/images/${type}/${id}/images/${details.image}.webp`
   else bgPath = "src/assets/images/home/logo_3d.webp"
-  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360)
-  if (!details.logoless) bgSharp.blur(5)
+  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
 
   await fs.promises.writeFile(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
 
@@ -86,29 +85,48 @@ block meta
       icon: "${type}/${id}/icon.webp"
     }`), "utf-8")
 
-  if (!details.logoless) {
-    const logoSharp = sharp(await sharp(`src/assets/images/${type}/${id}/logo.webp`).resize(576, 192, {
+  let logoSharp, logoMeta
+  if (details.logoless) {
+    let fontSize = 512
+    do {
+      logoSharp = sharp({
+        text: {
+          text: `<span foreground="#fff" size="${fontSize}">${entryName}</span>`,
+          width: 576,
+          height: 192,
+          font: "Arial",
+          rgba: true,
+          align: "center"
+        }
+      })
+      logoMeta = await logoSharp.clone().metadata()
+      fontSize -= 10
+    } while(logoMeta.width > 576 || logoMeta.height > 192)
+    logoSharp.png()
+  } else {
+    logoSharp = sharp(await sharp(`src/assets/images/${type}/${id}/logo.webp`).resize(576, 192, {
       background: "#00000000",
       fit: "contain"
     }).toBuffer())
-    const logoMeta = await logoSharp.clone().metadata()
-
-    bgSharp.composite([
-      {
-        input: await sharp(await logoSharp.clone().extend(20).blur(10).extractChannel("alpha").negate().toBuffer()).modulate({
-          lightness: 8
-        }).toBuffer(),
-        top: 170 - logoMeta.height / 2,
-        left: 300 - logoMeta.width / 2,
-        blend: "multiply"
-      },
-      {
-        input: await logoSharp.toBuffer(),
-        top: 180 - logoMeta.height / 2,
-        left: 320 - logoMeta.width / 2
-      }
-    ])
+    logoMeta = await logoSharp.clone().metadata()
   }
+
+
+  bgSharp.composite([
+    {
+      input: await sharp(await logoSharp.clone().extend(20).blur(10).extractChannel("alpha").negate().toBuffer()).modulate({
+        lightness: 8
+      }).toBuffer(),
+      top: Math.floor(170 - logoMeta.height / 2),
+      left: Math.floor(300 - logoMeta.width / 2),
+      blend: "multiply"
+    },
+    {
+      input: await logoSharp.toBuffer(),
+      top: Math.floor(180 - logoMeta.height / 2),
+      left: Math.floor(320 - logoMeta.width / 2)
+    }
+  ])
   fs.mkdirSync(`dist/assets/images/${type}/${id}`, { recursive: true })
   await bgSharp.webp({nearLossless: true}).toFile(`dist/assets/images/${type}/${id}/cover.webp`)
 }
