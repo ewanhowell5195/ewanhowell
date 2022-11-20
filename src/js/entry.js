@@ -184,7 +184,5 @@ export function entryPageClass(page, type) {
     }
   }
 
-  customElements.define(EntryPage.tag, EntryPage)
-
   return EntryPage
 }

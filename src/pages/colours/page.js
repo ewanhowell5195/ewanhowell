@@ -1,4 +1,4 @@
-import * as Brotli from "/js/brotli/index.js"
+import * as Brotli from "../../js/libs/brotli/index.js"
 
 const Base64Binary = {
   _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -37,9 +37,10 @@ export default class ColoursPage extends Page {
 
   static tag = "colours-page"
   static title = "Colours - Ewan Howell"
+  static description = "View a colour palette"
 
   async setData({c}) {
-    await Brotli.default("/js/brotli/index_bg.wasm")
+    await Brotli.default("/js/libs/brotli/index_bg.wasm")
     await this.ready
     if (!c) {
       c = "GxcA+KVgzJIHQySJBxjuAQ=="

@@ -1,5 +1,5 @@
-import { Canvas, loadImage } from "/js/libs/canvas.js"
-import "/js/components/file-input.js"
+import { Canvas, loadImage } from "../../../js/libs/canvas.js"
+import "../../../js/components/file-input.js"
 
 export default class MojangConverterPage extends Page {
   constructor() {
@@ -78,4 +78,7 @@ export default class MojangConverterPage extends Page {
 
   static tag = "mojangconverter-page"
   static title = "Mojang Converter - Ewan Howell"
+  static description = "Convert the Mojang Studios logo texture between the 1.15 and 1.16 formats"
+  static image = "minecraft/mojangstudios.webp"
+  static colour = "#E12837"
 }

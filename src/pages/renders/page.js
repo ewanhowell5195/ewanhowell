@@ -1,4 +1,4 @@
-import { popupImage } from "/js/popupImage.js"
+import { popupImage } from "../../js/popupImage.js"
 
 export default class RendersPage extends Page {
   constructor() {
@@ -16,4 +16,7 @@ export default class RendersPage extends Page {
 
   static tag = "renders-page"
   static title = "Renders - Ewan Howell"
+  static description = "View all of Ewan Howell's Blender renders"
+  static image = "renders/4k/glados.webp"
+  static colour = "#222033"
 }

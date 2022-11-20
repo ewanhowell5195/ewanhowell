@@ -1,7 +1,58 @@
 import { fillTextWithTwemoji } from "skia-canvas-twemoji"
 import { Canvas, loadImage } from "skia-canvas"
+import path from "node:path"
 import sharp from "sharp"
-import fs from "fs"
+import fs from "node:fs"
+
+export default {
+  async build(config, { processPug }) {
+    globalThis.processPug = processPug
+
+    console.log("Generating open graph...")
+
+    for await (const f of getFiles("src/pages")) if (f.endsWith(".js")) {
+      const PageClass = (await import("./" + path.relative(".", f))).default
+      if (PageClass.description) {
+        const dir = path.relative("src/pages", path.dirname(f))
+        fs.mkdirSync(path.join("dist", dir), { recursive: true })
+        fs.writeFileSync(path.join("dist", dir, "index.html"), processPug(`extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "${PageClass.title}",
+      description: "${PageClass.description}",
+      ${PageClass.image ? `image: "${PageClass.image}",` : ""}
+      ${PageClass.colour ? `colour: "${PageClass.colour}",` : ""}
+      ${PageClass.icon ? `icon: "${PageClass.icon}"` : ""}
+    }`))
+      }
+    }
+
+    await Promise.all(types.map(generateType))
+
+    console.log("Generated open graph")
+  }
+}
+
+globalThis.navigator = {}
+globalThis.customElements = { define() {} }
+
+globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {
+  constructor() {}
+}
+
+globalThis.getFiles = async function*(dir) {
+  const dirents = await fs.promises.readdir(dir, {withFileTypes: true})
+  for (const dirent of dirents) {
+    const res = path.resolve(dir, dirent.name)
+    if (dirent.isDirectory()) {
+      yield* getFiles(res)
+    } else {
+      yield res
+    }
+  }
+}
 
 if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
@@ -9,21 +60,22 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
 
 const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
 
-for (const type of types) {
-  const entries = JSON.parse(fs.readFileSync(`../src/assets/json/${type}.json`, "utf-8")).entries
+async function generateType(type) {
+  const entries = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).entries
+  return Promise.all(Object.entries(entries).map(e => generateEntry(type, entries, e)))
+}
 
-  for (const [id, details] of Object.entries(entries)) {
-    const entryName = details.name ?? id.replace(/-/g, " ").toTitleCase()
-    if (!fs.existsSync(`../src/assets/json/${type}/${id}.json`)) continue
-    const data = JSON.parse(fs.readFileSync(`../src/assets/json/${type}/${id}.json`, "utf-8"))
-    if (!fs.existsSync(`../src/${type}/${id}`)) fs.mkdirSync(`../src/${type}/${id}`)
-    let bgPath
-    if (details.image) bgPath = `../src/assets/images/${type}/${id}/images/${details.image}.webp`
-    else bgPath = "../src/assets/images/home/logo_3d.webp"
-    const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
-    
+async function generateEntry(type, entries, [id, details]) {
+  const entryName = details.name ?? id.replace(/-/g, " ").toTitleCase()
+  if (!fs.existsSync(`src/assets/json/${type}/${id}.json`)) return
+  const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}/${id}.json`, "utf-8"))
+  fs.mkdirSync(`dist/${type}/${id}`, { recursive: true })
+  let bgPath
+  if (details.image) bgPath = `src/assets/images/${type}/${id}/images/${details.image}.webp`
+  else bgPath = "src/assets/images/home/logo_3d.webp"
+  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
 
-    fs.writeFileSync(`../src/${type}/${id}/index.pug`, `extends /../includes/main.pug
+  await fs.promises.writeFile(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
 
 block meta
   -
@@ -33,36 +85,36 @@ block meta
       image: "${type}/${id}/cover.webp",
       colour: "#${(await bgSharp.clone().resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}",
       icon: "${type}/${id}/icon.webp"
-    }`, "utf-8")
-    const bg = await bgSharp.png().toBuffer().then(s => loadImage(s))
-    const canvas = new Canvas(bg.width, bg.height)
-    const ctx = canvas.getContext("2d")
-    ctx.drawImage(bg, 0, 0, bg.width, bg.height)
-    ctx.shadowColor = "rgba(0,0,0,0.75)"
-    ctx.shadowBlur = 10
-    ctx.shadowOffsetY = 10
-    if (details.logoless) {
-      const text = await drawText(entries[id].name ?? id.replace(/-/g, " ").toTitleCase(), {
-        colour: "#fff",
-        fontSize: 100,
-        fontFamily: "Arial",
-        align: "center",
-        width: 576,
-        height: 192,
-        wrap: true,
-        bold: true
-      })
-      ctx.drawImage(text, bg.width / 2 - text.width / 2, bg.height / 2 - text.height / 2)
-    } else {
-      const logo = await sharp(fs.readFileSync(`../src/assets/images/${type}/${id}/logo.webp`)).resize(576, 192, {
-        background: "#00000000",
-        fit: "contain"
-      }).png().toBuffer().then(s => loadImage(s))
-      ctx.drawImage(logo, bg.width / 2 - logo.width / 2, bg.height / 2 - logo.height / 2)
-    }
-    fs.writeFileSync(`../src/assets/images/${type}/${id}/cover.webp`, await sharp(await canvas.png).webp({nearLossless: true}).toBuffer())
-    console.log(id)
+    }`), "utf-8")
+
+  const bg = await bgSharp.png().toBuffer().then(s => loadImage(s))
+  const canvas = new Canvas(bg.width, bg.height)
+  const ctx = canvas.getContext("2d")
+  ctx.drawImage(bg, 0, 0, bg.width, bg.height)
+  ctx.shadowColor = "rgba(0,0,0,0.75)"
+  ctx.shadowBlur = 10
+  ctx.shadowOffsetY = 10
+  if (details.logoless) {
+    const text = await drawText(entries[id].name ?? id.replace(/-/g, " ").toTitleCase(), {
+      colour: "#fff",
+      fontSize: 100,
+      fontFamily: "Arial",
+      align: "center",
+      width: 576,
+      height: 192,
+      wrap: true,
+      bold: true
+    })
+    ctx.drawImage(text, bg.width / 2 - text.width / 2, bg.height / 2 - text.height / 2)
+  } else {
+    const logo = await sharp(fs.readFileSync(`src/assets/images/${type}/${id}/logo.webp`)).resize(576, 192, {
+      background: "#00000000",
+      fit: "contain"
+    }).png().toBuffer().then(s => loadImage(s))
+    ctx.drawImage(logo, bg.width / 2 - logo.width / 2, bg.height / 2 - logo.height / 2)
   }
+  fs.mkdirSync(`dist/assets/images/${type}/${id}`, { recursive: true })
+  await fs.promises.writeFile(`dist/assets/images/${type}/${id}/cover.webp`, await sharp(await canvas.png).webp({nearLossless: true}).toBuffer())
 }
 
 async function drawText(text, args) {

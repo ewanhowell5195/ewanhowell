@@ -2,7 +2,6 @@ export function indexPageClass(type, title) {
   const IndexPage = class extends Page {
     constructor() {
       super(type, false, async $ => {
-        jQuery("title").text(`${title} - Ewan Howell`)
         await fetchEntries(type)
         const tabs = $("#tabs")
         const versions = $("#versions")
@@ -110,6 +109,7 @@ export function indexPageClass(type, title) {
     }
 
     static tag = `${type}-page`
+    static title = `${title} - Ewan Howell`
 
     async setData({version, search}) {
       await this.ready
@@ -131,8 +131,6 @@ export function indexPageClass(type, title) {
       history.replaceState({}, null, `/${type}/${toURLParams({version, search})}`)
     }
   }
-
-  customElements.define(IndexPage.tag, IndexPage)
 
   return IndexPage
 }

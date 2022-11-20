@@ -1,5 +1,5 @@
-import { Canvas, loadImage } from "/js/libs/canvas.js"
-import "/js/components/file-input.js"
+import { Canvas, loadImage } from "../../../js/libs/canvas.js"
+import "../../../js/components/file-input.js"
 
 export default class ChestConverterPage extends Page {
   constructor() {
@@ -57,7 +57,9 @@ export default class ChestConverterPage extends Page {
 
   static tag = "chestconverter-page"
   static title = "Chest Converter - Ewan Howell"
-  static description = "ferwhuofwegioufw"
+  static description = "Convert the chest textures between the 1.14 and 1.15 formats"
+  static image = "minecraft/chests.webp"
+  static colour = "#A16B23"
 }
 
 const drawFlipped = (ctx, m, img, x, y, w, h, x2, y2) => ctx.drawImage(img, Math.floor(x * m), Math.floor(y * m), Math.floor(w * m), Math.floor(h * m), Math.floor(x2 * m), Math.floor(ctx.canvas.height - (y2 + h) * m), Math.floor(w * m), Math.floor(h * m))

@@ -1,5 +1,5 @@
-import { Canvas, loadImage } from "/js/libs/canvas.js"
-import "/js/components/file-input.js"
+import { Canvas, loadImage } from "../../../js/libs/canvas.js"
+import "../../../js/components/file-input.js"
 
 export default class MinecraftTitleConverterPage extends Page {
   constructor() {
@@ -53,4 +53,7 @@ export default class MinecraftTitleConverterPage extends Page {
 
   static tag = "minecrafttitleconverter-page"
   static title = "Minecraft Title Converter - Ewan Howell"
+  static description = "Convert any image into the Minecraft title texture format so you can use it in a resource pack"
+  static image = "minecraft/minecrafttitle.webp"
+  static colour = "#3B8426"
 }

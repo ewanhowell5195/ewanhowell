@@ -1,7 +1,7 @@
-import { Canvas, loadImage } from "/js/libs/canvas.js"
-import "/js/components/file-input.js"
-import "/js/libs/FileSaver.js"
-import "/js/libs/jszip.js"
+import { Canvas, loadImage } from "../../../js/libs/canvas.js"
+import "../../../js/components/file-input.js"
+import "../../../js/libs/FileSaver.js"
+import "../../../js/libs/jszip.js"
 
 export default class CTMConverterPage extends Page {
   constructor() {
@@ -73,6 +73,9 @@ export default class CTMConverterPage extends Page {
 
   static tag = "ctmconverter-page"
   static title = "CTM Converter - Ewan Howell"
+  static description = "Convert compact CTM to full or overlay CTM"
+  static image = "minecraft/ctm.webp"
+  static colour = "#9C4817"
 }
 
 async function generateCTM($, animate) {

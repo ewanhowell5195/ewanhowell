@@ -7,4 +7,5 @@ export default class ToolsPage extends Page {
 
   static tag = "tools-page"
   static title = "Tools - Ewan Howell"
+  static description = "Tools to help you create resource packs"
 }
