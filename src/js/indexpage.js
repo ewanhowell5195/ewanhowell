@@ -2,7 +2,7 @@ export function indexPageClass(type, title) {
   const IndexPage = class extends Page {
     constructor() {
       super(type, false, async $ => {
-        await fetchEntries(type)
+        await fetchJSON(type)
         const tabs = $("#tabs")
         const versions = $("#versions")
         const allEntries = {

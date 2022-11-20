@@ -202,10 +202,10 @@ customElements.define("f-a", FastAnchorElement, { extends: "a" })
 
 // files
 
-const entriesFetch = {}
-window.fetchEntries = async type => {
-  if (window[type] === undefined && entriesFetch[type] === undefined) entriesFetch[type] = fetch(`/assets/json/${type}.json`).then(e => e.json())
-  window[type] = await entriesFetch[type]
+const jsonFetch = {}
+window.fetchJSON = async name => {
+  if (window[name] === undefined && jsonFetch[name] === undefined) jsonFetch[name] = fetch(`/assets/json/${name}.json`).then(e => e.json())
+  window[name] = await jsonFetch[name]
 }
 
 // end

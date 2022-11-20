@@ -16,7 +16,7 @@ export function entryPageClass(page, type) {
       } catch {
         return false
       }
-      await fetchEntries(type)
+      await fetchJSON(type)
       const entryName = window[type].entries[args.name].name ?? args.name.replace(/-/g, " ").toTitleCase()
       jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
       jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
