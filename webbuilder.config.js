@@ -91,7 +91,7 @@ block meta
     do {
       logoSharp = sharp({
         text: {
-          text: `<span foreground="#fff" size="${fontSize}">${entryName}</span>`,
+          text: `<span foreground="#fff" size="${fontSize}" weight="bold">${entryName}</span>`,
           width: 576,
           height: 192,
           font: "Arial",
