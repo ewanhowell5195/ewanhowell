@@ -92,8 +92,8 @@ block meta
       logoSharp = sharp({
         text: {
           text: `<span foreground="#fff" size="${fontSize}" weight="bold">${entryName}</span>`,
-          width: 576,
-          height: 192,
+          width: 500,
+          height: 150,
           font: "Arial",
           rgba: true,
           align: "center"
@@ -101,7 +101,7 @@ block meta
       })
       logoMeta = await logoSharp.clone().metadata()
       fontSize -= 10
-    } while(logoMeta.width > 576 || logoMeta.height > 192)
+    } while(logoMeta.width > 500 || logoMeta.height > 150)
     logoSharp.png()
   } else {
     logoSharp = sharp(await sharp(`src/assets/images/${type}/${id}/logo.webp`).resize(576, 192, {
