@@ -1,4 +1,3 @@
-import { fillTextWithTwemoji } from "skia-canvas-twemoji"
 import { Canvas, loadImage } from "skia-canvas"
 import path from "node:path"
 import sharp from "sharp"
@@ -176,7 +175,7 @@ async function drawText(text, args) {
     const drawStartX = args.align === "center" ? (textCanvas.width - shadowOffsetX) / 2 + Math.max(-7.5, shadowDistance / 2 - Math.abs(shadowOffsetX)) * Math.sign(shadowOffsetX) : args.align === "right" ? textCanvas.width - Math.max(0, shadowDistance + shadowOffsetX) : paddingLeft + Math.max(0, shadowDistance - Math.max(0, shadowOffsetX))
     const drawStartY = Math.max(0, shadowDistance - Math.max(0, shadowOffsetY))
     for (let i = 0; i < lines.length; i ++) {
-      await fillTextWithTwemoji(textCtx, lines[i], drawStartX, textHeight *  i + textGap * i + paddingTop + drawStartY)
+      textCtx.fillText(lines[i], drawStartX, textHeight *  i + textGap * i + paddingTop + drawStartY)
     }
     if (!args.ctx) {
       textCanvas.textWidth = maxWidth
@@ -252,10 +251,10 @@ async function drawText(text, args) {
       ctx2.shadowBlur = ctx.shadowBlur
       ctx2.shadowOffsetX = ctx.shadowOffsetX
       ctx2.shadowOffsetY = ctx.shadowOffsetY
-      await fillTextWithTwemoji(ctx2, text, ctx.shadowOffsetX < 0 ? -ctx.shadowOffsetX + shadowBlurOffset : 0, ctx.shadowOffsetY < 0 ? -ctx.shadowOffsetY + shadowBlurOffset : 0)
+      ctx2.fillText(text, ctx.shadowOffsetX < 0 ? -ctx.shadowOffsetX + shadowBlurOffset : 0, ctx.shadowOffsetY < 0 ? -ctx.shadowOffsetY + shadowBlurOffset : 0)
       return canvas
     }
-    await fillTextWithTwemoji(ctx, text, args.location[0], args.location[1])
+    ctx.fillText(text, args.location[0], args.location[1])
   }
 }
 
