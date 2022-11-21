@@ -135,10 +135,6 @@ class Page extends HTMLElement {
       json: () => JSON.parse(new TextDecoder("utf-8").decode(chunksAll))
     }
   }
-
-  setData() {}
-
-  onOpened() {}
 }
 
 export { Page }

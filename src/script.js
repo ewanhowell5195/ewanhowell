@@ -85,7 +85,7 @@ async function setupPage(PageClass, container, data) {
   const page = E(PageClass.tag)
   if (PageClass.title) document.title = PageClass.title
   container.empty().append(page)
-  if (data) return await page[0].setData(data) ?? true
+  if (data) return await page[0].setData?.(data) ?? true
   return true
 }
 
@@ -131,34 +131,37 @@ const routes = [
   pageRoute("tools/chestconverter")
 ]
 
+let pageLoadPromise = Promise.resolve()
 let isOpeningPage = false
-window.openPage = async function(url, updateHistory = false, forceUpdate = false) {
-  if (isOpeningPage || (!forceUpdate && url.href === location.href)) return
-  $("#mobile-menu").addClass("hidden")
-  $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
-  $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
-  document.title = "Ewan Howell"
-  isOpeningPage = true
-  const findPage = async ps => {
-    for (const [rgx, func] of routes) {
-      const m = ps.match(rgx)
-      if (m !== null) return await func(url, $("#content"), updateHistory, m.groups)
+window.openPage = function(url, updateHistory = false, forceUpdate = false) {
+  if (!forceUpdate && (isOpeningPage || url.href === location.href)) return
+  return pageLoadPromise = pageLoadPromise.finally(async () => {
+    $("#mobile-menu").addClass("hidden")
+    $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
+    $('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/logo/logo_32.webp")
+    document.title = "Ewan Howell"
+    isOpeningPage = true
+    const findPage = async ps => {
+      for (const [rgx, func] of routes) {
+        const m = ps.match(rgx)
+        if (m !== null) return await func(url, $("#content"), updateHistory, m.groups)
+      }
     }
-  }
-  let foundPage = await findPage(url.pathname + url.search)
-  if (!foundPage) {
-    let i = 1
-    const parts = url.pathname.split("/")
-    while (!foundPage && parts.length > i) {
-      const path = parts.slice(0, -i++).join('/')
-      const ps = (path.length ? path : '/') + url.search
-      foundPage = await findPage(ps)
-      if (foundPage) historyHandler("replace", ps)
+    let foundPage = await findPage(url.pathname + url.search)
+    if (!foundPage) {
+      let i = 1
+      const parts = url.pathname.split("/")
+      while (!foundPage && parts.length > i) {
+        const path = parts.slice(0, -i++).join('/')
+        const ps = (path.length ? path : '/') + url.search
+        foundPage = await findPage(ps)
+        if (foundPage) historyHandler("replace", ps)
+      }
     }
-  }
-  isOpeningPage = false
-  $('meta[name="theme-color"]').attr("content", "#AE3535")
-  $("#content > *")[0].onOpened()
+    isOpeningPage = false
+    $('meta[name="theme-color"]').attr("content", "#AE3535")
+    $("#content > *")[0].onOpened?.()
+  })
 }
 
 const onLoad = () => openPage(new URL(location.href), "replace", true)
