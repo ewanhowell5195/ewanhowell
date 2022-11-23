@@ -48,9 +48,7 @@ globalThis.getFiles = async function*(dir) {
 globalThis.navigator = {}
 globalThis.customElements = { define() {} }
 
-globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {
-  constructor() {}
-}
+globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {}
 
 String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.substring(1).toLowerCase()).trim()
