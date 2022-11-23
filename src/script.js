@@ -131,10 +131,17 @@ const routes = [
   pageRoute("tools/chestconverter")
 ]
 
+function compareURLs(a, b) {
+  return a.href === b.href || a.search === b.search && a.hash === b.hash && (
+    a.pathname.endsWith("/") && !b.pathname.endsWith("/") && a.pathname === b.pathname + "/" ||
+    b.pathname.endsWith("/") && !a.pathname.endsWith("/") && b.pathname === a.pathname + "/"
+  )
+}
+
 let pageLoadPromise = Promise.resolve()
 let isOpeningPage = false
 window.openPage = function(url, updateHistory = false, forceUpdate = false) {
-  if (!forceUpdate && (isOpeningPage || url.href === location.href)) return
+  if (!forceUpdate && (isOpeningPage || compareURLs(url, location))) return
   return pageLoadPromise = pageLoadPromise.finally(async () => {
     $("#mobile-menu").addClass("hidden")
     $('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/logo/logo_16.webp")
