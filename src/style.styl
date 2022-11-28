@@ -24,6 +24,7 @@
   --content-width: 1280px
   --box-shadow: 0 10px 10px var(--color-box-shadow)
   --gradient-optifine: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
+  --text-shadow: -2px 2px 1px var(--color-text-shadow)
 
 body
   margin: 0
@@ -95,7 +96,7 @@ body::-webkit-scrollbar-thumb
   font-weight: 700
   letter-spacing: 1px
   padding: 0 10px
-  text-shadow: -2px 2px 1px var(--color-text-shadow)
+  text-shadow: var(--text-shadow)
   transition: background-color .15s
   user-select: none
   min-height: var(--header-height)
@@ -106,7 +107,7 @@ body::-webkit-scrollbar-thumb
 
   & > svg
     fill: var(--color-text-white)
-    filter: drop-shadow(-2px 2px 1px var(--color-text-shadow))
+    filter: drop-shadow(var(--text-shadow))
 
   &:hover
     background-color: var(--color-red-light)
@@ -165,7 +166,7 @@ body::-webkit-scrollbar-thumb
         transform: rotate(-90deg)
 
 .hamburger
-  filter: drop-shadow(-2px 2px 1px var(--color-text-shadow))
+  filter: drop-shadow(var(--text-shadow))
   display: flex
   align-items: center
   height: var(--header-height)
@@ -281,7 +282,7 @@ body::-webkit-scrollbar-thumb
     content: "@ewanhowell5195"
     font-weight: 700
     letter-spacing: 1px
-    text-shadow: -2px 2px 1px var(--color-text-shadow)
+    text-shadow: var(--text-shadow)
     padding: 0 10px
 
 @media only screen and (max-width: 768px)

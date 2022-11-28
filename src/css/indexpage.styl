@@ -52,7 +52,7 @@
   cursor: pointer
   user-select: none
   transition: background-color 0.15s
-  text-shadow: -2px 2px 1px var(--color-text-shadow)
+  text-shadow: var(--text-shadow)
   text-decoration: none
   color: var(--color-text-white)
   text-transform: capitalize
@@ -194,8 +194,100 @@
     &.collapsed
       transform: rotateZ(0)
       filter: drop-shadow(-4px 4px 1px var(--color-text-shadow))
-      
+
+.featured-entry
+  padding: var(--header-height)
+  display: flex
+  align-items: center
+  flex-direction: column
+  gap: 20px
+
+.featured-title
+  font-weight: 700
+  font-size: 2rem
+  text-shadow: -4px 4px 1px var(--color-text-shadow)
+
+.featured
+  display: flex
+  justify-content: center
+  text-decoration: none
+  color: var(--color-text-white)
+  gap: 20px
+  background-color: var(--color-grey)
+  padding: 10px
+  border-radius: 10px
+  box-shadow: var(--box-shadow)
+
+.featured-image
+  min-width: 384px
+  min-height: 192px
+  position: relative
+  background-size: cover
+  background-position: 50% 50%
+  box-shadow: var(--box-shadow)
+  border-radius: 10px
+
+.featured-logo
+  position: absolute
+  top: 24px
+  left: 24px
+  bottom: 24px
+  right: 24px
+  background-size: contain
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  display: flex
+  align-items: center
+  justify-content: center
+  font-weight: 700
+  font-size: 3.375rem
+  text-align: center
+
+.featured-category
+  margin-bottom: 5px
+  text-transform: uppercase
+  letter-spacing: 5px
+  font-size: 0.75rem
+
+.featured-name
+  font-weight: 700
+  font-size: 1.5rem
+  text-shadow: var(--text-shadow)
+  margin-bottom: 10px
+
+.featured-description
+  line-height: 1.5rem
+  display: flex
+  flex-direction: column
+  max-height: 150px
+  overflow-y: auto
+  white-space: pre-wrap
+  padding-right: 10px
+  margin-right: -10px
+  
+  code
+    font-size: 16px
+    background-color: black
+    padding: 0 4px
+    font-family: Consolas, monospace
+    
+  li
+    margin-top: 5px
+  
+  img
+    image-rendering: pixelated
+    
+  p
+    margin-top: 0
+
 // mobile
+
+@media only screen and (max-width: 900px)
+  .featured
+    flex-direction: column
+    
+  .featured-image
+    min-width: initial
 
 @media only screen and (max-width: 768px)
   .category-header
@@ -219,3 +311,6 @@
     left: 8px
     right: 8px
     font-size: 1.3rem
+    
+  .featured-title
+    font-size: 1.5rem

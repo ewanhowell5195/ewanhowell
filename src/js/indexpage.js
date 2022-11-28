@@ -32,8 +32,10 @@ export function indexPageClass(type, title) {
             $(evt.target).addClass("selected")
             history.pushState({}, null, `/${type}/?version=${evt.target.innerHTML}`)
             sessionStorage.setItem(`${type}Version`, evt.target.innerHTML)
-            if ($(".version.shown").find(".category").not(".hidden").length) $("#no-results").removeClass("shown")
-            else $("#no-results").addClass("shown")
+            if ($(".version.shown").find(".category").not(".hidden").length) {
+              $("#no-results").removeClass("shown")
+              this.addFeatured(versionDiv)
+            } else $("#no-results").addClass("shown")
           }))
           const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versions)
           for (const category of version.categories) {
@@ -64,7 +66,10 @@ export function indexPageClass(type, title) {
               else entryImages.append(
                 E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`)
               )
-              const entryDiv = E("a", {is: "f-a"}).attr("href", `/${type}/${entry}`).addClass("entry-container").append(
+              const entryDiv = E("a", {is: "f-a"}).attr({
+                href: `/${type}/${entry}`,
+                "data-id": entry
+              }).addClass("entry-container").append(
                 entryImages,
                 E("div").addClass("entry-name").text(entryName)
               ).appendTo(categoryEntriesDiv)
@@ -78,6 +83,8 @@ export function indexPageClass(type, title) {
           },
           input(e) {
             const text = e.currentTarget.value.toLowerCase().replace(/&/g, "and")
+            if (text) $(".featured-entry").addClass("hidden")
+            else $(".featured-entry").removeClass("hidden")
             const params = getURLParams() ?? {}
             params.search = text
             if (!params.search) delete params.search
@@ -121,6 +128,7 @@ export function indexPageClass(type, title) {
       const tab = this.$(`.tab:contains("${version}")`)
       if (!tab.length) version = window[type].versions[0].id
       this.$(`#${version.replace(".", "-")}`).addClass("shown")
+      this.addFeatured(this.$(".version.shown"))
       this.$(`.tab:contains("${version}")`).addClass("selected")
       sessionStorage.setItem(`${type}Version`, version)
       if (search) {
@@ -133,6 +141,31 @@ export function indexPageClass(type, title) {
 
     onOpened() {
       history.replaceState({}, null, this.newState)
+    }
+
+    async addFeatured(versionDiv) {
+      if (!versionDiv.find(".featured-entry").length) {
+        const entries = versionDiv.find(".entry-container")
+        if (entries.length > 5) {
+          const d = new Date(Date.now())
+          const featured = this.$(entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length])
+          versionDiv.prepend(
+            E("div").addClass("featured-entry").append(
+              E("div").addClass("featured-title").text(`Featured ${title.slice(0, -1)}`),
+              E("a", { is: "f-a" }).addClass("featured").attr("href", featured.attr("href")).append(
+                E("div").addClass("featured-image").css("background-image", featured.find(".entry-image").css("background-image")).append(
+                  E("div").addClass("featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
+                ),
+                E("div").addClass("featured-details").append(
+                  E("div").addClass("featured-category").text(featured.parent().prev().text()),
+                  E("div").addClass("featured-name").text(featured.find(".entry-name").text()),
+                  E("div").addClass("featured-description").html(await fetch(`/assets/json/${type}/${featured.attr("data-id")}.json`).then(e => e.json()).then(e => e.description))
+                )
+              )
+            )
+          )
+        }
+      }
     }
   }
 

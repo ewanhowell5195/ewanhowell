@@ -57,7 +57,7 @@ class FileInput extends HTMLElement {
         }
 
         .file-drop-button > span {
-          text-shadow: -2px 2px 1px var(--color-text-shadow);
+          text-shadow: var(--text-shadow);
           letter-spacing: 1px;
         }
 
