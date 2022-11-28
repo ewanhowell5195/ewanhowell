@@ -142,14 +142,14 @@ export function entryPageClass(page, type) {
         const mirrors = $("#mirrors")
         for (const link of data.downloads) {
           main.append(E("a").addClass("button-download").attr({
-            href: link.link,
+            href: `http://adfoc.us/serve/sitelinks/?id=546537&url=${link.link}`,
             target: "_blank"
           }).append(
             downloadIcon.clone(true),
             E("span").text(link.text)
           ))
-          if (link.mirror) mirrors.append(E("a").addClass("button-download mirror").attr({
-            href: link.mirror,
+          mirrors.append(E("a").addClass("button-download mirror").attr({
+            href: link.link,
             target: "_blank"
           }).append(
             linkIcon.clone(true),

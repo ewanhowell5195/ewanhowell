@@ -17,8 +17,7 @@
   "downloads": [
     {
       "text": "Download [Java]",
-      "link": "http://adfoc.us/54653778765387",
-      "mirror": "https://www.curseforge.com/minecraft/texture-packs/pack-and-white/"
+      "link": "https://www.curseforge.com/minecraft/texture-packs/pack-and-white/"
     }
   ],
   "links": [
@@ -26,11 +25,6 @@
       "text": "Crimson Chrome Version",
       "type": "entry",
       "name": "pack-and-white-crimson-chrome"
-    },
-    {
-      "text": "Faithful Version",
-      "type": "entry",
-      "name": "pack-and-white-faithful"
     }
   ]
 }
