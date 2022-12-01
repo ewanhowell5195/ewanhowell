@@ -13,6 +13,7 @@
         {
           "name": "Pack Development",
           "entries": [
+            "solid-block-transparency-support",
             "flipped-uvs",
             "template-green"
           ]
@@ -694,6 +695,9 @@
     "solar-eclipse": {
       "image": "forest",
       "optifine": 2
+    },
+    "solid-block-transparency-support": {
+      "image": "transparent"
     },
     "stevified": {
       "image": "steve",

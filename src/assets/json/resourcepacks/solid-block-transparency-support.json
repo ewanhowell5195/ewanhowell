@@ -1,0 +1,15 @@
+{
+  "subtitle": "Add transparency to solid blocks!",
+  "description": "This pack changes how solid blocks render so that they can use transparent textures.\n\nEither use this pack alongside your pack, or merge it into your pack.\n\n<strong><h2>WARNING:</h2>THIS WILL NOT FIX XRAY! ADDING TRANSPARENCY TO SOLID BLOCKS CAN CAUSE XRAY DEPENDING ON HOW YOU USE IT!</strong>",
+  "images": [
+    "compare",
+    "solid",
+    "transparent"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.planetminecraft.com/texture-pack/solid-block-transparency-support/"
+    }
+  ]
+}
