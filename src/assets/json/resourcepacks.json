@@ -44,6 +44,12 @@
           ]
         },
         {
+          "name": "Fixes",
+          "entries": [
+            "vibrating-wither-fix"
+          ]
+        },
+        {
           "name": "Update Packs",
           "entries": [
             "1-18-panorama"
@@ -742,6 +748,11 @@
     "unused-biome-update": {
       "image": "both",
       "optifine": 2
+    },
+    "vibrating-wither-fix": {
+      "image": "withers",
+      "optifine": 2,
+      "logoless": true
     },
     "visual-shulker-labels": {
       "image": "gui",

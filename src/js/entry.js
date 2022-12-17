@@ -94,7 +94,7 @@ export function entryPageClass(page, type) {
         $(`#thumbnail-${img}`).addClass("selected")
         if (!img) prev.addClass("disabled")
         else prev.removeClass("disabled")
-        if (img === data.images.length - 1 + offset) next.addClass("disabled")
+        if (data.images && img === data.images.length - 1 + offset) next.addClass("disabled")
         else next.removeClass("disabled")
       }
       if (data.video) {
@@ -127,9 +127,9 @@ export function entryPageClass(page, type) {
             showImage()
           }))
         }
-        showImage()
-        if (data.images.length === 1) imageRow.addClass("hidden")
       }
+      showImage()
+      if (!data.images || data.images.length < 2) imageRow.addClass("hidden")
       $("#entry-links-tabs div").on("click", e => {
         $("#entry-links-tabs .selected").removeClass("selected")
         $(e.target).addClass("selected")
