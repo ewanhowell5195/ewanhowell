@@ -1,0 +1,13 @@
+{
+  "subtitle": "Add a new scene recorder where you can record your model in a large variety of formats.",
+  "description": "This plugin adds a new scene recorder that allows you to record your model and scene in a large variety of formats.\n\nUsing this plugin is very similar to using the built-in GIF Recorder.\n\n<p>You can find the <code>Record Scene...</code> button in the <code>View > Screenshot</code> menu.</p><h1>Formats</h1><ul><li><b>GIF</b><ul><li>Record animated GIFs in higher quality than the built-in GIF Recorder</li></ul></li><li><b>MP4</b><ul><li>Record an MP4 video</li></ul></li><li><b>WebM</b><ul><li>Record a WebM video</li></ul></li><li><b>WebP</b><ul><li>Record an animated WebP image</li></ul></li><li><b>APNG</b><ul><li>Record an animated PNG image</li></ul></li><li><b>PNG Image Sequence</b><ul><li>Output each frame as an individual PNG image</li></ul></li></ul>",
+  "images": [
+    "dialog"
+  ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/scene_recorder"
+    }
+  ]
+}

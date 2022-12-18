@@ -20,6 +20,7 @@
         {
           "name": "Blockbench",
           "entries": [
+            "scene-recorder",
             "preview-scene-customiser",
             "plugin-loader-2-0"
           ]
@@ -55,6 +56,10 @@
     },
     "preview-scene-customiser": {
       "image": "scene",
+      "logoless": true
+    },
+    "scene-recorder": {
+      "image": "recorder",
       "logoless": true
     },
     "splash-art-customiser": {
