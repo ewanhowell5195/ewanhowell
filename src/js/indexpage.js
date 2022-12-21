@@ -34,7 +34,7 @@ export function indexPageClass(type, title) {
             sessionStorage.setItem(`${type}Version`, evt.target.innerHTML)
             if ($(".version.shown").find(".category").not(".hidden").length) {
               $("#no-results").removeClass("shown")
-              this.addFeatured(versionDiv)
+              this.addFeatured(versionDiv, $)
             } else $("#no-results").addClass("shown")
           }))
           const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versions)
@@ -128,7 +128,7 @@ export function indexPageClass(type, title) {
       const tab = this.$(`.tab:contains("${version}")`)
       if (!tab.length) version = window[type].versions[0].id
       this.$(`#${version.replace(".", "-")}`).addClass("shown")
-      this.addFeatured(this.$(".version.shown"))
+      this.addFeatured(this.$(".version.shown"), this.$)
       this.$(`.tab:contains("${version}")`).addClass("selected")
       sessionStorage.setItem(`${type}Version`, version)
       if (search) {
@@ -143,27 +143,26 @@ export function indexPageClass(type, title) {
       history.replaceState({}, null, this.newState)
     }
 
-    async addFeatured(versionDiv) {
+    async addFeatured(versionDiv, $) {
       if (!versionDiv.find(".featured-entry").length) {
         const entries = versionDiv.find(".entry-container")
         if (entries.length > 5) {
           const d = new Date(Date.now())
           const featured = this.$(entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length])
-          versionDiv.prepend(
-            E("div").addClass("featured-entry").append(
-              E("div").addClass("featured-title").text(`Featured ${title.slice(0, -1)}`),
-              E("a", { is: "f-a" }).addClass("featured").attr("href", featured.attr("href")).append(
-                E("div").addClass("featured-image").css("background-image", featured.find(".entry-image").css("background-image")).append(
-                  E("div").addClass("featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
-                ),
-                E("div").addClass("featured-details").append(
-                  E("div").addClass("featured-category").text(featured.parent().prev().text()),
-                  E("div").addClass("featured-name").text(featured.find(".entry-name").text()),
-                  E("div").addClass("featured-description").html(await fetch(`/assets/json/${type}/${featured.attr("data-id")}.json`).then(e => e.json()).then(e => e.description))
-                )
+          const entry = E("div").addClass("featured-entry").append(
+            E("div").addClass("featured-title").text(`Featured ${title.slice(0, -1)}`),
+            E("a", { is: "f-a" }).addClass("featured").attr("href", featured.attr("href")).append(
+              E("div").addClass("featured-image").css("background-image", featured.find(".entry-image").css("background-image")).append(
+                E("div").addClass("featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
+              ),
+              E("div").addClass("featured-details").append(
+                E("div").addClass("featured-category").text(featured.parent().prev().text()),
+                E("div").addClass("featured-name").text(featured.find(".entry-name").text()),
+                E("div").addClass("featured-description").html(await fetch(`/assets/json/${type}/${featured.attr("data-id")}.json`).then(e => e.json()).then(e => e.description))
               )
             )
-          )
+          ).prependTo(versionDiv)
+          if ($("#search input").val()) entry.addClass("hidden")
         }
       }
     }

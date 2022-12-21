@@ -2,10 +2,10 @@
   "subtitle": "The pack where every entity has a healthbar!\nNow Dokucraft style!",
   "description": "This pack adds healthbars to all of the entities that support OptiFine entity models.",
   "images": [
-    "creeper",
-    "pig",
-    "villager",
-    "strider"
+    "all",
+    "mobs",
+    "wolves",
+    "striders"
   ],
   "downloads": [
     {

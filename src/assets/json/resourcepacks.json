@@ -40,6 +40,7 @@
         {
           "name": "Utilities",
           "entries": [
+            "entity-healthbars",
             "visual-shulker-labels"
           ]
         },
@@ -58,6 +59,9 @@
         {
           "name": "Addons",
           "entries": [
+            "entity-healthbars-hearts",
+            "entity-healthbars-faithful",
+            "entity-healthbars-dokucraft",
             "visual-shulker-labels-2d-display",
             "minecarts-with-wheels-faithful"
           ]
@@ -106,8 +110,8 @@
           "name": "Addons",
           "entries": [
             "entity-healthbars-hearts",
-            "entity-healthbars-dokucraft",
-            "entity-healthbars-faithful"
+            "entity-healthbars-faithful",
+            "entity-healthbars-dokucraft"
           ]
         },
         {
@@ -523,12 +527,12 @@
       "optifine": 2
     },
     "entity-healthbars": {
-      "image": "all",
+      "image": "banner",
       "optifine": 2
     },
     "entity-healthbars-dokucraft": {
       "name": "Entity Healthbars: Dokucraft",
-      "image": "creeper",
+      "image": "all",
       "optifine": 2
     },
     "entity-healthbars-faithful": {
@@ -538,7 +542,7 @@
     },
     "entity-healthbars-hearts": {
       "name": "Entity Healthbars: Hearts",
-      "image": "ravager",
+      "image": "all",
       "optifine": 2
     },
     "f8thful": {
