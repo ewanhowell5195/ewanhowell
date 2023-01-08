@@ -122,7 +122,6 @@ const routes = [
   pageRoute("plugin", "/plugins/:name"),
   pageRoute("dungeonsmods"),
   pageRoute("dungeonsmod", "/dungeonsmods/:name"),
-  pageRoute("colours"),
   pageRoute("renders"),
   pageRoute("tools"),
   pageRoute("tools/ctmconverter"),

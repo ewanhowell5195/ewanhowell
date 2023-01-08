@@ -14,6 +14,7 @@
           "name": "Start Screen",
           "entries": [
             "splash-art-customiser",
+            "backup-viewer",
             "collapsible-start-screen-categories"
           ]
         },
@@ -35,6 +36,10 @@
     }
   ],
   "entries": {
+    "backup-viewer": {
+      "image": "backups",
+      "logoless": true
+    },
     "cem-template-loader": {
       "name": "CEM Template Loader",
       "image": "entities"

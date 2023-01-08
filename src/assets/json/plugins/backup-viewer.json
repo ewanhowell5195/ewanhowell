@@ -1,0 +1,11 @@
+{
+  "subtitle": "View the project backups from within Blockbench.",
+  "description": "Add a backup tab to the Blockbench start screen that allows you to view a list of the project backups from within Blockbench.",
+  "images": [ "backups" ],
+  "links": [
+    {
+      "text": "Get Plugin",
+      "link": "https://www.blockbench.net/plugins/backup_viewer"
+    }
+  ]
+}
