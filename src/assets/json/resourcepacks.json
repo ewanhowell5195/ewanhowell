@@ -4,13 +4,6 @@
       "id": "1.19",
       "categories": [
         {
-          "name": "Seasonal",
-          "entries": [
-            "snowstorm",
-            "packtober-remastered"
-          ]
-        },
-        {
           "name": "Texture Packs",
           "entries": [
             "f8thful",
@@ -54,6 +47,13 @@
           "name": "Update Packs",
           "entries": [
             "1-18-panorama"
+          ]
+        },
+        {
+          "name": "Seasonal",
+          "entries": [
+            "snowstorm",
+            "packtober-remastered"
           ]
         },
         {
