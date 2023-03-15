@@ -50,6 +50,12 @@
           ]
         },
         {
+          "name": "Other",
+          "entries": [
+            "spinning-skull"
+          ]
+        },
+        {
           "name": "Seasonal",
           "entries": [
             "snowstorm",
@@ -709,6 +715,10 @@
     },
     "solid-block-transparency-support": {
       "image": "transparent"
+    },
+    "spinning-skull": {
+      "image": "painting",
+      "logoless": true
     },
     "stevified": {
       "image": "steve",
