@@ -94,7 +94,7 @@ export function entryPageClass(page, type) {
         $(`#thumbnail-${img}`).addClass("selected")
         if (!img) prev.addClass("disabled")
         else prev.removeClass("disabled")
-        if (data.images && img === data.images.length - 1 + offset) next.addClass("disabled")
+        if (!data.images || (data.images && img === data.images.length - 1 + offset)) next.addClass("disabled")
         else next.removeClass("disabled")
       }
       if (data.video) {
@@ -129,7 +129,7 @@ export function entryPageClass(page, type) {
         }
       }
       showImage()
-      if (!data.images || data.images.length < 2) imageRow.addClass("hidden")
+      if (!data.images || (!data.video && data.images.length < 2) || (data.video && !data.images)) imageRow.addClass("hidden")
       $("#entry-links-tabs div").on("click", e => {
         $("#entry-links-tabs .selected").removeClass("selected")
         $(e.target).addClass("selected")
@@ -175,7 +175,7 @@ export function entryPageClass(page, type) {
             }).appendTo(links)
             if (link.icon) linkElement.append(E("img").attr("src", `../assets/images/svg/${link.icon}.svg`))
             else linkElement.append(linkIcon.clone(true))
-            linkElement.append( E("span").text(link.text))
+            linkElement.append(E("span").text(link.text))
           }
         }
       }
