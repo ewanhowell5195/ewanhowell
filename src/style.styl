@@ -313,6 +313,9 @@ body::-webkit-scrollbar-thumb
   overflow: hidden
   user-select: none
   box-shadow: 0 8px 16px black
+  max-width: calc(100vw - 40px)
+  max-height: calc(100vh - 40px)
+  overflow-y: auto
 
 .popup-image-close
   fill: white
@@ -343,8 +346,10 @@ body::-webkit-scrollbar-thumb
     opacity: 1
     
 .popup-optifine
-  width: 405px
+  max-width: 405px
   background-color: var(--color-grey)
+  max-height: calc(100vh - 40px)
+  overflow-y: auto
   
   #popup-optifine-banner
     display: flex
@@ -387,6 +392,7 @@ body::-webkit-scrollbar-thumb
     white-space: pre-wrap
     padding: 28px
     user-select: text
+    overflow-y: auto
     
     h3
       margin: 30px 0 10px
