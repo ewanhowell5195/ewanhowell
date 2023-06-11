@@ -62,6 +62,7 @@ async function generateType(type) {
 }
 
 async function generateEntry(type, entries, [id, details]) {
+  console.log(`Generating ${type}`)
   const entryName = details.name ?? id.replace(/-/g, " ").toTitleCase()
   if (!fs.existsSync(`src/assets/json/${type}/${id}.json`)) return
   const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}/${id}.json`, "utf-8"))
