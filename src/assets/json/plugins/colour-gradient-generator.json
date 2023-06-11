@@ -7,8 +7,12 @@
   ],
   "links": [
     {
-      "text": "Get Plugin",
+      "text": "View Plugin",
       "link": "https://www.blockbench.net/plugins/colour_gradient_generator"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=colour_gradient_generator"
     }
   ]
 }

@@ -9,11 +9,15 @@
   ],
   "links": [
     {
-      "text": "Get Plugin",
+      "text": "View Plugin",
       "link": "https://www.blockbench.net/plugins/preview_scene_customiser"
     },
     {
-      "text": "Github Repository",
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=preview_scene_customiser"
+    },
+    {
+      "text": "Submit Preview Scenes",
       "link": "https://github.com/ewanhowell5195/preview-scene-customiser/",
       "icon": "github"
     }

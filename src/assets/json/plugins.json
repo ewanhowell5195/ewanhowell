@@ -7,6 +7,7 @@
           "name": "Minecraft",
           "entries": [
             "cem-template-loader",
+            "minecraft-title-generator",
             "optifine-player-models"
           ]
         },
@@ -49,6 +50,9 @@
     },
     "colour-gradient-generator": {
       "image": "colours"
+    },
+    "minecraft-title-generator": {
+      "image": "banner"
     },
     "optifine-player-models": {
       "name": "OptiFine Player Models",

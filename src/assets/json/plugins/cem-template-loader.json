@@ -9,8 +9,12 @@
   ],
   "links": [
     {
-      "text": "Get Plugin",
+      "text": "View Plugin",
       "link": "https://www.blockbench.net/plugins/cem_template_loader"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=cem_template_loader"
     }
   ]
 }

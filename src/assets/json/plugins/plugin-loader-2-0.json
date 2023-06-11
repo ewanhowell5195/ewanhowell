@@ -9,8 +9,12 @@
   ],
   "links": [
     {
-      "text": "Get Plugin",
+      "text": "View Plugin",
       "link": "https://www.blockbench.net/plugins/plugin_loader_2.0"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=plugin_loader_2.0"
     }
   ]
 }

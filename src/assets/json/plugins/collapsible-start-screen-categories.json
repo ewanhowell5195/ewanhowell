@@ -7,8 +7,12 @@
   ],
   "links": [
     {
-      "text": "Get Plugin",
+      "text": "View Plugin",
       "link": "https://www.blockbench.net/plugins/optifine_player_models"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=optifine_player_models"
     }
   ]
 }
