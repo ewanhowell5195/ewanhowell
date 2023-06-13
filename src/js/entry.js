@@ -38,6 +38,7 @@ export function entryPageClass(page, type) {
       )
       $("#back-button").attr("href",`/${type}`)
       if (window[type].entries[args.name].optifine) {
+        $(".type").text(type.slice(0, type.length - 1).replace("resource", ""))
         $("#optifine").removeClass("hidden")
         if (window[type].entries[args.name].optifine === 1) $("#optional").removeClass("hidden")
         else $("#required").removeClass("hidden")

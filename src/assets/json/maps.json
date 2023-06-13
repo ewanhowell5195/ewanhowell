@@ -1,12 +1,29 @@
 {
   "versions": [
     {
+      "id": "1.20",
+      "categories": [
+        {
+          "name": "Pack Development",
+          "entries": [
+            "entity-tester"
+          ]
+        }
+      ]
+    },
+    {
       "id": "1.19",
       "categories": [
         {
           "name": "Pack Development",
           "entries": [
             "entity-tester"
+          ]
+        },
+        {
+          "name": "Maps I Have Contributed To",
+          "entries": [
+            "portal-2-in-minecraft"
           ]
         }
       ]
@@ -37,6 +54,10 @@
   "entries": {
     "entity-tester": {
       "image": "entities"
+    },
+    "portal-2-in-minecraft": {
+      "image": "door",
+      "optifine": 2
     }
   }
 }
