@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "id": "1.20",
+      "categories": [
+        {
+          "name": "Other",
+          "entries": [
+            "spinning-skull"
+          ]
+        }
+      ]
+    },
+    {
       "id": "1.19",
       "categories": [
         {
