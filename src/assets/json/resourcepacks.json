@@ -4,6 +4,12 @@
       "id": "1.20",
       "categories": [
         {
+          "name": "Tweaks",
+          "entries": [
+            "umbrella-villagers"
+          ]
+        },
+        {
           "name": "Other",
           "entries": [
             "spinning-skull"
@@ -770,6 +776,10 @@
     },
     "translucencraft": {
       "image": "bow"
+    },
+    "umbrella-villagers": {
+      "image": "under",
+      "optifine": 2
     },
     "unused-biome-update": {
       "image": "both",

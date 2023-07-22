@@ -1,0 +1,18 @@
+{
+  "subtitle": "Give villagers umbrellas!",
+  "description": "This pack makes it so that villagers hold umbrellas when it rains!\nThere are 24 different umbrella variants, and villagers can spawn either right handed or left handed!",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "JuXFNU3bYHc",
+  "images": [
+    "group",
+    "farm",
+    "under",
+    "crowd"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.planetminecraft.com/texture-pack/umbrella-villagers/"
+    }
+  ]
+}
