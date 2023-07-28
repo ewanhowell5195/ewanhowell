@@ -23,14 +23,19 @@
           "name": "Blockbench",
           "entries": [
             "scene-recorder",
-            "preview-scene-customiser",
-            "plugin-loader-2-0"
+            "preview-scene-customiser"
           ]
         },
         {
           "name": "Paint",
           "entries": [
             "colour-gradient-generator"
+          ]
+        },
+        {
+          "name": "Deprecated",
+          "entries": [
+            "plugin-loader-2-0"
           ]
         }
       ]
