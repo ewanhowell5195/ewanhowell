@@ -4,6 +4,12 @@
       "id": "1.20",
       "categories": [
         {
+          "name": "Texture Packs",
+          "entries": [
+            "f8thful"
+          ]
+        },
+        {
           "name": "Tweaks",
           "entries": [
             "umbrella-villagers"
