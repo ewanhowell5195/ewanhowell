@@ -39,9 +39,9 @@ canvas
   
   canvas
     background-image: url("/assets/images/misc/transparent_dark.webp")
-    max-width: 100%
     box-shadow: var(--box-shadow)
-    width: 256px
+    width: 512px
+    max-width: calc(100vw - 80px)
       
     &.large
       width: 512px
@@ -62,6 +62,9 @@ canvas
     display: block
     width: 256px
   
+  &:not(.double) canvas
+    max-width: calc(100vw - 80px)
+
   &.double canvas
     max-width: calc(50vw - 40px)
 
