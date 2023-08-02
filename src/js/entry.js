@@ -103,7 +103,7 @@ export function entryPageClass(page, type) {
         images.prepend(
           E("div").addClass("video-container showcase-image").attr("id", "image-0").append(
             E("iframe").attr({
-              "src": `https://www.youtube.com/embed/${data.video}?rel=0`,
+              src: `https://www.youtube.com/embed/${data.video}${data.video.includes("?") ? "&" : "?"}rel=0`,
               frameborder: 0,
               allow: "picture-in-picture",
               allowfullscreen: true,

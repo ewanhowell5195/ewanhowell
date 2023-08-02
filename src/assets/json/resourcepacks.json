@@ -26,6 +26,14 @@
           "entries": [
             "f8thful-font"
           ]
+        },
+        {
+          "name": "Packs I Have Contributed To",
+          "entries": [
+            "elephant-ravagers",
+            "barely-default",
+            "chubby-cheeks"
+          ]
         }
       ]
     },
@@ -106,7 +114,8 @@
           "name": "Packs I Have Contributed To",
           "entries": [
             "elephant-ravagers",
-            "barely-default"
+            "barely-default",
+            "caelesti"
           ]
         }
       ]
@@ -213,7 +222,6 @@
           "name": "Packs I Have Contributed To",
           "entries": [
             "overgrowth",
-            "caelesti",
             "devolution",
             "barely-default"
           ]
@@ -525,7 +533,7 @@
       "optifine": 2
     },
     "chubby-cheeks": {
-      "image": "cows",
+      "image": "chonk",
       "optifine": 2
     },
     "concraft": {
