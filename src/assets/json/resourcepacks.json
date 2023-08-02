@@ -20,6 +20,12 @@
           "entries": [
             "spinning-skull"
           ]
+        },
+        {
+          "name": "Addons",
+          "entries": [
+            "f8thful-font"
+          ]
         }
       ]
     },
@@ -578,6 +584,9 @@
     "f8thful": {
       "image": "house",
       "optifine": 1
+    },
+    "f8thful-font": {
+      "image": "menu"
     },
     "fences-plus": {
       "image": "oak",

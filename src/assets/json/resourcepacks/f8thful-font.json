@@ -1,0 +1,22 @@
+{
+  "subtitle": "The font from F8thful",
+  "description": "This pack adds the font from the F8thful resource pack so that you can use it on its own without using the rest of the pack!",
+  "images": [
+    "menu",
+    "options",
+    "signs"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/f8thful-font/"
+    }
+  ],
+  "links": [
+    {
+      "text": "F8thful",
+      "type": "entry",
+      "name": "f8thful"
+    }
+  ]
+}

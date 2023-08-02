@@ -24,5 +24,12 @@
       "text": "Download [Bedrock]",
       "link": "https://www.curseforge.com/minecraft-bedrock/addons/f8thful-bedrock"
     }
+  ],
+  "links": [
+    {
+      "text": "F8thful Font",
+      "type": "entry",
+      "name": "f8thful-font"
+    }
   ]
 }
