@@ -38,6 +38,21 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
 }
 
+// analytics
+
+window.lastAnalytics = ""
+window.analytics = () => {
+  const version = new URL(location).searchParams.get("version")
+  if (location.href === lastAnalytics) return
+  console.log(document.title)
+  gtag("event", "page_view", {
+    page_title: document.title,
+    page_path: location.pathname,
+    page_location: location.href
+  })
+  lastAnalytics = location.href
+}
+
 // lazy loading
 
 window.imageObserver  =  new IntersectionObserver((entries, observer) => {
@@ -167,6 +182,7 @@ window.openPage = function(url, updateHistory = false, forceUpdate = false) {
     isOpeningPage = false
     $('meta[name="theme-color"]').attr("content", "#AE3535")
     $("#content > *")[0].onOpened?.()
+    analytics()
   })
 }
 

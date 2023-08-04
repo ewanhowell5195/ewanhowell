@@ -42,7 +42,9 @@ html(lang = "en")
       window.dataLayer = window.dataLayer || []
       function gtag(){dataLayer.push(arguments)}
       gtag("js", new Date())
-      gtag("config", "G-VSJF1VRJHW")
+      gtag("config", "G-VSJF1VRJHW", {
+        "send_page_view": false
+      })
   body
     #header-container
       #header

@@ -36,6 +36,10 @@ export function indexPageClass(type, title) {
               $("#no-results").removeClass("shown")
               this.addFeatured(versionDiv, $)
             } else $("#no-results").addClass("shown")
+            const title = document.title.split(" - ")
+            if (evt.target.innerHTML === "all") document.title = [title[0], title[title.length - 1]].join(" - ")
+            else document.title = [title[0], evt.target.innerHTML, title[title.length - 1]].join(" - ")
+            analytics()
           }))
           const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versions)
           for (const category of version.categories) {
@@ -77,11 +81,13 @@ export function indexPageClass(type, title) {
             }
           }
         }
+        let searchTimeout
         $("#search input").on({
           keypress(e) {
             if (e.key === "Enter") e.currentTarget.blur()
           },
           input(e) {
+            clearTimeout(searchTimeout)
             const text = e.currentTarget.value.toLowerCase().replace(/&/g, "and")
             if (text) $(".featured-entry").addClass("hidden")
             else $(".featured-entry").removeClass("hidden")
@@ -106,6 +112,9 @@ export function indexPageClass(type, title) {
             }
             if ($(".version.shown").find(".category").not(".hidden").length) $("#no-results").removeClass("shown")
             else $("#no-results").addClass("shown")
+            searchTimeout = setTimeout(() => {
+              gtag("event", "search", { "search_term": text })
+            }, 1000)
           }
         })
         window.addEventListener("resize", e => $(".category-header").css("top", `${$("#tabs").outerHeight()}px`))
@@ -118,7 +127,7 @@ export function indexPageClass(type, title) {
     static tag = `${type}-page`
     static title = `${title} - Ewan Howell`
 
-    async setData({version, search}) {
+    async setData({ version, search }) {
       await this.ready
       if (window[type].versions.length === 1) version = "all"
       else if (!version) {
@@ -137,6 +146,10 @@ export function indexPageClass(type, title) {
       }
       if (window[type].versions.length === 1) version = undefined
       this.newState = `/${type}/${toURLParams({version, search})}`
+      if (version && version !== "all") {
+        const title = document.title.split(" - ")
+        document.title = [title[0], version, title[1]].join(" - ")
+      }
     }
 
     onOpened() {
