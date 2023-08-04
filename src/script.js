@@ -43,7 +43,6 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
 window.lastAnalytics = ""
 window.analytics = () => {
   if (location.href === lastAnalytics) return
-  console.log(document.title)
   gtag("event", "page_view", {
     page_title: document.title,
     page_path: location.pathname,
