@@ -42,7 +42,6 @@ if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
 
 window.lastAnalytics = ""
 window.analytics = () => {
-  const version = new URL(location).searchParams.get("version")
   if (location.href === lastAnalytics) return
   console.log(document.title)
   gtag("event", "page_view", {
