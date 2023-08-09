@@ -17,7 +17,7 @@ export function entryPageClass(page, type) {
         return false
       }
       await fetchJSON(type)
-      const entryName = window[type].entries[args.name].name ?? args.name.replace(/-/g, " ").toTitleCase()
+      const entryName = window[type].entries[args.name].name ?? args.name.toTitleCase(true, true)
       jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
       jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
       jQuery("title").text(`${entryName} - ${data.author ?? "Ewan Howell"}`)
@@ -26,6 +26,7 @@ export function entryPageClass(page, type) {
       const localIcon = $("#local-icon").contents()
       const closeIcon = $("#close-icon").contents()
       const downloadIcon = $("#download-icon").contents()
+      const guideIcon = $("#guide-icon").contents()
       $("#banner-background").css("background-image", `url("/assets/images/${window[type].entries[args.name].image ? `${type}/${args.name}/images/${window[type].entries[args.name].image}` : "/home/logo_3d"}.webp")`)
       if (window[type].entries[args.name].logoless) $("#banner-content").prepend(
         E("div").attr("id", "logo").text(entryName)
@@ -167,6 +168,10 @@ export function entryPageClass(page, type) {
         for (const link of data.links) {
           if (link.type === "entry") links.append(E("a", {is: "f-a"}).addClass("button").attr("href", `/${type}/${link.name}`).append(
             localIcon.clone(true),
+            E("span").text(link.text)
+          ))
+          else if (link.type === "guide") links.append(E("a", {is: "f-a"}).addClass("button").attr("href", `/guides/${link.name}`).append(
+            guideIcon.clone(true),
             E("span").text(link.text)
           ))
           else {

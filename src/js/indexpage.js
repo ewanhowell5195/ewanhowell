@@ -61,19 +61,20 @@ export function indexPageClass(type, title) {
               ).appendTo(versionDiv)
             )
             for (const entry of category.entries) {
-              const entryName = window[type].entries[entry].name ?? entry.replace(/-/g, " ").toTitleCase()
+              const entryName = window[type].entries[entry].name ?? entry.toTitleCase(true, true)
               const entryImages = E("div").addClass("entry-images").attr("id", entry)
               entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${window[type].entries[entry].image ? `${type}/${entry}/images/${window[type].entries[entry].image}` : "/home/logo_3d"}.webp")`))
-              if (window[type].entries[entry].logoless) entryImages.append(
-                E("div").addClass("logo").text(entryName)
-              )
+              if (window[type].entries[entry].logoless) {
+                const logo = E("div").addClass("logo").text(entryName).appendTo(entryImages)
+                if (window[type].entries[entry].fontsize) logo.css("font-size", `${window[type].entries[entry].fontsize}rem`)
+              }
               else entryImages.append(
                 E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`)
               )
               const entryDiv = E("a", {is: "f-a"}).attr({
                 href: `/${type}/${entry}`,
                 "data-id": entry
-              }).addClass("entry-container").append(
+              }).addClass("entry").append(
                 entryImages,
                 E("div").addClass("entry-name").text(entryName)
               ).appendTo(categoryEntriesDiv)
@@ -96,7 +97,7 @@ export function indexPageClass(type, title) {
             if (!params.search) delete params.search
             history.replaceState({}, null, `/${type}/${toURLParams(params)}`)
             const spaceless = text.replace(/\s/g, "")
-            for (const e of $(".entry-container")) {
+            for (const e of $(".entry")) {
               const entry = $(e)
               const category = entry.parent().parent().attr("id").toLowerCase()
               const id = entry.find(".entry-images").attr("id").toLowerCase()
@@ -107,7 +108,7 @@ export function indexPageClass(type, title) {
             }
             for (const e of $(".category")) {
               const category = $(e)
-              if (!category.find(".entry-container").not(".hidden").length) category.addClass("hidden")
+              if (!category.find(".entry").not(".hidden").length) category.addClass("hidden")
               else category.removeClass("hidden")
             }
             if ($(".version.shown").find(".category").not(".hidden").length) $("#no-results").removeClass("shown")
@@ -158,15 +159,16 @@ export function indexPageClass(type, title) {
 
     async addFeatured(versionDiv, $) {
       if (!versionDiv.find(".featured-entry").length) {
-        const entries = versionDiv.find(".entry-container")
+        const entries = versionDiv.find(".entry")
         if (entries.length > 5) {
           const d = new Date(Date.now())
           const featured = this.$(entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length])
           const entry = E("div").addClass("featured-entry").append(
             E("div").addClass("featured-title").text(`Featured ${title.slice(0, -1)}`),
             E("a", { is: "f-a" }).addClass("featured").attr("href", featured.attr("href")).append(
-              E("div").addClass("featured-image").css("background-image", featured.find(".entry-image").css("background-image")).append(
-                E("div").addClass("featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
+              E("div").addClass("entry-images featured-images").append(
+                E("div").addClass("entry-image").css("background-image", featured.find(".entry-image").css("background-image")),
+                E("div").addClass("logo featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
               ),
               E("div").addClass("featured-details").append(
                 E("div").addClass("featured-category").text(featured.parent().prev().text()),

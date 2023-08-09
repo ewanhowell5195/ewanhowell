@@ -1,0 +1,23 @@
+{
+  "subtitle": "An example of OptiFine random entity textures",
+  "description": "This is an example resource pack that shows users how to create OptiFine random entity textures.\n\n<h1>Included examples</h1><ul><li>Randomised textures</li><li>Weight based textures</li><li>Name based textures</li><li>Biome based textures</li><li>NBT based textures</li></ul>",
+  "optifine": "OptiFine is used to add support for random entity textures.",
+  "images": [
+    "cows",
+    "chickens",
+    "endermen"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.planetminecraft.com/texture-pack/example-random-entity-textures/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Guide",
+      "type": "guide",
+      "name": "random-entity-textures"
+    }
+  ]
+}

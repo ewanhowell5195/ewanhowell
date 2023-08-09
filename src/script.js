@@ -34,8 +34,11 @@ window.toURLParams = o => {
   return arr.join("")
 }
 
-if (!String.prototype.toTitleCase) String.prototype.toTitleCase = function() {
-  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()})
+String.prototype.toTitleCase = function(c, n) {
+  let t
+  if (c) t = this.replace(/\s/g, "").replace(n ? /([A-Z])/g : /([A-Z0-9])/g, " $1").replace(/[_-]/g, " ")
+  else t = this
+  return t.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase()).trim()
 }
 
 // analytics
@@ -140,7 +143,9 @@ const routes = [
   pageRoute("tools/ctmconverter"),
   pageRoute("tools/mojangconverter"),
   pageRoute("tools/minecrafttitleconverter"),
-  pageRoute("tools/chestconverter")
+  pageRoute("tools/chestconverter"),
+  pageRoute("guides"),
+  pageRoute("guide", "/guides/:name")
 ]
 
 function compareURLs(a, b) {
@@ -228,8 +233,13 @@ customElements.define("f-a", FastAnchorElement, { extends: "a" })
 
 const jsonFetch = {}
 window.fetchJSON = async name => {
-  if (window[name] === undefined && jsonFetch[name] === undefined) jsonFetch[name] = fetch(`/assets/json/${name}.json`).then(e => e.json())
-  window[name] = await jsonFetch[name]
+  if (window[name] === undefined && jsonFetch[name] === undefined) try {
+    jsonFetch[name] = await fetch(`/assets/json/${name}.json`).then(e => e.json())
+  } catch {
+    return false
+  }
+  window[name] = jsonFetch[name]
+  return true
 }
 
 // end

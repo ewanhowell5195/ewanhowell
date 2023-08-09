@@ -1,0 +1,69 @@
+@import "buttons.styl"
+
+page-body
+  background-image: linear-gradient(to right, var(--color-grey-darker) 50%, var(--color-grey) 50%)
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  display: flex
+  flex-direction: row
+  
+#content-container
+  flex: 1
+  background-color: var(--color-grey-darker)
+  overflow-x: hidden
+
+header
+  height: 228px
+  background-position: 50% 50%
+  background-size: cover
+  position: relative
+  box-shadow: var(--box-shadow)
+
+#header-contents
+  position: absolute
+  inset: 0
+  backdrop-filter: blur(4px)
+  padding: 30px
+
+#title
+  font-size: 2.75rem
+  font-weight: 700
+  text-shadow: -5px 5px 1px var(--color-text-shadow)
+  margin-bottom: 10px
+  
+#subtitle
+  text-shadow: -3px 3px 1px var(--color-text-shadow)
+
+#sidebar
+  background-color: var(--color-grey)
+  height: calc(100vh - var(--header-height) * 2 - 40px)
+  width: 256px
+  padding: 20px
+  box-shadow: -5px 0 10px var(--color-box-shadow)
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  
+#sidebar-title
+  font-size: 1.75rem
+  font-weight: 700
+  text-shadow: -4px 4px 1px var(--color-text-shadow)
+  margin-bottom: 20px
+  
+.sidebar-subtitle
+  font-size: 1.25rem
+  text-shadow: -3px 3px 1px var(--color-text-shadow)
+  margin-bottom: 20px
+  
+.sidebar-links
+  display: flex
+  flex-direction: column
+  margin-bottom: 40px
+  width: 100%
+  gap: 15px
+  
+.link-example
+  background-color: var(--color-download)

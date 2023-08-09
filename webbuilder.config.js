@@ -28,13 +28,15 @@ block meta
     }
 
     await Promise.all(types.map(generateType))
+    
+    generateGuides()
 
     console.log("Generated open graph")
   }
 }
 
 globalThis.getFiles = async function*(dir) {
-  const dirents = await fs.promises.readdir(dir, {withFileTypes: true})
+  const dirents = await fs.promises.readdir(dir, { withFileTypes: true })
   for (const dirent of dirents) {
     const res = path.resolve(dir, dirent.name)
     if (dirent.isDirectory()) {
@@ -50,8 +52,11 @@ globalThis.customElements = { define() {} }
 
 globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {}
 
-String.prototype.toTitleCase = function() {
-  return this.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.substring(1).toLowerCase()).trim()
+String.prototype.toTitleCase = function(c, n) {
+  let t
+  if (c) t = this.replace(/\s/g, "").replace(n ? /([A-Z])/g : /([A-Z0-9])/g, " $1").replace(/[_-]/g, " ")
+  else t = this
+  return t.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase()).trim()
 }
 
 const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
@@ -62,7 +67,7 @@ async function generateType(type) {
 }
 
 async function generateEntry(type, entries, [id, details]) {
-  const entryName = details.name ?? id.replace(/-/g, " ").toTitleCase()
+  const entryName = details.name ?? id.toTitleCase(true, true)
   if (!fs.existsSync(`src/assets/json/${type}/${id}.json`)) return
   const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}/${id}.json`, "utf-8"))
   fs.mkdirSync(`dist/${type}/${id}`, { recursive: true })
@@ -127,4 +132,21 @@ block meta
   ])
   fs.mkdirSync(`dist/assets/images/${type}/${id}`, { recursive: true })
   await bgSharp.webp({nearLossless: true}).toFile(`dist/assets/images/${type}/${id}/cover.webp`)
+}
+
+function generateGuides() {
+  const guides = JSON.parse(fs.readFileSync("src/assets/json/guides.json", "utf-8"))
+  for (const data of guides) {
+    const guide = JSON.parse(fs.readFileSync(`src/assets/json/guides/${data.id}.json`, "utf-8"))
+    fs.mkdirSync(`dist/guides/${data.id}`, { recursive: true })
+    fs.writeFileSync(`dist/guides/${data.id}/index.html`, processPug(`extends /../includes/main.pug
+
+block meta
+  -
+    meta = {
+      title: "${guide.name ?? data.id.toTitleCase(true)} - Guides - Ewan Howell",
+      description: "${data.description}",
+      image: "guides/${data.id}/thumbnail.webp"
+    }`), "utf-8")
+  }
 }

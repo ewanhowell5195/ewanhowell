@@ -16,6 +16,12 @@
           ]
         },
         {
+          "name": "Examples",
+          "entries": [
+            "example-random-entity-textures"
+          ]
+        },
+        {
           "name": "Other",
           "entries": [
             "spinning-skull"
@@ -588,6 +594,12 @@
       "name": "Entity Healthbars: Hearts",
       "image": "all",
       "optifine": 2
+    },
+    "example-random-entity-textures": {
+      "image": "cows",
+      "optifine": 2,
+      "logoless": true,
+      "fontsize": 2
     },
     "f8thful": {
       "image": "house",

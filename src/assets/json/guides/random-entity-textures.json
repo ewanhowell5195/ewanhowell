@@ -1,0 +1,16 @@
+{
+  "links": {
+    "examples": ["example-random-entity-textures"],
+    "documentation": [
+      {
+        "text": "Official Documentation",
+        "link": "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/random_entities.properties"
+      },
+      {
+        "text": "OptiDocs Documentation",
+        "link": "https://optifine.readthedocs.io/random_entities.html"
+      }
+    ],
+    "video": "5bF6dxnmPNQ"
+  }
+}
