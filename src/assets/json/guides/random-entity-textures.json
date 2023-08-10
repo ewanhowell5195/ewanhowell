@@ -12,5 +12,63 @@
       }
     ],
     "video": "5bF6dxnmPNQ"
-  }
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "What are Random Entity Textures?"
+    },
+    "Random Entity Textures are an OptiFine feature that allow you to add texture variants to entities. These variants can be randomised, or set to appear when certain conditions are met.",
+    {
+      "type": "heading",
+      "text": "How to create Random Entity Textures"
+    },
+    {
+      "type": "step",
+      "text": "Creating the folder",
+      "step": 1
+    },
+    "Inside your resource pack, create the folder: `assets/minecraft/optifine/random/entity`.",
+    {
+      "type": "step",
+      "text": "Adding a variant",
+      "step": 2
+    },
+    "Add your first variant to the newly created random entities folder. The texture needs to be named the same as the vanilla texture, but with the number `2` after it, for example: `chicken.png` will become `chicken2.png`.",
+    "The random entities folder is structured identically to the `assets/minecraft/textures/entity` folder. This means that if your texture is located inside the `textures/entity/cow/` folder, its variants will need to be put inside `random/entity/cow/` folder.",
+    "Test the pack! You have just created your first texture variant. You should see the normal texture 50% of the time, and your new variant the other 50%.",
+    {
+      "type": "step",
+      "text": "More variants",
+      "step": 3
+    },
+    "If you want to create more variants, just add more textures to the random entity folder. For a second and third variant for example, you would create `chicken3.png` and `chicken4.png`. Adding these extra two variants would mean each variant now has a 25% chance to appear.",
+    {
+      "type": "step",
+      "text": "Creating a properties file",
+      "step": 4
+    },
+    "A properties file can be used to customise the randomisation and add conditions for when variants should appear.",
+    "To create a properties file, create a normal text file and change `.txt` to `.properties`.",
+    "If you have file name extensions hidden, make sure to enable them so you can rename it properly. On Windows 11, this can be done from `View > Show > File name extensions`",
+    {
+      "type": "step",
+      "text": "Properties formatting",
+      "step": 5
+    },
+    "Random entity textures properties files contain rules. Each rule defines how and when variants should be loaded.",
+    "Here is an example of a single rule. The `textures` line is the only required line for a rule, and defines what textures will follow the rule. Texture `1` is the normal texture, and the other numbers are the variants inside your random entities folder.",
+    {
+      "type": "codeblock",
+      "text": "textures.1=1 2 3\nweights.1=5 4 1\nbiomes.1=plains",
+      "name": "cow.properties"
+    },
+    "Rules are loaded from top to bottom, meaning that rules at the top of the file are checked first. The first rule where all its conditions are met will be the rule that applies. Remember, if a rule has no conditions, it will ALWAYS apply, as long as no other rules get applied before it. If no rules get applied, no variants will get loaded and normal texture will be the one that loads.",
+    {
+      "type": "step",
+      "text": "Finish this guide",
+      "step": 6
+    },
+    "Ewan needs to finish this guide and add images and stuff. If you are reading this and the date is past 12/08/2023, please remind him."
+  ]
 }

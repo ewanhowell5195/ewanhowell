@@ -348,93 +348,94 @@ body::-webkit-scrollbar-thumb
 .popup-optifine
   max-width: 405px
   background-color: var(--color-grey)
-  max-height: calc(100vh - 40px)
-  overflow-y: auto
   
-  #popup-optifine-banner
-    display: flex
-    background-image: var(--gradient-optifine)
-    align-items: center
-    max-height: 50px
-    box-shadow: var(--box-shadow)
-    gap: 15px
-    width: 100%
+#popup-optifine-banner
+  display: flex
+  background-image: var(--gradient-optifine)
+  align-items: center
+  max-height: 50px
+  box-shadow: var(--box-shadow)
+  gap: 15px
+  width: 100%
+  
+  div
+    color: var(--color-text-optifine)
+    text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
+    font-weight: 700
     
-    div
-      color: var(--color-text-optifine)
-      text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
-      font-weight: 700
+#popup-optifine-close
+  width: 40px
+  height: 40px
+  padding: 5px
+  transition: background-color .15s
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+
+  svg
+    min-width: 28px
+    min-height: 28px
+    fill: var(--color-text-optifine)
+    filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+    transition: transform .15s
+  
+  &:hover
+    background-color: #A93931
+
+  &:active > *
+    transform: translateY(4px)
+
+#popup-optifine-content
+  overflow-y: auto
+  max-height: calc(100vh - 90px)
+
+#popup-optifine-text
+  white-space: pre-wrap
+  padding: 28px
+  user-select: text
+  
+  h3
+    margin: 30px 0 10px
       
-    #popup-optifine-close
-      width: 40px
-      height: 40px
-      padding: 5px
-      transition: background-color .15s
+#popup-optifine-download
+  width: 100%
+  display: flex
+  justify-content: center
+  padding-bottom: 28px
+  
+  div
+    background-image: var(--gradient-optifine)
+    box-shadow: var(--box-shadow)
+  
+    a
       display: flex
       align-items: center
-      justify-content: center
-      cursor: pointer
-
-      svg
-        min-width: 28px
-        min-height: 28px
-        fill: var(--color-text-optifine)
-        filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+      font-weight: 700
+      text-decoration: none
+      text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
+      gap: 10px
+      padding: 10px
+      transition: background-color .15s
+      
+      & > *
         transition: transform .15s
       
+      span
+        color: var(--color-text-optifine)
+      
+      svg
+        width: 28px
+        height: 28px
+        fill: var(--color-text-optifine)
+        filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+        
       &:hover
+        background-image: none
         background-color: #A93931
 
       &:active > *
         transform: translateY(4px)
-  
-  #popup-optifine-text
-    white-space: pre-wrap
-    padding: 28px
-    user-select: text
-    overflow-y: auto
-    
-    h3
-      margin: 30px 0 10px
-      
-  #popup-optifine-download
-    width: 100%
-    display: flex
-    justify-content: center
-    padding-bottom: 28px
-    
-    div
-      background-image: var(--gradient-optifine)
-      box-shadow: var(--box-shadow)
-    
-      a
-        display: flex
-        align-items: center
-        font-weight: 700
-        text-decoration: none
-        text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
-        gap: 10px
-        padding: 10px
-        transition: background-color .15s
-        
-        & > *
-          transition: transform .15s
-        
-        span
-          color: var(--color-text-optifine)
-        
-        svg
-          width: 28px
-          height: 28px
-          fill: var(--color-text-optifine)
-          filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
-          
-        &:hover
-          background-image: none
-          background-color: #A93931
-
-        &:active > *
-          transform: translateY(4px)
 
 // animations
 

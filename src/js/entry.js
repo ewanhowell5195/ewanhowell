@@ -55,16 +55,18 @@ export function entryPageClass(page, type) {
                     closeIcon.clone(true)
                   ).on("click", e => popup.remove())
                 ),
-                E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${window[type].entries[args.name].optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
-                E("div").attr("id", "popup-optifine-download").append(E("div").append(
-                  E("a").attr({
-                    href: "https://optifine.net/downloads",
-                    target: "_blank"
-                  }).append(
-                    downloadIcon.clone(true),
-                    E("span").text("Download OptiFine")
-                  )
-                ))
+                E("div").attr("id", "popup-optifine-content").append(
+                  E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${window[type].entries[args.name].optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
+                  E("div").attr("id", "popup-optifine-download").append(E("div").append(
+                    E("a").attr({
+                      href: "https://optifine.net/downloads",
+                      target: "_blank"
+                    }).append(
+                      downloadIcon.clone(true),
+                      E("span").text("Download OptiFine")
+                    )
+                  ))
+                )
               )
             )
           ).on("click", e => {

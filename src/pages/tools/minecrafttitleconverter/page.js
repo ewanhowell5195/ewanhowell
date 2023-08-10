@@ -54,6 +54,7 @@ export default class MinecraftTitleConverterPage extends Page {
         oldCtx.drawImage(oldPreCanvas, 0, 0, width, oldPreCanvas.height, 0, 0, width, oldPreCanvas.height)
         oldCtx.drawImage(oldPreCanvas, width, 0, oldPreCanvas.width - width, oldPreCanvas.height, 0, Math.floor(oldPreCanvas.height / 44 * 45), oldPreCanvas.width - width, oldPreCanvas.height)
         const downloadIcon = $("#download-icon").contents()
+        const newOutput = newConvert(canvas)
         output.append(
           E("h2").text("Input image"),
           canvas,
@@ -65,9 +66,9 @@ export default class MinecraftTitleConverterPage extends Page {
                 E("div").addClass("button-download").append(
                   downloadIcon.clone(true),
                   E("span").text("Download")
-                ).on("click", e => newCanvas.saveAs("minecraft.png"))
+                ).on("click", e => newOutput.saveAs("minecraft.png"))
               ),
-              E("div").addClass("canvas-container").append(newConvert(canvas))
+              E("div").addClass("canvas-container").append(newOutput)
             ),
             E("div").addClass("output-container").append(
               E("div").append(
@@ -92,6 +93,7 @@ export default class MinecraftTitleConverterPage extends Page {
           const ctx = convertCanvas.getContext("2d")
           ctx.drawImage(img, 0, 0, w, h, 0, 0, w, h)
           ctx.drawImage(img, 0, h2, w2, h, w, 0, w2, h)
+          const newOutput = newConvert(convertCanvas)
           output.append(
             E("div").addClass("output-container").append(
               E("div").append(
@@ -100,9 +102,9 @@ export default class MinecraftTitleConverterPage extends Page {
                 E("div").addClass("button-download").append(
                   downloadIcon.clone(true),
                   E("span").text("Download")
-                ).on("click", e => oldCanvas.saveAs("minecraft.png"))
+                ).on("click", e => newOutput.saveAs("minecraft.png"))
               ),
-              E("div").addClass("canvas-container").append(newConvert(convertCanvas))
+              E("div").addClass("canvas-container").append(newOutput)
             )
           )
         }

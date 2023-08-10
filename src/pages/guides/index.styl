@@ -39,12 +39,23 @@ h2
 
 .spacer
   flex: 1
-  
-img
+
+.images
+  position: relative
+  display: flex
+
+.image
   max-height: 224px
   max-width: 100%
   box-shadow: var(--box-shadow)
   
+.optifine
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 50px
+  height: 50px
+
 @media only screen and (max-width: 768px)
   .guide
     flex-direction: column

@@ -9,8 +9,9 @@ export default class extends Page {
             E("h2").text(guide.name ?? guide.id.toTitleCase(true)),
             E("p").text(guide.description)
           ),
-          E("div").addClass("image").append(
-            E("img").attr("src", `/assets/images/guides/${guide.id}/thumbnail.webp`)
+          E("div").addClass("images").append(
+            E("img").addClass("image").attr("src", `/assets/images/guides/${guide.id}/thumbnail.webp`),
+            guide.optifine ? E("img").addClass("optifine").attr("src", "/assets/images/logo/optifine.webp") : undefined
           )
         ).appendTo(section)
       }

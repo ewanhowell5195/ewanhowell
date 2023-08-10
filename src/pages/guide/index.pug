@@ -1,6 +1,9 @@
+template#close-icon: include /assets/images/svg/close.svg
+template#download-icon: include /assets/images/svg/download.svg
 template#link-icon: include /assets/images/svg/open_in_new.svg
 template#local-icon: include /assets/images/svg/local_link.svg
 template#youtube-icon: include /assets/images/svg/youtube.svg
+template#copy-icon: include /assets/images/svg/copy.svg
 .container
   #content-container
     header
@@ -8,7 +11,17 @@ template#youtube-icon: include /assets/images/svg/youtube.svg
       #header-contents
         #title
         #subtitle
+    #optifine.hidden
+      #optifine-img
+        img(src = "/assets/images/logo/optifine.webp")
+      .optifine-desc This feature requires OptiFine
+      .spacer
+      #optifine-info
+        include /assets/images/svg/info.svg
+        span.text
+      a(href = "https://optifine.net/downloads", target = "_blank")
+        include /assets/images/svg/download.svg
+        span.text
     #content
-      p todo
   aside#sidebar
     #sidebar-title Useful Links
