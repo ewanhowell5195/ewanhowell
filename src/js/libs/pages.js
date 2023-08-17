@@ -78,6 +78,7 @@ class Page extends HTMLElement {
           }
           ::-webkit-scrollbar {
             width:10px;
+            height:10px;
           }
           ::-webkit-scrollbar-thumb {
             background-color: var(--color-red);

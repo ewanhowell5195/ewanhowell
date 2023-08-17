@@ -35,8 +35,22 @@
       "step": 2
     },
     "Add your first variant to the newly created random entities folder. The texture needs to be named the same as the vanilla texture, but with the number `2` after it, for example: `chicken.png` will become `chicken2.png`.",
+    {
+      "type": "image",
+      "name": "first",
+      "height": 114
+    },
     "The random entities folder is structured identically to the `assets/minecraft/textures/entity` folder. This means that if your texture is located inside the `textures/entity/cow/` folder, its variants will need to be put inside `random/entity/cow/` folder.",
+    {
+      "type": "image",
+      "name": "folder",
+      "height": 114
+    },
     "Test the pack! You have just created your first texture variant. You should see the normal texture 50% of the time, and your new variant the other 50%.",
+    {
+      "type": "image",
+      "name": "50_50"
+    },
     {
       "type": "step",
       "text": "More variants",
@@ -44,13 +58,28 @@
     },
     "If you want to create more variants, just add more textures to the random entity folder. For a second and third variant for example, you would create `chicken3.png` and `chicken4.png`. Adding these extra two variants would mean each variant now has a 25% chance to appear.",
     {
+      "type": "image",
+      "name": "more",
+      "height": 172
+    },
+    {
       "type": "step",
       "text": "Creating a properties file",
       "step": 4
     },
     "A properties file can be used to customise the randomisation and add conditions for when variants should appear.",
-    "To create a properties file, create a normal text file and change `.txt` to `.properties`.",
+    "To create a properties file, create a normal text file next to your variants, and change `.txt` to `.properties`. The properties file needs to be named to match the name of the texture you are adding variants to. For example: `chicken.png` will use `chicken.properties`",
+    {
+      "type": "image",
+      "name": "properties",
+      "height": 126
+    },
     "If you have file name extensions hidden, make sure to enable them so you can rename it properly. On Windows 11, this can be done from `View > Show > File name extensions`",
+    {
+      "type": "image",
+      "name": "file_names",
+      "height": 400
+    },
     {
       "type": "step",
       "text": "Properties formatting",
@@ -61,14 +90,231 @@
     {
       "type": "codeblock",
       "text": "textures.1=1 2 3\nweights.1=5 4 1\nbiomes.1=plains",
-      "name": "cow.properties"
+      "name": "chicken.properties"
     },
     "Rules are loaded from top to bottom, meaning that rules at the top of the file are checked first. The first rule where all its conditions are met will be the rule that applies. Remember, if a rule has no conditions, it will ALWAYS apply, as long as no other rules get applied before it. If no rules get applied, no variants will get loaded and normal texture will be the one that loads.",
     {
       "type": "step",
-      "text": "Finish this guide",
+      "text": "Properties examples",
       "step": 6
     },
-    "Ewan needs to finish this guide and add images and stuff. If you are reading this and the date is past 12/08/2023, please remind him."
+    "Below are some examples of different rules that you can use.",
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "name": "Weights",
+          "content": [
+            "Weights are a way of changing how often a randomised variant will appear.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=1 2 3\nweights.1=5 4 1",
+              "name": "chicken.properties"
+            },
+            "For weights to work, you need the same number of weights on a rule as the number of textures belonging to a rule. In the example above, there are 3 textures on rule 1, so there are 3 weights.",
+            "In this example, if you add up all the weights, they total to 10. This means that variant 1 has a `5/10` chance to appear, so a `50%` chance. Variant 2 has a `4/10` chance, so its `40%` likely to appear. Variant 3 has a `1/10` chance, so it has a `10%` chance to appear.",
+            {
+              "type": "image",
+              "name": "weights"
+            },
+            "Weights can add up to be any number, but whatever number they add up to will become the denominator of the fraction used to calculate the chance the variant has to appear."
+          ]
+        },
+        {
+          "name": "Names",
+          "content": [
+            "Variants can be set to appear when the entity's name matches a required name.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nname.1=James",
+              "name": "chicken.properties"
+            },
+            "In the example above, variant 2 will only be shown when the entity is named `James`.",
+            {
+              "type": "image",
+              "name": "names"
+            },
+            "By default, names are case sensitive, and must match exactly what was provided in the rule, however there are some things you can do to fix that.",
+            {
+              "type": "heading",
+              "text": "pattern"
+            },
+            "`pattern` is a special prefix you can use before a name that allows you to do more advanced matches. To use the `pattern`, simply add `pattern:` at the start of the name.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nname.1=pattern:James",
+              "name": "chicken.properties"
+            },
+            {
+              "type": "tabs",
+              "tabs": [
+                {
+                  "name": "Case Insensitive",
+                  "content": [
+                    "To make the name case insensitve, so that it works with and without capital letters, use the prefix `ipattern`.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=ipattern:james",
+                      "name": "chicken.properties"
+                    },
+                    "This example will work with `James`, `james`, `JAMES`, `jAmEs`, etc..."
+                  ]
+                },
+                {
+                  "name": "Wildcards",
+                  "content": [
+                    "Wildcards are special characters that allow your name to include characters you didn't specify in the original name.",
+                    {
+                      "type": "tablelist",
+                      "rows": [
+                        ["`?`", "Any character."],
+                        ["`*`", "Any character any number of times."]
+                      ]
+                    },
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=pattern:?ary",
+                      "name": "chicken.properties"
+                    },
+                    "In this example, since the `?` means any character, the names `Gary`, `Mary`, and `Bary` are all valid.",
+                    "Even though the example above is case sensitive, the `?` itself allows any character, no matter the case, so `gary`, `mary`, and `bary` are also valid.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=pattern:*Gary*",
+                      "name": "chicken.properties"
+                    },
+                    "The `*` means any character any number of times. In the above example, the `*` allows the name to include any text before or after the name, for example: `I am Gary!`, `Gary is my name`, or even `My name is Gary but you can call me Gary`.",
+                    "The `*` wildcard also allows 0 characters to be present, which means just the name `Gary` with nothing either side will still work."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "regex"
+            },
+            "`regex` is another special prefix that you can use before a name to do more advanced matching. `regex` is much more powerful than `pattern`, but also much more complicated, so this guide will only touch on the basics.",
+            {
+              "type": "tablelist",
+              "rows": [
+                ["`.`", "Any character."],
+                ["`\\\\d`", "Any numeric digit."],
+                ["`()`", "A group, groups things together."],
+                ["`[]`", "A list of characters."],
+                ["`*`", "The previous thing can appear 0-Infinity times."],
+                ["`+`", "The previous thing can appear 1-Infinity times."],
+                ["`|`", "OR operator."],
+                ["`?`", "Make the previous thing optional (Behaviour can change depending what it is behind, but most of the time it is this)."]
+              ]
+            },
+            {
+              "type": "tabs",
+              "tabs": [
+                {
+                  "name": "Case Insensitive",
+                  "content": [
+                    "To make the name case insensitve, so that it works with and without capital letters, use the prefix `iregex`.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=iregex:james",
+                      "name": "chicken.properties"
+                    },
+                    "This example will work with `James`, `james`, `JAMES`, `jAmEs`, etc..."
+                  ]
+                },
+                {
+                  "name": "Multiple Names",
+                  "content": [
+                    "You can use regex to allow multiple names to be valid, by using the OR operator.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:James|Gary|Gabriel",
+                      "name": "chicken.properties"
+                    },
+                    "The above example is saying: **James OR Gary OR Gabriel**, meaning that the names `James`, `Gary`, and `Gabriel` would all be valid.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:Gary (Smith|Adams)",
+                      "name": "chicken.properties"
+                    },
+                    "You can use groups to make only part of the name work with multiple words.",
+                    "This example means: **Gary AND (Smith OR Adams)**, meaning that both of the names `Gary Smith` and `Gary Adams` will be valid."
+                  ]
+                },
+                {
+                  "name": "Wildcards",
+                  "content": [
+                    "Wildcards are special characters that allow your name to include characters you didn't specify in the original name.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:.ary",
+                      "name": "chicken.properties"
+                    },
+                    "In this example, since the `.` means any character, the names `Gary`, `Mary`, and `Bary` are all valid.",
+                    "Even though the example above is case sensitive, the `.` itself allows any character, no matter the case, so `gary`, `mary`, and `bary` are also valid.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:.*Gary.*",
+                      "name": "chicken.properties"
+                    },
+                    "The `*` means that the previous thing can appear 0-Infinity times, so when paired with `.` to make `.*`, it means any character any number of times. In the above example, this allows the name to include any text before or after, for example: `I am Gary!`, `Gary is my name`, or even `My name is Gary but you can call me Gary`."
+                  ]
+                },
+                {
+                  "name": "Character Lists",
+                  "content": [
+                    "When a word is one character different from another word, and you want to support both characters, you can use a list of characters.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:[fghmw]ood",
+                      "name": "chicken.properties"
+                    },
+                    "In this example, since the `[]` means that the character in that position can be any in that list, so the names `food`, `good`, `hood`, `mood`, and `wood` are all valid.",
+                    "You can use `-` in a character list to show a range of characters, for example `[a-z0-9]` means any character from a-z and any digit from 0-9."
+                  ]
+                },
+                {
+                  "name": "Optional Characters",
+                  "content": [
+                    "You can use a `?` after a character to make it optional.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=regex:Seeds?",
+                      "name": "chicken.properties"
+                    },
+                    "Here, the `s` is followed by `?` making it optional. Both the names `Seed` and `Seeds` are valid here."
+                  ]
+                },
+                {
+                  "name": "Mixing Together",
+                  "content": [
+                    "Here is an example of a regex pattern where the other examples have all been combined into one.",
+                    {
+                      "type": "codeblock",
+                      "text": "textures.1=2\nname.1=iregex:ja(mes|ck) .*[ghw]oods?",
+                      "name": "chicken.properties"
+                    },
+                    "This regex pattern is case insensitive and matches names that start with `ja` followed by either `mes` or `ck`, then followed by a space with any characters after it, and then ends with `good`, `hood`, or `wood` with an optional `s` at the end.",
+                    "Some (but not all) examples that would match this regex:",
+                    {
+                      "type": "tablelist",
+                      "rows": [
+                        ["`James Good`"],
+                        ["`Jack is in the hood`"],
+                        ["`James got lost in the woods`"],
+                        ["`jAcK eNtErEd AdUlThOoD`"]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "If you would like to use any regex special characters as normal characters within your name, for example using a `?`, you need to escape it. To escape a character, add a `\\\\` in front of it: `\\\\?`. If you want to use a `\\` in your name, you need to put four `\\` in a row: `\\\\\\\\`.",
+            "You can use [regex101](https://regex101.com/) set to the \"Java 8\" flavour to test your regex. In regex101, you will need to half the number of `\\` that you have in your regex. This means that if you have: `\\\\d`, that would become `\\d` when it is in regex101.",
+            "It is recommended to use `pattern` rather than `regex` whenever possible due to it being faster to process."
+          ]
+        }
+      ]
+    }
   ]
 }

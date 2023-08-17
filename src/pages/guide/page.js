@@ -116,10 +116,10 @@ function addBlocks($, element, blocks, guide, args) {
       const table = E("table").addClass("tablelist").appendTo(section)
       for (const row of block.rows) {
         const tr = E("tr").appendTo(table)
-        for (const [i, cell] of row.entries()) tr.append(E("td").html(cell))
+        for (const [i, cell] of row.entries()) tr.append(E("td").html(parseString(cell)))
       }
     } else if (block.type === "image") {
-      E("img").attr("src", `/assets/images/guides/${guide}/${block.name}.webp`).css("max-height", `${block.height ?? 256}px`).appendTo(section)
+      E("img").addClass("popupable").attr("src", `/assets/images/guides/${guide}/${block.name}.webp`).css("max-height", `${block.height ?? 256}px`).appendTo(section)
     } else if (block.type === "tabs") {
       let tabs, sections
       E("div").addClass(`tab-container${args?.depth === 1 ? " light" : ""}`).append(
@@ -131,7 +131,7 @@ function addBlocks($, element, blocks, guide, args) {
           E("div").attr("data-tab", i).addClass("section-tab tab").append(sect.name)
         )
         const section2 = E("div").attr("data-tab", i).addClass("tab-section")
-        addBlocks($, section2, sect.content, guide, { depth: 1 })
+        addBlocks($, section2, sect.content, guide, { depth: (args?.depth ?? 0) + 1 })
         sections.append(section2)
       }
       sections.children().first().addClass("selected")
@@ -144,7 +144,7 @@ function addBlocks($, element, blocks, guide, args) {
       E("div").addClass("step").html(block.text).attr("data-step", `${block.step}.`).appendTo(section)
     } else if (block.type === "codeblock") {
       let copy, timeout
-      E("div").addClass("codeblock").append(
+      E("div").addClass(`codeblock${args?.depth ? ` light${args.depth}` : ""}`).append(
         E("div").addClass("codeblock-banner").append(
           E("div").addClass("codeblock-name").text(block.name),
           E("div").addClass("codeblock-copy").append(
@@ -166,4 +166,6 @@ function addBlocks($, element, blocks, guide, args) {
 
 function parseString(str, depth) {
   return str.replace(/`((?:.|\n)+?)`/g, `<code${depth === 1 ? ' class="light"' : ""}>$1</code>`)
+            .replace(/\[(.+?)\]\((.+?)\)/g, `<a href="$2" target="_blank">$1</a>`)
+            .replace(/\*\*((?:.|\n)+?)\*\*/g, "<strong>$1</strong>")
 }

@@ -40,6 +40,9 @@ header
 .spacer
   flex: 1
 
+.hidden
+  display: none !important
+
 #optifine
   display: flex
   background-image: var(--gradient-optifine)
@@ -145,11 +148,11 @@ header
   display: flex
   flex-direction: column
   gap: 20px
-  max-width: 100%
+  width: 100%
   
   img
     object-fit: contain
-    object-position: left
+    filter: drop-shadow(var(--box-shadow))
 
 .heading
   font-size: 2rem
@@ -175,15 +178,33 @@ header
     white-space: nowrap !important
     display: list-item
     list-style: inside
-  
+
+.tab-container
+  filter: drop-shadow(var(--box-shadow))
+
+  &.light
+    .active
+      background: var(--color-grey-light)
+    
+    .tab-sections
+      background-color: var(--color-grey-light)
+    
+    .tabs::-webkit-scrollbar-track
+      background-color: var(--color-grey-light)
+
 .tabs
   display: flex
   width: 100%
   gap: 10px
   padding: 0 10px
+  max-width: calc(100% - 20px)
+  overflow-x: auto
+  
+  &::-webkit-scrollbar-track
+    background-color: var(--color-grey)
 
 .tab
-  height: 38px
+  min-height: 18px
   background-color: var(--color-grey-dark)
   cursor: pointer
   display: flex
@@ -191,9 +212,9 @@ header
   align-items: center
   border-top: 2px solid transparent
   transition: background-color .15s, border-top .15s
-  box-shadow: -10px 0 10px var(--color-box-shadow)
   user-select: none
-  padding: 0 15px
+  padding: 10px 15px
+  text-align: center
   
   &.active
     background-color: var(--color-grey)
@@ -201,7 +222,6 @@ header
 
 .sections
   background-color: var(--color-grey)
-  box-shadow: var(--box-shadow)
   padding: 20px
   flex: 1
   z-index: 1
@@ -212,18 +232,12 @@ header
   
 .selected
   display: flex
-  
-.tab-container.light
-  .active
-    background: var(--color-grey-light)
-  
-  .tab-sections
-    background-color: var(--color-grey-light)
     
 code
   font-family: consolas, monospace
   background-color: black
   padding: 0 4px
+  border: 1px solid var(--color-green)
   
   &.light
     background-color: var(--color-grey-darker)
@@ -236,17 +250,31 @@ code
     content: attr(data-step)
     margin-right: 10px
     
+.entry
+  font-size: 1.75rem
+  margin-top: 20px
+  
+  &::before
+    content: "-"
+    margin-right: 10px
+    
 .codeblock
   background-color: var(--color-grey)
   font-family: consolas, monospace
   box-shadow: var(--box-shadow)
+
+  &.light1
+    background-color: var(--color-grey-light)
+  
+  &.light2
+    background-color: #505050
 
 .codeblock-banner
   display: flex
   justify-content: space-between
   align-items: center
   padding: 10px
-  border-bottom: 2px solid var(--color-grey-light)
+  border-bottom: 2px solid rgba(255,255,255,0.25)
 
 .codeblock-name
   opacity: 0.5
@@ -272,3 +300,6 @@ code
 .codeblock-content
   padding: 10px
   white-space: pre-wrap
+  
+a
+  color: var(--color-link-blue)
