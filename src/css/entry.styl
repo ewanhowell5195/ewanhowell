@@ -135,6 +135,12 @@
 
     &:active > *
       transform: translateY(4px)
+      
+  &.optional #required
+    display: none
+
+  &.required #optional
+    display: none
 
 #entry-content
   flex: 1
@@ -386,6 +392,30 @@
 
 // mobile
 
+@media only screen and (max-width: 1020px)
+  #optifine.optional
+    #optifine-info .text::after
+      content: "Information"
+    
+    a .text::after
+      content: "Download"
+      
+@media only screen and (max-width: 910px)
+  #optifine.optional
+    #optifine-info .text::after
+      content: "Requirement Information"
+      
+    .optifine-desc
+      display: none!important
+
+@media only screen and (max-width: 860px)
+  #optifine.required
+    #optifine-info .text::after
+      content: "Information"
+    
+    a .text::after
+      content: "Download"
+
 @media only screen and (max-width: 768px)
   #entry-content
     flex-flow: column
@@ -403,15 +433,6 @@
     flex-direction: row
     justify-content: center
     
-  .optifine-desc
-    display: none!important
-    
-  #optifine-info .text::after
-    content: "Requirement Info"!important
-    
-  a .text::after
-    content: "Download"!important
-    
   #banner-content
     display: flex
     justify-content: center
@@ -426,9 +447,20 @@
     
   #images, .showcase-image
     width: 80vw
-    
-@media only screen and (max-width: 500px) {
-  #logo {
+
+@media only screen and (max-width: 750px)
+  #optifine.required
+    #optifine-info .text::after
+      content: "Requirement Information"
+      
+    .optifine-desc
+      display: none!important
+
+@media only screen and (max-width: 500px)
+  #logo
     font-size: 2rem
-  }
-}
+    
+@media only screen and (max-width: 470px)
+  #optifine.required, #optifine.optional
+    #optifine-info .text::after
+      content: "Information"

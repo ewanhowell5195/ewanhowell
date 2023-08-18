@@ -11,7 +11,21 @@
         "link": "https://optifine.readthedocs.io/random_entities.html"
       }
     ],
-    "video": "5bF6dxnmPNQ"
+    "video": "5bF6dxnmPNQ",
+    "other": [
+      {
+        "text": "regex101",
+        "link": "https://regex101.com/"
+      },
+      {
+        "text": "DenCode Unicode Escape",
+        "link": "https://dencode.com/en/string/unicode-escape" 
+      },
+      {
+        "text": "Biome IDs",
+        "link": "https://minecraft.fandom.com/wiki/Biome#BiomeIDs"
+      }
+    ]
   },
   "content": [
     {
@@ -294,7 +308,7 @@
                       "text": "textures.1=2\nname.1=iregex:ja(mes|ck) .*[ghw]oods?",
                       "name": "chicken.properties"
                     },
-                    "This regex pattern is case insensitive and matches names that start with `ja` followed by either `mes` or `ck`, then followed by a space with any characters after it, and then ends with `good`, `hood`, or `wood` with an optional `s` at the end.",
+                    "This regex pattern is case insensitive, and matches names that start with `ja` followed by either `mes` or `ck`, then followed by a space with any characters after it, and then ends with `good`, `hood`, or `wood` with an optional `s` at the end.",
                     "Some (but not all) examples that would match this regex:",
                     {
                       "type": "tablelist",
@@ -311,7 +325,78 @@
             },
             "If you would like to use any regex special characters as normal characters within your name, for example using a `?`, you need to escape it. To escape a character, add a `\\\\` in front of it: `\\\\?`. If you want to use a `\\` in your name, you need to put four `\\` in a row: `\\\\\\\\`.",
             "You can use [regex101](https://regex101.com/) set to the \"Java 8\" flavour to test your regex. In regex101, you will need to half the number of `\\` that you have in your regex. This means that if you have: `\\\\d`, that would become `\\d` when it is in regex101.",
-            "It is recommended to use `pattern` rather than `regex` whenever possible due to it being faster to process."
+            "It is recommended to use `pattern` rather than `regex` whenever possible due to it being faster to process.",
+            {
+              "type": "heading",
+              "text": "Unicode Characters"
+            },
+            "Most unicode characters, like characters with accents (`é`, `â`, `ç`), are not supported in properties files. You instead need to use their escape sequence.",
+            "You can use [DenCode Unicode Escape](https://dencode.com/en/string/unicode-escape) to convert unicode characters into their escape sequence. For example, `é` becomes `\\u00E9`",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nname.1=José",
+              "name": "chicken.properties"
+            },
+            "The example above is invalid, since it contains unsupported unicode characters. The example below is the corrected version using unicode escape sequences.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nname.1=Jos\\u00E9",
+              "name": "chicken.properties"
+            },
+            {
+              "type": "heading",
+              "text": "Special Formatting"
+            },
+            "By default, any special formatting in entity names, like colour or bold text, is stripped out. This means they are treated as if the formatting is not there, so a normal name match will also work for those special names.",
+            "If you want a variant to only appear when special formatting is present, then your properties file needs to be changed to detect that.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.CustomName=raw:'{\"color\":\"blue\",\"extra\":[{\"italic\":true,\"color\":\"red\",\"text\":\"am \"},{\"bold\":true,\"color\":\"gold\",\"text\":\"Gary\"}],\"text\":\"I \"}'",
+              "name": "chicken.properties"
+            },
+            {
+              "type": "image",
+              "name": "formatting"
+            },
+            "In the example above, an NBT check is used on the `CustomName` NBT of the entity. The `raw:` prefix is used to make sure we are checking the entities raw NBT data without any of the formatting data getting stripped out.",
+            "To find what data to put in properties file to make it match your entity's name, you can use the Minecraft command\n`/data get entity @e[type=!player,limit=1,sort=nearest]` while standing next to the entity. The NBT data will appear in the chat and in the games output log if you have that open.",
+            "This example is using an exact match, where the name must be identical to the data in the properties file. `pattern` and `regex` rules can still be used with this method, but it will be a lot more complicated. Here are two examples of that:",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.CustomName=raw:pattern:*{\"bold\":true,\"color\":\"gold\",\"text\":\"Gary\"}*",
+              "name": "chicken.properties"
+            },
+            "This example uses `pattern` to allow any text to appear around a **bold** and <span style=\"color:gold\">gold</span> `Gary`.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.CustomName=raw:regex:.*\\\\{\"bold\":true,\"color\":\"gold\",\"text\":\"(Gary|James)\"\\\\}.*",
+              "name": "chicken.properties"
+            },
+            "This example uses `regex` to allow any text to appear around a **bold** and <span style=\"color:gold\">gold</span> `Gary` or `James`.",
+            "Since `{}` are special characters in regex, they need to be escaped here with `\\\\`."
+          ]
+        },
+        {
+          "name": "Biomes",
+          "content": [
+            "You can set it so that variants will only appear when the entity is in a certain biome.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nbiomes.1=mushroom_fields\n\ntextures.2=3 4\nbiomes.2=forest birch_forest dark_forest",
+              "name": "chicken.properties"
+            },
+            "In the above example, variant 2 will be visible if the entity spawned within a `mushroom_fields` biome.",
+            {
+              "type": "image",
+              "name": "mushroom_fields"
+            },
+            "Variants 3 and 4 will be visible if spawned within a `forest`, `birch_forest`, or `dark_forest` biome.",
+            {
+              "type": "image",
+              "name": "forest"
+            },
+            "You can find a list of all valid biome IDs on the [Minecraft Wiki](https://minecraft.fandom.com/wiki/Biome#Biome_IDs).",
+            "Please note that biome variants are not permanent, and will be lost if the entity leaves the biome and gets unloaded. Any entity that wonders into the biome will become the biome variant upon getting reloaded, unless another variant overwrites the biome variant."
           ]
         }
       ]

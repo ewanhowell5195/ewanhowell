@@ -100,6 +100,7 @@ async function setupPage(PageClass, container, data) {
   if (!customElements.get(PageClass.tag)) customElements.define(PageClass.tag, PageClass)
   const page = E(PageClass.tag)
   if (PageClass.title) document.title = PageClass.title
+  container.children()[0]?.onClosed?.()
   container.empty().append(page)
   if (data) return await page[0].setData?.(data) ?? true
   return true

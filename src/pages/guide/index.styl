@@ -158,9 +158,7 @@ header
   font-size: 2rem
   font-weight: 700
   text-shadow: -3px 3px 1px var(--color-text-shadow)
-  
-  &:not(:first-child)
-    margin-top: 20px
+  margin-top: 20px
 
 .text
   white-space: pre-wrap
@@ -238,6 +236,7 @@ code
   background-color: black
   padding: 0 4px
   border: 1px solid var(--color-green)
+  word-wrap: break-word
   
   &.light
     background-color: var(--color-grey-darker)
@@ -300,6 +299,118 @@ code
 .codeblock-content
   padding: 10px
   white-space: pre-wrap
+  word-break: break-all
   
 a
   color: var(--color-link-blue)
+
+#mobile-links
+  display: none
+  background-color: var(--color-grey)
+  box-shadow: var(--box-shadow)
+
+#mobile-links-header
+  padding: 11px 20px
+  display: flex
+  position: relative
+  cursor: pointer
+  user-select: none
+  
+  h1
+    margin: 0
+    text-shadow: -3px 3px 1px var(--color-text-shadow)
+    font-size: 24px
+    
+  svg
+    fill: var(--color-text-white)
+    transform: rotateZ(90deg)
+    filter: drop-shadow(3px 3px 1px var(--color-text-shadow))
+    position: absolute
+    top: 1px
+    right: 15px
+    width: 30px
+    transition: transform .15s, filter .15s
+
+#mobile-links-content
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+  align-items: center
+  overflow: hidden
+  transition: max-height .5s
+  max-height: 0px
+  
+  .sidebar-links
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    
+  a.button
+    min-width: 206px
+    flex: 1
+
+.collapsed
+  #mobile-links-header svg
+    transform: rotateZ(0)
+    filter: drop-shadow(-3px 3px 1px var(--color-text-shadow))
+    
+  #mobile-links-content
+    max-height: 0px!important
+
+.heading, .step
+  cursor: pointer
+  display: flex
+  align-items: center
+  
+  &.copied::after
+    content: "Copied!"
+    margin-left: 10px
+    font-size: 1rem
+    opacity: 0.5
+    margin-top: 4px
+
+@media only screen and (max-width: 1010px)
+  #optifine
+    #optifine-info .text::after
+      content: "Information"
+    
+    a .text::after
+      content: "Download"
+
+@media only screen and (max-width: 900px)
+  #optifine
+    #optifine-info .text::after
+      content: "More Information"
+    
+    a .text::after
+      content: "Download OptiFine"
+
+  #sidebar
+    display: none
+    
+  #mobile-links
+    display: block
+    
+  #title, #subtitle, .heading
+    text-align: center
+
+@media only screen and (max-width: 720px)
+  #optifine
+    #optifine-info .text::after
+      content: "Information"
+    
+    a .text::after
+      content: "Download"
+      
+@media only screen and (max-width: 600px)
+  #optifine
+    #optifine-info .text::after
+      content: "Requirement Information"
+      
+    .optifine-desc
+      display: none
+
+@media only screen and (max-width: 470px)
+  #optifine
+    #optifine-info .text::after
+      content: "Information"
