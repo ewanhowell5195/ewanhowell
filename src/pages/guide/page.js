@@ -139,6 +139,7 @@ export default class extends Page {
 
   onClosed() {
     window.removeEventListener("resize", this.#resizePage)
+    scrollTo = null
   }
 }
 
@@ -159,7 +160,10 @@ function addBlocks($, element, blocks, guide, args) {
         for (const [i, cell] of row.entries()) tr.append(E("td").html(parseString(cell)))
       }
     } else if (block.type === "image") {
-      E("img").addClass("popupable").attr("src", `/assets/images/guides/${guide}/${block.name}.webp`).css("max-height", `${block.height ?? 256}px`).appendTo(section)
+      E("img").addClass("popupable").attr({
+        src: `/assets/images/guides/${guide}/${block.name}.webp`,
+        height: block.height ?? 256
+      }).css("max-height", `${block.height ?? 256}px`).appendTo(section)
     } else if (block.type === "tabs") {
       let tabs, sections
       E("div").addClass(`tab-container${args.depth === 1 ? " light" : ""}`).append(
@@ -228,8 +232,11 @@ function copyHandler(element, path) {
 }
 
 function parseString(str, depth) {
-  return str.replace(/`((?:.|\n)+?)`/g, `<code${depth === 1 ? ' class="light"' : ""}>$1</code>`)
-            .replace(/\[([^\[\]]+?)\]\((.+?)\)/g, `<a href="$2" target="_blank">$1</a>`)
-            .replace(/\*\*((?:.|\n)+?)\*\*/g, "<strong>$1</strong>")
-            .replace(/\*((?:.|\n)+?)\*/g, "<i>$1</i>")
+  return str.replace(/\*\*((?:[^`]|\n)+?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*((?:[^`]|\n)+?)\*/g, "<i>$1</i>")
+            .replace(/`((?:.|\n)+?)`/g, `<code${depth === 1 ? ' class="light"' : ""}>$1</code>`)
+            .replace(/\[([^\[\]]+?)\]\((.+?)\)/g, (m, s, l) => {
+              if (l.startsWith("/")) return `<a is="f-a" href="${l}">${s}</a>`
+              return `<a href="${l}" target="_blank">${s}</a>`
+            })
 }

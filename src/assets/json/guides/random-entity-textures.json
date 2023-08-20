@@ -364,7 +364,7 @@
               "type": "image",
               "name": "formatting"
             },
-            "In the example above, an NBT check is used on the `CustomName` NBT of the entity. The `raw:` prefix is used to make sure we are checking the entities raw NBT data without any of the formatting data getting stripped out.",
+            "In the example above, an NBT check is used on the `CustomName` NBT of the entity. The `raw:` prefix is used to make sure we are checking the entity's raw NBT data without any of the formatting data getting stripped out.",
             "To find what data to put in properties file to make it match your entity's name, you can use the Minecraft command\n`/data get entity @e[type=!player,limit=1,sort=nearest]` while standing next to the entity. The NBT data will appear in the chat and in the games output log if you have that open. You can use [SNBT Lint](https://www.soltoder.com/NBTLint/) to view and format your NBT data.",
             "This example is using an exact match, where the name must be identical to the data in the properties file. `pattern` and `regex` rules can still be used with this method, but it will be a lot more complicated. Here are two examples of that:",
             {
@@ -520,8 +520,86 @@
               "name": "zombie.properties"
             }
           ]
+        },
+        {
+          "name": "Combining Properties",
+          "content": [
+            "Properties can be combined together to create more advanced rules.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2 3 4\nheights.1=32-64\nbiomes.1=warm_ocean lukewarm_ocean deep_lukewarm_ocean\nweights.1=49 49 2\n\ntextures.2=1 5",
+              "name": "squid.properties"
+            },
+            "In this rule, the variants `2`, `3`, and `4` will only appear in warm ocean biomes between the heights `32` to `64`. Variant 2 and 3 will both have a 49% chance of spawning, where as variant 4 will have a 2% chance of spawning.",
+            "When the first rule is not met, it will go onto the second rule, which will not fail as it has no conditions. With this rule, variants 1 and 5 will each have a 50% chance to appear."
+          ]
         }
       ]
-    }
+    },
+    {
+      "type": "heading",
+      "text": "Common mistakes"
+    },
+    "Here are some common mistakes that people make:",
+    {
+      "type": "step",
+      "text": "Wrong properties order",
+      "step": 1
+    },
+    "The order of rules is important, make sure you put them in the correct order.",
+    {
+      "type": "codeblock",
+      "text": "textures.1=2 3 4\nweights.1=5 1 3\n\ntextures.2=5 6\nbiomes.2=plains forest",
+      "name": "cow.properties"
+    },
+    "The second rule in the above example will never trigger, since the first rule has no requirements and will therefore never fail.",
+    {
+      "type": "codeblock",
+      "text": "textures.1=2\nbiomes.2=cherry_grove\n\ntextures.2=3\nname.2=ipattern:Harry",
+      "name": "rabbit.properties"
+    },
+    "If a rabbit gets named `Harry` in a cherry grove biome, the variant will not show, since the first rule has all its conditions met and takes priority.",
+    {
+      "type": "step",
+      "text": "Wrong file locations",
+      "step": 2
+    },
+    "Make sure your `random/entity` is an **exact** mirror of the `textures/entity` folder. Also make sure your file names match the exact file names from the `textures/entity` folder.",
+    "**Incorrect**:\n`textures/entity/cow/cow.png` → `random/entity/cow2.png`\n`textures/entity/armor_stand/wood.png` → `random/entity/armor_stand/armor_stand2.png`",
+    "**Correct**:\n`textures/entity/cow/cow.png` → `random/entity/cow/cow2.png`\n`textures/entity/armor_stand/wood.png` → `random/entity/armor_stand/wood2.png`",
+    {
+      "type": "step",
+      "text": "Skipping & misordering numbers",
+      "step": 3
+    },
+    "Skipping rule numbers, and putting them in the wrong order, can cause your variants to break and not load in game. Make sure you do not skip numbers and have them all in the correct order.",
+    "**Incorrect:**",
+    {
+      "type": "codeblock",
+      "text": "textures.10=2 3 4\nbiomes.10=forest\n\ntextures.24=5 6\nname.24=Bob",
+      "name": "zombie.properties"
+    },
+    {
+      "type": "codeblock",
+      "text": "textures.3=4 6\nheights.3=64-75\n\ntextures.2=5\nname.2=Amy\n\ntextures.1=1 2 3",
+      "name": "drowned.properties"
+    },
+    "**Correct:**",
+    {
+      "type": "codeblock",
+      "text": "textures.1=2 3 4\nbiomes.1=forest\n\ntextures.2=5 6\nname.2=Bob",
+      "name": "zombie.properties"
+    },
+    {
+      "type": "codeblock",
+      "text": "textures.1=4 6\nheights.1=64-75\n\ntextures.2=5\nname.2=Amy\n\ntextures.3=1 2 3",
+      "name": "drowned.properties"
+    },
+    {
+      "type": "heading",
+      "text": "Limitations"
+    },
+    "Unfortunately, not all entities support random entity textures. For example, as of OptiFine 1.20.1 I6 pre6, the Ender Dragon and Paintings do not support them. Before assuming that an entity does and does not support them, make sure to test with an entity that is known to work, for example a creeper.",
+    "Vanilla emissive textures do not support random entity textures. These are textures like enderman eyes, spider eyes, phantom eyes, etc. As a fix to this issue, i recommended instead making the vanilla textures and replacing them with OptiFine emissive textures. For more information on emissive textures, view the [Emissive Textures guide](/guides/emissive-textures)"
   ]
 }
