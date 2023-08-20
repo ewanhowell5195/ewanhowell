@@ -443,7 +443,7 @@
               "text": "Disclaimer"
             },
             "Not all NBT tags can be used. Minecraft runs using a server/client setup, even in singleplayer. Since OptiFine is a client side mod, it only has access to the data that is sent to the client from the server. If the NBT data is only server side and not client side, it cannot be used in random entity textures.",
-            "A good rule of thumb is: If you can see the NBT tag make a visible change to the entity, there is a 80% chance you can use that NBT tag, otherwise there is a 80% chance you cannot use that NBT tag.",
+            "A good rule of thumb is: If you can see the NBT tag make a visible change to the entity, there is an 80% chance you can use that NBT tag, otherwise there is an 80% chance you cannot use that NBT tag.",
             "There is no list of what NBT works and what doesn't. You will just have to try it and see.",
             {
               "type": "heading",
@@ -469,7 +469,7 @@
               "text": "textures.1=2\nnbt.1.Owner=raw:[I;-752984630,-84193701,-1156533939,-6439798]",
               "name": "wolf.properties"
             },
-            "This example uses the `Owner` NBT tag to change the wolves texture based on it's owner. The owner in the NBT data is the owners account UUID, so this variant will only appear when the owner is `ewanhowell5195`.",
+            "This example uses the `Owner` NBT tag to change the wolf's texture based on its owner. The owner in the NBT data is the owners account UUID, so this variant will only appear when the owner is `ewanhowell5195`.",
             "The `raw:` prefix is required for this one to get the `Owner` tag as a raw NBT string. This is because normally the `Owner` tag is in a special format that cannot be matched from a properties file, so the `raw:` prefix is used to convert it into a format that we can match. If there are spaces in the NBT data, and the NBT data isn't normal text, these spaces are normally removed when using the `raw:` prefix.",
             {
               "type": "image",
