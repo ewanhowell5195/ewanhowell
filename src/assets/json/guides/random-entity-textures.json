@@ -24,6 +24,10 @@
       {
         "text": "Biome IDs",
         "link": "https://minecraft.fandom.com/wiki/Biome#Biome_IDs"
+      },
+      {
+        "text": "SNBT Lint",
+        "link": "https://www.soltoder.com/NBTLint/"
       }
     ]
   },
@@ -48,13 +52,14 @@
       "text": "Adding a variant",
       "step": 2
     },
-    "Add your first variant to the newly created random entities folder. The texture needs to be named the same as the vanilla texture, but with the number `2` after it, for example: `chicken.png` will become `chicken2.png`.",
+    "Add your first variant to the newly created `random/entity` folder. The texture needs to be named the same as the vanilla texture, but with the number `2` after it, for example: `chicken.png` will become `chicken2.png`.",
     {
       "type": "image",
       "name": "first",
       "height": 114
     },
-    "The random entities folder is structured identically to the `assets/minecraft/textures/entity` folder. This means that if your texture is located inside the `textures/entity/cow/` folder, its variants will need to be put inside `random/entity/cow/` folder.",
+    "If the texture already ends with a number, you add a `_2` instead, for example: `tropical_a_pattern_1.png` will become `tropical_a_pattern_1_2.png`.",
+    "The `random/entity` folder is structured identically to the `assets/minecraft/textures/entity` folder. This means that if your texture is located inside the `textures/entity/cow/` folder, its variants will need to be put inside `random/entity/cow/` folder.",
     {
       "type": "image",
       "name": "folder",
@@ -100,7 +105,8 @@
       "step": 5
     },
     "Random entity textures properties files contain rules. Each rule defines how and when variants should be loaded.",
-    "Here is an example of a single rule. The `textures` line is the only required line for a rule, and defines what textures will follow the rule. Texture `1` is the normal texture, and the other numbers are the variants inside your random entities folder.",
+    "Every line of a rule follows the formatting `property.&ltn&gt=value`, where `property` is the property you are adding to the rule, `&ltn&gt` is the number of the current rule, and `value` is what that property needs to be set to for the rule to be met.",
+    "Here is an example of a single rule. The `textures` property is the only required property for a rule, and defines what textures will follow the rule. Texture `1` is the normal texture, and the other numbers are the variants inside your `random/entity` folder.",
     {
       "type": "codeblock",
       "text": "textures.1=1 2 3\nweights.1=5 4 1\nbiomes.1=plains",
@@ -359,7 +365,7 @@
               "name": "formatting"
             },
             "In the example above, an NBT check is used on the `CustomName` NBT of the entity. The `raw:` prefix is used to make sure we are checking the entities raw NBT data without any of the formatting data getting stripped out.",
-            "To find what data to put in properties file to make it match your entity's name, you can use the Minecraft command\n`/data get entity @e[type=!player,limit=1,sort=nearest]` while standing next to the entity. The NBT data will appear in the chat and in the games output log if you have that open.",
+            "To find what data to put in properties file to make it match your entity's name, you can use the Minecraft command\n`/data get entity @e[type=!player,limit=1,sort=nearest]` while standing next to the entity. The NBT data will appear in the chat and in the games output log if you have that open. You can use [SNBT Lint](https://www.soltoder.com/NBTLint/) to view and format your NBT data.",
             "This example is using an exact match, where the name must be identical to the data in the properties file. `pattern` and `regex` rules can still be used with this method, but it will be a lot more complicated. Here are two examples of that:",
             {
               "type": "codeblock",
@@ -379,7 +385,7 @@
         {
           "name": "Biomes",
           "content": [
-            "You can set it so that variants will only appear when the entity is in a certain biome.",
+            "You can set it so that variants will only appear when the entity spawns in a certain biome.",
             {
               "type": "codeblock",
               "text": "textures.1=2\nbiomes.1=mushroom_fields\n\ntextures.2=3 4\nbiomes.2=forest birch_forest dark_forest",
@@ -396,7 +402,123 @@
               "name": "forest"
             },
             "You can find a list of all valid biome IDs on the [Minecraft Wiki](https://minecraft.fandom.com/wiki/Biome#Biome_IDs).",
-            "Please note that biome variants are not permanent, and will be lost if the entity leaves the biome and gets unloaded. Any entity that wonders into the biome will become the biome variant upon getting reloaded, unless another variant overwrites the biome variant."
+            "*Please note that biome variants are not permanent, and will be lost if the entity leaves the biome and gets unloaded. Any entity that wonders into the biome will become the biome variant upon getting reloaded, unless another variant overwrites the biome variant.*"
+          ]
+        },
+        {
+          "name": "Heights",
+          "content": [
+            "Variants can be configured to show when the entity spawns at a certain Y level.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nheights.1=64 75",
+              "name": "chicken.properties"
+            },
+            "In the above example, variant 2 will be visible if the entity spawned at either Y level `64` or `75`.",
+            {
+              "type": "image",
+              "name": "heights"
+            },
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nheights.1=32-64 96-128",
+              "name": "chicken.properties"
+            },
+            "If you want the variant to appear at multiple Y levels, you can provide them in a range. In this example, the variant can appear anywhere within `32` to `64`, and again within `96` to `128`.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nheights.1=(-32)-(-20)\n\ntextures.2=3\nheights.2=(-10)-10",
+              "name": "chicken.properties"
+            },
+            "For negative heights in a range, they must use brackets around the negative numbers.",
+            "*Please note that height variants are not permanent, and will be lost if the entity leaves the Y level and gets unloaded. Any entity that wonders into the Y level will become the height variant upon getting reloaded, unless another variant overwrites the height variant.*"
+          ]
+        },
+        {
+          "name": "NBT Data",
+          "content": [
+            "Certain NBT tags can be used to trigger variant textures.",
+            {
+              "type": "heading",
+              "text": "Disclaimer"
+            },
+            "Not all NBT tags can be used. Minecraft runs using a server/client setup, even in singleplayer. Since OptiFine is a client side mod, it only has access to the data that is sent to the client from the server. If the NBT data is only server side and not client side, it cannot be used in random entity textures.",
+            "A good rule of thumb is: If you can see the NBT tag make a visible change to the entity, there is a 80% chance you can use that NBT tag, otherwise there is a 80% chance you cannot use that NBT tag.",
+            "There is no list of what NBT works and what doesn't. You will just have to try it and see.",
+            {
+              "type": "heading",
+              "text": "Formatting"
+            },
+            "NBT rules in properties files do not follow the standard rule format. These follow the formatting `nbt.&ltn&gt.rulePath=value`, where `rulePath` is the full path of the NBT data that you want to match.",
+            {
+              "type": "heading",
+              "text": "Examples"
+            },
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.carriedBlockState.Name=minecraft:grass_block",
+              "name": "wolf.properties"
+            },
+            "The example above will change the enderman's texture depending on the block they are carrying. This variant will only appear when an enderman is carrying a block with the name `minecraft:grass_block`.",
+            {
+              "type": "image",
+              "name": "endermen"
+            },
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.Owner=raw:[I;-752984630,-84193701,-1156533939,-6439798]",
+              "name": "wolf.properties"
+            },
+            "This example uses the `Owner` NBT tag to change the wolves texture based on it's owner. The owner in the NBT data is the owners account UUID, so this variant will only appear when the owner is `ewanhowell5195`.",
+            "The `raw:` prefix is required for this one to get the `Owner` tag as a raw NBT string. This is because normally the `Owner` tag is in a special format that cannot be matched from a properties file, so the `raw:` prefix is used to convert it into a format that we can match. If there are spaces in the NBT data, and the NBT data isn't normal text, these spaces are normally removed when using the `raw:` prefix.",
+            {
+              "type": "image",
+              "name": "wolves"
+            },
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.Rotation.0=range:0-90",
+              "name": "wolf.properties"
+            },
+            "The `range:` prefix can be used with numbers to allow for a range of numbers. In the example above, the zombie will gain the variant when it is rotated anywhere beween `0` and `90` degrees in the world. For negative numbers in ranges, you must put brackets around the negative number, for example: `range:(-90)-(-45)`.",
+            {
+              "type": "image",
+              "name": "zombies"
+            },
+            {
+              "type": "heading",
+              "text": "Finding the NBT path"
+            },
+            "The NBT path that you use depends on the NBT structure of the entity.",
+            "To view the NBT data of an entity, you can use the command `/data get entity @e[type=!player,limit=1,sort=nearest]` while standing next to the entity. The NBT data will appear in the chat and in the games output log if you have that open. You can use [SNBT Lint](https://www.soltoder.com/NBTLint/) to view and format your NBT data.",
+            "Once you have your NBT data, you can then figure out what the NBT path is.",
+            "Here is the NBT data of an enderman, this NBT data has been simplied and formatted:",
+            {
+              "type": "codeblock",
+              "text": "{\n  Brain: {\n    memories: {}\n  },\n  UUID: [I; 757022274, -1308471354, -1483030689, 1006948643],\n  carriedBlockState: {\n    Properties: {\n      snowy: \"false\"\n    },\n    Name: \"minecraft:grass_block\"\n  }\n}",
+              "name": "enderman.nbt"
+            },
+            "To find the path of the NBT data that we want to use, we follow the NBT data inwards, noting down the name of each property as it goes in until we get to our desired NBT data.",
+            "If we were to try finding the NBT path for the carried block name, we start at the top, and work our way down until we find `carriedBlockState`. This is the first property that is in the outermost indentation level that contains our desired NBT data. We skipped `Brain` and `UUID` because the block name we want is not inside those. Next we go down, skipping over `Properties`, until we get to `Name`, which is the NBT data that we want to get. Add all those together with a `.` inbetween and we get `carriedBlockState.Name` as the NBT path.",
+            "Here is another example. This is the NBT data of a zombie holding a named diamond sword:",
+            {
+              "type": "codeblock",
+              "text": "{\n  Brain: {\n    memories: {}\n  },\n  UUID: [I; 109289731, 1038303974, -1154097412, -435742089],\n  HandItems: [\n    {\n      id: \"minecraft:diamond_sword\",\n      Count: 1b,\n      tag: {\n        Damage: 0,\n        display: {\n          Name: '{\"text\":\"My Epic Sword\"}'\n        }\n      }\n    },\n    {}\n  ]\n}",
+              "name": "zombie.nbt"
+            },
+            "To find path to the held items name, you would start by looking down the properties until you find `HandItems`, which is the block that contains the desired NBT data. Now `HandItems` is different, as it is a list. You can tell because it has the `[]` brackets. For a list, you can either add the index of the item in the list to the NBT path, or `*` to it, which means any position in the list. For this example, lets add `0` to our path, so that it only works when held in the main hand. Next we look down until we find `tag`, then we keep going to `display`, then the last thing is `Name`. This would make the full NBT path `HandItems.0.tag.display.Name`.",
+            "Here is an example of a properties file that only works for a zombie holding a diamond sword named `My Epic Sword` in its main hand:",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.HandItems.0.id=minecraft:diamond_sword\nnbt.1.HandItems.0.tag.display.Name=raw:'{\"text\":\"My Epic Sword\"}'",
+              "name": "zombie.properties"
+            },
+            "The one above needs `raw:` on the name to work with the shown NBT data due to how OptiFine handles entity and item names. The example below shows how it would be formatted for the name without the `raw:` prefix.",
+            {
+              "type": "codeblock",
+              "text": "textures.1=2\nnbt.1.HandItems.0.id=minecraft:diamond_sword\nnbt.1.HandItems.0.tag.display.Name=My Epic Sword",
+              "name": "zombie.properties"
+            }
           ]
         }
       ]

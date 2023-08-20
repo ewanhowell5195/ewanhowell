@@ -229,6 +229,7 @@ function copyHandler(element, path) {
 
 function parseString(str, depth) {
   return str.replace(/`((?:.|\n)+?)`/g, `<code${depth === 1 ? ' class="light"' : ""}>$1</code>`)
-            .replace(/\[(.+?)\]\((.+?)\)/g, `<a href="$2" target="_blank">$1</a>`)
+            .replace(/\[([^\[\]]+?)\]\((.+?)\)/g, `<a href="$2" target="_blank">$1</a>`)
             .replace(/\*\*((?:.|\n)+?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*((?:.|\n)+?)\*/g, "<i>$1</i>")
 }
