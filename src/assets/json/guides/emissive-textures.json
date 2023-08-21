@@ -109,7 +109,7 @@
           "name": "Armour Trims",
           "content": [
             "Armour trim textures are different to normal textures. For armour trims, you make an emissive texture for each material that you want to be emissive.",
-            "If you want to add emissive textures to the `sentry.png` emerald material, you would make an `sentry_emerald_e.png`, where the material name comes after the file name and before the `_e` suffix.",
+            "If you want to add emissive textures to the `sentry.png` emerald material, you would make a `sentry_emerald_e.png`, where the material name comes after the file name and before the `_e` suffix.",
             {
               "type": "image",
               "name": "trims_files",
