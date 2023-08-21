@@ -18,7 +18,9 @@ html(lang = "en")
       if ("icon" in meta) {
         defaults.icon16 = meta.icon
         defaults.icon32 = meta.icon
-        defaults.image = meta.icon
+        if (!("image" in meta)) {
+          defaults.image = meta.icon
+        }
       }
 
     title=meta.title
