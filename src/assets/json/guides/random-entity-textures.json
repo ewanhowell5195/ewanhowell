@@ -43,7 +43,7 @@
     },
     {
       "type": "step",
-      "text": "Creating the folder",
+      "text": "Creating the random entity folder",
       "step": 1
     },
     "Inside your resource pack, create the folder: `assets/minecraft/optifine/random/entity`.",
@@ -536,6 +536,7 @@
         }
       ]
     },
+    "These examples do not cover all the available properties. Please refer to the [OptiFine documentation](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/random_entities.properties) for a full list of available properties.",
     {
       "type": "heading",
       "text": "Common mistakes"

@@ -1,6 +1,8 @@
 export default class extends Page {
   constructor() {
     super("guides", true, async $ => {
+      jQuery('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/guides/icon.webp")
+      jQuery('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/guides/icon.webp")
       await fetchJSON("guides")
       const section = $("#guides")
       for (const guide of guides) {
@@ -23,4 +25,5 @@ export default class extends Page {
   static tag = "guides-page"
   static title = "Guides - Ewan Howell"
   static description = "Guides to help you create resource packs"
+  static icon = "guides/icon.webp"
 }

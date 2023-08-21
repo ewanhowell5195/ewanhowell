@@ -21,6 +21,8 @@ export default class extends Page {
     const guide = window[`guides/${args.name}`]
     const guideData = guides.find(e => e.id === args.name)
     const title = guideData.name ?? args.name.toTitleCase(true)
+    jQuery('link[rel="icon"][sizes="16x16"]').attr("href", "/assets/images/guides/icon.webp")
+    jQuery('link[rel="icon"][sizes="32x32"]').attr("href", "/assets/images/guides/icon.webp")
     jQuery("title").text(`${title} - Guides - Ewan Howell`)
     const linkIcon = $("#link-icon").contents()
     const localIcon = $("#local-icon").contents()
@@ -161,7 +163,7 @@ function addBlocks($, element, blocks, guide, args) {
       }
     } else if (block.type === "image") {
       E("img").addClass("popupable").attr({
-        src: `/assets/images/guides/${guide}/${block.name}.webp`,
+        src: `/assets/images/guides/${block.source ?? guide}/${block.name}.webp`,
         height: block.height ?? 256
       }).css("max-height", `${block.height ?? 256}px`).appendTo(section)
     } else if (block.type === "tabs") {

@@ -3,5 +3,10 @@
     "id": "random-entity-textures",
     "description": "How to add texture variations to entities based on things like name, biome, Y level, NBT data, and more!",
     "optifine": true
+  },
+  {
+    "id": "emissive-textures",
+    "description": "How to add emissive textures to make blocks, items, and entities glow!",
+    "optifine": true
   }
 ]

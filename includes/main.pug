@@ -15,9 +15,10 @@ html(lang = "en")
         icon32: "logo/logo_32.webp"
       }, meta)
 
-      if ("image" in meta) {
+      if ("icon" in meta) {
         defaults.icon16 = meta.icon
         defaults.icon32 = meta.icon
+        defaults.image = meta.icon
       }
 
     title=meta.title

@@ -1,0 +1,132 @@
+{
+  "links": {
+    "examples": ["example-emissive-textures"],
+    "documentation": [
+      {
+        "text": "Official Documentation",
+        "link": "https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/emissive.properties"
+      },
+      {
+        "text": "OptiDocs Documentation",
+        "link": "https://optifine.readthedocs.io/emissive_textures.html"
+      }
+    ],
+    "other": [{
+      "text": "VanillaDynamic Emissives",
+      "link": "https://github.com/ShockMicro/VanillaDynamicEmissives"
+    }]
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "What are Emissive Textures?"
+    },
+    "Emissive textures are a way to make certain parts of a texture glow in the dark.",
+    {
+      "type": "heading",
+      "text": "Disclaimer"
+    },
+    "Emissive textures are possible without OptiFine using the [VanillaDynamicEmissives](https://github.com/ShockMicro/VanillaDynamicEmissives) vanilla shader. I recommend using this instead if you do not need OptiFine for some other reason in your resouce pack.",
+    {
+      "type": "heading",
+      "text": "How to create Emissive Textures"
+    },
+    {
+      "type": "step",
+      "text": "Creating the OptiFine folder",
+      "step": 1
+    },
+    "Inside your resource pack, create the folder: `assets/minecraft/optifine`.",
+    {
+      "type": "step",
+      "text": "Creating the properties file",
+      "step": 2
+    },
+    "Inside the newly created `optifine` folder, create an `emissive.properties` file.",
+    "To create a properties file, you can create a normal text file, and change `.txt` to `.properties`.",
+    {
+      "type": "image",
+      "name": "properties",
+      "height": 169
+    },
+    "If you have file name extensions hidden, make sure to enable them so you can rename it properly. On Windows 11, this can be done from `View > Show > File name extensions`",
+    {
+      "type": "image",
+      "name": "file_names",
+      "height": 400,
+      "source": "random-entity-textures"
+    },
+    {
+      "type": "step",
+      "text": "Properties contents",
+      "step": 3
+    },
+    "Open the properties file in a text editor, and put the following content in it.",
+    {
+      "type": "codeblock",
+      "text": "suffix.emissive=_e",
+      "name": "emissive.properties"
+    },
+    "This properties file configures OptiFine to load any textures that have names ending in `_e` as an emissive texture. This suffix can be anything you want, but `_e` is the recommend and most commonly used one.",
+    {
+      "type": "step",
+      "text": "Creating textures",
+      "step": 3
+    },
+    "You are done with the setup, now you can create emissive textures!",
+    "Emissive textures are extra textures that are located next to the normal texture. The pixels of the emissive texture are loaded on top of the normal texture, so you only need to provide the pixels that you want to glow in the emissive texture.",
+    {
+      "type": "image",
+      "name": "sword_file",
+      "height": 168
+    },
+    {
+      "type": "image",
+      "name": "sword"
+    },
+    "**Please note:** The base texture is not required to be in your pack for emissives to work. For example, in the above example, the `diamond_sword.png` is not required to be there, and the pack would still work without it.",
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "name": "Emissive Brightness",
+          "content": [
+            "For blocks, items, and entities that support semi transparent textures, you can change the brightness of the emissive texture.",
+            "To do this, simply change the transparency of the emissive texture.",
+            {
+              "type": "image",
+              "name": "slime_file",
+              "height": 120
+            },
+            {
+              "type": "image",
+              "name": "slime"
+            },
+            "If the transparency in the texture is set to `128`, or `50%`, then in game the emissive will be at half as bright as normal."
+          ]
+        },
+        {
+          "name": "Armour Trims",
+          "content": [
+            "Armour trim textures are different to normal textures. For armour trims, you make an emissive texture for each material that you want to be emissive.",
+            "If you want to add emissive textures to the `sentry.png` emerald material, you would make an `sentry_emerald_e.png`, where the material name comes after the file name and before the `_e` suffix.",
+            {
+              "type": "image",
+              "name": "trims_files",
+              "height": 132
+            },
+            {
+              "type": "image",
+              "name": "trims"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Limitations"
+    },
+    "Unfortunately, not all entities support emissive textures. For example, as of OptiFine 1.20.1 I6 pre6, the Ender Dragon, End Crystal Beam, and Paintings do not support them. Before assuming that an entity does and does not support them, make sure to test with an entity that is known to work, for example a creeper."
+  ]
+}

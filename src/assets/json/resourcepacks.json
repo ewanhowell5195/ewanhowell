@@ -18,7 +18,8 @@
         {
           "name": "Examples",
           "entries": [
-            "example-random-entity-textures"
+            "example-random-entity-textures",
+            "example-emissive-textures"
           ]
         },
         {
@@ -597,6 +598,12 @@
     },
     "example-random-entity-textures": {
       "image": "cows",
+      "optifine": 2,
+      "logoless": true,
+      "fontsize": 2
+    },
+    "example-emissive-textures": {
+      "image": "ores",
       "optifine": 2,
       "logoless": true,
       "fontsize": 2
