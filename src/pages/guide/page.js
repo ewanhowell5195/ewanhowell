@@ -193,7 +193,6 @@ function addBlocks($, element, blocks, guide, args) {
           if (tabPath.length === args.view.length) scrollTo = tab
         }
       }
-      if (!globalThis.tabs) globalThis.tabs = tabs
       if (!tabs.find(".active").length) {
         tabs.children().first().addClass("active")
         sections.children().first().addClass("selected")

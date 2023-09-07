@@ -56,7 +56,7 @@ window.analytics = () => {
 
 // lazy loading
 
-window.imageObserver  =  new IntersectionObserver((entries, observer) => {
+window.imageObserver = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if ("src" in entry.target.dataset) {
 			if (entry.isIntersecting) {

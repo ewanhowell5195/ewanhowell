@@ -15,7 +15,9 @@
     ]
   },
   "dependencies": {
-    "sharp": "^0.31.2",
+    "sharp": "^0.32.5",
+    "skia-canvas": "1.0.0",
+    "skia-canvas-draw-text": "^1.0.3",
     "webbuilder": "github:EvenTorset/WebBuilder"
   }
 }

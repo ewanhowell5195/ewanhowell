@@ -1,3 +1,5 @@
+import { Canvas, loadImage } from "skia-canvas"
+import drawText from "skia-canvas-draw-text"
 import path from "node:path"
 import sharp from "sharp"
 import fs from "node:fs"
@@ -27,7 +29,9 @@ block meta
       }
     }
 
-    await Promise.all(types.map(generateType))
+    for (const type of types) {
+      await generateType(type)
+    }
     
     generateGuides()
 
@@ -62,76 +66,77 @@ String.prototype.toTitleCase = function(c, n) {
 const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
 
 async function generateType(type) {
-  const entries = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).entries
-  return Promise.all(Object.entries(entries).map(e => generateEntry(type, entries, e)))
+  const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).entries
+  const entries = Array.from(Object.entries(data).entries())
+  for (const [i, [id, entry]] of entries) {
+    await generateEntry(type, id, entry)
+    console.log(`${type} images: ${i + 1} / ${entries.length} - ${id}`)
+  }
 }
 
-async function generateEntry(type, entries, [id, details]) {
-  const entryName = details.name ?? id.toTitleCase(true, true)
+async function generateEntry(type, id, entry) {
+  const entryName = entry.name ?? id.toTitleCase(true, true)
   if (!fs.existsSync(`src/assets/json/${type}/${id}.json`)) return
   const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}/${id}.json`, "utf-8"))
   fs.mkdirSync(`dist/${type}/${id}`, { recursive: true })
   let bgPath
-  if (details.image) bgPath = `src/assets/images/${type}/${id}/images/${details.image}.webp`
+  if (entry.image) bgPath = `src/assets/images/${type}/${id}/images/${entry.image}.webp`
   else bgPath = "src/assets/images/home/logo_3d.webp"
-  const bgSharp = sharp(fs.readFileSync(bgPath)).resize(640, 360).blur(5)
-
-  await fs.promises.writeFile(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
+  const bgSharp = sharp(bgPath)
+  const img = await loadImage(await bgSharp.png().toBuffer())
+  const canvas = new Canvas(640, 360)
+  const ctx = canvas.getContext("2d")
+  ctx.filter = "blur(8px)"
+  ctx.drawImage(img, -10, -10, 660, 380)
+  ctx.filter = "none"
+  fs.writeFileSync(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
 
 block meta
   -
     meta = {
       title: "${entryName} - ${data.author ?? "Ewan Howell"}",
       description: "${data.subtitle.replace(/\n/g, " ")}",
-      image: "${type}/${id}/cover.webp",
-      colour: "#${(await bgSharp.clone().resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}",
+      image: "${type}/${id}/cover.jpg",
+      colour: "#${(await bgSharp.resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}",
       icon: "${type}/${id}/icon.webp"
     }`), "utf-8")
 
-  let logoSharp, logoMeta
-  if (details.logoless) {
-    let fontSize = 512
-    do {
-      logoSharp = sharp({
-        text: {
-          text: `<span foreground="#fff" size="${fontSize}" weight="bold">${entryName}</span>`,
-          width: 500,
-          height: 150,
-          font: "Arial",
-          rgba: true,
-          align: "center"
-        }
-      })
-      logoMeta = await logoSharp.clone().metadata()
-      fontSize -= 10
-    } while(logoMeta.width > 500 || logoMeta.height > 150)
-    logoSharp.png()
+  if (entry.logoless) {
+    await drawText(entryName, {
+      ctx,
+      fontSize: 100,
+      fontFamily: "Arial",
+      location: [320, 180],
+      width: 540,
+      height: 260,
+      colour: "#fff",
+      bold: true,
+      align: "center",
+      wrap: true,
+      gravity: "c",
+      shadowColour: "#000d",
+      shadowOffset: [0, 15],
+      shadowBlur: 20
+    })
   } else {
-    logoSharp = sharp(await sharp(`src/assets/images/${type}/${id}/logo.webp`).resize(576, 192, {
-      background: "#00000000",
-      fit: "contain"
-    }).toBuffer())
-    logoMeta = await logoSharp.clone().metadata()
-  }
-
-
-  bgSharp.composite([
-    {
-      input: await sharp(await logoSharp.clone().extend(20).blur(10).extractChannel("alpha").negate().toBuffer()).modulate({
-        lightness: 8
-      }).toBuffer(),
-      top: Math.floor(170 - logoMeta.height / 2),
-      left: Math.floor(300 - logoMeta.width / 2),
-      blend: "multiply"
-    },
-    {
-      input: await logoSharp.toBuffer(),
-      top: Math.floor(180 - logoMeta.height / 2),
-      left: Math.floor(320 - logoMeta.width / 2)
+    const logo = await loadImage(await sharp(`src/assets/images/${type}/${id}/logo.webp`).png().toBuffer())
+    const aspect = logo.width / logo.height
+    const target = 540 / 260
+    let width, height
+    if (aspect > target) {
+      width = 540
+      height = 540 / aspect
+    } else {
+      height = 260
+      width = 260 * aspect
     }
-  ])
+    ctx.shadowColor = "#000d"
+    ctx.shadowOffsetY = 15
+    ctx.shadowBlur = 20
+    ctx.drawImage(logo, 640 / 2 - width / 2, 360 / 2 - height / 2, width, height)
+  }
   fs.mkdirSync(`dist/assets/images/${type}/${id}`, { recursive: true })
-  await bgSharp.webp({nearLossless: true}).toFile(`dist/assets/images/${type}/${id}/cover.webp`)
+  canvas.saveAs(`dist/assets/images/${type}/${id}/cover.jpg`)
 }
 
 function generateGuides() {
