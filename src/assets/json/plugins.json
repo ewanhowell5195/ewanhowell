@@ -23,7 +23,8 @@
           "name": "Blockbench",
           "entries": [
             "scene-recorder",
-            "preview-scene-customiser"
+            "preview-scene-customiser",
+            "workspaces"
           ]
         },
         {
@@ -78,6 +79,10 @@
     },
     "splash-art-customiser": {
       "image": "snowplough",
+      "logoless": true
+    },
+    "workspaces": {
+      "image": "workspaces",
       "logoless": true
     }
   }

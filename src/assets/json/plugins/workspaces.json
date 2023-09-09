@@ -1,0 +1,14 @@
+{
+  "subtitle": "Organise your recent projects into workspaces that you can switch between.",
+  "description": "This plugin adds a workspaces system that allows you to store your recent projects in separate workspaces.\n\nThis could be used to separate your personal models from your work / commissioned models, or to separate models based on the projects they are part of.\n\n<p>To view workspaces, you can click the workspaces button that appears below your recent projects. You can also access workspaces by going to <strong>File > Workspaces</strong> while on the start screen.</p>",
+  "images": [
+    "workspaces",
+    "start_screen"
+  ],
+  "links": [
+    {
+      "text": "View Plugin",
+      "link": "https://www.blockbench.net/plugins/workspaces"
+    }
+  ]
+}
