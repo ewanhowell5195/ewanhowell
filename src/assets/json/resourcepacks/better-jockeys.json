@@ -1,0 +1,17 @@
+{
+  "subtitle": "Add improved skeleton jockeys to your world!",
+  "description": "This pack adds unique skeleton skins for when the skeleton is riding on either the spider or the skeleton horse!\n\n<h1>Limitations:</h1>The skeletons will lose their unique textures if the entity they are riding gets killed and they get reloaded, either through a pack reload, world reload, or chunk reload.",
+  "optifine": "OptiFine is required so that entity models can be customised.",
+  "video": "ZG7wcExAK1k",
+  "images": [
+    "jockeys",
+    "spiders",
+    "skeleton_horses"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/better-jockeys"
+    }
+  ]
+}

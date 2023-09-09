@@ -12,7 +12,8 @@
         {
           "name": "Tweaks",
           "entries": [
-            "umbrella-villagers"
+            "umbrella-villagers",
+            "better-jockeys"
           ]
         },
         {
@@ -516,6 +517,10 @@
     },
     "better-bows": {
       "image": "ewan"
+    },
+    "better-jockeys": {
+      "image": "jockeys",
+      "optifine": 2
     },
     "boomerangs": {
       "image": "primed",
