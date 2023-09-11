@@ -19,6 +19,12 @@
           ]
         },
         {
+          "name": "Fixes",
+          "entries": [
+            "vibrating-wither-fix"
+          ]
+        },
+        {
           "name": "Examples",
           "entries": [
             "example-random-entity-textures",
