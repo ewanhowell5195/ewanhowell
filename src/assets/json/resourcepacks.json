@@ -38,6 +38,12 @@
           ]
         },
         {
+          "name": "PvP",
+          "entries": [
+            "mini-items"
+          ]
+        },
+        {
           "name": "Addons",
           "entries": [
             "f8thful-font"
