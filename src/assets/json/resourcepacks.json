@@ -15,6 +15,7 @@
           "entries": [
             "umbrella-villagers",
             "better-jockeys",
+            "minecarts-with-wheels",
             "better-bows",
             "boomerangs"
           ]
@@ -47,7 +48,8 @@
         {
           "name": "Addons",
           "entries": [
-            "f8thful-font"
+            "f8thful-font",
+            "minecarts-with-wheels-faithful"
           ]
         },
         {
