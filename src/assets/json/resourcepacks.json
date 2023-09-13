@@ -29,6 +29,12 @@
           ]
         },
         {
+          "name": "Update Packs",
+          "entries": [
+            "1-18-panorama"
+          ]
+        },
+        {
           "name": "Examples",
           "entries": [
             "example-random-entity-textures",
