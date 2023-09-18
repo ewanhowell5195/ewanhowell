@@ -149,7 +149,7 @@ function generateGuides() {
 block meta
   -
     meta = {
-      title: "${data.id ?? data.id.toTitleCase(true)} - Guides - Ewan Howell",
+      title: "${data.name ?? data.id.toTitleCase(true)} - Guides - Ewan Howell",
       description: "${data.description}",
       image: "guides/${data.id}/thumbnail.webp"
     }`), "utf-8")
