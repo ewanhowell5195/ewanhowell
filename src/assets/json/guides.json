@@ -8,5 +8,10 @@
     "id": "emissive-textures",
     "description": "How to add emissive textures to make blocks, items, and entities glow!",
     "optifine": true
+  },
+  {
+    "id": "slicer-1-20-2",
+    "name": "Slicer 1.20.2",
+    "description": "How to update your resource pack GUI to 1.20.2 using Mojang's Slicer tool!"
   }
 ]

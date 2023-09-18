@@ -1,0 +1,88 @@
+{
+  "links": {
+    "video": "pSctvASenqI",
+    "other": [
+      {
+        "text": "Java 17",
+        "link": "https://adoptium.net/temurin/releases/?version=17"
+      },
+      {
+        "text": "Slicer",
+        "link": "https://github.com/Mojang/slicer/releases"
+      }
+    ]
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "What are Emissive Textures?"
+    },
+    "Slicer is a tool made by Mojang that helps you update a 1.20.1 resource pack to 1.20.2.",
+    {
+      "type": "heading",
+      "text": "How to use Slicer"
+    },
+    {
+      "type": "step",
+      "text": "Downloading Java 17",
+      "step": 1
+    },
+    "In order to use Slicer, you will need Java 17 or newer installed on your computer. You can download Java 17 from [here](https://adoptium.net/temurin/releases/?version=17).",
+    "You may already have Java installed. In this case, you need to check that you have a supported version. You can use the command `java -version` in command prompt to check your installed Java version.",
+    {
+      "type": "codeblock",
+      "text": "C:\\Users\\ewanh>java -version\nopenjdk version \"17.0.5\" 2022-10-18\nOpenJDK Runtime Environment Temurin-17.0.5+8 (build 17.0.5+8)\nOpenJDK 64-Bit Server VM Temurin-17.0.5+8 (build 17.0.5+8, mixed mode, sharing)",
+      "name": "Command Prompt"
+    },
+    "If you see a version number below 17, you will need to install a newer Java version.",
+    {
+      "type": "step",
+      "text": "Downloading Slicer",
+      "step": 2
+    },
+    "Download Slicer from the [Mojang/slicer GitHub repository](https://github.com/Mojang/slicer/releases).",
+    "Select the latest release for Minecraft 1.20.2, then download the `.jar` file linked under the `Assets`.",
+    {
+      "type": "image",
+      "name": "jar",
+      "height": 227
+    },
+    "This guide will refer to the file as `slicer.jar`, so rename it to that for consistency.",
+    {
+      "type": "step",
+      "text": "Output folder",
+      "step": 3
+    },
+    "Create an output folder next to your resource pack. For example, for the pack `resourcepacks/OLEDcraft`, I would create `resourcepacks/OLEDcraft 1.20.2`. The name does not matter.",
+    {
+      "type": "step",
+      "text": "Running Slicer",
+      "step": 4
+    },
+    "Open Command Prompt, and type the following command: `java -jar \"slicer.jar\" \"resourcepackinput\" \"resourcepackoutput\"`",
+    "Make sure to use valid file paths for both the `slicer.jar` file, and the resource pack input and output.",
+    {
+      "type": "codeblock",
+      "text": "C:\\Users\\ewanh>java -jar \"C:\\Users\\ewanh\\Downloads\\slicer.jar\" \"C:\\Users\\ewanh\\AppData\\Roaming\\.minecraft\\resourcepacks\\OLEDcraft\" \"C:\\Users\\ewanh\\AppData\\Roaming\\.minecraft\\resourcepacks\\OLEDcraft 1.20.2\"",
+      "name": "Command Prompt"
+    },
+    "You can drag and drop files and folders into Command Prompt to quickly paste their file paths.",
+    "Once the command has been typed in, hit enter to run Slicer. You will see it process your resource pack.",
+    {
+      "type": "step",
+      "text": "Merging changes",
+      "step": 5
+    },
+    "After running Slicer, the new GUI files get saved to your chosen output folder. This output folder is not a working resource pack, it just contains the changed files.",
+    "You will now be making changes to your resource pack directly, so make a backup of it if you do not want to lose the old pack.",
+    "**1.** Inside your resource pack, delete the following folders: `assets/realms`, `assets/minecraft/textures/gui`.",
+    "**2.** Copy the `assets/minecraft/textures/gui` folder from the output pack and move it into your pack.",
+    "You are done! You have merged the 1.20.2 GUI changes into your pack!",
+    {
+      "type": "step",
+      "text": "Finishing up",
+      "step": 6
+    },
+    "Slicer will automatically convert most of the GUI changes for your pack, but not everything is handled for you. Please make sure to check the files manually to make sure everything converted correctly."
+  ]
+}
