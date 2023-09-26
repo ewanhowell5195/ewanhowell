@@ -192,7 +192,7 @@ export function entryPageClass(page, type) {
         $("#versions").removeClass("hidden")
         const versions = $("#version-list")
         for (const version of versionList) {
-          versions.append(E("div").text(version))
+          versions.append(E("a", { is: "f-a" }).attr("href", `/${type}/?version=${version}`).text(version))
         }
       }
     }
