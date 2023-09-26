@@ -292,7 +292,7 @@
   max-width: 900px
 
 #entry-links
-  min-width: 256px
+  width: 256px
 
 #entry-links-contents
   height: calc(100% - 110px)
@@ -349,8 +349,8 @@
   &:hover.mirror
       filter: hue-rotate(80deg) brightness(1.2)
 
-#links
-  width: 100%
+#links, #versions
+  max-width: 100%
   display: flex
   flex-direction: column
   align-items: center
@@ -365,6 +365,13 @@
     display: flex
     flex-direction: column
     flex-wrap: wrap
+
+#version-list
+  flex-direction: row !important
+  max-width: 85%
+
+  div
+    color: var(--color-text-white)
 
 .button
   width: 206px

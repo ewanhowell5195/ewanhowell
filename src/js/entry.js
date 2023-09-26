@@ -187,6 +187,14 @@ export function entryPageClass(page, type) {
       }
       const categoryName = window[type].versions.map(e => e.categories.find(e => e.entries.includes(args.name))).find(e => e?.name)?.name
       if (categoryName) $("#category-name").text(categoryName)
+      if (window[type].versions.length > 1) {
+        const versionList = window[type].versions.filter(e => e.categories.find(e => e.entries.includes(args.name))).map(e => e.id)
+        $("#versions").removeClass("hidden")
+        const versions = $("#version-list")
+        for (const version of versionList) {
+          versions.append(E("div").text(version))
+        }
+      }
     }
   }
 
