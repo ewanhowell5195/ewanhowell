@@ -36,16 +36,16 @@
           ]
         },
         {
-          "name": "Pack Development",
-          "entries": [
-            "solid-block-transparency-support"
-          ]
-        },
-        {
           "name": "Examples",
           "entries": [
             "example-random-entity-textures",
             "example-emissive-textures"
+          ]
+        },
+        {
+          "name": "Pack Development",
+          "entries": [
+            "solid-block-transparency-support"
           ]
         },
         {
