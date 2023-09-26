@@ -36,6 +36,12 @@
           ]
         },
         {
+          "name": "Pack Development",
+          "entries": [
+            "solid-block-transparency-support"
+          ]
+        },
+        {
           "name": "Examples",
           "entries": [
             "example-random-entity-textures",
@@ -83,14 +89,6 @@
           ]
         },
         {
-          "name": "Pack Development",
-          "entries": [
-            "solid-block-transparency-support",
-            "flipped-uvs",
-            "template-green"
-          ]
-        },
-        {
           "name": "Tweaks",
           "entries": [
             "skeleton-physics",
@@ -119,6 +117,14 @@
           "name": "Update Packs",
           "entries": [
             "1-18-panorama"
+          ]
+        },
+        {
+          "name": "Pack Development",
+          "entries": [
+            "solid-block-transparency-support",
+            "flipped-uvs",
+            "template-green"
           ]
         },
         {
