@@ -44,6 +44,12 @@
           ]
         },
         {
+          "name": "Cursed",
+          "entries": [
+            "fandom-overlay"
+          ]
+        },
+        {
           "name": "Pack Development",
           "entries": [
             "solid-block-transparency-support"
@@ -652,6 +658,9 @@
     },
     "f8thful-font": {
       "image": "menu"
+    },
+    "fandom-overlay": {
+      "image": "overlay"
     },
     "fences-plus": {
       "image": "oak",
