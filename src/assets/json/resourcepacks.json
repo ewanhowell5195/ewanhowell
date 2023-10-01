@@ -52,7 +52,8 @@
         {
           "name": "Pack Development",
           "entries": [
-            "solid-block-transparency-support"
+            "solid-block-transparency-support",
+            "template-green"
           ]
         },
         {
