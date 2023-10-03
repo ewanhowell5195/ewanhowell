@@ -119,8 +119,9 @@ export default class extends Page {
     }
 
     contents = $("#sidebar-contents-contents")
+    guideName = args.name
 
-    addBlocks($, $("#content"), guide.content, args.name, {
+    addBlocks($, $("#content"), guide.content, {
       view: args.searchParams.view?.split(",") ?? []
     })
     if (scrollTo) setTimeout(() => scrollTo[0].scrollIntoView({
@@ -156,8 +157,8 @@ export default class extends Page {
   }
 }
 
-let scrollTo, contents
-function addBlocks($, element, blocks, guide, args) {
+let scrollTo, contents, guideName
+function addBlocks($, element, blocks, args) {
   const section = E("div").addClass("section")
   const copyIcon = $("#copy-icon").contents()
   for (const [b, block] of blocks.entries()) {
@@ -174,7 +175,7 @@ function addBlocks($, element, blocks, guide, args) {
       }
     } else if (block.type === "image") {
       E("img").addClass("popupable").attr({
-        src: `/assets/images/guides/${block.source ?? guide}/${block.name}.webp`,
+        src: `/assets/images/guides/${block.source ?? guideName}/${block.name}.webp`,
         height: block.height ?? 256
       }).css("max-height", `${block.height ?? 256}px`).appendTo(section)
     } else if (block.type === "tabs") {
@@ -193,7 +194,7 @@ function addBlocks($, element, blocks, guide, args) {
         contentsHandler("tab", sect.name, `${location.pathname}?view=${blockPath.concat(i).join()}`, blockPath.length)
         const section2 = E("div").attr("data-tab", i).addClass("tab-section")
         const tabPath = blockPath.concat(i)
-        addBlocks($, section2, sect.content, guide, {
+        addBlocks($, section2, sect.content, {
           depth: (args.depth ?? 0) + 1,
           blockPath: tabPath,
           view: args.view
@@ -236,7 +237,7 @@ function addBlocks($, element, blocks, guide, args) {
 
 function copyHandler(element, path) {
   let timeout
-  const link = `${location.href.split("?")[0]}?view=${path.join()}`
+  const link = `/guides/${guideName}?view=${path.join()}`
   element.on("click", e => {
     clearTimeout(timeout)
     navigator.clipboard.writeText(link)
