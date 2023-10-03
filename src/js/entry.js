@@ -119,11 +119,13 @@ export function entryPageClass(page, type) {
         }))
       }
       if (data.images) {
-        for (const [i, image] of data.images.entries()) {
+        for (const [i, image] of data.images.slice().reverse().entries()) {
           images.prepend(E("img").attr({
-            id: `image-${i + offset}`,
+            id: `image-${data.images.length - (i + offset - 1)}`,
             src: `/assets/images/${type}/${args.name}/images/${image}.webp`
           }).addClass("showcase-image popupable"))
+        }
+        for (const [i, image] of data.images.entries()) {
           imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args.name}/images/${image}.webp")`).on("click", e => {
             img = i + offset
             showImage()

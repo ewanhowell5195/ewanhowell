@@ -312,20 +312,20 @@ body::-webkit-scrollbar-thumb
 
 .popup-container
   position: relative
-  overflow: hidden
   user-select: none
   box-shadow: 0 8px 16px black
-  max-width: calc(100vw - 40px)
+  max-width: 90vw
   max-height: calc(100vh - 40px)
-  overflow-y: auto
+  overflow: hidden
 
-.popup-image-close
-  fill: white
+.popup-image-close, .popup-image-next, .popup-image-prev
   position: absolute
-  top: 0
-  right: -32px
   filter: invert() drop-shadow(0 0 2px black) drop-shadow(0 0 4px black)
   cursor: pointer
+
+.popup-image-close
+  top: 0
+  right: -32px
   transition: right .15s, opacity .15s
   opacity: 0
   width: 32px
@@ -334,10 +334,35 @@ body::-webkit-scrollbar-thumb
   &:hover
     right: 0
     opacity: 1
+
+.popup-image-next, .popup-image-prev
+  top: 50%
+  transform: translateY(-50%)
+  opacity: 0
+  padding: 20px
+  transition: left 0.15s, right 0.15s, opacity 0.15s, transform 0.15s
   
+  &:hover
+    transform: translateY(-50%) scale(1.4)
+
+.popup-image-prev
+  left: -60px
+  
+  &:hover
+    opacity: 1
+    left: 0
+
+.popup-image-next
+  right: -60px
+  
+  &:hover
+    opacity: 1
+    right: 0
+
 .popup-image
-  max-width: calc(90vw)
-  max-height: calc(90vh)
+  max-width: 90vw
+  max-height: calc(100vh - 40px)
+  min-width: @css{min(256px, 90vw)};
   display: block
   background-image: url("/assets/images/misc/transparent_dark.webp")
   image-rendering: pixelated
@@ -346,6 +371,14 @@ body::-webkit-scrollbar-thumb
   &:hover ~ .popup-image-close
     right: 0
     opacity: 1
+    
+  &:hover ~ .popup-image-prev
+    opacity: 1
+    left: 0
+
+  &:hover ~ .popup-image-next
+    opacity: 1
+    right: 0
     
 .popup-optifine
   max-width: 405px
@@ -459,6 +492,13 @@ body::-webkit-scrollbar-thumb
   #header > .page-button:not(.logo)
     display: none
 
-  .popup-image-close
+  .popup-image-close, .popup-image-next
     right: 0
     opacity: 1
+    
+  .popup-image-prev
+    left: 0
+    opacity: 1
+    
+  .popup-image-prev, .popup-image-next
+    padding: 10px

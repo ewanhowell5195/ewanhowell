@@ -49,7 +49,7 @@ class Page extends HTMLElement {
       this.shadowRoot.append(this.shadowBody[0])
       setInnerHTML(this.shadowBody[0], content)
       this.$ = (...args) => $(...args, this.shadowRoot)
-      this.$(this.shadowBody).on("click", "img.popupable", e => popupImage(e.currentTarget.getAttribute("src"), e.currentTarget.getAttribute("scale")))
+      popupImage()
       await onReady(this.$)
       this.hasLoaded = true
       this.classList.remove("loading")
@@ -73,7 +73,7 @@ class Page extends HTMLElement {
             display: block;
             overflow-x: clip;
           }
-          img.popupable {
+          .popupable {
             cursor: pointer;
           }
           ::-webkit-scrollbar {
