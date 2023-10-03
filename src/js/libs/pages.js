@@ -71,7 +71,7 @@ class Page extends HTMLElement {
           }
           page-body {
             display: block;
-            overflow-x: hidden;
+            overflow-x: clip;
           }
           img.popupable {
             cursor: pointer;

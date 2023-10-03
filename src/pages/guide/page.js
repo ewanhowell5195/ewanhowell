@@ -66,10 +66,10 @@ export default class extends Page {
         }).appendTo(document.body)
       })
     }
-    const sidebar = $("#sidebar")
+    const sidebarLinks = $("#sidebar-links")
     if (guide.links.examples) {
       const links = E("div").addClass("sidebar-links")
-      sidebar.append(E("div").addClass("sidebar-subtitle").text("Example Resource Packs"), links)
+      sidebarLinks.append(E("div").addClass("sidebar-subtitle").text("Example Resource Packs"), links)
       for (const pack of guide.links.examples) {
         links.append(E("a", { is: "f-a" }).addClass("button link-example").attr("href", `/resourcepacks/${pack}`).append(
           localIcon.clone(),
@@ -79,7 +79,7 @@ export default class extends Page {
     }
     if (guide.links.documentation) {
       const links = E("div").addClass("sidebar-links")
-      sidebar.append(E("div").addClass("sidebar-subtitle").text("Documentation"), links)
+      sidebarLinks.append(E("div").addClass("sidebar-subtitle").text("Documentation"), links)
       for (const doc of guide.links.documentation) {
         links.append(E("a").addClass("button").attr({
           href: doc.link,
@@ -91,7 +91,7 @@ export default class extends Page {
       }
     }
     if (guide.links.video) {
-      sidebar.append(
+      sidebarLinks.append(
         E("div").addClass("sidebar-subtitle").text("Tutorial Video"),
         E("div").addClass("sidebar-links").append(
           E("a").addClass("button").attr({
@@ -106,7 +106,7 @@ export default class extends Page {
     }
     if (guide.links.other) {
       const links = E("div").addClass("sidebar-links")
-      sidebar.append(E("div").addClass("sidebar-subtitle").text("Other Links"), links)
+      sidebarLinks.append(E("div").addClass("sidebar-subtitle").text("Other Links"), links)
       for (const doc of guide.links.other) {
         links.append(E("a").addClass("button").attr({
           href: doc.link,
@@ -118,6 +118,8 @@ export default class extends Page {
       }
     }
 
+    contents = $("#sidebar-contents-contents")
+
     addBlocks($, $("#content"), guide.content, args.name, {
       view: args.searchParams.view?.split(",") ?? []
     })
@@ -126,7 +128,7 @@ export default class extends Page {
     }), 100)
 
     const mobileLinksContainer = $("#mobile-links")
-    $("#mobile-links-content").append(sidebar.children(":not(:first-child)").clone())
+    $("#mobile-links-content").append(sidebarLinks.children(":not(:first-child)").clone())
     $("#mobile-links-header").on("click", e => {
       mobileLinksContainer.toggleClass("collapsed")
       this.#resizePage()
@@ -145,7 +147,7 @@ export default class extends Page {
   }
 }
 
-let scrollTo
+let scrollTo, contents
 function addBlocks($, element, blocks, guide, args) {
   const section = E("div").addClass("section")
   const copyIcon = $("#copy-icon").contents()
@@ -179,6 +181,7 @@ function addBlocks($, element, blocks, guide, args) {
           sections.children(`[data-tab="${$(e.currentTarget).addClass("active").attr("data-tab")}"]`).addClass("selected")
           history.replaceState({}, null, `${location.pathname}?view=${blockPath.concat(i).join()}`)
         }).appendTo(tabs)
+        contentsHandler("tab", sect.name, `${location.pathname}?view=${blockPath.concat(i).join()}`, blockPath.length)
         const section2 = E("div").attr("data-tab", i).addClass("tab-section")
         const tabPath = blockPath.concat(i)
         addBlocks($, section2, sect.content, guide, {
@@ -224,12 +227,19 @@ function addBlocks($, element, blocks, guide, args) {
 
 function copyHandler(element, path) {
   let timeout
+  const link = `${location.href.split("?")[0]}?view=${path.join()}`
   element.on("click", e => {
     clearTimeout(timeout)
-    navigator.clipboard.writeText(`${location.href.split("?")[0]}?view=${path.join()}`)
+    navigator.clipboard.writeText(link)
     element.addClass("copied")
     timeout = setTimeout(() => element.removeClass("copied"), 2000)
   })
+  contentsHandler(element[0].classList[0], element.text(), link, path.length - 1, element)
+}
+
+function contentsHandler(type, text, link, depth, element) {
+  if (type === "step") text = `${element[0].dataset.step} ${text}`
+  contents.append(E("a", { is: "f-a" }).attr("href", link).addClass(`sidebar-contents-${type}`).text(text).css("margin-left", `${depth * 20}px`))
 }
 
 function parseString(str, depth) {

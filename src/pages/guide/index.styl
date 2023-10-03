@@ -9,7 +9,7 @@ page-body
   display: flex
   flex-direction: row
   align-items: stretch
-  overflow: hidden
+  overflow: clip
   
 #content-container
   flex: 1
@@ -113,15 +113,22 @@ header
 #sidebar
   background-color: var(--color-grey)
   min-height: calc(100vh - var(--header-height) * 2 - 40px)
-  width: 256px
-  padding: 20px
+  width: 296px
   box-shadow: -5px 0 10px var(--color-box-shadow)
   display: flex
   flex-direction: column
   align-items: center
   text-align: center
-  
-#sidebar-title
+
+  > div
+    display: flex
+    flex-direction: column
+
+#sidebar-links
+  width: calc(100% - 40px)
+  padding: 20px 0
+
+.sidebar-title
   font-size: 1.75rem
   font-weight: 700
   text-shadow: -4px 4px 1px var(--color-text-shadow)
@@ -141,7 +148,41 @@ header
   
 .link-example
   background-color: var(--color-download)
+
+#sidebar-contents
+  width: 100%
+  position: sticky
+  top: calc(var(--header-height) + 20px)
   
+  *:not(.sidebar-title)
+    text-align: left
+  
+  a
+    color: var(--color-text-white)
+    text-decoration: none
+    
+    &:hover
+      text-decoration: underline
+
+#sidebar-contents-contents
+  max-height: calc(100vh - var(--header-height) * 2 - 72px)
+  overflow-y: auto
+  overflow-x: clip
+  width: calc(100% - 40px)
+  display: flex
+  flex-direction: column
+  gap: 10px
+  padding: 0 20px
+  
+  :last-child
+    margin-bottom: 20px
+
+.sidebar-contents-heading
+  font-size: 1.3rem
+  
+.sidebar-contents-step
+  font-size: 1.15rem
+
 #content
   padding: 20px 20px 80px
   
@@ -150,10 +191,12 @@ header
   flex-direction: column
   gap: 20px
   width: 100%
+  align-items: flex-start
   
   img
     object-fit: contain
     filter: drop-shadow(var(--box-shadow))
+    width: 100%
 
 .heading
   font-size: 2rem
@@ -180,6 +223,7 @@ header
 
 .tab-container
   filter: drop-shadow(var(--box-shadow))
+  width: 100%
 
   &.light
     .active
@@ -262,6 +306,7 @@ code
   background-color: var(--color-grey)
   font-family: consolas, monospace
   box-shadow: var(--box-shadow)
+  width: 100%
 
   &.light1
     background-color: var(--color-grey-light)
@@ -362,13 +407,18 @@ a
   cursor: pointer
   display: flex
   align-items: center
+  position: relative
   
   &.copied::after
-    content: "Copied!"
+    content: "Copied link!"
     margin-left: 10px
     font-size: 1rem
     opacity: 0.5
     margin-top: 4px
+    font-weight: 400
+    position: absolute
+    right: 0
+    translate: calc(100% + 10px)
 
 @media only screen and (max-width: 1010px)
   #optifine
