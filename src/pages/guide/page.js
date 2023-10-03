@@ -134,9 +134,18 @@ export default class extends Page {
       this.#resizePage()
     })
 
+    const mobileContentsContainer = $("#mobile-contents")
+    $("#mobile-contents-content").append(contents.children(":not(:first-child)").clone())
+    $("#mobile-contents-header").on("click", e => {
+      mobileContentsContainer.toggleClass("collapsed")
+      this.#resizePage()
+    })
+
     this.#resizePage = () => {
-      const e = this.shadowBody[0].querySelector("#mobile-links-content")
-      e.style.maxHeight = `${e.scrollHeight}px`
+      const links = this.shadowBody[0].querySelector("#mobile-links-content")
+      links.style.maxHeight = `${links.scrollHeight}px`
+      const contents = this.shadowBody[0].querySelector("#mobile-contents-content")
+      contents.style.maxHeight = `${contents.scrollHeight}px`
     }
     window.addEventListener("resize", this.#resizePage)
   }

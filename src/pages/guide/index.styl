@@ -350,17 +350,20 @@ code
 a
   color: var(--color-link-blue)
 
-#mobile-links
+#mobile-links, #mobile-contents
   display: none
   background-color: var(--color-grey)
   box-shadow: var(--box-shadow)
+  flex-direction: column
+  align-items: center
 
-#mobile-links-header
+#mobile-links-header, #mobile-contents-header
   padding: 11px 20px
   display: flex
   position: relative
   cursor: pointer
   user-select: none
+  width: calc(100% - 40px)
   
   h1
     margin: 0
@@ -377,7 +380,7 @@ a
     width: 30px
     transition: transform .15s, filter .15s
 
-#mobile-links-content
+#mobile-links-content, #mobile-contents-content
   padding: 0 20px
   display: flex
   flex-direction: column
@@ -395,12 +398,29 @@ a
     min-width: 206px
     flex: 1
 
+#mobile-contents-content
+  gap: 10px
+  align-items: flex-start
+  
+  a
+    color: var(--color-text-white)
+    text-decoration: none
+    
+    &:hover
+      text-decoration: underline
+  
+  :first-child
+    padding-top: 20px
+
+  :last-child
+    padding-bottom: 20px
+
 .collapsed
-  #mobile-links-header svg
+  #mobile-links-header svg, #mobile-contents-header svg
     transform: rotateZ(0)
     filter: drop-shadow(-3px 3px 1px var(--color-text-shadow))
     
-  #mobile-links-content
+  #mobile-links-content, #mobile-contents-content
     max-height: 0px !important
 
 .heading, .step
@@ -439,8 +459,8 @@ a
   #sidebar
     display: none
     
-  #mobile-links
-    display: block
+  #mobile-links, #mobile-contents
+    display: flex
     
   #title, #subtitle, .heading
     text-align: center
