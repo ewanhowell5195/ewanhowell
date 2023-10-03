@@ -189,9 +189,9 @@ function addBlocks($, element, blocks, args) {
           sections.children().removeClass("selected")
           tabs.children().removeClass("active")
           sections.children(`[data-tab="${$(e.currentTarget).addClass("active").attr("data-tab")}"]`).addClass("selected")
-          history.replaceState({}, null, `${location.pathname}?view=${blockPath.concat(i).join()}`)
+          history.replaceState({}, null, `/guides/${guideName}?view=${blockPath.concat(i).join()}`)
         }).appendTo(tabs)
-        contentsHandler("tab", sect.name, `${location.pathname}?view=${blockPath.concat(i).join()}`, blockPath.length)
+        contentsHandler("tab", sect.name, `/guides/${guideName}?view=${blockPath.concat(i).join()}`, blockPath.length)
         const section2 = E("div").attr("data-tab", i).addClass("tab-section")
         const tabPath = blockPath.concat(i)
         addBlocks($, section2, sect.content, {
