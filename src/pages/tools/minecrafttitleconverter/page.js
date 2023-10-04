@@ -20,14 +20,6 @@ export default class MinecraftTitleConverterPage extends Page {
             h = 1024
             w = Math.floor(1024 * aspect)
           }
-        } else if (img.width < 64 || img.height < 64) {
-          if (aspect > 1) {
-            w = 64
-            h = Math.floor(64 / aspect)
-          } else {
-            h = 64
-            w = Math.floor(64 * aspect)
-          }
         } else {
           w = img.width
           h = img.height
