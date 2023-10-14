@@ -6,7 +6,7 @@ export function indexPageClass(type, title) {
         const tabs = $("#tabs")
         const versionsElement = $("#versions")
         const month = new Date().getMonth() + 1
-        for (const category of window[type].categories) {
+        if (window[type].versions) for (const category of window[type].categories) {
           category.entries.sort((a, b) => {
             const aHas = a.featured?.includes(month)
             const bHas = b.featured?.includes(month)
@@ -38,7 +38,7 @@ export function indexPageClass(type, title) {
             }
           }
         }
-        for (const version of versions) {
+        if (window[type].versions) for (const version of versions) {
           version.categories.sort((a, b) => {
             const aHas = a.featured.includes(month)
             const bHas = b.featured.includes(month)
