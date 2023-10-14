@@ -240,7 +240,7 @@ function copyHandler(element, path) {
   const link = `/guides/${guideName}?view=${path.join()}`
   element.on("click", e => {
     clearTimeout(timeout)
-    navigator.clipboard.writeText(link)
+    navigator.clipboard.writeText(location.origin + link)
     element.addClass("copied")
     timeout = setTimeout(() => element.removeClass("copied"), 2000)
   })

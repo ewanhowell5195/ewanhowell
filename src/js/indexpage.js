@@ -4,27 +4,52 @@ export function indexPageClass(type, title) {
       super(type, false, async $ => {
         await fetchJSON(type)
         const tabs = $("#tabs")
-        const versions = $("#versions")
-        const allEntries = {
-          id: "all",
-          categories: window[type].versions.reduce((a, e) => {
-            for (const category of e.categories) {
-              let c = a.find(e => e.name === category.name)
-              if (c) category.entries.forEach(e => c.entries.add(e))
-              else {
-                c = {
-                  name: category.name,
-                  entries: new Set(category.entries)
+        const versionsElement = $("#versions")
+        const month = new Date().getMonth() + 1
+        for (const category of window[type].categories) {
+          category.entries.sort((a, b) => {
+            const aHas = a.featured?.includes(month)
+            const bHas = b.featured?.includes(month)
+            if (aHas && !bHas) return -1
+            else if (!aHas && bHas) return 1
+            return window[type].versions.indexOf(a.versions[0]) - window[type].versions.indexOf(b.versions[0]);
+          })
+        }
+        const versions = window[type].versions?.map(e => ({ id: e, categories: [] })) ?? []
+        versions.unshift({ id: "all", categories: window[type].categories })
+        if (window[type].versions) for (const category of window[type].categories) {
+          category.featured = []
+          for (const entry of category.entries) {
+            if (entry.featured) {
+              for (const month of entry.featured) {
+                if (!category.featured.includes(month)) {
+                  category.featured.push(month)
                 }
-                a.push(c)
               }
             }
-            return a
-          }, []).map(e => ({name: e.name, entries: Array.from(e.entries)}))
+            for (const version of entry.versions) {
+              const versionData = versions.find(e => e.id === version)
+              let categoryData = versionData.categories.find(e => e.name === category.name)
+              if (!categoryData) {
+                categoryData = { name: category.name, entries: [], featured: category.featured }
+                versionData.categories.push(categoryData)
+              }
+              categoryData.entries.push(entry)
+            }
+          }
+        }
+        for (const version of versions) {
+          version.categories.sort((a, b) => {
+            const aHas = a.featured.includes(month)
+            const bHas = b.featured.includes(month)
+            if (aHas && !bHas) return -1
+            else if (!aHas && bHas) return 1
+            return 0
+          })
         }
         const arrowIcon = $("#arrow-icon").contents()
-        for (const version of [allEntries, ...window[type].versions]) {
-          if (window[type].versions.length > 1) tabs.append(E("a").attr("href", `/${type}/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
+        for (const version of versions) {
+          if (window[type].versions) tabs.append(E("a").attr("href", `/${type}/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
             evt.preventDefault()
             $(".version").removeClass("shown")
             $(`#${evt.target.innerHTML.replace(".", "-")}`).addClass("shown")
@@ -41,7 +66,7 @@ export function indexPageClass(type, title) {
             else document.title = [title[0], evt.target.innerHTML, title[title.length - 1]].join(" - ")
             analytics()
           }))
-          const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versions)
+          const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versionsElement)
           for (const category of version.categories) {
             const categoryEntriesDiv = E("div").addClass(`entries category-${category.name.replace(/ /g, "-")}`).appendTo(
               E("div").addClass("category").attr("id", category.name).append(
@@ -61,24 +86,23 @@ export function indexPageClass(type, title) {
               ).appendTo(versionDiv)
             )
             for (const entry of category.entries) {
-              const entryName = window[type].entries[entry].name ?? entry.toTitleCase(true, true)
-              const entryImages = E("div").addClass("entry-images").attr("id", entry)
-              entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${window[type].entries[entry].image ? `${type}/${entry}/images/${window[type].entries[entry].image}` : "/home/logo_3d"}.webp")`))
-              if (window[type].entries[entry].logoless) {
+              const entryName = entry.name ?? entry.id.toTitleCase(true, true)
+              const entryImages = E("div").addClass("entry-images").attr("id", entry.id)
+              entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${entry.image ? `${type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`))
+              if (entry.logoless) {
                 const logo = E("div").addClass("logo").text(entryName).appendTo(entryImages)
-                if (window[type].entries[entry].fontsize) logo.css("font-size", `${window[type].entries[entry].fontsize}rem`)
-              }
-              else entryImages.append(
-                E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry}/logo.webp")`)
+                if (entry.fontsize) logo.css("font-size", `${entry.fontsize}rem`)
+              } else entryImages.append(
+                E("div").addClass("logo").css("background-image", `url("/assets/images/${type}/${entry.id}/logo.webp")`)
               )
               const entryDiv = E("a", {is: "f-a"}).attr({
-                href: `/${type}/${entry}`,
-                "data-id": entry
+                href: `/${type}/${entry.id}`,
+                "data-id": entry.id
               }).addClass("entry").append(
                 entryImages,
                 E("div").addClass("entry-name").text(entryName)
               ).appendTo(categoryEntriesDiv)
-              if (window[type].entries[entry].optifine) entryImages.append(E("img").addClass("optifine").attr("src", "/assets/images/logo/optifine.webp"))
+              if (entry.optifine) entryImages.append(E("img").addClass("optifine").attr("src", "/assets/images/logo/optifine.webp"))
             }
           }
         }
@@ -130,13 +154,13 @@ export function indexPageClass(type, title) {
 
     async setData({ version, search }) {
       await this.ready
-      if (window[type].versions.length === 1) version = "all"
+      if (!window[type].versions) version = "all"
       else if (!version) {
         version = sessionStorage.getItem(`${type}Version`)
         if (!version) version = "all"
       }
       const tab = this.$(`.tab:contains("${version}")`)
-      if (!tab.length) version = window[type].versions[0].id
+      if (window[type].versions && !tab.length) version = window[type].versions[0]
       this.$(`#${version.replace(".", "-")}`).addClass("shown")
       this.addFeatured(this.$(".version.shown"), this.$)
       this.$(`.tab:contains("${version}")`).addClass("selected")
@@ -145,8 +169,8 @@ export function indexPageClass(type, title) {
         this.$("#search input").val(search)
         setTimeout(() => this.$("#search input").trigger("input"), 0)
       }
-      if (window[type].versions.length === 1) version = undefined
-      this.newState = `/${type}/${toURLParams({version, search})}`
+      if (!window[type].versions) version = undefined
+      this.newState = `/${type}/${toURLParams({ version, search })}`
       if (version && version !== "all") {
         const title = document.title.split(" - ")
         document.title = [title[0], version, title[1]].join(" - ")

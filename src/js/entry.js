@@ -17,9 +17,10 @@ export function entryPageClass(page, type) {
         return false
       }
       await fetchJSON(type)
-      const entryName = window[type].entries[args.name].name ?? args.name.toTitleCase(true, true)
-      jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
-      jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${args.name}/icon.webp`)
+      const entry = window[type].categories.map(e => e.entries.find(e => e.id === args.name)).find(e => e)
+      const entryName = entry.name ?? entry.id.toTitleCase(true, true)
+      jQuery('link[rel="icon"][sizes="16x16"]').attr("href", `/assets/images/${type}/${entry.id}/icon.webp`)
+      jQuery('link[rel="icon"][sizes="32x32"]').attr("href", `/assets/images/${type}/${entry.id}/icon.webp`)
       jQuery("title").text(`${entryName} - ${data.author ?? "Ewan Howell"}`)
       const $ = this.$
       const linkIcon = $("#link-icon").contents()
@@ -27,19 +28,19 @@ export function entryPageClass(page, type) {
       const closeIcon = $("#close-icon").contents()
       const downloadIcon = $("#download-icon").contents()
       const guideIcon = $("#guide-icon").contents()
-      $("#banner-background").css("background-image", `url("/assets/images/${window[type].entries[args.name].image ? `${type}/${args.name}/images/${window[type].entries[args.name].image}` : "/home/logo_3d"}.webp")`)
-      if (window[type].entries[args.name].logoless) $("#banner-content").prepend(
+      $("#banner-background").css("background-image", `url("/assets/images/${entry.image ? `${type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`)
+      if (entry.logoless) $("#banner-content").prepend(
         E("div").attr("id", "logo").text(entryName)
       )
       else $("#banner-content").prepend(
        E("img").attr({
           id: "logo",
-          src: `/assets/images/${type}/${args.name}/logo.webp`
+          src: `/assets/images/${type}/${entry.id}/logo.webp`
        })
       )
-      if (window[type].entries[args.name].optifine) {
+      if (entry.optifine) {
         $(".type").text(type.slice(0, type.length - 1).replace("resource", ""))
-        if (window[type].entries[args.name].optifine === 1) $("#optifine").removeClass("hidden").addClass("optional")
+        if (entry.optifine === 1) $("#optifine").removeClass("hidden").addClass("optional")
         else $("#optifine").removeClass("hidden").addClass("required")
         $("#optifine-info").on("click", e => {
           const popup = E("div").addClass("popup").append(
@@ -54,7 +55,7 @@ export function entryPageClass(page, type) {
                   ).on("click", e => popup.remove())
                 ),
                 E("div").attr("id", "popup-optifine-content").append(
-                  E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${window[type].entries[args.name].optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
+                  E("div").attr("id", "popup-optifine-text").html(`OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${entryName} OptiFine requirement: </h3>${entry.optifine === 1 ? "Optional" : "Required"}${data.optifine ? `\n<h3>${entryName} specific information:</h3>${data.optifine}` : ""}`),
                   E("div").attr("id", "popup-optifine-download").append(E("div").append(
                     E("a").attr({
                       href: "https://optifine.net/downloads",
@@ -121,12 +122,12 @@ export function entryPageClass(page, type) {
       if (data.images) {
         for (const [i, image] of data.images.slice().reverse().entries()) {
           images.prepend(E("img").attr({
-            id: `image-${data.images.length - (i + offset - 1)}`,
-            src: `/assets/images/${type}/${args.name}/images/${image}.webp`
+            id: `image-${data.images.length - (i + offset + (data.video ? -1 : 1))}`,
+            src: `/assets/images/${type}/${entry.id}/images/${image}.webp`
           }).addClass("showcase-image popupable"))
         }
         for (const [i, image] of data.images.entries()) {
-          imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${args.name}/images/${image}.webp")`).on("click", e => {
+          imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${entry.id}/images/${image}.webp")`).on("click", e => {
             img = i + offset
             showImage()
           }))
@@ -187,10 +188,9 @@ export function entryPageClass(page, type) {
           }
         }
       }
-      const categoryName = window[type].versions.map(e => e.categories.find(e => e.entries.includes(args.name))).find(e => e?.name)?.name
-      if (categoryName) $("#category-name").text(categoryName)
-      if (window[type].versions.length > 1) {
-        const versionList = window[type].versions.filter(e => e.categories.find(e => e.entries.includes(args.name))).map(e => e.id)
+      $("#category-name").text(window[type].categories.find(e => e.entries.find(e => e === entry)).name)
+      if (window[type].versions) {
+        const versionList = entry.versions
         $("#versions").removeClass("hidden")
         const versions = $("#version-list")
         for (const version of versionList) {

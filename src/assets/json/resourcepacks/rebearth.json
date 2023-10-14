@@ -11,5 +11,12 @@
       "text": "Download [Java]",
       "link": "https://www.curseforge.com/minecraft/texture-packs/rebearth/"
     }
+  ],
+  "links": [
+    {
+      "text": "Remastered version",
+      "type": "entry",
+      "name": "rebearth-remastered"
+    }
   ]
 }

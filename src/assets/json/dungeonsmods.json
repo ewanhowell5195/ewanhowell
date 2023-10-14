@@ -1,94 +1,87 @@
 {
-  "versions": [
+  "categories": [
     {
-      "id": "Dungeons",
-      "categories": [
+      "name": "Pet Mods",
+      "entries": [
         {
-          "name": "Pet Mods",
-          "entries": [
-            "companion-cube",
-            "wall-e",
-            "bb-8",
-            "claptrap",
-            "worm",
-            "strider",
-            "glados"
-          ]
+          "id": "companion-cube",
+          "image": "render",
+          "logoless": true
         },
         {
-          "name": "Texture Packs",
-          "entries": [
-            "f8thful-dungeons"
-          ]
+          "id": "wall-e",
+          "name": "WALL-E",
+          "image": "render",
+          "logoless": true
         },
         {
-          "name": "Utility",
-          "entries": [
-            "invisible-steve"
-          ]
+          "id": "bb-8",
+          "name": "BB-8",
+          "image": "render",
+          "logoless": true
         },
         {
-          "name": "Mods I've Contributed To",
-          "entries": [
-            "the-warden",
-            "striderchan",
-            "manhacks"
-          ]
+          "id": "claptrap",
+          "name": "ClapTrap",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "worm",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "strider",
+          "image": "strider",
+          "logoless": true
+        },
+        {
+          "id": "glados",
+          "name": "GLaDOS",
+          "image": "glados",
+          "logoless": true
+        }
+      ]
+    },
+    {
+      "name": "Texture Packs",
+      "entries": [
+        {
+          "id": "f8thful-dungeons",
+          "image": "zombie"
+        }
+      ]
+    },
+    {
+      "name": "Utility",
+      "entries": [
+        {
+          "id": "invisible-steve",
+          "image": "steve",
+          "logoless": true
+        }
+      ]
+    },
+    {
+      "name": "Mods I've Contributed To",
+      "entries": [
+        {
+          "id": "the-warden",
+          "image": "warden",
+          "logoless": true
+        },
+        {
+          "id": "striderchan",
+          "image": "nether",
+          "logoless": true
+        },
+        {
+          "id": "manhacks",
+          "image": "render",
+          "logoless": true
         }
       ]
     }
-  ],
-  "entries": {
-    "bb-8": {
-      "name": "BB-8",
-      "image": "render",
-      "logoless": true
-    },
-    "claptrap": {
-      "name": "ClapTrap",
-      "image": "render",
-      "logoless": true
-    },
-    "companion-cube": {
-      "image": "render",
-      "logoless": true
-    },
-    "f8thful-dungeons": {
-      "image": "zombie"
-    },
-    "glados": {
-      "name": "GLaDOS",
-      "image": "glados",
-      "logoless": true
-    },
-    "invisible-steve": {
-      "image": "steve",
-      "logoless": true
-    },
-    "manhacks": {
-      "image": "render",
-      "logoless": true
-    },
-    "strider": {
-      "image": "strider",
-      "logoless": true
-    },
-    "striderchan": {
-      "image": "nether",
-      "logoless": true
-    },
-    "the-warden": {
-      "image": "warden",
-      "logoless": true
-    },
-    "wall-e": {
-      "name": "WALL-E",
-      "image": "render",
-      "logoless": true
-    },
-    "worm": {
-      "image": "render",
-      "logoless": true
-    }
-  }
+  ]
 }
