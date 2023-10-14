@@ -66,11 +66,12 @@ String.prototype.toTitleCase = function(c, n) {
 const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
 
 async function generateType(type) {
-  const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).entries
-  const entries = Array.from(Object.entries(data).entries())
-  for (const [i, [id, entry]] of entries) {
-    await generateEntry(type, id, entry)
-    console.log(`${type} images: ${i + 1} / ${entries.length} - ${id}`)
+  const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).categories
+  for (const category of data) {
+    for (const entry of category.entries) {
+      await generateEntry(type, entry.id, entry)
+      console.log(`${type} images - ${entry.id}`)
+    }
   }
 }
 

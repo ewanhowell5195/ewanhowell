@@ -1,63 +1,38 @@
 {
   "versions": [
-    {
-      "id": "1.20",
-      "categories": [
-        {
-          "name": "Pack Development",
-          "entries": [
-            "entity-tester"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1.19",
-      "categories": [
-        {
-          "name": "Pack Development",
-          "entries": [
-            "entity-tester"
-          ]
-        },
-        {
-          "name": "Maps I Have Contributed To",
-          "entries": [
-            "portal-2-in-minecraft"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1.18",
-      "categories": [
-        {
-          "name": "Pack Development",
-          "entries": [
-            "entity-tester"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1.16",
-      "categories": [
-        {
-          "name": "Pack Development",
-          "entries": [
-            "entity-tester"
-          ]
-        }
-      ]
-    }
+    "1.20",
+    "1.19",
+    "1.18",
+    "1.16"
   ],
-  "entries": {
-    "entity-tester": {
-      "image": "entities"
+  "categories": [
+    {
+      "name": "Pack Development",
+      "entries": [
+        {
+          "id": "entity-tester",
+          "image": "entities",
+          "versions": [
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        }
+      ]
     },
-    "portal-2-in-minecraft": {
-      "image": "door",
-      "optifine": 2
+    {
+      "name": "Maps I Have Contributed To",
+      "entries": [
+        {
+          "id": "portal-2-in-minecraft",
+          "image": "door",
+          "optifine": 2,
+          "versions": [
+            "1.19"
+          ]
+        }
+      ]
     }
-  }
+  ]
 }
