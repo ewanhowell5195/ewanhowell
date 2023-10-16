@@ -148,7 +148,6 @@ export function entryPageClass(page, type) {
         for (const link of data.downloads) {
           main.append(E("a").addClass("button-download").attr({
             href: `http://adfoc.us/serve/sitelinks/?id=546537&url=${link.link}`,
-            // href: `/ads/?url=${encodeURIComponent(link.link)}`,
             target: "_blank"
           }).append(
             downloadIcon.clone(true),
