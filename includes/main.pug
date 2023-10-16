@@ -36,19 +36,11 @@ html(lang = "en")
     meta(name = "theme-color", content = defaults.colour)
     meta(name = "viewport", content = "width=device-width")
     link(rel = "stylesheet", href = "/style.css")
-    script(data-cfasync="false", type = "text/javascript", src = "https://code.jquery.com/jquery-3.6.0.slim.min.js")
-    script(data-cfasync="false", src = "/script.js", type = "module")
+    script(data-cfasync = "false", type = "text/javascript", src = "https://code.jquery.com/jquery-3.6.0.slim.min.js")
+    script(data-cfasync = "false", src = "https://www.googletagmanager.com/gtag/js?id=G-VSJF1VRJHW")
+    script(data-cfasync = "false", src = "/script.js", type = "module")
     link(rel = "modulepreload", href = "/pages/home/page.js")
     link(rel = "modulepreload", href = "/js/libs/pages.js")
-    script(async, src = "https://www.googletagmanager.com/gtag/js?id=G-VSJF1VRJHW")
-    script.
-      window.dataLayer = window.dataLayer || []
-      function gtag(){dataLayer.push(arguments)}
-      gtag("js", new Date())
-      gtag("config", "G-VSJF1VRJHW", {
-        send_page_view: false,
-        cookie_flags: "max-age=7200;SameSite=Strict"
-      })
   body
     #header-container
       #header

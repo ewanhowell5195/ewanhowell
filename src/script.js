@@ -43,6 +43,14 @@ String.prototype.toTitleCase = function(c, n) {
 
 // analytics
 
+window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag("js", new Date())
+gtag("config", "G-VSJF1VRJHW", {
+  send_page_view: false,
+  cookie_flags: "max-age=7200;SameSite=Strict"
+})
+
 window.lastAnalytics = ""
 window.analytics = () => {
   if (location.href === lastAnalytics) return
