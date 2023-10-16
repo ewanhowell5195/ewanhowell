@@ -154,7 +154,8 @@ const routes = [
   pageRoute("tools/minecrafttitleconverter"),
   pageRoute("tools/chestconverter"),
   pageRoute("guides"),
-  pageRoute("guide", "/guides/:name")
+  pageRoute("guide", "/guides/:name"),
+  pageRoute("ads")
 ]
 
 function compareURLs(a, b) {
