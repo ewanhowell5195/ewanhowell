@@ -601,6 +601,6 @@
       "text": "Limitations"
     },
     "Unfortunately, not all entities support random entity textures. For example, as of OptiFine 1.20.1 I6 pre6, the Ender Dragon and Paintings do not support them. Before assuming that an entity does and does not support them, make sure to test with an entity that is known to work, for example a creeper.",
-    "Vanilla emissive textures do not support random entity textures. These are textures like enderman eyes, spider eyes, phantom eyes, etc. As a fix to this issue, i recommended instead making the vanilla textures and replacing them with OptiFine emissive textures. For more information on emissive textures, view the [Emissive Textures guide](/guides/emissive-textures)"
+    "Vanilla emissive textures do not support random entity textures. These are textures like enderman eyes, spider eyes, phantom eyes, etc. As a fix to this issue, i recommended instead making the vanilla textures fully transparent and replacing them with OptiFine emissive textures. For more information on emissive textures, view the [Emissive Textures guide](/guides/emissive-textures)"
   ]
 }
