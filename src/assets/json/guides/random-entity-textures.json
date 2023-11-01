@@ -457,7 +457,7 @@
             {
               "type": "codeblock",
               "text": "textures.1=2\nnbt.1.carriedBlockState.Name=minecraft:grass_block",
-              "name": "wolf.properties"
+              "name": "enderman.properties"
             },
             "The example above will change the enderman's texture depending on the block they are carrying. This variant will only appear when an enderman is carrying a block with the name `minecraft:grass_block`.",
             {
