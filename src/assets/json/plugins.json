@@ -20,6 +20,31 @@
       ]
     },
     {
+      "name": "Blockbench",
+      "entries": [
+        {
+          "id": "preview-scene-customiser",
+          "image": "scene",
+          "logoless": true
+        },
+        {
+          "id": "workspaces",
+          "image": "workspaces",
+          "logoless": true
+        },
+        {
+          "id": "live-dev-reloader",
+          "image": "theme",
+          "logoless": true
+        },
+        {
+          "id": "scene-recorder",
+          "image": "recorder",
+          "logoless": true
+        }
+      ]
+    },
+    {
       "name": "Start Screen",
       "entries": [
         {
@@ -39,42 +64,11 @@
       ]
     },
     {
-      "name": "Blockbench",
-      "entries": [
-        {
-          "id": "scene-recorder",
-          "image": "recorder",
-          "logoless": true
-        },
-        {
-          "id": "preview-scene-customiser",
-          "image": "scene",
-          "logoless": true
-        },
-        {
-          "id": "workspaces",
-          "image": "workspaces",
-          "logoless": true
-        }
-      ]
-    },
-    {
       "name": "Paint",
       "entries": [
         {
           "id": "colour-gradient-generator",
           "image": "colours"
-        }
-      ]
-    },
-    {
-      "name": "Deprecated",
-      "entries": [
-        {
-          "id": "plugin-loader-2-0",
-          "name": "Plugin Loader 2.0",
-          "image": "plugin",
-          "logoless": true
         }
       ]
     }
