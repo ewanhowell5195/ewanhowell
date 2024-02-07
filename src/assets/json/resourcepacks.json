@@ -681,6 +681,14 @@
           ]
         },
         {
+          "id": "fandom-overlay-ublock-origin-edition",
+          "name": "Fandom Overlay: uBlock Origin Edition",
+          "image": "overlay",
+          "versions": [
+            "1.20"
+          ]
+        },
+        {
           "id": "fences-plus-faithful",
           "name": "Fences+: Faithful",
           "image": "fences",
