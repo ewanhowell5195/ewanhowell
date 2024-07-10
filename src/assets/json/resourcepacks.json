@@ -576,6 +576,7 @@
           "id": "mini-items",
           "image": "sword",
           "versions": [
+            "1.21",
             "1.20",
             "1.16",
             "1.14",
