@@ -63,7 +63,7 @@ String.prototype.toTitleCase = function(c, n) {
   return t.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase()).trim()
 }
 
-const types = ["resourcepacks", "maps", "plugins", "dungeonsmods"]
+const types = ["resourcepacks", "plugins", "themes", "maps", "dungeonsmods"]
 
 async function generateType(type) {
   const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).categories
