@@ -145,6 +145,8 @@ const routes = [
   pageRoute("map", "/maps/:name"),
   pageRoute("plugins"),
   pageRoute("plugin", "/plugins/:name"),
+  pageRoute("themes"),
+  pageRoute("theme", "/themes/:name"),
   pageRoute("dungeonsmods"),
   pageRoute("dungeonsmod", "/dungeonsmods/:name"),
   pageRoute("renders"),

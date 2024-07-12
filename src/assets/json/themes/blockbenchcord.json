@@ -1,0 +1,19 @@
+{
+  "subtitle": "Blockbenchcord is a theme for Blockbench that styles it to look just like Discord!",
+  "images": [
+    "menu",
+    "format",
+    "axolotl",
+    "frog",
+    "skin",
+    "settings",
+    "plugins",
+    "themes"
+  ],
+  "links": [
+    {
+      "text": "Blockbench",
+      "link": "https://www.blockbench.net/"
+    }
+  ]
+}
