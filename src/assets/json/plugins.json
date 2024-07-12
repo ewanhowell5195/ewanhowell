@@ -23,6 +23,11 @@
       "name": "Blockbench",
       "entries": [
         {
+          "id": "scene-recorder",
+          "image": "recorder",
+          "logoless": true
+        },
+        {
           "id": "preview-scene-customiser",
           "image": "scene",
           "logoless": true
@@ -35,11 +40,6 @@
         {
           "id": "live-dev-reloader",
           "image": "theme",
-          "logoless": true
-        },
-        {
-          "id": "scene-recorder",
-          "image": "recorder",
           "logoless": true
         }
       ]
