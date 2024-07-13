@@ -4,13 +4,17 @@
       "name": "Minecraft",
       "entries": [
         {
+          "id": "minecraft-title-generator",
+          "image": "banner"
+        },
+        {
           "id": "cem-template-loader",
           "name": "CEM Template Loader",
           "image": "entities"
         },
         {
-          "id": "minecraft-title-generator",
-          "image": "banner"
+          "id": "resource-pack-utilities",
+          "image": "grid"
         },
         {
           "id": "optifine-player-models",
