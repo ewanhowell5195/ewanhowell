@@ -163,6 +163,7 @@
           "id": "better-bows",
           "image": "ewan",
           "versions": [
+            "1.21",
             "1.20",
             "1.19",
             "1.18",
@@ -184,6 +185,7 @@
           "id": "butterflies",
           "image": "multiple",
           "versions": [
+            "1.21",
             "1.20",
             "1.16"
           ]
@@ -268,6 +270,7 @@
           "name": "1.18 Panorama",
           "image": "noui",
           "versions": [
+            "1.21",
             "1.20",
             "1.19",
             "1.17"
@@ -389,6 +392,7 @@
           "id": "fandom-overlay",
           "image": "overlay",
           "versions": [
+            "1.21",
             "1.20"
           ]
         },
@@ -689,6 +693,7 @@
           "name": "Fandom Overlay: uBlock Origin Edition",
           "image": "overlay",
           "versions": [
+            "1.21",
             "1.20"
           ]
         },
