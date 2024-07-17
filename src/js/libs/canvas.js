@@ -66,10 +66,8 @@ export class Canvas extends HTMLCanvasElement {
       return this
     }
     const trimmed = ctx.getImageData(left, top, right - left, bottom - top);
-    const copy = new Canvas(this.width, this.height)
+    const copy = new Canvas(trimmed.width, trimmed.height)
     const copyCtx = copy.getContext("2d")
-    copy.width = trimmed.width
-    copy.height = trimmed.height
     copyCtx.putImageData(trimmed, 0, 0)
     this.width = copy.width
     this.height = copy.height
