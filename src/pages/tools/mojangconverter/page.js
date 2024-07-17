@@ -21,13 +21,21 @@ export default class MojangConverterPage extends Page {
           canvas,
           E("p").text("Only one of the following outputs will be correct, depending on if the input image was in the 1.15 or 1.14 format.")
         )
-        const oldCanvas = new Canvas(img.width * 2, Math.floor(img.width / 2))
-        const oldCanvasCtx = oldCanvas.getContext("2d")
-        oldCanvasCtx.drawImage(img, 0, 0, img.width, Math.floor(img.width / 2), 0, 0, img.width, Math.floor(img.width / 2))
-        oldCanvasCtx.drawImage(img, 0, Math.floor(img.width / 2), img.width, Math.floor(img.width / 2), img.width, 0, img.width, Math.floor(img.width / 2))
-        oldCanvas.trim()
-        const oldCanvasOutput = new Canvas(oldCanvas.width, oldCanvas.width, true, 1024)
-        oldCanvasOutput.getContext("2d").drawImage(oldCanvas, 0, Math.floor((oldCanvas.width - oldCanvas.height) / 2))
+        let oldCanvasOutput
+        if (img.width === img.height) {
+          const oldCanvas = new Canvas(img.width * 2, Math.floor(img.width / 2))
+          const oldCanvasCtx = oldCanvas.getContext("2d")
+          oldCanvasCtx.drawImage(img, 0, 0, img.width, Math.floor(img.width / 2), 0, 0, img.width, Math.floor(img.width / 2))
+          oldCanvasCtx.drawImage(img, 0, Math.floor(img.width / 2), img.width, Math.floor(img.width / 2), img.width, 0, img.width, Math.floor(img.width / 2))
+          oldCanvas.trim()
+          oldCanvasOutput = new Canvas(oldCanvas.width, oldCanvas.width, true, 1024)
+          oldCanvasOutput.getContext("2d").drawImage(oldCanvas, 0, Math.floor((oldCanvas.width - oldCanvas.height) / 2))
+        } else {
+          img.trim()
+          const size = Math.max(img.width, img.height)
+          oldCanvasOutput = new Canvas(size, size, true, 1024)
+          oldCanvasOutput.getContext("2d").drawImage(img, (oldCanvasOutput.width - img.width) / 2, (oldCanvasOutput.height - img.height) / 2)
+        }
         img.trim()
         let newCanvas
         if (img.width < img.height * 4) {
