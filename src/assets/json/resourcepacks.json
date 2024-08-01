@@ -259,6 +259,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
+            "1.21",
             "1.20",
             "1.19"
           ]
