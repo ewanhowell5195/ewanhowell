@@ -128,6 +128,14 @@
       "name": "Tweaks",
       "entries": [
         {
+          "id": "vanilla-emissive-ores",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "umbrella-villagers",
           "image": "under",
           "optifine": 2,
