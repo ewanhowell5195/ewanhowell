@@ -617,6 +617,15 @@
       "name": "Addons",
       "entries": [
         {
+          "id": "vanilla-emissive-ores-sodium",
+          "name": "Vanilla Emissive Ores [Sodium]",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "f8thful-font",
           "image": "menu",
           "versions": [
