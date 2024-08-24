@@ -535,6 +535,16 @@
       "name": "Other",
       "entries": [
         {
+          "id": "black-mesa-skyboxes",
+          "image": "end1",
+          "optifine": 2,
+          "logoless": true,
+          "versions": [
+            "1.21",
+            "1.20"
+          ]
+        },
+        {
           "id": "spinning-skull",
           "image": "painting",
           "logoless": true,
