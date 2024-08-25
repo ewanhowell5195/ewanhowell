@@ -128,11 +128,13 @@
       "name": "Tweaks",
       "entries": [
         {
-          "id": "vanilla-emissive-ores",
-          "image": "wall",
-          "logoless": true,
+          "id": "skeleton-physics",
+          "image": "bones",
+          "optifine": true,
           "versions": [
-            "1.21"
+            "1.21",
+            "1.20",
+            "1.19"
           ]
         },
         {
@@ -144,20 +146,19 @@
           ]
         },
         {
+          "id": "vanilla-emissive-ores",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "better-jockeys",
           "image": "jockeys",
           "optifine": 2,
           "versions": [
             "1.20"
-          ]
-        },
-        {
-          "id": "skeleton-physics",
-          "image": "bones",
-          "optifine": true,
-          "versions": [
-            "1.20",
-            "1.19"
           ]
         },
         {
