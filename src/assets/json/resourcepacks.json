@@ -628,6 +628,14 @@
       "name": "Addons",
       "entries": [
         {
+          "id": "fresh-skeleton-physics",
+          "image": "dead",
+          "versions": [
+            "1.21",
+            "1.20"
+          ]
+        },
+        {
           "id": "vanilla-emissive-ores-sodium",
           "name": "Vanilla Emissive Ores [Sodium]",
           "image": "wall",

@@ -12,5 +12,12 @@
       "text": "Download [Java]",
       "link": "https://www.curseforge.com/minecraft/texture-packs/skeleton-physics"
     }
+  ],
+  "links": [
+    {
+      "text": "Fresh Animations Addon",
+      "type": "entry",
+      "name": "fresh-skeleton-physics"
+    }
   ]
 }

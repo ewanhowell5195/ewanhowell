@@ -1,0 +1,23 @@
+{
+  "subtitle": "Give skeletons physics - Now with Fresh Animations!",
+  "description": "This pack makes it so that when any of the skeleton entities die, instead of falling over to the side like normal, they collapse into a pile of bones!\n\nNow with Fresh Animations support! This pack is fully compatible with Fresh Animations!",
+  "optifine": "OptiFine is used to add support for custom entity models",
+  "video": "E-mUOjjhp5A",
+  "images": [
+    "dead",
+    "alive"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/fresh-skeleton-physics/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Original Pack",
+      "type": "entry",
+      "name": "skeleton-physics"
+    }
+  ]
+}
