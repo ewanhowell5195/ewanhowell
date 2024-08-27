@@ -154,6 +154,14 @@
           ]
         },
         {
+          "id": "vanilla-emissive-rails",
+          "image": "rails",
+          "logoless": true,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "better-jockeys",
           "image": "jockeys",
           "optifine": 2,

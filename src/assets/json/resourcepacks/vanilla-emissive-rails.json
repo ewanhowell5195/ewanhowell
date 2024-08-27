@@ -1,0 +1,15 @@
+{
+  "subtitle": "Make the powered rail textures emissive, completely in vanilla!",
+  "description": "This pack utilises the new emissive block models feature from 1.21.2 to add emissive powered rail textures!",
+  "images": [
+    "rails",
+    "multiple",
+    "roller_coaster"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/vanilla-emissive-rails/"
+    }
+  ]
+}
