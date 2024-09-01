@@ -225,6 +225,8 @@
           "image": "sheep",
           "optifine": 2,
           "versions": [
+            "1.21",
+            "1.20",
             "1.19"
           ]
         },
