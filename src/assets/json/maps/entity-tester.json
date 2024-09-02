@@ -4,9 +4,11 @@
   "video": "P-P_k7ihvZ8",
   "images": [
     "entities",
+    "entities2",
     "map",
-    "floor",
-    "options"
+    "variants",
+    "settings",
+    "floor_customisation"
   ],
   "downloads": [
     {
