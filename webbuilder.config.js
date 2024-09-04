@@ -51,7 +51,7 @@ globalThis.getFiles = async function*(dir) {
   }
 }
 
-globalThis.navigator = {}
+if (!globalThis.navigator) globalThis.navigator = {}
 globalThis.customElements = { define() {} }
 
 globalThis.HTMLElement = globalThis.HTMLCanvasElement = globalThis.Page = class {}

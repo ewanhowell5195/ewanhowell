@@ -1,0 +1,15 @@
+{
+  "subtitle": "Show the actual elytra texture instead of your cape's texture!",
+  "description": "This pack uses the new 1.21.2 equipment models feature to disable the cape texture from showing on the elytra!",
+  "images": [
+    "compare",
+    "on",
+    "off"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/capeless-wings/"
+    }
+  ]
+}

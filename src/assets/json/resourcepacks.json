@@ -162,6 +162,14 @@
           ]
         },
         {
+          "id": "capeless-wings",
+          "image": "wings",
+          "logoless": true,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "better-jockeys",
           "image": "jockeys",
           "optifine": 2,
