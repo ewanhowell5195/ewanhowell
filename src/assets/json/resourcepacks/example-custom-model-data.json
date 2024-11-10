@@ -1,0 +1,15 @@
+{
+  "subtitle": "Example custom model data for 1.21.4 and beyond",
+  "description": "This pack provides example item definitions and models for using Custom Model Data in Minecraft 1.21.4 and beyond.\n\nThe examples provided are a mace that can become a bat, and a dirt block that can turn into a hat that can be worn.",
+  "images": [
+    "player",
+    "bat",
+    "hat"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/example-custom-model-data/"
+    }
+  ]
+}
