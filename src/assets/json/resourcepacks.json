@@ -404,6 +404,15 @@
           "versions": [
             "1.20"
           ]
+        },
+        {
+          "id": "example-custom-model-data",
+          "image": "player",
+          "logoless": true,
+          "fontsize": 2,
+          "versions": [
+            "1.21"
+          ]
         }
       ]
     },
