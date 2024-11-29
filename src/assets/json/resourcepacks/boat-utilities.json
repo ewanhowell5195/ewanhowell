@@ -1,0 +1,16 @@
+{
+  "subtitle": "Add some utilities to the boats!",
+  "description": "This resource pack makes boats more useful by adding some utilities to them!\n\nBoats will now include the following utilities on the front:\n- Compass - The red hand points north and the white hand points to the coordinates (0, 0)\n- Speedometer - Shows the speed the boat is currently travelling at\n- Clock - Shows the current in game time on a working 12 hour clockface",
+  "optifine": true,
+  "images": [
+    "boat",
+    "multiple",
+    "pov"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/boat-utilities/"
+    }
+  ]
+}

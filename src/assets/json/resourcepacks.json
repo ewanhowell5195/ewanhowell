@@ -861,6 +861,14 @@
       "name": "Utilities",
       "entries": [
         {
+          "id": "boat-utilities",
+          "image": "multiple",
+          "optifine": 2,
+          "versions": [
+            "1.21"
+          ]
+        },
+        {
           "id": "entity-healthbars",
           "image": "banner",
           "optifine": 2,
