@@ -1,16 +1,15 @@
 {
-  "subtitle": "The 5 pronged Trident",
+  "subtitle": "The five pronged Trident",
   "description": "This pack remodeles the Trident into a Quindent, which is a Trident with 5 prongs!",
-  "optifine": "OptiFine is used to add support for remodelling tridents.",
-  "video": "DbeCkY1yajI",
+  "optifine": "OptiFine is required to add support for remodelling the Trident",
   "images": [
-    "held",
     "throw",
-    "game"
+    "hold",
+    "quindent"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/quindent/"
     }
   ]
