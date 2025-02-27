@@ -17,6 +17,11 @@
           "image": "grid"
         },
         {
+          "id": "free-rotation",
+          "image": "game",
+          "logoless": true
+        },
+        {
           "id": "optifine-player-models",
           "name": "OptiFine Player Models",
           "image": "edit"
