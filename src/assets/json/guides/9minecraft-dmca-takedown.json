@@ -1,0 +1,60 @@
+{
+  "links": {
+    "other": [
+      {
+        "text": "Send DMCA Notice",
+        "link": "mailto:9minecraft.net@gmail.com?subject=DMCA%20Takedown&body=Dear 9minecraft.net,%0a%0aYour website is infringing on a copyright-protected work owned by myself. The original work, entitled “[PACK NAME]”, to which I own the exclusive copyrights, is located at: [REAL DOWNLOAD PAGE LINK]%0a%0aThe unauthorized and infringing reupload is located at: [9MINECRAFT PAGE LINK FOR PACK]%0a%0aThe unauthorized and infringing files are located at:%0a[PACKS 9MINECRAFT DOWNLOAD LINKS]%0a%0aThis letter is official notification under Section 512(c) of the Digital Millennium Copyright Act (“DMCA”). I seek the removal of the infringing material referenced above. Please take note as a service provider, the Digital Millennium Copyright Act requires you, to remove or disable access to the infringing materials upon receipt of this notice.%0a%0aThe Online Copyright Infringement Liability Limitation Act grants service providers such as your company immunity from liability so long as they investigate and rectify this copyright violation in a timely manner. Should your company fail to do so, it may become liable for the infringement.%0a%0aPlease remove and disable all access to the aforementioned copyrighted work immediately. I have a good faith belief that use of the copyrighted materials described above as allegedly infringing is not authorized by myself as the copyright owner.%0a%0aUnder penalty of perjury, I confirm that the information in the notification is accurate and that I am the copyright owner of an exclusive right that is allegedly infringed.%0a%0aRegards,%0a%0a[YOUR NAME]"
+      }
+    ]
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "What is 9Minecraft?"
+    },
+    "9Minecraft is a website that republishes resource packs, datapacks, maps, and mods without permission from their original creators. This hurts the creators as it takes traffic away from their official pages, impacting both their download counts and the revenue they require to continue development.",
+    "If your content has been stolen and reuploaded to 9Minecraft without your permission, you can request its removal by following the steps below.",
+    {
+      "type": "heading",
+      "text": "What is a DMCA Takedown Request?"
+    },
+    "A DMCA takedown request is a legal request to remove copyrighted material that has been uploaded without permission. The Digital Millennium Copyright Act (DMCA) provides protections for creators by allowing them to request removal of infringing content from websites. If you are the original creator of a work and it has been stolen, you have the right to submit a DMCA takedown notice.",
+    {
+      "type": "step",
+      "text": "Preparing the Email",
+      "step": 1
+    },
+    "You need to send a formal DMCA takedown request to 9Minecraft. Below is a pre-written DMCA takedown email you can use. Replace the placeholders with your own information.",
+    {
+      "type": "codeblock",
+      "text": "Dear 9minecraft.net,\n\nYour website is infringing on a copyright-protected work owned by myself. The original work, entitled \u201c[PACK NAME]\u201d, to which I own the exclusive copyrights, is located at: [REAL DOWNLOAD PAGE LINK]\n\nThe unauthorized and infringing reupload is located at: [9MINECRAFT PAGE LINK FOR PACK]\n\nThe unauthorized and infringing files are located at:\n[PACKS 9MINECRAFT DOWNLOAD LINKS]\n\nThis letter is official notification under Section 512(c) of the Digital Millennium Copyright Act (\u201cDMCA\u201d). I seek the removal of the infringing material referenced above. Please take note as a service provider, the Digital Millennium Copyright Act requires you, to remove or disable access to the infringing materials upon receipt of this notice.\n\nThe Online Copyright Infringement Liability Limitation Act grants service providers such as your company immunity from liability so long as they investigate and rectify this copyright violation in a timely manner. Should your company fail to do so, it may become liable for the infringement.\n\nPlease remove and disable all access to the aforementioned copyrighted work immediately. I have a good faith belief that use of the copyrighted materials described above as allegedly infringing is not authorized by myself as the copyright owner.\n\nUnder penalty of perjury, I confirm that the information in the notification is accurate and that I am the copyright owner of an exclusive right that is allegedly infringed.\n\nRegards,\n\n[YOUR NAME]",
+      "name": "DMCA Takedown Email"
+    },
+    "You can also use [this link](mailto:9minecraft.net@gmail.com?subject=DMCA%20Takedown&body=Dear 9minecraft.net,%0a%0aYour website is infringing on a copyright-protected work owned by myself. The original work, entitled “[PACK NAME]”, to which I own the exclusive copyrights, is located at: [REAL DOWNLOAD PAGE LINK]%0a%0aThe unauthorized and infringing reupload is located at: [9MINECRAFT PAGE LINK FOR PACK]%0a%0aThe unauthorized and infringing files are located at:%0a[PACKS 9MINECRAFT DOWNLOAD LINKS]%0a%0aThis letter is official notification under Section 512(c\\) of the Digital Millennium Copyright Act (“DMCA”\\). I seek the removal of the infringing material referenced above. Please take note as a service provider, the Digital Millennium Copyright Act requires you, to remove or disable access to the infringing materials upon receipt of this notice.%0a%0aThe Online Copyright Infringement Liability Limitation Act grants service providers such as your company immunity from liability so long as they investigate and rectify this copyright violation in a timely manner. Should your company fail to do so, it may become liable for the infringement.%0a%0aPlease remove and disable all access to the aforementioned copyrighted work immediately. I have a good faith belief that use of the copyrighted materials described above as allegedly infringing is not authorized by myself as the copyright owner.%0a%0aUnder penalty of perjury, I confirm that the information in the notification is accurate and that I am the copyright owner of an exclusive right that is allegedly infringed.%0a%0aRegards,%0a%0a[YOUR NAME]) to open this email template in your email client.",
+    {
+      "type": "step",
+      "text": "Sending the Email",
+      "step": 2
+    },
+    "Once you have replaced all placeholders with the correct details, send the email to 9Minecraft at: `9minecraft.net@gmail.com`.",
+    "If your DMCA request is for a different website, you will need to locate their contact email address. If no email is provided, you can use the [ICANN Lookup](https://lookup.icann.org/en/lookup) tool to find the domain's contact details.",
+    {
+      "type": "step",
+      "text": "Wait for a Response",
+      "step": 3
+    },
+    "After sending the email, 9Minecraft should process your request within a few days. If they do not respond, check whether the infringing pages have been removed. If your content remains online after a week with no response, or if they refuse to comply, you may need to escalate the issue by contacting their hosting provider or pursuing legal action through the appropriate authorities.",
+    "At the time of writing, Cloudflare is the hosting provider for `9minecraft.net`. You can submit DMCA takedown requests to Cloudflare through [this form](https://abuse.cloudflare.com/dmca).",
+    {
+      "type": "step",
+      "text": "Monitor for Reuploads",
+      "step": 4
+    },
+    "Even if your content is removed, 9Minecraft may reupload it. Regularly check their site for reuploads and submit new takedown requests as needed. If repeated violations occur, you may need to escalate the issue directly to their hosting provider for further enforcement.",
+    {
+      "type": "heading",
+      "text": "Disclaimer"
+    },
+    "DMCA takedown requests are legally binding and must only be submitted for content you own the rights to. Knowingly submitting false or misleading DMCA claims can result in legal penalties, including liability for damages. Ensure that you are the legitimate copyright owner before proceeding."
+  ]
+}

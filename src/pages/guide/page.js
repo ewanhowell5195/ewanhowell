@@ -256,8 +256,8 @@ function parseString(str, depth) {
   return str.replace(/\*\*((?:[^`]|\n)+?)\*\*/g, "<strong>$1</strong>")
             .replace(/\*((?:[^`]|\n)+?)\*/g, "<i>$1</i>")
             .replace(/`((?:.|\n)+?)`/g, `<code${depth === 1 ? ' class="light"' : ""}>$1</code>`)
-            .replace(/\[([^\[\]]+?)\]\((.+?)\)/g, (m, s, l) => {
+            .replace(/\[([^\[\]]+?)\]\((.+?)(?<!\\)\)/g, (m, s, l) => {
               if (l.startsWith("/")) return `<a is="f-a" href="${l}">${s}</a>`
-              return `<a href="${l}" target="_blank">${s}</a>`
+              return `<a href="${l.replaceAll("\\)", ")")}" target="_blank">${s}</a>`
             })
 }
