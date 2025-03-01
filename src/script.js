@@ -40,7 +40,8 @@ const titleReplacements = {
   "I D": "ID",
   "Uv": "UV",
   "3 D": "3D",
-  "Dmca": "DMCA"
+  "Dmca": "DMCA",
+  "9minecraft": "9Minecraft"
 }
 
 const titlePattern = new RegExp(`\\b(${Object.keys(titleReplacements).join("|")})\\b`, "gi")
