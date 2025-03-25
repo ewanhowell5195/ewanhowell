@@ -1,6 +1,9 @@
 {
   "versions": [
-    "1.21",
+    "1.21.5",
+    "1.21.4",
+    "1.21.3",
+    "1.21.1",
     "1.20",
     "1.19",
     "1.18",
@@ -20,7 +23,9 @@
           "image": "house",
           "optifine": 1,
           "versions": [
-            "1.21",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",
@@ -35,7 +40,7 @@
           "name": "OLEDcraft",
           "image": "cave",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",
@@ -58,7 +63,7 @@
           "name": "Pack & White",
           "image": "house",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.16",
@@ -79,7 +84,7 @@
           "image": "farm",
           "optifine": 1,
           "versions": [
-            "1.21",
+            "1.21.4",
             "1.17"
           ]
         },
@@ -134,7 +139,7 @@
           "image": "bones",
           "optifine": true,
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19"
           ]
@@ -152,7 +157,7 @@
           "image": "wall",
           "logoless": true,
           "versions": [
-            "1.21"
+            "1.21.3"
           ]
         },
         {
@@ -160,7 +165,7 @@
           "image": "rails",
           "logoless": true,
           "versions": [
-            "1.21"
+            "1.21.3"
           ]
         },
         {
@@ -168,7 +173,9 @@
           "image": "wings",
           "logoless": true,
           "versions": [
-            "1.21"
+            "1.21.5",
+            "1.21.4",
+            "1.21.3"
           ]
         },
         {
@@ -193,7 +200,7 @@
           "id": "better-bows",
           "image": "ewan",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",
@@ -215,7 +222,7 @@
           "id": "butterflies",
           "image": "multiple",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.16"
           ]
@@ -235,7 +242,7 @@
           "image": "sheep",
           "optifine": 2,
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19"
           ]
@@ -255,7 +262,9 @@
           "image": "quindent",
           "optifine": 2,
           "versions": [
-            "1.21",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",
@@ -290,7 +299,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19"
           ]
@@ -305,7 +314,7 @@
           "name": "1.18 Panorama",
           "image": "noui",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.17"
@@ -415,7 +424,7 @@
           "logoless": true,
           "fontsize": 2,
           "versions": [
-            "1.21"
+            "1.21.4"
           ]
         }
       ]
@@ -436,7 +445,7 @@
           "id": "fandom-overlay",
           "image": "overlay",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20"
           ]
         },
@@ -538,7 +547,10 @@
           "id": "solid-block-transparency-support",
           "image": "transparent",
           "versions": [
-            "1.21",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19"
           ]
@@ -547,7 +559,9 @@
           "id": "template-green",
           "image": "bg",
           "versions": [
-            "1.21",
+            "1.21.3",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.16"
@@ -572,7 +586,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20"
           ]
         },
@@ -581,7 +595,7 @@
           "image": "painting",
           "logoless": true,
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20",
             "1.19"
           ]
@@ -639,7 +653,8 @@
           "id": "mini-items",
           "image": "sword",
           "versions": [
-            "1.21",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.16",
             "1.14",
@@ -662,7 +677,7 @@
           "id": "fresh-skeleton-physics",
           "image": "dead",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20"
           ]
         },
@@ -672,14 +687,14 @@
           "image": "wall",
           "logoless": true,
           "versions": [
-            "1.21"
+            "1.21.3"
           ]
         },
         {
           "id": "f8thful-font",
           "image": "menu",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20"
           ]
         },
@@ -767,7 +782,7 @@
           "name": "Fandom Overlay: uBlock Origin Edition",
           "image": "overlay",
           "versions": [
-            "1.21",
+            "1.21.1",
             "1.20"
           ]
         },
@@ -808,7 +823,10 @@
           "image": "banner",
           "optifine": 1,
           "versions": [
-            "1.21",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",
@@ -833,6 +851,9 @@
           "image": "twisting-vines",
           "optifine": 2,
           "versions": [
+            "1.21.4",
+            "1.21.1",
+            "1.20",
             "1.19",
             "1.18",
             "1.16",
@@ -869,7 +890,7 @@
           "image": "multiple",
           "optifine": 2,
           "versions": [
-            "1.21"
+            "1.21.3"
           ]
         },
         {
@@ -900,7 +921,9 @@
           "image": "forest",
           "optifine": 2,
           "versions": [
-            "1.21",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
             "1.20",
             "1.19",
             "1.18",

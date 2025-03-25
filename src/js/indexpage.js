@@ -52,7 +52,7 @@ export function indexPageClass(type, title) {
           if (window[type].versions) tabs.append(E("a").attr("href", `/${type}/?version=${version.id}`).addClass("tab").text(version.id).on("click", evt => {
             evt.preventDefault()
             $(".version").removeClass("shown")
-            $(`#${evt.target.innerHTML.replace(".", "-")}`).addClass("shown")
+            $(`#${evt.target.innerHTML.replaceAll(".", "-")}`).addClass("shown")
             $(".selected").removeClass("selected")
             $(evt.target).addClass("selected")
             history.pushState({}, null, `/${type}/?version=${evt.target.innerHTML}`)
@@ -66,7 +66,7 @@ export function indexPageClass(type, title) {
             else document.title = [title[0], evt.target.innerHTML, title[title.length - 1]].join(" - ")
             analytics()
           }))
-          const versionDiv = E("div").addClass("version").attr("id", version.id.replace(".", "-")).appendTo(versionsElement)
+          const versionDiv = E("div").addClass("version").attr("id", version.id.replaceAll(".", "-")).appendTo(versionsElement)
           for (const category of version.categories) {
             const categoryEntriesDiv = E("div").addClass(`entries category-${category.name.replace(/ /g, "-")}`).appendTo(
               E("div").addClass("category").attr("id", category.name).append(
@@ -159,11 +159,15 @@ export function indexPageClass(type, title) {
         version = sessionStorage.getItem(`${type}Version`)
         if (!version) version = "all"
       }
-      const tab = this.$(`.tab:contains("${version}")`)
+      const tab = this.$(".tab").filter(function() {
+        return $(this).text().trim() === version
+      })
       if (window[type].versions && !tab.length) version = window[type].versions[0]
-      this.$(`#${version.replace(".", "-")}`).addClass("shown")
+      this.$(`#${version.replaceAll(".", "-")}`).addClass("shown")
       this.addFeatured(this.$(".version.shown"), this.$)
-      this.$(`.tab:contains("${version}")`).addClass("selected")
+      this.$(".tab").filter(function() {
+        return $(this).text().trim() === version
+      }).addClass("selected")
       sessionStorage.setItem(`${type}Version`, version)
       if (search) {
         this.$("#search input").val(search)
