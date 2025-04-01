@@ -1,0 +1,20 @@
+{
+  "subtitle": "The most authentic HD Minecraft experience possible",
+  "description": "Using state-of-the-art upscaling algorithms and revolutionary proprietary technology, Basically Faithful delivers the purest high-definition Minecraft textures ever created.\n\nExperience the authentic vanilla feel but with unprecedented clarity and detail that respects the original artistic vision. Our groundbreaking resolution enhancement pipeline ensures pixel-perfect fidelity with zero artistic interpretation.\n\nLeveraging cutting-edge computational geometry and advanced texture interpolation matrices, we've engineered a seamless transition from standard definition to crystal-clear high-definition that maintains the essence of Minecraft's iconic aesthetic.\n\nOur team of expert digital artisans has meticulously calibrated each texture's chromatic spectrum and pixel density to optimize visual fidelity while preserving the game's cherished blocky charm. The result is nothing short of a revolutionary visual paradigm shift.\n\nUnlike other resource packs that rely on subjective artistic reinterpretation, Basically Faithful utilizes objective mathematical precision to enhance textures with scientific accuracy. We've pioneered a non-destructive upscaling methodology that preserves every pixel's authentic intent.\n\nThrough our innovative edge-detection algorithms and proprietary pixel mapping technology, we've unlocked hidden details the original developers always intended you to see, but were limited by the technology of their time.\n\nWelcome to the future of Minecraft texturing - where bleeding-edge technology meets faithful representation in perfect harmony.",
+  "images": [
+    "farm",
+    "grass",
+    "entities",
+    "cherry",
+    "pale_garden",
+    "entities2",
+    "crimson",
+    "warped"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/basically-faithful/"
+    }
+  ]
+}
