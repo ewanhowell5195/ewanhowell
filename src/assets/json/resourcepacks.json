@@ -190,6 +190,8 @@
           "image": "jockeys",
           "optifine": 2,
           "versions": [
+            "1.21.5",
+            "1.21.4",
             "1.20"
           ]
         },
