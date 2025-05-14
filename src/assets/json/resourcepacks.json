@@ -187,7 +187,7 @@
         },
         {
           "id": "better-jockeys",
-          "image": "jockeys",
+          "image": "all",
           "optifine": 2,
           "versions": [
             "1.21.5",
