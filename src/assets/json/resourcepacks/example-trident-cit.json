@@ -1,0 +1,17 @@
+{
+  "subtitle": "An example pack for trident CIT that works on both the item and thrown entity models!",
+  "description": "This pack provides examples of how to make CIT tridents.\n\nIt includes three examples: name your trident \"Red Trident\", \"Quindent\", or \"Mjolnir\". Lowercase versions of these names are also supported.\n\nThis works by using the new item definitions feature to redefine trident item models to render as items instead of entities. The same item definition files are used to apply the name-based models. This does not actually use OptiFine CIT.\n\nThrown tridents still use entity models, so OptiFine CEM and OptiFine random entities are required to change the model or texture based on the item’s name.\n\nCustom atlases are included to allow trident textures from the entity folder to be applied to item models. This is optional and can be skipped if your textures are stored in the \"block\" or \"item\" folders.\n\nProper trident CIT was not possible before 1.21.5 and requires OptiFine CEM (or a compatible alternative mod).",
+  "optifine": true,
+  "images": [
+    "tridents",
+    "quindent",
+    "mjolnir",
+    "red_trident"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/example-trident-cit/"
+    }
+  ]
+}
