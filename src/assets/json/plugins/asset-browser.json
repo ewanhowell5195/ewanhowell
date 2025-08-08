@@ -1,0 +1,24 @@
+{
+  "subtitle": "Browse the Minecraft assets from within Blockbench.",
+  "description": "Asset browser is a browser that lets you view, modify, export, and compare the Minecraft vanilla assets. Both Java edition and Bedrock edition are supported, as well as their respective snapshots and beta versions.\n\n<h2>View Assets Mode:</h2><ul><li>Used for viewing the assets from a specific game version.</li><li>Shows all the assets for the selected version.</li></ul>\n\n<h2>Compare Assets Mode:</h2><ul><li>Used to compare two game versions to see what files have been added, changed, or removed.</li><li>Only shows relevant files, not all files.</li></ul>",
+  "video": "_JIQbH998xk",
+  "images": [
+    "textures",
+    "home",
+    "start_screen",
+    "models",
+    "sounds",
+    "compare_mode",
+    "comparison"
+  ],
+  "links": [
+    {
+      "text": "View Plugin",
+      "link": "https://www.blockbench.net/plugins/asset_browser"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=asset_browser"
+    }
+  ]
+}
