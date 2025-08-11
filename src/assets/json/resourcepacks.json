@@ -175,6 +175,10 @@
           "image": "rails",
           "logoless": true,
           "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
             "1.21.3"
           ]
         },
@@ -183,6 +187,8 @@
           "image": "wings",
           "logoless": true,
           "versions": [
+            "1.21.8",
+            "1.21.6",
             "1.21.5",
             "1.21.4",
             "1.21.3"
@@ -274,6 +280,9 @@
           "image": "quindent",
           "optifine": 2,
           "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
             "1.21.4",
             "1.21.3",
             "1.21.1",
@@ -572,6 +581,7 @@
           "id": "solid-block-transparency-support",
           "image": "transparent",
           "versions": [
+            "1.21.8",
             "1.21.5",
             "1.21.4",
             "1.21.3",
@@ -848,6 +858,8 @@
           "image": "banner",
           "optifine": 1,
           "versions": [
+            "1.21.8",
+            "1.21.6",
             "1.21.5",
             "1.21.4",
             "1.21.3",
