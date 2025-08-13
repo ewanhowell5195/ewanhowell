@@ -172,6 +172,7 @@
           "image": "wall",
           "logoless": true,
           "versions": [
+            "1.21.8",
             "1.21.3"
           ]
         },
@@ -732,6 +733,10 @@
           "image": "wall",
           "logoless": true,
           "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
             "1.21.3"
           ]
         },

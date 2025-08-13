@@ -1,6 +1,6 @@
 {
   "subtitle": "Make the ore textures emissive, completely in vanilla!",
-  "description": "This pack utilises the new emissive block models feature from 1.21.2 to add emissive ore textures!\nThis version of the resource pack supports the Sodium mod, but is more performance heavy.",
+  "description": "This pack utilises the new emissive block models feature from 1.21.2 to add emissive ore textures!\n\nThis version of the resource pack supports the Sodium mod, but is more performance heavy.",
   "images": [
     "wall",
     "ores",
