@@ -1,6 +1,6 @@
 {
   "subtitle": "A world to test your entity textures and models!",
-  "description": "This map has every entity laid out in a small area for easy access for testing models and textures!\n\n<ul><li>Normal - Display every entity in the game</li><li>Babies - Display the baby variants for entities that have them</li><li>Jockeys - Display all of the jockeys in the game</li></ul>",
+  "description": "This map has every entity laid out in a small area for easy access for testing models and textures!\n\nThere are three modes to choose from:\n<ul><li>Normal - Display every entity in the game</li><li>Babies - Display the baby variants for entities that have them</li><li>Jockeys - Display all of the jockeys in the game</li></ul>",
   "video": "uScROs4RF6I",
   "images": [
     "entities",
