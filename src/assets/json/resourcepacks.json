@@ -92,6 +92,7 @@
           "image": "farm",
           "optifine": 1,
           "versions": [
+            "1.21.8",
             "1.21.4",
             "1.17"
           ]
