@@ -887,6 +887,43 @@
       ]
     },
     {
+      "name": "Utilities",
+      "entries": [
+        {
+          "id": "boat-utilities",
+          "image": "multiple",
+          "optifine": 2,
+          "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "entity-healthbars",
+          "image": "banner",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "visual-shulker-labels",
+          "image": "gui",
+          "optifine": 2,
+          "versions": [
+            "1.19"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Packs I Have Contributed To",
       "entries": [
         {
@@ -961,43 +998,6 @@
           "optifine": 2,
           "versions": [
             "1.17"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Utilities",
-      "entries": [
-        {
-          "id": "boat-utilities",
-          "image": "multiple",
-          "optifine": 2,
-          "versions": [
-            "1.21.8",
-            "1.21.6",
-            "1.21.5",
-            "1.21.4",
-            "1.21.3",
-            "1.21.1",
-            "1.20"
-          ]
-        },
-        {
-          "id": "entity-healthbars",
-          "image": "banner",
-          "optifine": 2,
-          "versions": [
-            "1.19",
-            "1.18",
-            "1.16"
-          ]
-        },
-        {
-          "id": "visual-shulker-labels",
-          "image": "gui",
-          "optifine": 2,
-          "versions": [
-            "1.19"
           ]
         }
       ]
