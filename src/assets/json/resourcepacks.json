@@ -58,6 +58,23 @@
           ]
         },
         {
+          "id": "snowstorm",
+          "image": "forest",
+          "optifine": 2,
+          "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
           "id": "scrolling-textures",
           "image": "scroll",
           "versions": [
@@ -988,26 +1005,6 @@
     {
       "name": "Seasonal",
       "entries": [
-        {
-          "id": "snowstorm",
-          "image": "forest",
-          "optifine": 2,
-          "versions": [
-            "1.21.8",
-            "1.21.6",
-            "1.21.5",
-            "1.21.4",
-            "1.21.3",
-            "1.21.1",
-            "1.20",
-            "1.19",
-            "1.18",
-            "1.16"
-          ],
-          "featured": [
-            12
-          ]
-        },
         {
           "id": "packtober-remastered",
           "image": "leaves",
