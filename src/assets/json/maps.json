@@ -24,6 +24,13 @@
             "1.18",
             "1.16"
           ]
+        },
+        {
+          "id": "chase-the-skies-panorama",
+          "image": "panorama",
+          "versions": [
+            "1.21.8"
+          ]
         }
       ]
     },

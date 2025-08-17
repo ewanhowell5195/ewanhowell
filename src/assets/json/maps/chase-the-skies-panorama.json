@@ -1,0 +1,15 @@
+{
+  "subtitle": "A recreation of the 1.21.6 Chase the Skies panorama world.",
+  "description": "This map is a faithful recreation of the 1.21.6 \"Chase the Skies\" panorama world. Ghast positions and camera location are matched so you can create almost perfect menu panoramas for use in a resource pack.\n\n<h2>How to create a panorama</h2>\n<ol><li>Edit the instance in your launcher and set the resolution to <strong>1024x1024</strong>.</li><li>In game, set <strong>FOV</strong> to <strong>90</strong> degrees.</li><li>Run these commands:<ul><li>Make sure you are <strong>not flying</strong> (flying slightly changes the FOV)</li></ul><pre>/tick freeze\n/tp @s 1266.666 105 -125.298 -48 0\n/tp @s ~ ~ ~ ~90 0\n/tp @s ~ ~ ~ ~90 0\n/tp @s ~ ~ ~ ~90 0\n/tp @s ~ ~ ~ -48 -90\n/tp @s ~ ~ ~ -48 90</pre></li><li>After each <code>/tp</code> command, take a screenshot with <code>F2</code>.</li><li>In the order they were taken, name the files <code>panorama_0</code> through <code>panorama_5</code>.</li></ol>",
+  "images": [
+    "panorama",
+    "ghasts",
+    "dried_ghast"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/worlds/chase-the-skies-panorama/"
+    }
+  ]
+}
