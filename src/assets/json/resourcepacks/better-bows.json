@@ -1,19 +1,23 @@
 {
   "subtitle": "The bow improvement resource pack!",
-  "description": "This pack remodels both the bow and crossbow to have the arrow 3D, like how it is in the world after you fire it!",
+  "description": "This pack remodels both the bow and crossbow to have the arrow 3D, like how it is in the world after you fire it!\n\nThe crossbow also supports showing 3D firewords, spectral arrows, and tipped arrows!\n\nWhen you have multishot, you will see three arrows at once in the crossbow!",
   "video": "1a-_sSSfSwM",
   "images": [
-    "ewan",
     "bow",
+    "crossbow",
+    "ewan",
     "double",
     "double2",
-    "crossbow",
-    "firework"
+    "firework",
+    "multishot_firstperson",
+    "multishot",
+    "tipped",
+    "multishot_spectral"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/better-bow"
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/better-bow/"
     }
   ]
 }
