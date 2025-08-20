@@ -1,14 +1,15 @@
 {
-  "subtitle": "Add wheels to Minecarts",
-  "description": "This pack adds working wheels to Minecarts!",
+  "subtitle": "Add working wheels to Minecarts! - Now in 32x",
+  "description": "Have you ever thought that the minecarts in Minecraft look too static? Well this is the pack for you!\n\nThis pack adds working wheels to the minecarts. When the minecart moves, the wheels turn. The faster the minecart goes, the faster they will spin!",
   "optifine": "OptiFine is used to add support for remodelling minecarts.",
+  "video": "5tgUBWr22Vw",
   "images": [
     "left",
     "right"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/minecarts-with-wheels-faithful"
     }
   ],
