@@ -4,14 +4,13 @@
   "optifine": "OptiFine is used to add support for remodelling bees.",
   "video": "uK8c3BhIxAU",
   "images": [
-    "bees",
-    "beees",
-    "beeees",
-    "beeeees"
+    "orange_flowers",
+    "white_flowers",
+    "single"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/swarm-of-bees/"
     }
   ]
