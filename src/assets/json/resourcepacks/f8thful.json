@@ -22,5 +22,12 @@
       "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/f8thful/"
     }
+  ],
+  "links": [
+    {
+      "text": "Font Pack",
+      "type": "entry",
+      "name": "f8thful-font"
+    }
   ]
 }
