@@ -1,0 +1,17 @@
+{
+  "subtitle": "Bring back the original Ghast resolution",
+  "description": "This pack brings back the Ghast resolution that was used before the 1.21.6 update.\n\nIn the 1.21.6 update, along with the addition of the Happy Ghasts, the ghast texture was doubled in resolution, going from 64x32 to 128x64. This pack brings both the Ghast and the Happy Ghast back to their legacy sizes.",
+  "images": [
+    "blue",
+    "ghast",
+    "both",
+    "pink",
+    "below"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/legacy-ghasts/"
+    }
+  ]
+}

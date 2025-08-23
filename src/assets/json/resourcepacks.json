@@ -369,6 +369,14 @@
           "versions": [
             "1.16"
           ]
+        },
+        {
+          "id": "legacy-ghasts",
+          "image": "blue",
+          "versions": [
+            "1.21.8",
+            "1.21.6"
+          ]
         }
       ]
     },
