@@ -4,29 +4,18 @@
   "video": "EF7SNETTMvU",
   "images": [
     "all",
-    "golem",
-    "goats",
-    "all2",
     "endermen",
     "piglins"
   ],
   "downloads": [
     {
-      "text": "Download [32x]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/entity-healthbars-32x/"
-    },
-    {
-      "text": "Download [64x]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/entity-healthbars-64x/"
     }
   ],
   "links": [
     {
-      "text": "Faithful",
-      "link": "https://faithfulpack.net/"
-    },
-    {
-      "text": "Original Version",
+      "text": "Base Pack",
       "type": "entry",
       "name": "entity-healthbars"
     }

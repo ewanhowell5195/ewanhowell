@@ -10,7 +10,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/entity-healthbars/"
     }
   ],
@@ -21,9 +21,14 @@
       "name": "entity-healthbars-hearts"
     },
     {
-      "text": "Faithful Versions",
+      "text": "32x Version",
       "type": "entry",
-      "name": "entity-healthbars-faithful"
+      "name": "entity-healthbars-32x"
+    },
+    {
+      "text": "64x Version",
+      "type": "entry",
+      "name": "entity-healthbars-64x"
     },
     {
       "text": "Dokucraft Version",

@@ -857,8 +857,19 @@
           ]
         },
         {
-          "id": "entity-healthbars-faithful",
-          "name": "Entity Healthbars: Faithful",
+          "id": "entity-healthbars-32x",
+          "name": "Entity Healthbars: 32x",
+          "image": "all",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "entity-healthbars-64x",
+          "name": "Entity Healthbars: 64x",
           "image": "all",
           "optifine": 2,
           "versions": [
