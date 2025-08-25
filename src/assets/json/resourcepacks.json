@@ -328,6 +328,15 @@
           ]
         },
         {
+          "id": "legacy-sheep",
+          "image": "flock",
+          "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5"
+          ]
+        },
+        {
           "id": "throwing-axes",
           "image": "target",
           "optifine": 2,

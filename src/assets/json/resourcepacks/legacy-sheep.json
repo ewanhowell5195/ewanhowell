@@ -1,0 +1,15 @@
+{
+  "subtitle": "Bring back the original dyed sheep design",
+  "description": "This pack brings back the original dyed sheep design that was used before the 1.21.5 update, when Mojang adjusted the design for parity with Bedrock Edition.\n\nIn the 1.21.5 update, the sheep were changed so that their undercoats follow their dye colour. This means that their faces now get dyed too, rather than stay white. With this resource pack, the sheep's faces will remain white again when dyed!",
+  "images": [
+    "flock",
+    "lime",
+    "mountain"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/legacy-sheep/"
+    }
+  ]
+}
