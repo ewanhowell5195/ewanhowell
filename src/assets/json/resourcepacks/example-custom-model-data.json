@@ -1,7 +1,7 @@
 {
   "subtitle": "Example custom model data for 1.21.4 and beyond",
   "description": "This pack provides example item definitions and models for using Custom Model Data in Minecraft 1.21.4 and beyond.\n\nThe examples provided are a mace that can become a bat, and a dirt block that can turn into a hat that can be worn.",
-  "video": "K39U55l4-O0"
+  "video": "K39U55l4-O0",
   "images": [
     "player",
     "bat",
