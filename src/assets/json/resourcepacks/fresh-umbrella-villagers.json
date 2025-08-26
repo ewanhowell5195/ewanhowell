@@ -14,5 +14,20 @@
       "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/fresh-umbrella-villagers/"
     }
+  ],
+  "links": [
+    {
+      "text": "Original Pack",
+      "type": "entry",
+      "name": "umbrella-villagers"
+    },
+    {
+      "text": "Textures by Bold_Muddy",
+      "link": "https://x.com/muddyatbest"
+    },
+    {
+      "text": "Ported by ALtheGatorMC",
+      "link": "https://x.com/ALtheGatorMC"
+    }
   ]
 }

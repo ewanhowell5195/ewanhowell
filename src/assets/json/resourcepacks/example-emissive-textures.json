@@ -1,6 +1,6 @@
 {
   "subtitle": "An example of OptiFine emissive textures",
-  "description": "This is an example resource pack that shows users how to create OptiFine emissive textures.\n\n<h1>Included examples</h1><ul><li>Emissive properties file</li><li>Emissive block textures</li><li>Emissive item textures</li><li>Emissive entity textures</li><li>Emissive armour trims</li></ul>Using the provided examples, you should be able to understand how OptiFine emissive textures work, and be able to apply them to your own resource pack.",
+  "description": "This is an example resource pack that shows users how to create OptiFine emissive textures.\n\nIncluded examples:\n- Emissive properties file\n- Emissive block textures\n- Emissive item textures\n- Emissive entity textures\n- Emissive armour trims\n\nUsing the provided examples, you should be able to understand how OptiFine emissive textures work, and be able to apply them to your own resource pack.",
   "optifine": "OptiFine is used to add support for emissive textures.",
   "images": [
     "ores",
@@ -9,8 +9,8 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/example-emissive-textures"
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/example-emissive-textures/"
     }
   ],
   "links": [
