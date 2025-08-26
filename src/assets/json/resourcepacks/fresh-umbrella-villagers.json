@@ -2,6 +2,7 @@
   "subtitle": "Give villagers umbrellas! - Now with Fresh Animations!",
   "description": "This pack makes it so that villagers hold umbrellas when it rains!\n\nThere are 24 different umbrella variants, and villagers can spawn either right handed or left handed!\n\nNow with Fresh Animations support! This pack is fully compatible with Fresh Animations!",
   "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "IrOIPxlY8Lk",
   "images": [
     "swamp",
     "gold",
@@ -20,6 +21,10 @@
       "text": "Original Pack",
       "type": "entry",
       "name": "umbrella-villagers"
+    },
+    {
+      "text": "Fresh Animations",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/fresh-animations"
     },
     {
       "text": "Textures by Bold_Muddy",
