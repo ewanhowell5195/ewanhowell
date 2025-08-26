@@ -1,11 +1,11 @@
 {
   "subtitle": "Stop the wither vibrating",
-  "description": "In Minecraft Java Edition, Withers have a bug in their path finding that can cause them to vibrate side to side.\nThis pack aims to fix that by smoothing out the wither's animations.",
+  "description": "In Minecraft Java Edition, Withers have a bug in their path finding that can cause them to vibrate side to side.\n\nThis pack aims to fix that by smoothing out the wither's animations.",
   "optifine": "OptiFine is used to add support for editing the wither model and animations.",
   "video": "fbMsHJ9gcxA",
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/vibrating-wither-fix/"
     }
   ]
