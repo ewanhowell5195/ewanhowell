@@ -700,6 +700,7 @@
           "id": "template-unique-sheep",
           "image": "sheep",
           "optifine": 2,
+          "logoless": true,
           "versions": [
             "1.21.8",
             "1.21.6",
