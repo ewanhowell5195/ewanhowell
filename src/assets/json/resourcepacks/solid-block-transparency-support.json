@@ -1,6 +1,6 @@
 {
   "subtitle": "Add transparency to solid blocks!",
-  "description": "This pack changes how solid blocks render so that they can use transparent textures.\n\nEither use this pack alongside your pack, or merge it into your pack.\n\nWARNING: THIS WILL NOT FIX XRAY! ADDING TRANSPARENCY TO SOLID BLOCKS CAN CAUSE XRAY DEPENDING ON HOW YOU USE IT!\n\nBy default, solid blocks do not support transparent textures, resulting in them rendering like the first image below:\n\nThis pack makes it so that you can use transparent textures with them, meaning they instead can render like the second image below:",
+  "description": "This pack changes how solid blocks render so that they can use transparent textures.\n\nEither use this pack alongside your pack, or merge it into your pack.\n\nWARNING: THIS WILL NOT FIX XRAY! ADDING TRANSPARENCY TO SOLID BLOCKS CAN CAUSE XRAY DEPENDING ON HOW YOU USE IT!\n\nBy default, solid blocks do not support transparent textures, resulting in them rendering like the first image.\n\nThis pack makes it so that you can use transparent textures with them, meaning they instead can render like the second image.",
   "images": [
     "compare",
     "solid",

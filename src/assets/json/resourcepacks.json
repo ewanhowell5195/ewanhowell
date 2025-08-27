@@ -697,6 +697,13 @@
           ]
         },
         {
+          "id": "solid-entity-transparency-support",
+          "image": "transparent",
+          "versions": [
+            "1.21.8"
+          ]
+        },
+        {
           "id": "template-unique-sheep",
           "image": "sheep",
           "optifine": 2,
