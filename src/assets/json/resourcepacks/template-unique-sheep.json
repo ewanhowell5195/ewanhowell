@@ -1,0 +1,15 @@
+{
+  "subtitle": "Give every dyed sheep a unique texture!",
+  "description": "This template resource pack gives every dyed sheep its own unique texture instead of relying on Minecraft's default greyscale texture with colour multiplication.\n\nBecause textures are no longer restricted to tinting, you can freely customise each sheep colour — whether by designing unique patterns, adjusting shades, or applying hue shifting directly in the textures.\n\nIdeal for anyone who wants more variety, creative freedom, or themed designs for their sheep.",
+  "optifine": "OptiFine is used to add support for remodelling entities, and changing the entity textures based on specific conditions.",
+  "images": [
+    "sheep",
+    "files"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/template-unique-sheep/"
+    }
+  ]
+}
