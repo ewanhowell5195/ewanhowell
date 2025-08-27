@@ -1,0 +1,15 @@
+{
+  "subtitle": "Allow editing the bed models in vanilla!",
+  "description": "In vanilla Minecraft, the bed models cannot be remodelled as they are entity models. This resource pack changes beds so that they can be remodelled using regular block models!\n\nA bonus feature is that beds no longer have a short render distance. They will render all the way to the edge of the main render distance.",
+  "images": [
+    "beds",
+    "blockbench",
+    "comparison"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/template-remodellable-beds/"
+    }
+  ]
+}

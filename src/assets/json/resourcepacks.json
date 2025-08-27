@@ -719,6 +719,14 @@
           ]
         },
         {
+          "id": "template-remodellable-beds",
+          "image": "beds",
+          "logoless": true,
+          "versions": [
+            "1.21.8"
+          ]
+        },
+        {
           "id": "template-green",
           "image": "bg",
           "versions": [
