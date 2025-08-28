@@ -1,6 +1,6 @@
 {
-  "subtitle": "The Pack where every entity is a Player Model!",
-  "description": "This pack replaces all the entities that can be modelled with Player Models!",
+  "subtitle": "Turn striders into Striderchan!",
+  "description": "This pack turns the striders into Striderchan!",
   "optifine": "OptiFine is used to add support for remodelling striders.",
   "video": "169FdqyYAfc",
   "images": [
@@ -10,7 +10,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/striderchan/"
     }
   ],
