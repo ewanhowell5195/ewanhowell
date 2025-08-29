@@ -743,6 +743,7 @@
         },
         {
           "id": "flipped-uvs",
+          "name": "Flipped UVs",
           "image": "bg",
           "optifine": 2,
           "versions": [
