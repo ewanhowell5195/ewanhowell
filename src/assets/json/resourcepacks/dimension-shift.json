@@ -2,14 +2,16 @@
   "subtitle": "The dimension switching resource pack!",
   "description": "This pack switches the dimensions so that the nether becomes the overworld and the overworld becomes the nether!",
   "optifine": "OptiFine is used to add support for custom colours and connected textures.",
-  "video": "9AW4bXkACmU",
+  "video": "DHk-PKDN0uo",
   "images": [
     "crimson",
-    "warped"
+    "warped",
+    "overworld",
+    "overworld2"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/dimension-shift/"
     }
   ]
