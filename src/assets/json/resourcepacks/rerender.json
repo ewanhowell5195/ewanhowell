@@ -1,7 +1,7 @@
 {
   "subtitle": "The interdimensional improvement pack",
-  "description": "This pack greatly improves the End and Nether dimensions",
-  "optifine": "OptiFine is used to add support for connected textures.",
+  "description": "This pack greatly improves the End and Nether dimensions\n\nFeatures:\n\nNether:\n- Nether Grass Patches\n- Orange Mushrooms\n- Nether Roots\n\nEnd:\n- Purple Ender Dragon\n- Purple Endermen\n- Purple Dragon Beam\n- Purple End Portal Frames\n- Purple End Portal\n- Redesigned End Crystals\n- Redesigned End Sky\n- Multiple Skulker Variants\n- 3D Chorus Plants\n- 3D Chorus Flowers",
+  "optifine": "OptiFine is used to add support for connected textures and random entity textures",
   "video": "hYS0kEceuEo",
   "images": [
     "end",
@@ -9,7 +9,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/rerender/"
     }
   ]
