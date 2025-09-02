@@ -1,7 +1,7 @@
 {
   "subtitle": "Bring a Solar Eclipse to your world.",
-  "description": "This pack modifies the sky and sun textures to make it look like there is a solar eclipse!",
-  "optifine": "OptiFine is used to create a custom lightmap during the day.",
+  "description": "This pack modifies the sky, sun, moon, and lightmap to make it look like there is a solar eclipse!",
+  "optifine": "OptiFine is used to change the sky colour and to change the lightmap.",
   "video": "pfWo9oLVK1w",
   "images": [
     "sun",
@@ -10,7 +10,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/solar-eclipse/"
     }
   ]
