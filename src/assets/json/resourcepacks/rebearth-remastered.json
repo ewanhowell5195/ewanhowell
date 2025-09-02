@@ -1,21 +1,21 @@
 {
   "subtitle": "The remastered Minecraft Earth themed resource pack!",
-  "description": "This pack aims to port all of the custom mobs and features that are exclusive to Minecraft Earth to Minecraft Java!",
+  "description": "This pack aims to port all of the custom mobs and features that are exclusive to Minecraft Earth to Minecraft Java!\n\nEntities:\n\nAlbino Cow\nAmber Chicken\nAshen Cow\nBold Striped Rabbit\nBone Spider\nBouldering Zombie\nBronzed Chicken\n\nBrule Cow\nCluckshroom\nCookie Cow\n\nDairy Cow\nFancy Chicken\nFlecked Sheep\nFurnace Golem\nGlow Squid\n\nGold-Crested Chicken\nHarelequin Rabbit\nHorned Sheep\nInky Sheep\nJolly Llama\nJumbo Rabbit\nLobber Zombie\nMelon Golem\nMidnight Chicken\nMoobloom\nMoolip\n\nMottled Pig\nMuddy Foot Rabbit\nMuddy Pig\nPale Pig\nPiebald pig\nPink Footed Pig\n\nPinto Cow\nRainbow Sheep\nRocky Sheep\nSkeleton Wolf\nSpotted pig\n\nSkewbald Chicken\n\nSooty Pig\nStormy Chicken\nSunset Cow\nTropical Slime\nVested Rabbit\nViler Witch\nWooly Cow\n\nBlocks:\n\nBlock of Ruby\nButtercup\nAdventure Chests\nPink Daisy\nRainbow Bed\nRainbow Carpet\nRuby Ore\nRainbow Wool\n\nItems:\n\nMusic Disc - Earth\nMusic Disc - Sprouting\nRuby",
   "optifine": "OptiFine is used to add support for custom entity models and random entity textures.",
   "video": "huogvG1TyV0",
   "images": [
-    "swamp",
     "mix",
+    "swamp",
     "pigs",
     "sheep",
     "cows",
-    "chicken",
+    "chickens",
     "desert",
     "llamas"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/rebearth-remastered/"
     }
   ],

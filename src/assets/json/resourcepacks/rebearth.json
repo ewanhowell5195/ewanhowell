@@ -1,6 +1,6 @@
 {
   "subtitle": "The Minecraft Earth Themed Resource Pack!",
-  "description": "This pack aims to port all of the custom mobs and features that are exclusive to Minecraft Earth to Minecraft Java!",
+  "description": "This pack aims to port all of the custom mobs and features that are exclusive to Minecraft Earth to Minecraft Java!\n\nFeatures:\nMoobloom\nWooly Cow\nEnder Cat\nHorned Sheep\nMuddy Pig\nCluckshroom\nCustom Menu Background\nCustom Splashes\nFresh UI\nBone Spider\nJumbo Rabbit\nSkeleton Dog\nGlow Squid\nTropical Slime\nFurnace Golem\nMelon Golem",
   "optifine": "OptiFine is used to add support for remodelling entities and random entity textures.",
   "video": "fT3U2n-zDMs",
   "images": [
@@ -8,7 +8,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/rebearth/"
     }
   ],
