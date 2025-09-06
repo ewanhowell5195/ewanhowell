@@ -1,19 +1,19 @@
 {
-  "subtitle": "The pack that adds the Mob Vote entities.\nNow in 32x!",
-  "description": "This pack adds the 5 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game. Now with 32x32 textures",
-  "optifine": "OptiFine is used to add support for custom entity models.",
+  "subtitle": "The pack that adds the Mob Vote entities.",
+  "description": "This pack adds 5 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game.\n\nEntities:\n- The Lurker - Random squid spawn\n- The Great Hunger - Random spider spawn\n- The Blaze Knight - Random blaze spawn\n- The Iceologer - Evokers spawned in cold biomes\n- The Moobloom - Cows sspawned in flower biomes",
+  "optifine": "OptiFine is used to add support for custom entity models and random entity textures.",
   "video": "zZY43ZrUqg0",
   "images": [
-    "blaze",
-    "chillager",
+    "iceologer",
+    "great-hunger",
+    "blaze-knight",
     "lurker",
-    "hunger",
     "moobloom"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/mob-vote-faithful"
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/mob-vote-faithful/"
     }
   ],
   "links": [

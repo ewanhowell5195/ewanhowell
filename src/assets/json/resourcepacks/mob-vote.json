@@ -1,6 +1,6 @@
 {
   "subtitle": "The pack that adds the Mob Vote entities.",
-  "description": "This pack adds the 5 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game.\n\nEntities:\nThe Lurker - Random squid spawn\nThe Great Hunger - Random spider spawn\nThe Blaze Knight - Random blaze spawn\nThe Iceologer - Evokers spawned in cold biomes\nThe Moobloom - Cows sspawned in flower biomes\nThe Glare - Random bee spawn",
+  "description": "This pack adds 6 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game.\n\nEntities:\n- The Lurker - Random squid spawn\n- The Great Hunger - Random spider spawn\n- The Blaze Knight - Random blaze spawn\n- The Iceologer - Evokers spawned in cold biomes\n- The Moobloom - Cows sspawned in flower biomes\n- The Glare - Random bee spawn",
   "optifine": "OptiFine is used to add support for custom entity models and random entity textures.",
   "video": "SeSEVDqPE9c",
   "images": [
