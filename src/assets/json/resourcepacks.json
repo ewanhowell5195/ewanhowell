@@ -1111,8 +1111,8 @@
         {
           "id": "visual-shulker-labels",
           "image": "gui",
-          "optifine": 2,
           "versions": [
+            "1.21.8",
             "1.19"
           ]
         }
