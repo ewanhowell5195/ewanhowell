@@ -12,12 +12,5 @@
       "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/visual-shulker-labels/"
     }
-  ],
-  "links": [
-    {
-      "text": "2D Display Addon",
-      "type": "entry",
-      "name": "visual-shulker-labels-2d-display"
-    }
   ]
 }
