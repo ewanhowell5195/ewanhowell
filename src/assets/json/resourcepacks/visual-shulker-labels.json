@@ -1,7 +1,6 @@
 {
   "subtitle": "Label your shulkers with style",
-  "description": "This pack makes it so that you can give a shulker box an item name and the shulker gets a visual label of the item on it!\n\n<h2>How to name your shulkers:</h2>This list shows all of the valid names for a shulker box.\nIn these examples, I will be using the item \"Apple\".<ul><li>Apple</li><li>Apple Shulker</li><li>Apple Box</li><li>Apple Shulker Box</li><li>Any Prefix You Want Apple</li><li>Any Prefix You Want Apple Shulker</li><li>Any Prefix You Want Apple Box</li><li>Any Prefix You Want Apple Shulker Box</li></ul>\nAll of these are case insensitive!",
-  "optifine": "OptiFine is used to add the ability to change item models by renaming the item.",
+  "description": "This pack makes it so that you can give a shulker box an item name and the shulker gets a visual label of the item on it!\n\nShulkers must be named to exactly match the name of the item you wish it to display. Names are case sensitive, but fully lowercase and fully uppercase are also supported!",
   "video": "BOBpQRMauQ4",
   "images": [
     "gui2",
@@ -10,7 +9,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://www.curseforge.com/minecraft/texture-packs/visual-shulker-labels/"
     }
   ],
