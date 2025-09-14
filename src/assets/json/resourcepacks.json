@@ -310,6 +310,19 @@
           ]
         },
         {
+          "id": "minecraft_experience_lily_pads",
+          "image": "lilypads",
+          "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
           "id": "solar-eclipse",
           "image": "forest",
           "optifine": 2,
