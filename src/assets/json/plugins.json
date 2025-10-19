@@ -54,6 +54,11 @@
           "id": "live-dev-reloader",
           "image": "theme",
           "logoless": true
+        },
+        {
+          "id": "activity-tracker",
+          "image": "activitytracker",
+          "logoless": true
         }
       ]
     },

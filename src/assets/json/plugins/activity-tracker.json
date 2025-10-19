@@ -1,0 +1,18 @@
+{
+  "subtitle": "Track how long you spend using Blockbench and working on each project.",
+  "description": "This plugin allows you to keep track of how much time you spend using Blockbench and how long you spend working on each project.\n\n<h2>Usage:</h2><ul><li>Head to the <strong>Tools</strong> menu and select <strong>Activity Tracker</strong></li><li>From here you can see all your stats for both Blockbench and the current project.</li><li>You can use the options in the dialog to configure if tracking should pause when tabbed out.</li></ul>",
+  "images": [
+    "assetbrowser",
+    "project"
+  ],
+  "links": [
+    {
+      "text": "View Plugin",
+      "link": "https://www.blockbench.net/plugins/activity_tracker"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=activity_tracker"
+    }
+  ]
+}
