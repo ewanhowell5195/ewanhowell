@@ -46,6 +46,7 @@
           "name": "OLEDcraft",
           "image": "cave",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -179,6 +180,7 @@
           "image": "bones",
           "optifine": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -225,6 +227,7 @@
           "image": "wall",
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.3"
           ]
@@ -234,6 +237,7 @@
           "image": "rails",
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -246,6 +250,7 @@
           "image": "wings",
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -258,6 +263,7 @@
           "image": "all",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -271,6 +277,7 @@
           "image": "left",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -286,6 +293,7 @@
           "image": "primed",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -302,6 +310,7 @@
           "id": "butterflies",
           "image": "multiple",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -331,6 +340,7 @@
           "image": "forest",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -366,6 +376,7 @@
           "image": "target",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -381,6 +392,7 @@
           "image": "quindent",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -399,6 +411,7 @@
           "image": "orange_flowers",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -412,6 +425,7 @@
           "image": "dragonflies",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -426,6 +440,7 @@
           "id": "legacy-ghasts",
           "image": "blue",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6"
           ]
@@ -441,6 +456,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -461,6 +477,7 @@
           "name": "1.18 Panorama",
           "image": "noui",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -485,6 +502,7 @@
           "image": "moobloom",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -571,6 +589,7 @@
           "logoless": true,
           "fontsize": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -584,6 +603,7 @@
           "logoless": true,
           "fontsize": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -601,6 +621,7 @@
           "logoless": true,
           "fontsize": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5"
@@ -612,6 +633,7 @@
           "logoless": true,
           "fontsize": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -636,6 +658,7 @@
           "id": "fandom-overlay",
           "image": "overlay",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -743,6 +766,7 @@
           "id": "solid-block-transparency-support",
           "image": "transparent",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.5",
             "1.21.4",
@@ -756,6 +780,7 @@
           "id": "solid-entity-transparency-support",
           "image": "transparent",
           "versions": [
+            "1.21.10",
             "1.21.8"
           ]
         },
@@ -765,6 +790,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -779,6 +805,7 @@
           "image": "beds",
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8"
           ]
         },
@@ -786,6 +813,7 @@
           "id": "template-green",
           "image": "bg",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -818,6 +846,7 @@
           "optifine": 2,
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -943,6 +972,7 @@
           "image": "wall",
           "logoless": true,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -954,6 +984,7 @@
           "id": "f8thful-font",
           "image": "menu",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -969,6 +1000,7 @@
           "image": "left",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -1038,6 +1070,7 @@
           "image": "moobloom",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -1071,6 +1104,7 @@
           "name": "Fandom Overlay: uBlock Origin Edition",
           "image": "overlay",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -1107,6 +1141,7 @@
           "image": "multiple",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
