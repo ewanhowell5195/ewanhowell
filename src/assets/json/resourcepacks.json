@@ -1,5 +1,6 @@
 {
   "versions": [
+    "1.21.10",
     "1.21.8",
     "1.21.6",
     "1.21.5",
@@ -64,6 +65,7 @@
           "image": "forest",
           "optifine": 2,
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -191,6 +193,7 @@
           "id": "better-bows",
           "image": "ewan",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -310,9 +313,10 @@
           ]
         },
         {
-          "id": "minecraft_experience_lily_pads",
+          "id": "minecraft-experience-lily-pads",
           "image": "lilypads",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
@@ -886,6 +890,7 @@
           "id": "mini-items",
           "image": "sword",
           "versions": [
+            "1.21.10",
             "1.21.8",
             "1.21.6",
             "1.21.5",
