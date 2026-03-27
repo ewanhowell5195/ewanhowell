@@ -4,8 +4,11 @@
   "images": [
     "wall_comparison",
     "pigs",
+    "ocean",
     "wolves",
+    "jungle",
     "foxes",
+    "ice",
     "misc",
     "pigs_comparison",
     "wolves_comparison",
@@ -17,5 +20,6 @@
       "text": "Download",
       "link": "https://modrinth.com/resourcepack/double-pixel-eyes"
     }
-  ]
+  ],
+  "video": "-iZ4ud0Qz74"
 }
