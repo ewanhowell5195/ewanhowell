@@ -680,7 +680,6 @@
         {
           "id": "consistent-baby-mobs",
           "image": "pigs",
-          "logoless": true,
           "versions": [
             "26.1.1"
           ]
