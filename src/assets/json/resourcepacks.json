@@ -678,6 +678,13 @@
       "name": "Cursed",
       "entries": [
         {
+          "id": "consistent-baby-mobs",
+          "image": "pigs",
+          "versions": [
+            "26.1.1"
+          ]
+        },
+        {
           "id": "sheepified-remastered",
           "image": "group1",
           "optifine": 2,

@@ -1,0 +1,22 @@
+{
+  "subtitle": "Make the babies consistent with the adults!",
+  "description": "In Minecraft 26.1, Mojang updated the baby mobs to have their own unique textures and models, but now there is no consistency between them and the adults at all!\n\nThis pack fixes Mojang's terrible inconsistencies and makes the babies consistent with the adults again!",
+  "optifine": "OptiFine is needed to add support for changing the entity models",
+  "images": [
+    "zombies",
+    "chickens",
+    "sheep",
+    "brown_sheep",
+    "villagers",
+    "villagers_conversation",
+    "pigs",
+    "cows"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/consistent-baby-mobs"
+    }
+  ],
+  "video": "KM5eWSR4O4o"
+}
