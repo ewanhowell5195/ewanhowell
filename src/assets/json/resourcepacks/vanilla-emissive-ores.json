@@ -13,12 +13,5 @@
       "text": "Download",
       "link": "https://modrinth.com/resourcepack/vanilla-emissive-ores"
     }
-  ],
-  "links": [
-    {
-      "text": "Sodium Version",
-      "type": "entry",
-      "name": "vanilla-emissive-ores-sodium"
-    }
   ]
 }
