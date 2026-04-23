@@ -1,0 +1,83 @@
+@import "buttons.styl"
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  min-height: calc(100% - var(--header-height))
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+
+h1
+  margin: 0
+  padding: 22px 0 0
+
+h2
+  margin-top: 32px
+
+p
+  white-space: pre-wrap
+
+a
+  color: var(--color-link-blue)
+
+.inputs
+  display: flex
+  flex-direction: column
+  gap: 16px
+  padding: 16px 0
+
+.input-group
+  display: flex
+  flex-direction: column
+  gap: 4px
+
+  label
+    font-weight: 700
+    font-size: 14px
+    color: var(--color-text-grey)
+
+.input-row
+  display: flex
+  gap: 8px
+
+  input
+    flex: 1
+    padding: 8px 12px
+    background-color: var(--color-grey-lighter)
+    border: none
+    color: white
+    font-size: 16px
+    font-family: inherit
+
+    &::placeholder
+      color: var(--color-text-grey)
+
+  select
+    padding: 8px 12px
+    background-color: var(--color-grey-lighter)
+    border: none
+    color: white
+    font-size: 14px
+    font-family: inherit
+    cursor: pointer
+    min-width: 140px
+
+#loading
+  padding: 16px 0
+  color: var(--color-text-grey)
+  font-style: italic
+
+#output
+  padding: 20px 0 40px
+
+  canvas
+    background-image: url("/assets/images/misc/transparent_dark.webp")
+    box-shadow: var(--box-shadow)
+    max-width: calc(100vw - 80px)
+    image-rendering: auto
+
+  .output-actions
+    display: flex
+    gap: 8px
+    padding-top: 16px

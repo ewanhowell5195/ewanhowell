@@ -1,0 +1,29 @@
+template#download-icon: include /assets/images/svg/download.svg
+.container
+  h1 Minecraft Title Generator
+  p
+    | The Minecraft Title Generator is a
+    a(href = "/plugins/minecraft-title-generator", is = "f-a") Blockbench plugin
+    |  that allows you to create Minecraft-styled title models that you can render in high quality. It supports custom textures, multiple fonts, and full 3D rendering.
+  p
+    | For quick and simple titles, you can use the generator below.
+  h2 Quick Generator
+  p Enter your text below to generate a Minecraft-styled title image.
+  .inputs
+    .input-group
+      label(for = "top-text") Top Text
+      .input-row
+        input#top-text(type = "text", maxlength = "24", value = "Minecraft")
+        select#top-texture
+    .input-group
+      label(for = "bottom-text") Bottom Text
+      .input-row
+        input#bottom-text(type = "text", maxlength = "34", value = "Title Generator")
+        select#bottom-texture
+    .input-group
+      label(for = "small-text") Small Text
+      .input-row
+        input#small-text(type = "text", maxlength = "60")
+        select#small-texture
+  #loading
+  #output

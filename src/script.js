@@ -167,6 +167,8 @@ const routes = [
   pageRoute("tools/mojangconverter"),
   pageRoute("tools/minecrafttitleconverter"),
   pageRoute("tools/chestconverter"),
+  pageRoute("tools/bedconverter"),
+  pageRoute("minecraft-title-generator"),
   pageRoute("guides"),
   pageRoute("guide", "/guides/:name")
 ]
