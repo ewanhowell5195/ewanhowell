@@ -1,9 +1,13 @@
 export default class RendersPage extends Page {
   constructor() {
     super("renders", true, $ => {
+      $(".renders").attr("data-popupable-group", "renders")
       $(".renders > div").each(function() {
         const img = $(this)
-        img.css("background-image", `url(/assets/images/renders/${img.attr("id")}.webp)`).addClass("popupable").attr("src", `/assets/images/renders/4k/${img.attr("id")}.webp`)
+        img.css("background-image", `url(/assets/images/renders/${img.attr("id")}.webp)`).attr({
+          "data-popupable": "",
+          src: `/assets/images/renders/4k/${img.attr("id")}.webp`
+        })
       })
     })
     $("a").removeClass("selected")

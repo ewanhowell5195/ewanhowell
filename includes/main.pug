@@ -37,12 +37,14 @@ html(lang = "en")
     meta(name = "theme-color", content = defaults.colour)
     meta(name = "viewport", content = "width=device-width")
     link(rel = "stylesheet", href = "/style.css")
+    link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/popupable@1.7.2/dist/popupable.min.css")
     script(data-cfasync = "false", type = "text/javascript", src = "https://code.jquery.com/jquery-3.6.0.slim.min.js")
     script(data-cfasync = "false", src = "https://www.googletagmanager.com/gtag/js?id=G-VSJF1VRJHW")
+    script(data-cfasync = "false", src = "https://cdn.jsdelivr.net/npm/popupable@1.7.2/dist/popupable.min.js")
     script(data-cfasync = "false", src = "/script.js", type = "module")
     link(rel = "modulepreload", href = "/pages/home/page.js")
     link(rel = "modulepreload", href = "/js/libs/pages.js")
-  body
+  body(data-popupable-counter, data-popupable-thumbnails)
     #header-container
       #header
         .logo#logo-side

@@ -27,8 +27,8 @@ export class Canvas extends HTMLCanvasElement {
     this.width = width
     this.height = height
     if (popupable) {
-      this.classList.add("popupable")
-      this.setAttribute("scale", scale)
+      this.setAttribute("data-popupable", "")
+      if (scale) this.setAttribute("data-popupable-no-upscale", "")
     }
   }
 

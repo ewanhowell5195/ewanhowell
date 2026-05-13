@@ -120,11 +120,13 @@ export function entryPageClass(page, type) {
         }))
       }
       if (data.images) {
+        images.attr("data-popupable-group", `${type}-${entry.id}`)
         for (const [i, image] of data.images.slice().reverse().entries()) {
           images.prepend(E("img").attr({
             id: `image-${data.images.length - (i + offset + (data.video ? -1 : 1))}`,
-            src: `/assets/images/${type}/${entry.id}/images/${image}.webp`
-          }).addClass("showcase-image popupable"))
+            src: `/assets/images/${type}/${entry.id}/images/${image}.webp`,
+            "data-popupable": ""
+          }).addClass("showcase-image"))
         }
         for (const [i, image] of data.images.entries()) {
           imageRow.append(E("div").attr("id", `thumbnail-${i + offset}`).addClass("thumbnail-image").css("background-image", `url("/assets/images/${type}/${entry.id}/images/${image}.webp")`).on("click", e => {

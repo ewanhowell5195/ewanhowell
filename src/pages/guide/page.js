@@ -174,7 +174,8 @@ function addBlocks($, element, blocks, args) {
         for (const [i, cell] of row.entries()) tr.append(E("td").html(parseString(cell)))
       }
     } else if (block.type === "image") {
-      E("img").addClass("popupable").attr({
+      E("img").attr({
+        "data-popupable": "",
         src: `/assets/images/guides/${block.source ?? guideName}/${block.name}.webp`,
         height: block.height ?? 256
       }).css("max-height", `${block.height ?? 256}px`).appendTo(section)
