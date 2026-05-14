@@ -4,9 +4,11 @@ export default class RendersPage extends Page {
       $(".renders").attr("data-popupable-group", "renders")
       $(".renders > div").each(function() {
         const img = $(this)
-        img.css("background-image", `url(/assets/images/renders/${img.attr("id")}.webp)`).attr({
+        const id = img.attr("id")
+        img.css("background-image", `url(/assets/images/renders/${id}.webp)`).attr({
           "data-popupable": "",
-          src: `/assets/images/renders/4k/${img.attr("id")}.webp`
+          src: `/assets/images/renders/4k/${id}.webp`,
+          "data-popupable-thumb": `/assets/images/renders/${id}.webp`
         })
       })
     })
