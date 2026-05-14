@@ -1,7 +1,10 @@
 export default class RendersPage extends Page {
   constructor() {
     super("renders", true, $ => {
-      $(".renders").attr("data-popupable-group", "renders")
+      $(".renders").attr({
+        "data-popupable-group": "renders",
+        "data-popupable-zoomable": ""
+      })
       $(".renders > div").each(function() {
         const img = $(this)
         const id = img.attr("id")
