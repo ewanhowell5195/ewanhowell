@@ -1,0 +1,42 @@
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+
+h1
+  margin: 0
+  padding: 22px 0
+
+.group-heading
+  margin: 0
+  padding: 10px 0 16px
+
+.module h2
+  margin: 0
+  font-family: monospace, monospace
+  word-break: break-word
+
+.modules
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
+  gap: 20px
+  padding-bottom: 20px
+
+.module
+  background-color: var(--color-grey)
+  padding: 20px
+  display: flex
+  flex-direction: column
+  gap: 10px
+  box-shadow: var(--box-shadow)
+  color: var(--color-text-white)
+  text-decoration: none
+  transition: background-color .15s
+
+  &:hover
+    background-color: var(--color-grey-light)
+
+p
+  margin: 0

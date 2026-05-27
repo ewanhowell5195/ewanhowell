@@ -162,6 +162,7 @@ const routes = [
   pageRoute("dungeonsmods"),
   pageRoute("dungeonsmod", "/dungeonsmods/:name"),
   pageRoute("renders"),
+  pageRoute("npm"),
   pageRoute("tools"),
   pageRoute("tools/ctmconverter"),
   pageRoute("tools/mojangconverter"),
