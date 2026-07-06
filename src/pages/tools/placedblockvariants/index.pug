@@ -1,0 +1,30 @@
+template#download-icon: include /assets/images/svg/download.svg
+template#copy-icon: include /assets/images/svg/copy.svg
+template#close-icon: include /assets/images/svg/close.svg
+.container
+  h1 Placed Block Variants
+  p This is a tool that forces the blocks at specific coordinates to render a variant of your choice, using only one block. Each coordinate can be given its own model, so the same block type renders differently depending on where it is placed.
+  p You start from the block's real blockstate file, and it weaves your variants into the ones already there, so every other block in the world keeps its normal look. It works out the weighting for you, and saves your list of blocks inside the blockstate so you can load it back in and edit it later.
+  details.how
+    summary How it works
+    p When a block's model has several weighted variants, the game picks one at random. A placed block uses its position as the starting point for that pick, so the choice is fixed for each coordinate but looks random across the world. This tool works out which slot each coordinate lands on and gives that slot your chosen model.
+    p To keep every other block in the world looking normal, it stretches the blockstate's existing variants across the whole range and carves out a tiny slot for each coordinate you pin. A random block elsewhere has only about a one in a few hundred million chance of showing one of your variants.
+    p A blockstate can hold several states (like a log's #[code axis=x], #[code axis=y] and #[code axis=z]). You pick a state with the tabs and give it its own list of blocks, so each state can pin different coordinates.
+    p This is fragile: the blocks must stay at exactly these coordinates, and it only affects how they look. You can save your list of coordinates and the original blockstate baked into the blockstate or as a separate file, then upload that here again to make changes.
+  br
+  p Upload the blockstate file you want to apply variants to:
+  file-input(accept = ".json,application/json")
+  #editor.hidden
+    h3 State
+    p Pick which blockstate to pin coordinates on. Each state keeps its own list.
+    #state-chips
+    h3 Single blocks
+    #single-rows
+    .button#add-single
+      span Add block
+    h3 Regions
+    p Every block inside the region gets the model. Give the two opposite corners.
+    #region-rows
+    .button#add-region
+      span Add region
+  #output

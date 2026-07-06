@@ -1,0 +1,307 @@
+@import "buttons.styl"
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  min-height: calc(100% - var(--header-height))
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+
+h1
+  margin: 0
+  padding: 22px 0 0
+
+h3
+  margin: 24px 0 10px
+
+p
+  white-space: pre-wrap
+
+a
+  color: var(--color-link-blue)
+
+code
+  font-family: monospace
+  background-color: var(--color-grey-dark)
+  padding: 1px 5px
+
+input
+  box-sizing: border-box
+  background-color: #fff
+  border: none
+  color: #000
+  padding: 8px 10px
+  font-family: Arial
+  font-size: 1rem
+
+  &:focus
+    outline: 2px solid var(--color-link-blue)
+
+.how
+  box-sizing: border-box
+  background-color: var(--color-grey)
+  box-shadow: var(--box-shadow)
+  margin-top: 20px
+  padding: 12px 16px
+
+  summary
+    cursor: pointer
+    font-weight: 700
+    user-select: none
+
+  p
+    margin: 12px 0 0
+
+.hidden
+  display: none
+
+#state-chips
+  display: flex
+  flex-wrap: wrap
+  gap: 8px
+  margin-bottom: 4px
+
+.state-chip
+  background-color: var(--color-grey)
+  box-shadow: var(--box-shadow)
+  padding: 8px 14px
+  cursor: pointer
+  user-select: none
+  font-family: monospace
+  transition: filter .15s
+  border: 2px solid transparent
+
+  &:hover
+    filter: brightness(1.3)
+
+  &.selected
+    border-color: var(--color-link-blue)
+
+  &.has-config::after
+    content: ""
+    display: inline-block
+    width: 7px
+    height: 7px
+    margin-left: 8px
+    border-radius: 50%
+    background-color: var(--color-download)
+    vertical-align: middle
+
+#single-rows, #region-rows
+  display: flex
+  flex-direction: column
+  gap: 10px
+  margin-bottom: 12px
+
+.single-row, .region-row
+  display: flex
+  align-items: center
+  gap: 8px
+  flex-wrap: wrap
+
+  input[type = "number"]
+    width: 80px
+
+  .smodel, .rmodel
+    flex: 1
+    min-width: 200px
+
+.field-hint
+  font-size: .85rem
+  opacity: .6
+  margin: 10px 0 0
+
+.region-label
+  font-weight: 700
+  opacity: .7
+
+.row-sep
+  width: 2px
+  height: 28px
+  flex-shrink: 0
+  background-color: var(--color-grey-lighter)
+  margin: 0 6px
+
+.remove-row
+  background-color: var(--color-grey)
+  box-shadow: var(--box-shadow)
+  width: 34px
+  height: 34px
+  flex-shrink: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  user-select: none
+  transition: filter .15s
+
+  &:hover
+    filter: brightness(1.3)
+
+  svg
+    width: 18px
+    height: 18px
+    fill: var(--color-text-white)
+
+#add-single, #add-region
+  display: inline-flex
+  align-self: flex-start
+
+  &.disabled
+    opacity: .5
+    pointer-events: none
+
+#output
+  padding: 20px 0 40px
+  display: flex
+  flex-direction: column
+  gap: 20px
+  align-items: flex-start
+
+.note
+  opacity: .8
+
+.verdict
+  box-sizing: border-box
+  margin-top: 30px
+  padding: 10px 14px
+  width: 100%
+  border: 2px dashed var(--color-download)
+
+  &.err
+    border-color: var(--color-red-light)
+
+.stats
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr))
+  gap: 12px
+  width: 100%
+
+.stat
+  box-sizing: border-box
+  background-color: var(--color-grey)
+  padding: 12px
+  box-shadow: var(--box-shadow)
+
+  .stat-key
+    font-size: .8rem
+    opacity: .6
+    text-transform: uppercase
+    letter-spacing: .05em
+
+  .stat-value
+    font-size: 1.1rem
+    margin-top: 2px
+    word-break: break-word
+
+.buttons
+  display: flex
+  gap: 12px
+  flex-wrap: wrap
+  align-items: center
+
+.save-mode
+  display: flex
+  align-items: center
+
+.save-mode-select
+  background-color: #fff
+  color: #000
+  border: none
+  padding: 8px 10px
+  font-family: Arial
+  font-size: 1rem
+  cursor: pointer
+
+  &:focus
+    outline: 2px solid var(--color-link-blue)
+
+.config-warning
+  box-sizing: border-box
+  width: 100%
+  padding: 10px 14px
+  border: 2px dashed var(--color-red-light)
+
+.calc
+  box-sizing: border-box
+  width: 100%
+  background-color: var(--color-grey)
+  box-shadow: var(--box-shadow)
+  padding: 12px 16px
+
+  h3
+    margin: 0 0 4px
+
+  .field-hint
+    margin: 0 0 12px
+
+.calc-row
+  display: flex
+  align-items: center
+  gap: 8px
+  flex-wrap: wrap
+  margin-bottom: 12px
+
+.calc-in
+  width: 80px
+
+.calc-result
+  display: flex
+  flex-direction: column
+  gap: 12px
+  align-items: flex-start
+
+  &:not(:empty)
+    margin-top: 12px
+
+.generating
+  pointer-events: none
+  opacity: .55
+
+.progress
+  box-sizing: border-box
+  width: 100%
+  height: 22px
+  background-color: var(--color-grey-dark)
+  box-shadow: var(--box-shadow)
+  overflow: hidden
+
+.progress-fill
+  height: 100%
+  width: 0
+  background-color: var(--color-download)
+  transition: width .1s linear
+
+.progress-text
+  opacity: .8
+  font-variant-numeric: tabular-nums
+
+.result-json
+  box-sizing: border-box
+  width: 100%
+  min-height: 320px
+  background-color: var(--color-grey)
+  color: var(--color-text-white)
+  border: none
+  box-shadow: var(--box-shadow)
+  padding: 12px
+  font-family: monospace
+  font-size: .8rem
+  resize: vertical
+  white-space: pre
+
+.errors, .errors-inline
+  box-sizing: border-box
+  background-color: var(--color-grey)
+  padding: 12px 16px
+  box-shadow: var(--box-shadow)
+  width: 100%
+
+  h2
+    margin: 0 0 8px
+    font-size: 1.1rem
+
+  ul
+    margin: 0
+    padding-left: 20px
