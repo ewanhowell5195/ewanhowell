@@ -333,7 +333,7 @@ export default class MobBlockVariantPage extends Page {
 
   static tag = "mobblockvariants-page"
   static title = "Mob Block Variants - Ewan Howell"
-  static description = "Make a mob always show a chosen block variant while keeping it rare on placed blocks"
+  static description = "Make a mob always show a chosen block variant while keeping it extremely rare on placed blocks"
   static image = "minecraft/mobblockvariants.webp"
   static colour = "#4A6274"
 }
