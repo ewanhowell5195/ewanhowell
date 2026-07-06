@@ -1,0 +1,37 @@
+template#download-icon: include /assets/images/svg/download.svg
+template#copy-icon: include /assets/images/svg/copy.svg
+template#close-icon: include /assets/images/svg/close.svg
+.container
+  h1 Mob Block Variants
+  p This is a tool that edits a block's blockstate so that a chosen mob always shows a variant of your choice, while that variant stays almost impossible to see on a placed block.
+  p Several mobs render a block model on themselves using a fixed seed of 42, so every mob of a given type picks the same weighted variant. This tool inserts your variant at that exact slot, scales the existing weights so it is rare on placed blocks, and keeps the original weighting intact.
+  details.how
+    summary How it works
+    p When a block's model has several weighted variants, the game picks one at random. A placed block uses its position in the world as the starting point for that pick, so blocks come out nicely varied. These mobs instead always use the same fixed starting point, a seed of 42, so every mob of a type makes the identical pick and they all end up showing the same variant.
+    p This tool adds your variant to the list and tunes the weights so that fixed pick always lands on it, while giving it such a small weight that it almost never turns up on a placed block. Your existing variants keep their relative chances, so normal blocks look the same as before.
+    p Each mob shows a different block: snow golems use #[code carved_pumpkin], mooshrooms use #[code red_mushroom] or #[code brown_mushroom], and iron golems use #[code poppy]. Endermen and copper golems show whatever block they are holding, so the same trick works on that block.
+  br
+  h3 Mob
+  .types
+    .type-option.selected(data-type = "snow_golem") Snow Golem
+    .type-option(data-type = "mooshroom_red") Mooshroom (Red)
+    .type-option(data-type = "mooshroom_brown") Mooshroom (Brown)
+    .type-option(data-type = "iron_golem") Iron Golem
+    .type-option(data-type = "enderman") Enderman
+    .type-option(data-type = "copper_golem") Copper Golem
+  .default-state.hidden#default-state
+    h3 Block default state
+    p#default-state-hint
+    #state-rows
+    .button#add-row
+      span Add property
+  p#file-hint Please provide a carved_pumpkin blockstate JSON file.
+  file-input(accept = ".json,application/json")
+  .controls
+    label
+      span Model to show on the mob
+      input#model(type = "text", value = "minecraft:block/carved_pumpkin_snow_golem")
+    label
+      span#rarity-label Rarity as a north placed block (1 in N)
+      input#rarity(type = "number", value = "20000", min = "1")
+  #output
