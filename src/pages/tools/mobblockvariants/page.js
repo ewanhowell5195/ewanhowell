@@ -50,19 +50,20 @@ const TYPES = {
     isolate: null,
     placedLabel: "placed block"
   },
-  enderman: {
-    name: "Enderman",
-    block: null,
-    custom: true,
-    defaultModel: "",
-    isolate: null,
-    placedLabel: "placed block in its default blockstate"
-  },
   copper_golem: {
     name: "Copper Golem",
-    block: null,
+    block: "poppy",
+    defaultModel: "minecraft:block/poppy_copper_golem",
+    state: {},
+    isolate: null,
+    placedLabel: "placed block"
+  },
+  enderman: {
+    name: "Enderman",
+    block: "grass_block",
     custom: true,
-    defaultModel: "",
+    defaultModel: "minecraft:block/grass_block_enderman",
+    defaultStateValues: [["snowy", "false"]],
     isolate: null,
     placedLabel: "placed block in its default blockstate"
   }
@@ -191,6 +192,7 @@ export default class MobBlockVariantPage extends Page {
       let jsonData = null
       let currentType = TYPES.snow_golem
       let modelEdited = false
+      let stateEdited = false
 
       function rowsComplete() {
         let ok = true
@@ -201,8 +203,16 @@ export default class MobBlockVariantPage extends Page {
       }
 
       function onRowChange() {
+        stateEdited = true
         $("#add-row").toggleClass("disabled", !rowsComplete())
         run()
+      }
+
+      // programmatically fill the editor with a placeholder default state; does not count as a user edit
+      function setStateRows(values) {
+        stateRows.empty()
+        for (const [p, v] of values) addStateRow(p, v)
+        $("#add-row").toggleClass("disabled", !rowsComplete())
       }
 
       function addStateRow(prop = "", val = "") {
@@ -229,7 +239,7 @@ export default class MobBlockVariantPage extends Page {
       function updateTypeLabels() {
         rarityLabel.text("Rarity as a " + currentType.placedLabel + " (1 in N)")
         if (currentType.custom) {
-          fileHint.text("Please provide the blockstate JSON file for the block the " + currentType.name.toLowerCase() + " is holding.")
+          fileHint.html("Please provide a <code>" + currentType.block + "</code> blockstate JSON file, or the blockstate of another block the " + currentType.name.toLowerCase() + " holds.")
           defaultStateHint.text("The " + currentType.name + " renders whatever block it holds, so enter that block's default state below as property = value pairs. Leave it empty for a block with no properties.")
           defaultState.removeClass("hidden")
         } else {
@@ -306,6 +316,7 @@ export default class MobBlockVariantPage extends Page {
         $(".type-option").removeClass("selected")
         $(e.currentTarget).addClass("selected")
         if (!modelEdited) modelInput.val(t.defaultModel || "")
+        if (t.custom && !stateEdited) setStateRows(t.defaultStateValues || [])
         updateTypeLabels()
         run()
       })
@@ -322,7 +333,7 @@ export default class MobBlockVariantPage extends Page {
         run()
       })
 
-      $("#add-row").on("click", () => { if (rowsComplete()) addStateRow() })
+      $("#add-row").on("click", () => { if (rowsComplete()) { stateEdited = true; addStateRow() } })
 
       modelInput.on("input", () => { modelEdited = true; run() })
       rarityInput.on("input", run)

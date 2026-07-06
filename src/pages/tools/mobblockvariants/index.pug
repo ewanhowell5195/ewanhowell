@@ -9,7 +9,7 @@ template#close-icon: include /assets/images/svg/close.svg
     summary How it works
     p When a block's model has several weighted variants, the game picks one at random. A placed block uses its position in the world as the starting point for that pick, so blocks come out nicely varied. These mobs instead always use the same fixed starting point, a seed of 42, so every mob of a type makes the identical pick and they all end up showing the same variant.
     p This tool adds your variant to the list and tunes the weights so that fixed pick always lands on it, while giving it such a small weight that it almost never turns up on a placed block. Your existing variants keep their relative chances, so normal blocks look the same as before.
-    p Each mob shows a different block: snow golems use #[code carved_pumpkin], mooshrooms use #[code red_mushroom] or #[code brown_mushroom], and iron golems use #[code poppy]. Endermen and copper golems show whatever block they are holding, so the same trick works on that block.
+    p Each mob shows a different block: snow golems use #[code carved_pumpkin], mooshrooms use #[code red_mushroom] or #[code brown_mushroom], and iron golems and copper golems both use #[code poppy]. Endermen show whatever block they are holding, so the same trick works on that block.
   br
   h3 Mob
   .types
@@ -17,8 +17,8 @@ template#close-icon: include /assets/images/svg/close.svg
     .type-option(data-type = "mooshroom_red") Mooshroom (Red)
     .type-option(data-type = "mooshroom_brown") Mooshroom (Brown)
     .type-option(data-type = "iron_golem") Iron Golem
-    .type-option(data-type = "enderman") Enderman
     .type-option(data-type = "copper_golem") Copper Golem
+    .type-option(data-type = "enderman") Enderman
   .default-state.hidden#default-state
     h3 Block default state
     p#default-state-hint
