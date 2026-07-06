@@ -42,18 +42,10 @@ const TYPES = {
     isolate: null,
     placedLabel: "placed block"
   },
-  iron_golem: {
-    name: "Iron Golem",
+  iron_copper_golem: {
+    name: "Iron / Copper Golem",
     block: "poppy",
-    defaultModel: "minecraft:block/poppy_iron_golem",
-    state: {},
-    isolate: null,
-    placedLabel: "placed block"
-  },
-  copper_golem: {
-    name: "Copper Golem",
-    block: "poppy",
-    defaultModel: "minecraft:block/poppy_copper_golem",
+    defaultModel: "minecraft:block/poppy_golem",
     state: {},
     isolate: null,
     placedLabel: "placed block"
