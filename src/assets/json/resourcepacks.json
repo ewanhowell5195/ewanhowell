@@ -244,6 +244,8 @@
           "image": "wall",
           "logoless": true,
           "versions": [
+            "26.3",
+            "26.2",
             "26.1.2"
           ]
         },
