@@ -1,6 +1,6 @@
 {
   "subtitle": "Add transparency to solid entities!",
-  "description": "This pack changes how solid entities render so that they can use transparent textures.\n\nEither use this pack alongside your pack, or merge it into your pack.\n\nBy default, solid entities do not support transparent textures, resulting in them rendering like the first image.\n\nThis pack makes it so that you can use transparent textures with them, meaning they instead can render like the second image.\n\nSolid entities include:\n- Paintings\n- Banners\n- Shields\n- Tridents\n- Decorated Pots\n- Enchanting & Lectern Books\n- Bells\n- Conduits\n\nOlder versions of this pack also covered signs and beds, which now support transparent textures in vanilla.",
+  "description": "This pack changes how solid entities render so that they can use transparent textures.\n\nEither use this pack alongside your pack, or merge it into your pack.\n\nBy default, solid entities do not support transparent textures, resulting in them rendering like the first image.\n\nThis pack makes it so that you can use transparent textures with them, meaning they instead can render like the second image.\n\nSolid entities include:\n- Paintings\n- Banners\n- Shields\n- Tridents\n- Decorated Pots\n- Enchanting & Lectern Books\n- Bells\n- Conduits\n\nOlder versions of this pack also covered signs, beds, and shulkers, which now support transparent textures in vanilla.",
   "images": [
     "compare",
     "solid",
