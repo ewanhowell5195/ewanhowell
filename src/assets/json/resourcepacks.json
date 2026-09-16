@@ -373,6 +373,8 @@
           "id": "minecraft-experience-lily-pads",
           "image": "lilypads",
           "versions": [
+            "26.3",
+            "26.2",
             "26.1.2",
             "1.21.11",
             "1.21.10",
@@ -958,6 +960,8 @@
           "image": "painting",
           "logoless": true,
           "versions": [
+            "26.3",
+            "26.2",
             "26.1.2",
             "1.21.11",
             "1.21.10",
