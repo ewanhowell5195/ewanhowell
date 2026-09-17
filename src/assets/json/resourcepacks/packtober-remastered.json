@@ -4,23 +4,23 @@
   "optifine": "OptiFine is used to add support for custom entity models, connected textures, emissive textures, and custom colours.",
   "video": "447HkFIq93k",
   "images": [
-    "endermen",
-    "villagers",
-    "beds",
-    "dragon",
-    "bones",
-    "shulkers",
-    "pumpkin",
-    "signs",
-    "end-city",
-    "lanterns",
     "leaves",
-    "ore"
+    "pumpkin",
+    "villagers",
+    "endermen",
+    "bones",
+    "signs",
+    "beds",
+    "lanterns",
+    "ore",
+    "dragon",
+    "end-city",
+    "shulkers"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/packtober-remastered/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/packtober-remastered"
     }
   ],
   "links": [
