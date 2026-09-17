@@ -1,6 +1,6 @@
 {
-  "subtitle": "A cursed resource pack",
-  "description": "This pack is cursed.",
+  "subtitle": "The original cursed resource pack",
+  "description": "This pack curses the game by swapping a load of textures around.\n\nCows become pigs and pigs become cows. Sheep become chickens and chickens become sheep. Endermen become turtles and turtles become endermen. Ghasts become blazes and blazes become ghasts. Guardians become bees, villagers become Steve, and diamonds and coal trade places.",
   "video": "jRM_BhxIaTQ",
   "images": [
     "mobs",
@@ -8,8 +8,8 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/cursed-pack/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/the-cursed-resource-pack"
     },
     {
       "text": "Download [Bedrock]",
