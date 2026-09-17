@@ -4,16 +4,16 @@
   "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
   "video": "hAmZDoVQjbs",
   "images": [
-    "menu",
+    "acacia",
     "dj",
-    "cake",
     "beds",
-    "acacia"
+    "cake",
+    "menu"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/pewdiepack-remastered/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/pewdiepack-remastered"
     }
   ],
   "links": [
