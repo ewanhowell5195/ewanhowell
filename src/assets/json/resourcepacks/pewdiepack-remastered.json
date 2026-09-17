@@ -4,10 +4,10 @@
   "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
   "video": "hAmZDoVQjbs",
   "images": [
-    "acacia",
-    "dj",
     "beds",
     "cake",
+    "dj",
+    "acacia",
     "menu"
   ],
   "downloads": [
