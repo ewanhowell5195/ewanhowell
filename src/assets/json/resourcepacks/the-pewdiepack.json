@@ -1,29 +1,29 @@
 {
-  "subtitle": "This is The PewDiePack",
-  "description": "The PewDiePie themed resource pack.",
+  "subtitle": "The original PewDiePie themed resource pack!",
+  "description": "Mobs, blocks and items across the whole game remade after PewDiePie's videos, pets and running jokes.",
   "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
   "video": "_ll3arLm9No",
   "images": [
-    "menu",
-    "paintings",
-    "wolves",
-    "brofist",
     "creeper",
-    "music",
+    "wolves",
+    "paintings",
     "gui",
     "zombie",
     "golem",
     "cats",
-    "hotbar",
-    "wavy",
     "beds",
+    "brofist",
+    "wavy",
     "barrels",
-    "bottles"
+    "bottles",
+    "music",
+    "hotbar",
+    "menu"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/the-pewdiepack/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/the-pewdiepack"
     },
     {
       "text": "Download [Bedrock]",
