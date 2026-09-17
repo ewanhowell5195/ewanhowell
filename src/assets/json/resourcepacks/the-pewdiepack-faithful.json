@@ -1,6 +1,6 @@
 {
-  "subtitle": "This is The PewDiePack: Faithful",
-  "description": "The PewDiePie themed resource pack.\nNow in 32x!",
+  "subtitle": "The PewDiePie themed resource pack, now in 32x!",
+  "description": "The PewDiePack rebuilt at 32x so it fits alongside Faithful.",
   "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
   "video": "qrmkvNkRlnI",
   "images": [
@@ -10,8 +10,8 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/the-pewdiepack-faithful/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/the-pewdiepack-faithful"
     }
   ],
   "links": [
