@@ -1,7 +1,7 @@
 {
   "subtitle": "Give skeletons physics!",
-  "description": "This pack makes it so that when any of the skeleton entities die, instead of falling over to the side like normal, they collapse into a pile of bones!\n\n<h2>The entities this applies to are as follows:</h2><ul><li>Skeleton</li><li>Skeleton Horse</li><li>Stray</li><li>Wither Skeleton</li><li>The Wither</li><li>The Bogged</li></ul><img src=\"https://i.imgur.com/TKOBnK8.gif\">",
-  "optifine": "OptiFine is required so that entity models can be customised.",
+  "description": "This pack makes it so that when any of the skeleton entities die, instead of falling over to the side like normal, they collapse into a pile of bones!\n\nThe entities this applies to are as follows:\n- Skeleton\n- Skeleton Horse\n- Stray\n- Wither Skeleton\n- The Wither\n- Bogged",
+  "optifine": "OptiFine is used to add support for custom entity models",
   "video": "26GUodU9zjg",
   "images": [
     "skeleton",
@@ -9,7 +9,7 @@
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
+      "text": "Download",
       "link": "https://modrinth.com/resourcepack/skeleton-physics"
     }
   ],
