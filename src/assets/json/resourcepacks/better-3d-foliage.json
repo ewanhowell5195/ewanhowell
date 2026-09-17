@@ -1,0 +1,20 @@
+{
+  "subtitle": "An extension to Better 3D that makes grass 3D",
+  "description": "This pack makes all of the grass in the world 3D.\n\nIt is an addon for Better 3D, and works on its own or alongside it.",
+  "images": [
+    "grass"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/better-3d-foliage"
+    }
+  ],
+  "links": [
+    {
+      "text": "Base pack",
+      "type": "entry",
+      "name": "better-3d"
+    }
+  ]
+}

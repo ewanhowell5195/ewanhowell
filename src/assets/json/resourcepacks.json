@@ -1028,6 +1028,14 @@
           ]
         },
         {
+          "id": "better-3d-foliage",
+          "name": "Better 3D: Foliage",
+          "image": "grass",
+          "versions": [
+            "1.14"
+          ]
+        },
+        {
           "id": "fluorescence",
           "image": "forest",
           "optifine": 2,

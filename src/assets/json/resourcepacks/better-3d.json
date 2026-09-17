@@ -1,23 +1,26 @@
 {
   "subtitle": "A subtle 3D resource pack",
-  "description": "This pack makes some small improvements to the games models to improve them.\n\nThis pack is not as over the top as some of the other 3D packs, just enough to keep it vanilla!",
+  "description": "This pack makes some small improvements to the games models to improve them.\n\nThis pack is not as over the top as some of the other 3D packs, just enough to keep it vanilla!\n\nOver 80 blocks, items and mobs have been given new models.",
   "optifine": "OptiFine is used to add support for remodelling entities.",
   "video": "JtDNVgh6-4I",
   "images": [
-    "brewing-stand",
     "redstone",
-    "furnace",
+    "rails",
+    "brewing-stand",
     "ladder",
-    "rails"
+    "furnace"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/better-3d/"
-    },
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/better-3d"
+    }
+  ],
+  "links": [
     {
-      "text": "Better 3D Foliage",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/better-3d-foliage/"
+      "text": "Foliage addon",
+      "type": "entry",
+      "name": "better-3d-foliage"
     }
   ]
 }
