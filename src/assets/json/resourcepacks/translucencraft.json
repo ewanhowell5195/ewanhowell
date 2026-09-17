@@ -1,15 +1,16 @@
 {
   "subtitle": "The Transparent Item Resource Pack",
-  "description": "Do you feel like the items take up too much screen space? Well this is the pack for you!\n\nThis pack makes all the item textures semi transparent so that you can see through them while holding them!\n\nThis way they can stay regular size, but not obscure your vision.",
+  "description": "Do you feel like the items take up too much screen space? Well this is the pack for you!\n\nThis pack makes items and blocks semi transparent while you are holding them, so that you can see straight through whatever is in your hand!\n\nIt only applies in first person, meaning items stay solid in your inventory, on the ground, and in item frames.\n\nThis way they can stay regular size, but not obscure your vision.",
   "video": "HF9kb62A9xs",
   "images": [
     "sword",
-    "bow"
+    "bow",
+    "blocks"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/translucencraft/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/translucencraft"
     }
   ]
 }
