@@ -4,20 +4,20 @@
   "optifine": "OptiFine is used to add support for remodelling entities, connected textures, and colormaps.",
   "video": "dRrkDLrZ-As",
   "images": [
+    "cane",
+    "dragon",
+    "village",
     "oak",
     "spruce",
+    "house",
     "crimson",
     "warped",
-    "village",
-    "dragon",
-    "house",
-    "cane",
     "nether"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/craftmas-remastered/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/craftmas-remastered"
     }
   ],
   "links": [
