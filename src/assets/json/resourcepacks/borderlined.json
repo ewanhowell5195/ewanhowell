@@ -5,14 +5,14 @@
   "video": "ZC1psRU9b4Y",
   "images": [
     "stone",
-    "spruce",
     "house",
-    "oak"
+    "oak",
+    "spruce"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/minecraft-borderlined/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/borderlined"
     }
   ]
 }
