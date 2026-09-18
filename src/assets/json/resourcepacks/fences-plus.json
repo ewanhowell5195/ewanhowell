@@ -4,14 +4,14 @@
   "video": "EtTvagq7-B4",
   "images": [
     "oak",
+    "all",
     "bridge",
-    "spruce",
-    "all"
+    "spruce"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/fences/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/fences-plus"
     }
   ],
   "links": [
