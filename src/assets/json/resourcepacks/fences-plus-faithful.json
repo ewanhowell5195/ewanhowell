@@ -1,13 +1,13 @@
 {
-  "subtitle": "The fence improvement resource pack",
-  "description": "This pack changes all of the fence models to be more unique and exciting!",
+  "subtitle": "The Faithful version of the fence improvement resource pack",
+  "description": "This is the Faithful version of Fences+, which changes all of the fence models to be more unique and exciting!\n\nIt is an addon, so Fences+ has to be installed underneath it.",
   "images": [
     "fences"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.mediafire.com/file/5v6iwbl0v5ouekg/Fences%252B_Faithful.zip/file"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/fences-plus-faithful"
     }
   ],
   "links": [
