@@ -5,18 +5,18 @@
   "video": "PMVLUDugIqM",
   "images": [
     "house",
-    "farm",
     "forest",
+    "menu",
     "houses",
+    "farm",
     "strider",
     "crimson",
-    "warped",
-    "menu"
+    "warped"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/f4thful"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/4thful"
     }
   ]
 }
