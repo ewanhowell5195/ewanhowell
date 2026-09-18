@@ -1189,7 +1189,7 @@
         {
           "id": "entity-healthbars-32x",
           "name": "Entity Healthbars: 32x",
-          "image": "all",
+          "image": "all_entities",
           "optifine": 2,
           "versions": [
             "1.19",
