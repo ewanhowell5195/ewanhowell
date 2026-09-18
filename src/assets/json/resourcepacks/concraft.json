@@ -4,15 +4,16 @@
   "video": "m9yx6oATSQM",
   "images": [
     "forest",
+    "house",
+    "spruce",
     "nether",
     "crimson",
-    "house",
     "warped"
   ],
   "downloads": [
     {
-      "text": "Download [Java]",
-      "link": "https://www.curseforge.com/minecraft/texture-packs/concraft/"
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/concraft"
     }
   ]
 }
