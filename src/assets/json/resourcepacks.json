@@ -1031,6 +1031,7 @@
           "id": "better-3d-foliage",
           "name": "Better 3D: Foliage",
           "image": "grass",
+          "logoless": true,
           "versions": [
             "1.14"
           ]
