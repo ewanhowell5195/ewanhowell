@@ -37,6 +37,7 @@ const FACE_PIECE_AREA = [24, 0, 16, 8]
 const GROUP_DISTANCE = 40
 const DIFFERENT = 60
 const MASK_CLIP = 25.5
+const MAX_SKIN_SIZE = 1024
 
 function separateEyes(u, v, y, height) {
   const rows = Array.from({ length: height }, (_, j) => y + j)
@@ -64,26 +65,42 @@ const MOUTHS = [
   { id: "wide", label: "4 wide, 7th row", note: "Wide", cells: [[10, 14], [11, 14], [12, 14], [13, 14]], pieces: [[26, 7, 10, 14], [27, 7, 11, 14], [28, 7, 12, 14], [29, 7, 13, 14]], drawn: [[[10, 14], [11, 14], [12, 14], [13, 14]]] }
 ]
 
-function blank(width, height) {
-  return { width, height, rgba: new Uint8ClampedArray(width * height * 4) }
+function blank(width, height, scale = 1) {
+  return { width: width * scale, height: height * scale, scale, rgba: new Uint8ClampedArray(width * height * scale * scale * 4) }
 }
 
 function clone(img) {
-  return { width: img.width, height: img.height, rgba: new Uint8ClampedArray(img.rgba) }
+  return { width: img.width, height: img.height, scale: img.scale, rgba: new Uint8ClampedArray(img.rgba) }
 }
 
 function clearRect(img, x, y, w, h) {
-  for (let j = 0; j < h; j++) img.rgba.fill(0, ((y + j) * img.width + x) * 4, ((y + j) * img.width + x + w) * 4)
+  const s = img.scale
+  for (let j = 0; j < h * s; j++) img.rgba.fill(0, ((y * s + j) * img.width + x * s) * 4, ((y * s + j) * img.width + (x + w) * s) * 4)
 }
 
 function drawImage(src, sx, sy, w, h, dst, dx, dy, { flipX = false, flipY = false, replace = false } = {}) {
+  const scale = src.scale
+  sx *= scale
+  sy *= scale
+  w *= scale
+  h *= scale
+  dx *= scale
+  dy *= scale
   for (let j = 0; j < h; j++) {
+    const row = (sy + (flipY ? h - 1 - j : j)) * src.width
+    if (replace && !flipX) {
+      dst.rgba.set(src.rgba.subarray((row + sx) * 4, (row + sx + w) * 4), ((dy + j) * dst.width + dx) * 4)
+      continue
+    }
     for (let i = 0; i < w; i++) {
-      const s = ((sy + (flipY ? h - 1 - j : j)) * src.width + sx + (flipX ? w - 1 - i : i)) * 4
+      const s = (row + sx + (flipX ? w - 1 - i : i)) * 4
       const d = ((dy + j) * dst.width + dx + i) * 4
       const a = src.rgba[s + 3] / 255
       if (replace || a === 1) {
-        dst.rgba.set(src.rgba.subarray(s, s + 4), d)
+        dst.rgba[d] = src.rgba[s]
+        dst.rgba[d + 1] = src.rgba[s + 1]
+        dst.rgba[d + 2] = src.rgba[s + 2]
+        dst.rgba[d + 3] = src.rgba[s + 3]
         continue
       }
       if (a === 0) continue
@@ -95,20 +112,44 @@ function drawImage(src, sx, sy, w, h, dst, dx, dy, { flipX = false, flipY = fals
   }
 }
 
-function texel(img, x, y) {
-  const i = (y * img.width + x) * 4
+function pixel(img, u, v) {
+  const i = (Math.floor(v * img.scale) * img.width + Math.floor(u * img.scale)) * 4
   return Array.from(img.rgba.subarray(i, i + 4))
 }
 
+function texel(img, x, y) {
+  return pixel(img, x + 0.5, y + 0.5)
+}
+
+function fillTexel(img, x, y, colour) {
+  const s = img.scale
+  for (let j = 0; j < s; j++) {
+    for (let i = 0; i < s; i++) img.rgba.set(colour, ((y * s + j) * img.width + x * s + i) * 4)
+  }
+}
+
+function downscale(img, scale) {
+  if (img.scale <= scale) return img
+  const out = blank(img.width / img.scale, img.height / img.scale, scale)
+  for (let y = 0; y < out.height; y++) {
+    const row = Math.floor((y + 0.5) * img.scale / scale) * img.width
+    for (let x = 0; x < out.width; x++) {
+      const s = (row + Math.floor((x + 0.5) * img.scale / scale)) * 4
+      out.rgba.set(img.rgba.subarray(s, s + 4), (y * out.width + x) * 4)
+    }
+  }
+  return out
+}
+
 function expandLegacy(img) {
-  const out = blank(64, 64)
+  const out = blank(64, 64, img.scale)
   drawImage(img, 0, 0, 64, 32, out, 0, 0, { replace: true })
   for (const [[x, y, w, h], [dx, dy]] of LEGACY_LIMBS) drawImage(img, x, y, w, h, out, dx, dy, { flipX: true, replace: true })
   return out
 }
 
 function isSlim(img) {
-  return img.rgba[(16 * 64 + 50) * 4 + 3] === 0
+  return texel(img, 50, 16)[3] === 0
 }
 
 function wideToSlim(img, column) {
@@ -165,21 +206,22 @@ function fillFromSurroundings(img, region) {
   for (let y = 8; y < 16; y++) {
     for (let x = 8; x < 16; x++) {
       const weight = neighbourWeight(region, x, y)
-      const i = (y * img.width + x) * 4
-      if (weight && img.rgba[i + 3] > 0) samples.push({ colour: Array.from(img.rgba.subarray(i, i + 3)), weight })
+      const colour = texel(img, x, y)
+      if (weight && colour[3] > 0) samples.push({ colour: colour.slice(0, 3), weight })
     }
   }
   const colour = heaviestColour(samples)
   if (!colour) return
   const fill = colour.map(Math.round).concat([255])
-  for (const [x, y] of region) img.rgba.set(fill, (y * img.width + x) * 4)
+  for (const [x, y] of region) fillTexel(img, x, y, fill)
 }
 
 function hasOuterLayer(img) {
+  const s = img.scale
   for (const [x, y, w, h] of OVERLAYS) {
-    for (let j = 0; j < h; j++) {
-      for (let i = 0; i < w; i++) {
-        if (img.rgba[((y + j) * img.width + x + i) * 4 + 3] > 0) return true
+    for (let j = y * s; j < (y + h) * s; j++) {
+      for (let i = x * s; i < (x + w) * s; i++) {
+        if (img.rgba[(j * img.width + i) * 4 + 3] > 0) return true
       }
     }
   }
@@ -242,22 +284,23 @@ function masked(colour) {
 }
 
 function faceColour(img, U, V) {
-  const hat = texel(img, 32 + Math.floor(U), Math.floor(V))
+  const hat = pixel(img, 32 + U, V)
   if (hat[3] > MASK_CLIP) return masked(hat)
   for (const piece of DATA.face) {
     if (U < piece.U[0] || U >= piece.U[1] || V < piece.V[0] || V >= piece.V[1]) continue
-    const colour = texel(img, Math.floor(piece.u[0] * U + piece.u[1]), Math.floor(piece.v[0] * V + piece.v[1]))
+    const colour = pixel(img, piece.u[0] * U + piece.u[1], piece.v[0] * V + piece.v[1])
     if (colour[3] > MASK_CLIP) return masked(colour)
   }
-  return masked(texel(img, Math.floor(U), Math.floor(V)))
+  return masked(pixel(img, U, V))
 }
 
 function drawFace(canvas, img) {
-  canvas.width = 8
-  canvas.height = 8
-  const pixels = new ImageData(8, 8)
-  for (let y = 0; y < 8; y++) {
-    for (let x = 0; x < 8; x++) pixels.data.set(faceColour(img, 8.5 + x, 8.5 + y), (y * 8 + x) * 4)
+  const size = 8 * (img.scale || 1)
+  canvas.width = size
+  canvas.height = size
+  const pixels = new ImageData(size, size)
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) pixels.data.set(faceColour(img, 8 + (x + 0.5) * 8 / size, 8 + (y + 0.5) * 8 / size), (y * size + x) * 4)
   }
   canvas.getContext("2d").putImageData(pixels, 0, 0)
 }
@@ -557,7 +600,7 @@ async function readImage(file) {
   const context = canvas.getContext("2d")
   context.drawImage(bitmap, 0, 0)
   const data = context.getImageData(0, 0, bitmap.width, bitmap.height)
-  return { width: data.width, height: data.height, rgba: data.data }
+  return { width: data.width, height: data.height, scale: 1, rgba: data.data }
 }
 
 function download(img, name) {
@@ -661,25 +704,25 @@ export default class Dungeons2SkinConverterPage extends Page {
 
 
 
-      function prepared() {
-        return state.wide ? wideToSlim(state.source, state.arms) : state.source
+      function prepared(source = state.source) {
+        return state.wide ? wideToSlim(source, state.arms) : source
       }
 
-      function convert(eyes, mouth) {
+      function convert(eyes, mouth, source = state.source) {
         const features = [EYES.find(e => e.id === eyes), MOUTHS.find(m => m.id === mouth)].filter(f => f.pieces)
-        return toDungeons(prepared(), state.merge, features)
+        return toDungeons(prepared(source), state.merge, features)
       }
 
       function drawArm(canvas, column) {
-        const slim = wideToSlim(state.source, column)
-        const arms = blank(8, 22)
+        const slim = wideToSlim(state.preview, column)
+        const arms = blank(8, 22, slim.scale)
         for (const [x, y, dx] of [[44, 16, 0], [44, 32, 0], [36, 48, 5], [52, 48, 5]]) {
           drawImage(slim, x, y, 3, 4, arms, dx, 0)
           drawImage(slim, x, y + 4, 3, 12, arms, dx, 5)
           drawImage(slim, x + 3, y, 3, 4, arms, dx, 18)
         }
-        canvas.width = 8
-        canvas.height = 22
+        canvas.width = arms.width
+        canvas.height = arms.height
         drawTexture(canvas, arms)
       }
 
@@ -727,10 +770,12 @@ export default class Dungeons2SkinConverterPage extends Page {
           viewer.setSkin(result)
           viewer.setLayers(find("layers").checked)
         }
-        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, convert("none", "none")) : drawDesign(canvas, EYE_DESIGNS[option.id], MOUTH_DESIGNS.row7))
-        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, convert("none", "none")) : drawDesign(canvas, EYE_DESIGNS.mirrored, MOUTH_DESIGNS[option.id]))
+        const drawn = convert("none", "none", state.preview)
+        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, drawn) : drawDesign(canvas, EYE_DESIGNS[option.id], MOUTH_DESIGNS.row7))
+        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, drawn) : drawDesign(canvas, EYE_DESIGNS.mirrored, MOUTH_DESIGNS[option.id]))
         if (state.wide) buildChoices("arms", "arms", [1, 2, 3, 4].map(n => ({ id: n, label: `Column ${n}` })), null, (canvas, option) => drawArm(canvas, option.id))
-        if (state.layer) buildChoices("layer", "merge", [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }], null, (canvas, option) => drawTexture(canvas, toDungeons(prepared(), option.id, [])))
+        const flat = prepared(state.preview)
+        if (state.layer) buildChoices("layer", "merge", [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }], null, (canvas, option) => drawTexture(canvas, toDungeons(flat, option.id, [])))
         rememberSkin({ settings: { arms: state.arms, merge: state.merge, eyes: state.eyes, mouth: state.mouth, layers: find("layers").checked } })
       }
 
@@ -760,13 +805,15 @@ export default class Dungeons2SkinConverterPage extends Page {
           capeViewer.setCape(state.cape)
           return
         }
-        if (img.width !== 64 || (img.height !== 64 && img.height !== 32)) {
-          find("error").textContent = `${file.name} is ${img.width}×${img.height}. Only 64×64 skins, old 64×32 skins, and capes can be converted.`
+        if (img.width % 64 || img.width > MAX_SKIN_SIZE || (img.height !== img.width && img.height * 2 !== img.width)) {
+          find("error").textContent = `${file.name} is ${img.width}×${img.height}. Skins need to be 64×64 or the old 64×32, or a multiple of that size up to ${MAX_SKIN_SIZE}×${MAX_SKIN_SIZE}.`
           return
         }
         if (!restoring) remember({ skin: { image: await fileToDataUrl(file), name: file.name }, showing: "skin" })
         state.skinName = baseName(file)
-        state.source = img.height === 32 ? expandLegacy(img) : img
+        img.scale = img.width / 64
+        state.source = img.height < img.width ? expandLegacy(img) : img
+        state.preview = downscale(state.source, 4)
         state.wide = !isSlim(state.source)
         state.arms = settings?.arms ?? 2
         const slim = prepared()
