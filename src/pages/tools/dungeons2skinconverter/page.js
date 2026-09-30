@@ -283,10 +283,10 @@ function masked(colour) {
   return colour.slice(0, 3).concat([colour[3] > MASK_CLIP ? 255 : 0])
 }
 
-function faceColour(img, U, V) {
+function faceColour(img, U, V, pieces) {
   const hat = pixel(img, 32 + U, V)
   if (hat[3] > MASK_CLIP) return masked(hat)
-  for (const piece of DATA.face) {
+  for (const piece of pieces ? DATA.face : []) {
     if (U < piece.U[0] || U >= piece.U[1] || V < piece.V[0] || V >= piece.V[1]) continue
     const colour = pixel(img, piece.u[0] * U + piece.u[1], piece.v[0] * V + piece.v[1])
     if (colour[3] > MASK_CLIP) return masked(colour)
@@ -294,13 +294,13 @@ function faceColour(img, U, V) {
   return masked(pixel(img, U, V))
 }
 
-function drawFace(canvas, img) {
+function drawFace(canvas, img, pieces = true) {
   const size = 8 * (img.scale || 1)
   canvas.width = size
   canvas.height = size
   const pixels = new ImageData(size, size)
   for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) pixels.data.set(faceColour(img, 8 + (x + 0.5) * 8 / size, 8 + (y + 0.5) * 8 / size), (y * size + x) * 4)
+    for (let x = 0; x < size; x++) pixels.data.set(faceColour(img, 8 + (x + 0.5) * 8 / size, 8 + (y + 0.5) * 8 / size, pieces), (y * size + x) * 4)
   }
   canvas.getContext("2d").putImageData(pixels, 0, 0)
 }
@@ -636,14 +636,18 @@ const MOUTH_DESIGNS = {
 
 function drawDesign(canvas, eyes, mouth) {
   const face = Array.from({ length: 8 }, (_, y) => Array.from({ length: 8 }, (_, x) => y < 2 || (y === 2 && (x === 0 || x === 7)) ? DESIGN.hair : DESIGN.skin))
-  for (const y of eyes.rows) {
-    face[y][1] = DESIGN.white
-    face[y][2] = DESIGN.pupil
-    face[y][5] = eyes.separate ? DESIGN.otherPupil : DESIGN.pupil
-    face[y][6] = DESIGN.white
+  if (eyes) {
+    for (const y of eyes.rows) {
+      face[y][1] = DESIGN.white
+      face[y][2] = DESIGN.pupil
+      face[y][5] = eyes.separate ? DESIGN.otherPupil : DESIGN.pupil
+      face[y][6] = DESIGN.white
+    }
+    for (const x of [1, 2, 5, 6]) face[eyes.brow][x] = DESIGN.brow
   }
-  for (const x of [1, 2, 5, 6]) face[eyes.brow][x] = DESIGN.brow
-  for (let x = mouth.from; x <= mouth.to; x++) face[mouth.row][x] = DESIGN.mouth
+  if (mouth) {
+    for (let x = mouth.from; x <= mouth.to; x++) face[mouth.row][x] = DESIGN.mouth
+  }
   canvas.width = 8
   canvas.height = 8
   const context = canvas.getContext("2d")
@@ -686,7 +690,7 @@ export default class Dungeons2SkinConverterPage extends Page {
       let viewer = null
       let capeViewer = null
 
-      for (const button of [find("skin-save"), find("cape-save")]) button.prepend($("#download-icon").contents().clone(true)[0])
+      for (const button of [find("skin-save"), find("cape-save")].concat(Array.from($(".mod-download")))) button.prepend($("#download-icon").contents().clone(true)[0])
 
       function rememberSkin(values) {
         remember({ skin: Object.assign(remembered().skin || {}, values) })
@@ -770,9 +774,10 @@ export default class Dungeons2SkinConverterPage extends Page {
           viewer.setSkin(result)
           viewer.setLayers(find("layers").checked)
         }
-        const drawn = convert("none", "none", state.preview)
-        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, drawn) : drawDesign(canvas, EYE_DESIGNS[option.id], MOUTH_DESIGNS.row7))
-        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, drawn) : drawDesign(canvas, EYE_DESIGNS.mirrored, MOUTH_DESIGNS[option.id]))
+        const eyesDrawn = convert("none", state.mouth, state.preview)
+        const mouthDrawn = convert(state.eyes, "none", state.preview)
+        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, eyesDrawn, false) : drawDesign(canvas, EYE_DESIGNS[option.id], null))
+        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, mouthDrawn, false) : drawDesign(canvas, null, MOUTH_DESIGNS[option.id]))
         if (state.wide) buildChoices("arms", "arms", [1, 2, 3, 4].map(n => ({ id: n, label: `Column ${n}` })), null, (canvas, option) => drawArm(canvas, option.id))
         const flat = prepared(state.preview)
         if (state.layer) buildChoices("layer", "merge", [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }], null, (canvas, option) => drawTexture(canvas, toDungeons(flat, option.id, [])))
@@ -824,8 +829,8 @@ export default class Dungeons2SkinConverterPage extends Page {
         state.mouthSuggestion = tone ? suggestMouth(slim, tone) : null
         state.eyes = settings?.eyes ?? (state.eyeSuggestion || "none")
         state.mouth = settings?.mouth ?? (state.mouthSuggestion || "none")
-        find("eyes-note").textContent = state.eyeSuggestion ? "The shape that matches your skin has been picked for you. Check the preview." : "Your skin's eyes do not match any supported shape, so the face is kept as drawn."
-        find("mouth-note").textContent = state.mouthSuggestion ? "The shape that matches your skin has been picked for you. Check the preview." : "Your skin's mouth does not match any supported shape, so the face is kept as drawn."
+        find("eyes-note").textContent = state.eyeSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The eyes could not be detected automatically, so they are kept as drawn. Pick a shape if your skin uses a compatible one."
+        find("mouth-note").textContent = state.mouthSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The mouth could not be detected automatically, so it is kept as drawn. Pick a shape if your skin uses a compatible one."
         show("arms-panel", state.wide)
         show("layer-panel", state.layer)
         if (settings && settings.layers !== undefined) {

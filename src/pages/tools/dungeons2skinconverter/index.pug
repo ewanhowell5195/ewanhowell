@@ -2,6 +2,19 @@ template#download-icon: include /assets/images/svg/download.svg
 .container
   h1 Custom Skin Converter for Minecraft Dungeons II
   p This is a tool that converts a Minecraft Java skin or cape into the Minecraft Dungeons II layout, ready for the Custom Skin Loader mod.
+  .panel.mods
+    h2 Mods
+    .mod-list
+      .mod
+        h3 Custom Skin Loader
+        p.hint Required. Loads your converted skins and capes in game.
+        a.button-download.mod-download(href = "https://www.nexusmods.com/minecraftdungeons2/mods/9", target = "_blank")
+          span Download
+      .mod
+        h3 Second Skin Layer
+        p.hint Optional. Shows a skin's outer layer on the body, arms and legs, which Dungeons II leaves out.
+        a.button-download.mod-download(href = "https://www.nexusmods.com/minecraftdungeons2/mods/10", target = "_blank")
+          span Download
   p Please provide a Minecraft Java skin or cape.
   file-input(accept = ".png,image/png")
   #error
@@ -37,7 +50,7 @@ template#download-icon: include /assets/images/svg/download.svg
           .choices.small#arms
         .panel#layer-panel.hidden
           h2 Outer layer
-          p.hint This skin has an outer layer on its body, arms or legs. Dungeons II only has an outer layer for the hat.
+          p.hint This skin has an outer layer on its body, arms or legs. Dungeons II only has an outer layer for the hat, and the <a href = "https://www.nexusmods.com/minecraftdungeons2/mods/10" target = "_blank">Second Skin Layer</a> mod adds the rest.
           .choices#layer
       .panel
         h2 Eyes

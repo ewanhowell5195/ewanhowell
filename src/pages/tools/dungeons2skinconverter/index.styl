@@ -19,6 +19,9 @@ h2
 p
   white-space: pre-wrap
 
+a
+  color: var(--color-link-blue)
+
 .hidden
   display: none !important
 
@@ -196,6 +199,33 @@ canvas
   font-weight: 700
   text-align: center
   box-shadow: var(--box-shadow)
+
+.mods
+  margin-bottom: 4px
+
+.mod-list
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  gap: 12px
+  margin-top: 8px
+
+.mod
+  display: flex
+  flex-direction: column
+  gap: 6px
+  padding: 12px
+  background-color: var(--color-grey-light)
+
+  h3
+    margin: 0
+    font-size: 1.05rem
+
+  p
+    margin: 0
+    flex: 1
+
+  .button-download
+    align-self: flex-start
 
 .save
   display: flex
