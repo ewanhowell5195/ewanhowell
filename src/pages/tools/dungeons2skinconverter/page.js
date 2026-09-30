@@ -746,7 +746,7 @@ export default class Dungeons2SkinConverterPage extends Page {
           if (option.id === suggestion) {
             const badge = document.createElement("span")
             badge.className = "badge"
-            badge.textContent = "Matches your skin"
+            badge.textContent = "Detected"
             card.append(badge)
           }
           const canvas = document.createElement("canvas")
