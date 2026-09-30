@@ -158,6 +158,13 @@ canvas
   &.selected
     outline-color: var(--color-download)
 
+  &.disabled
+    opacity: .4
+    cursor: not-allowed
+
+    &:hover
+      background-color: var(--color-grey-light)
+
   canvas
     width: 100%
     aspect-ratio: 1

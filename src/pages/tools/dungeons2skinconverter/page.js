@@ -356,9 +356,14 @@ function suggestEyes(img, tone) {
   return symmetric && best.option.id === "row5" ? "mirrored" : best.option.id
 }
 
-function suggestMouth(img, tone) {
+function overlaps(a, b) {
+  const cells = (b?.drawn || []).flat().map(([x, y]) => `${x},${y}`)
+  return (a?.drawn || []).flat().some(([x, y]) => cells.includes(`${x},${y}`))
+}
+
+function suggestMouth(img, tone, eyes) {
   let best = null
-  for (const option of MOUTHS.filter(mouth => mouth.cells)) {
+  for (const option of MOUTHS.filter(mouth => mouth.cells && !overlaps(mouth, eyes))) {
     const row = option.cells[0][1]
     const columns = option.cells.map(([x]) => x)
     const inside = differs(img, option.cells, tone)
@@ -731,12 +736,13 @@ export default class Dungeons2SkinConverterPage extends Page {
         drawTexture(canvas, arms)
       }
 
-      function buildChoices(id, key, options, suggestion, render) {
+      function buildChoices(id, key, options, suggestion, render, blocked = null) {
         const container = find(id)
         container.replaceChildren()
         for (const option of options) {
           const card = document.createElement("div")
-          card.className = option.id === state[key] ? "choice selected" : "choice"
+          const disabled = blocked ? overlaps(option, blocked.with) : false
+          card.className = option.id === state[key] ? "choice selected" : disabled ? "choice disabled" : "choice"
           if (option.id === suggestion) {
             const badge = document.createElement("span")
             badge.className = "badge"
@@ -750,12 +756,13 @@ export default class Dungeons2SkinConverterPage extends Page {
           const title = document.createElement("span")
           title.textContent = option.label
           card.append(canvas, title)
-          if (option.note) {
+          if (option.note || disabled) {
             const note = document.createElement("small")
-            note.textContent = option.note
+            note.textContent = disabled ? blocked.note : option.note
             card.append(note)
           }
           card.addEventListener("click", () => {
+            if (disabled) return
             state[key] = option.id
             refresh()
           })
@@ -764,6 +771,9 @@ export default class Dungeons2SkinConverterPage extends Page {
       }
 
       function refresh() {
+        const eyes = EYES.find(e => e.id === state.eyes)
+        const mouth = MOUTHS.find(m => m.id === state.mouth)
+        if (overlaps(eyes, mouth)) state.mouth = "none"
         const result = convert(state.eyes, state.mouth)
         drawFace(find("face"), result)
         drawTexture(find("texture"), result)
@@ -777,8 +787,8 @@ export default class Dungeons2SkinConverterPage extends Page {
         }
         const eyesDrawn = convert("none", state.mouth, state.preview)
         const mouthDrawn = convert(state.eyes, "none", state.preview)
-        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, eyesDrawn, false) : drawDesign(canvas, EYE_DESIGNS[option.id], null))
-        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, mouthDrawn, false) : drawDesign(canvas, null, MOUTH_DESIGNS[option.id]))
+        buildChoices("eyes", "eyes", EYES, state.eyeSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, eyesDrawn, false) : drawDesign(canvas, EYE_DESIGNS[option.id], null), { with: MOUTHS.find(m => m.id === state.mouth), note: "Overlaps the chosen mouth" })
+        buildChoices("mouth", "mouth", MOUTHS, state.mouthSuggestion, (canvas, option) => option.id === "none" ? drawFace(canvas, mouthDrawn, false) : drawDesign(canvas, null, MOUTH_DESIGNS[option.id]), { with: EYES.find(e => e.id === state.eyes), note: "Overlaps the chosen eyes" })
         if (state.wide) buildChoices("arms", "arms", [1, 2, 3, 4].map(n => ({ id: n, label: `Column ${n}` })), null, (canvas, option) => drawArm(canvas, option.id))
         const flat = prepared(state.preview)
         if (state.layer) buildChoices("layer", "merge", [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }], null, (canvas, option) => drawTexture(canvas, toDungeons(flat, option.id, [])))
@@ -827,7 +837,7 @@ export default class Dungeons2SkinConverterPage extends Page {
         state.merge = settings?.merge ?? true
         const tone = faceTone(slim)
         state.eyeSuggestion = tone ? suggestEyes(slim, tone) : null
-        state.mouthSuggestion = tone ? suggestMouth(slim, tone) : null
+        state.mouthSuggestion = tone ? suggestMouth(slim, tone, EYES.find(e => e.id === state.eyeSuggestion)) : null
         state.eyes = settings?.eyes ?? (state.eyeSuggestion || "none")
         state.mouth = settings?.mouth ?? (state.mouthSuggestion || "none")
         find("eyes-note").textContent = state.eyeSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The eyes could not be detected automatically, so they are kept as drawn. Pick a shape if your skin uses a compatible one."
