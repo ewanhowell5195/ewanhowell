@@ -637,11 +637,12 @@ const MOUTH_DESIGNS = {
 function drawDesign(canvas, eyes, mouth) {
   const face = Array.from({ length: 8 }, (_, y) => Array.from({ length: 8 }, (_, x) => y < 2 || (y === 2 && (x === 0 || x === 7)) ? DESIGN.hair : DESIGN.skin))
   if (eyes) {
-    for (const y of eyes.rows) {
-      face[y][1] = DESIGN.white
-      face[y][2] = DESIGN.pupil
-      face[y][5] = eyes.separate ? DESIGN.otherPupil : DESIGN.pupil
-      face[y][6] = DESIGN.white
+    for (const [row, y] of eyes.rows.entries()) {
+      const shade = colour => colour.map(c => Math.round(c * (row ? 0.8 : 1)))
+      face[y][1] = shade(DESIGN.white)
+      face[y][2] = shade(DESIGN.pupil)
+      face[y][5] = shade(eyes.separate ? DESIGN.otherPupil : DESIGN.pupil)
+      face[y][6] = shade(DESIGN.white)
     }
     for (const x of [1, 2, 5, 6]) face[eyes.brow][x] = DESIGN.brow
   }
