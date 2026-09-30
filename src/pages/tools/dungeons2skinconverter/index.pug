@@ -1,0 +1,68 @@
+template#download-icon: include /assets/images/svg/download.svg
+.container
+  h1 Custom Skin Converter for Minecraft Dungeons II
+  p This is a tool that converts a Minecraft Java skin or cape into the Minecraft Dungeons II layout, ready for the Custom Skin Loader mod.
+  p Please provide a Minecraft Java skin or cape.
+  file-input(accept = ".png,image/png")
+  #error
+  #skin.workspace.hidden
+    .column
+      .previews
+        .panel
+          h2 3D preview
+          p.hint.mouse Drag to rotate, right drag to pan, and scroll to zoom.
+          p.hint.touch Drag to rotate, and use two fingers to pan and zoom.
+          #viewer.viewer
+          label.toggle
+            input#layers(type = "checkbox")
+            span Show with the Second Skin Layer mod
+        .panel
+          h2 In game face
+          p.hint How the face looks in Dungeons II, with the eyes and mouth pieces in place.
+          canvas#face.preview-face(width = "8" height = "8")
+      .panel.converted
+        h2 Converted skin
+        canvas#texture.preview-texture(width = "256" height = "256")
+      .panel.download
+        h2 Download
+        p.hint Rename the file to match the skin you want to replace, then put it in the mod's skins folder. The mod's default skins show the names to use.
+        .save
+          .button-download#skin-save
+            span Download
+    .column
+      .pair
+        .panel#arms-panel.hidden
+          h2 Arms
+          p.hint This skin has wide (Steve style) arms, which are 4 pixels wide. Dungeons II arms are 3 pixels wide, so one column of pixels is removed from each arm. Column 2 works for most skins.
+          .choices.small#arms
+        .panel#layer-panel.hidden
+          h2 Outer layer
+          p.hint This skin has an outer layer on its body, arms or legs. Dungeons II only has an outer layer for the hat.
+          .choices#layer
+      .panel
+        h2 Eyes
+        p.hint Dungeons II skins have a blank face, with the eyes and mouth as separate pieces that blink, look around and talk. Pick the shape your skin's eyes use to turn them into those pieces, or keep the face as drawn. The eyes need to be 2 pixels wide, with the pupil on the inside, 1 pixel in from each side of the face.
+        p.note#eyes-note
+        .choices#eyes
+      .panel
+        h2 Mouth
+        p.hint The mouth needs to be in the middle of the face.
+        p.note#mouth-note
+        .choices#mouth
+  #cape.workspace.hidden
+    .column
+      .panel
+        h2 3D preview
+        p.hint.mouse Drag to rotate, right drag to pan, and scroll to zoom.
+        p.hint.touch Drag to rotate, and use two fingers to pan and zoom.
+        #cape-viewer.viewer
+      .panel
+        h2 Converted cape
+        canvas#cape-texture.preview-texture(width = "256" height = "128")
+    .column
+      .panel
+        h2 Download
+        p.hint Rename the file to match the cape you want to replace, then put it in the mod's capes folder. The mod's default capes show the names to use.
+        .save
+          .button-download#cape-save
+            span Download

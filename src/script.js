@@ -171,6 +171,7 @@ const routes = [
   pageRoute("tools/bedconverter"),
   pageRoute("tools/mobblockvariants"),
   pageRoute("tools/placedblockvariants"),
+  pageRoute("tools/dungeons2skinconverter"),
   pageRoute("minecraft-title-generator"),
   pageRoute("guides"),
   pageRoute("guide", "/guides/:name")

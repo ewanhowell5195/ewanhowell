@@ -1,0 +1,272 @@
+@import "buttons.styl"
+
+.container
+  max-width: var(--content-width)
+  margin: 0 auto
+  min-height: calc(100% - var(--header-height))
+  padding: 0 20px 40px
+  display: flex
+  flex-direction: column
+
+h1
+  margin: 0
+  padding: 22px 0 0
+
+h2
+  margin: 0 0 4px
+  font-size: 1.2rem
+
+p
+  white-space: pre-wrap
+
+.hidden
+  display: none !important
+
+#error
+  color: var(--color-red-light)
+  padding-top: 12px
+
+.workspace
+  display: grid
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr)
+  gap: 20px
+  padding-top: 20px
+
+.column, .previews
+  display: flex
+  flex-direction: column
+  gap: 20px
+  min-width: 0
+
+.panel
+  background-color: var(--color-grey)
+  padding: 16px
+  box-shadow: var(--box-shadow)
+
+  p
+    margin: 0 0 8px
+
+.hint
+  opacity: .75
+  font-size: .9rem
+
+.touch
+  display: none
+
+@media (hover: none) and (pointer: coarse)
+  .mouse
+    display: none
+
+  .touch
+    display: block
+
+.note
+  font-size: .9rem
+  color: var(--color-text-optifine)
+
+  &:empty
+    display: none
+
+canvas
+  image-rendering: pixelated
+  background-image: url("/assets/images/misc/transparent_dark.webp")
+  display: block
+  max-width: 100%
+
+.preview-face
+  width: 100%
+  aspect-ratio: 1
+
+.viewer
+  position: relative
+  width: 100%
+  aspect-ratio: 1
+  background-image: url("/assets/images/misc/transparent_dark.webp")
+  cursor: grab
+  touch-action: none
+  user-select: none
+
+  &:active
+    cursor: grabbing
+
+  canvas
+    background: none
+    width: 100% !important
+    height: 100% !important
+
+  .reset
+    position: absolute
+    top: 8px
+    right: 8px
+    font: inherit
+    font-size: .85rem
+    color: var(--color-text-white)
+    background-color: var(--color-grey-light)
+    border: none
+    padding: 6px 10px
+    box-shadow: var(--box-shadow)
+    cursor: pointer
+    user-select: none
+    transition: background-color .15s
+
+    &:hover
+      background-color: var(--color-grey-lighter)
+
+.toggle
+  display: flex
+  align-items: center
+  gap: 8px
+  margin-top: 10px
+  font-size: .9rem
+  cursor: pointer
+  user-select: none
+
+  input
+    accent-color: var(--color-download)
+    margin: 0
+
+.preview-texture
+  width: 100%
+
+.choices
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))
+  gap: 10px
+
+  &.small
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr))
+
+.choice
+  position: relative
+  display: flex
+  flex-direction: column
+  gap: 6px
+  padding: 8px
+  background-color: var(--color-grey-light)
+  outline: 2px solid transparent
+  cursor: pointer
+  user-select: none
+  font-size: .9rem
+  transition: background-color .15s
+
+  &:hover
+    background-color: var(--color-grey-lighter)
+
+  &.selected
+    outline-color: var(--color-download)
+
+  canvas
+    width: 100%
+    aspect-ratio: 1
+
+  small
+    opacity: .7
+
+#arms
+  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr))
+
+  span
+    white-space: nowrap
+
+  canvas
+    width: 56px
+    height: 154px
+    aspect-ratio: auto
+    align-self: center
+
+.pair
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+
+  > .panel
+    flex: 1 1 280px
+
+  &:not(:has(> .panel:not(.hidden)))
+    display: none
+
+.badge
+  position: absolute
+  top: 12px
+  left: 12px
+  right: 12px
+  background-color: var(--color-download)
+  padding: 2px 6px
+  font-size: .75rem
+  font-weight: 700
+  text-align: center
+  box-shadow: var(--box-shadow)
+
+.save
+  display: flex
+  flex-direction: column
+  gap: 10px
+  align-items: stretch
+
+@media only screen and (max-width: 768px)
+  .workspace
+    grid-template-columns: minmax(0, 1fr)
+
+  #skin
+    display: flex
+    flex-direction: column
+
+    .column
+      display: contents
+
+  .previews
+    position: sticky
+    top: var(--header-height)
+    z-index: 2
+    display: grid
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+    align-items: start
+    gap: 10px
+    margin: -10px -20px 0
+    padding: 10px 20px
+    background-color: var(--color-grey-darker)
+
+    .panel
+      padding: 8px
+      display: flex
+      flex-direction: column
+
+    h2, .hint
+      display: none
+
+    .toggle
+      margin-top: 6px
+      font-size: .75rem
+
+  .converted
+    order: 1
+
+  .download
+    order: 2
+
+  .choices
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+    gap: 8px
+
+  .choice
+    padding: 6px
+    gap: 4px
+    font-size: .8rem
+
+  #layer
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  #arms
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+
+    canvas
+      width: 100%
+      height: auto
+      aspect-ratio: 8 / 22
+
+  .badge
+    top: 8px
+    left: 8px
+    right: 8px
+    padding: 2px 4px
+    font-size: .65rem
