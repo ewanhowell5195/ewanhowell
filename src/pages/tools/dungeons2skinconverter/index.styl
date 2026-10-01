@@ -80,6 +80,18 @@ canvas
   width: 100%
   aspect-ratio: 1
 
+.faces
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 10px
+
+.face
+  display: flex
+  flex-direction: column
+  gap: 4px
+  font-size: .85rem
+  text-align: center
+
 .viewer
   position: relative
   width: 100%
@@ -273,6 +285,12 @@ canvas
 
     .toggle
       margin-top: 6px
+      font-size: .75rem
+
+    .faces
+      gap: 6px
+
+    .face
       font-size: .75rem
 
   .converted

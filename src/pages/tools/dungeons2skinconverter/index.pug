@@ -30,9 +30,15 @@ template#download-icon: include /assets/images/svg/download.svg
             input#layers(type = "checkbox")
             span Show with the Second Skin Layer mod
         .panel
-          h2 In game face
-          p.hint How the face looks in Dungeons II, with the eyes and mouth pieces in place.
-          canvas#face.preview-face(width = "8" height = "8")
+          h2 Face
+          p.hint How the face looks in Dungeons II. Your character uses the eye and mouth pieces, and the hero list and party portraits show the face as drawn.
+          .faces
+            .face
+              canvas#face.preview-face(width = "8" height = "8")
+              span In game
+            .face
+              canvas#portrait.preview-face(width = "8" height = "8")
+              span Portraits
       .panel.converted
         h2 Converted skin
         canvas#texture.preview-texture(width = "256" height = "256")
@@ -54,7 +60,7 @@ template#download-icon: include /assets/images/svg/download.svg
           .choices#layer
       .panel
         h2 Eyes
-        p.hint Dungeons II skins have a blank face, with the eyes and mouth as separate pieces that blink, look around and talk. Pick the shape your skin's eyes use to turn them into those pieces, or keep the face as drawn. The eyes need to be 2 pixels wide, with the pupil on the inside, 1 pixel in from each side of the face.
+        p.hint Dungeons II skins have a blank face, with the eyes and mouth as separate pieces that blink, look around and talk. Pick the shape your skin's eyes use to turn them into those pieces, or keep the face as drawn. The eyes need to be 2 pixels wide, 1 pixel in from each side of the face. The pupil can be on either side, and is moved to the inside.
         p.note#eyes-note
         .choices#eyes
       .panel

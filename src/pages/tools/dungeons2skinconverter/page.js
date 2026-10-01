@@ -38,11 +38,17 @@ const GROUP_DISTANCE = 40
 const DIFFERENT = 60
 const MASK_CLIP = 25.5
 const MAX_SKIN_SIZE = 1024
+const PUPIL_SCALE = 0.74
+const PUPIL_PIVOT = 0.61
+
+const EYE_COLUMNS = [[9, 10], [14, 13]]
 
 function separateEyes(u, v, y, height) {
   const rows = Array.from({ length: height }, (_, j) => y + j)
   return {
     rows,
+    v,
+    eyes: [{ columns: EYE_COLUMNS[0], pupil: u, white: [u + 2, u + 3] }, { columns: EYE_COLUMNS[1], pupil: u + 1, white: [u + 4, u + 5] }],
     pieces: rows.flatMap((row, j) => [[u, v + j, 10, row], [u + 1, v + j, 13, row], [u + 2, v + j, 9, row], [u + 3, v + j, 9, row], [u + 4, v + j, 14, row], [u + 5, v + j, 14, row]]),
     drawn: [rows.flatMap(row => [[9, row], [10, row]]), rows.flatMap(row => [[13, row], [14, row]])]
   }
@@ -193,6 +199,49 @@ function heaviestColour(samples) {
   return largest.sum.map(c => c / largest.weight)
 }
 
+function luminance(colour) {
+  return colour[0] * 0.299 + colour[1] * 0.587 + colour[2] * 0.114
+}
+
+function pupilCells(img, rows, columns) {
+  const cells = rows.flatMap(y => columns.map(x => ({ x, y, colour: texel(img, x, y) })))
+  const groups = []
+  for (const cell of cells) {
+    const group = groups.find(g => colourDistance(g[0].colour, cell.colour) < GROUP_DISTANCE)
+    if (group) group.push(cell)
+    else groups.push([cell])
+  }
+  if (groups.length === 1) return cells.filter(cell => cell.x === columns[1])
+  if (groups.length === 2) {
+    const [a, b] = groups
+    if (a.length !== b.length) return a.length < b.length ? a : b
+    return luminance(a[0].colour) < luminance(b[0].colour) ? a : b
+  }
+  const darkness = x => cells.filter(cell => cell.x === x).reduce((sum, cell) => sum + luminance(cell.colour), 0)
+  const column = darkness(columns[0]) < darkness(columns[1]) ? columns[0] : columns[1]
+  return cells.filter(cell => cell.x === column)
+}
+
+function eyePieces(img, feature) {
+  return feature.eyes.flatMap(({ columns, pupil, white }) => {
+    const pupils = pupilCells(img, feature.rows, columns)
+    const isPupil = (x, y) => pupils.some(cell => cell.x === x && cell.y === y)
+    function nearest(y, wanted) {
+      const order = wanted ? [columns[1], columns[0]] : columns
+      for (const row of feature.rows.slice().sort((a, b) => Math.abs(a - y) - Math.abs(b - y))) {
+        const x = order.find(x => isPupil(x, row) === wanted)
+        if (x !== undefined) return [x, row]
+      }
+      return [order[0], y]
+    }
+    return feature.rows.flatMap((y, j) => {
+      const [px, py] = nearest(y, true)
+      const [wx, wy] = nearest(y, false)
+      return [[pupil, feature.v + j, px, py]].concat(white.map(u => [u, feature.v + j, wx, wy]))
+    })
+  })
+}
+
 function neighbourWeight(region, x, y) {
   let weight = 0
   for (const [rx, ry] of region) {
@@ -204,7 +253,7 @@ function neighbourWeight(region, x, y) {
 
 function fillFromSurroundings(img, region) {
   const samples = []
-  for (let y = 8; y < 16; y++) {
+  for (let y = Math.min(...region.map(([, ry]) => ry)); y < 16; y++) {
     for (let x = 8; x < 16; x++) {
       const weight = neighbourWeight(region, x, y)
       const colour = texel(img, x, y)
@@ -246,7 +295,7 @@ function toDungeons(vanilla, merge, features) {
   clearRect(out, 0, 0, 8, 8)
   for (const area of FACE_PIECE_AREAS) clearRect(out, ...area)
   for (const feature of features) {
-    for (const [tx, ty, fx, fy] of feature.pieces) drawImage(flat, fx, fy, 1, 1, out, tx, ty, { replace: true })
+    for (const [tx, ty, fx, fy] of feature.eyes ? eyePieces(flat, feature) : feature.pieces) drawImage(flat, fx, fy, 1, 1, out, tx, ty, { replace: true })
   }
   for (const feature of features) {
     for (const region of feature.drawn) fillFromSurroundings(out, region)
@@ -288,15 +337,20 @@ function faceColour(img, U, V, pieces) {
   const hat = pixel(img, 32 + U, V)
   if (hat[3] > MASK_CLIP) return masked(hat)
   for (const piece of pieces ? DATA.face : []) {
-    if (U < piece.U[0] || U >= piece.U[1] || V < piece.V[0] || V >= piece.V[1]) continue
-    const colour = pixel(img, piece.u[0] * U + piece.u[1], piece.v[0] * V + piece.v[1])
+    let v = V
+    if (piece.U[1] - piece.U[0] < 1.5) {
+      const pivot = Math.round(piece.V[0]) + PUPIL_PIVOT
+      v = pivot + (V - pivot) / PUPIL_SCALE
+    }
+    if (U < piece.U[0] || U >= piece.U[1] || v < piece.V[0] || v >= piece.V[1]) continue
+    const colour = pixel(img, piece.u[0] * U + piece.u[1], piece.v[0] * v + piece.v[1])
     if (colour[3] > MASK_CLIP) return masked(colour)
   }
   return masked(pixel(img, U, V))
 }
 
 function drawFace(canvas, img, pieces = true) {
-  const size = 8 * (img.scale || 1)
+  const size = 8 * (pieces ? Math.max(img.scale || 1, 8) : img.scale || 1)
   canvas.width = size
   canvas.height = size
   const pixels = new ImageData(size, size)
@@ -312,6 +366,13 @@ function toCanvas(img) {
   canvas.height = img.height
   canvas.getContext("2d").putImageData(new ImageData(new Uint8ClampedArray(img.rgba), img.width, img.height), 0, 0)
   return canvas
+}
+
+function drawPortrait(canvas, img) {
+  const s = img.scale
+  canvas.width = 8 * s
+  canvas.height = 8 * s
+  canvas.getContext("2d").drawImage(toCanvas(img), 56 * s, 20 * s, 8 * s, 8 * s, 0, 0, 8 * s, 8 * s)
 }
 
 function drawTexture(canvas, img) {
@@ -330,10 +391,10 @@ function differs(img, cells, tone) {
 
 function faceTone(img) {
   const samples = []
-  for (let y = 8; y < 16; y++) {
+  for (let y = 12; y < 16; y++) {
     for (let x = 8; x < 16; x++) {
       const colour = texel(img, x, y)
-      if (colour[3] > 0) samples.push({ colour: colour.slice(0, 3), weight: 1 })
+      if (colour[3] > 0) samples.push({ colour: colour.slice(0, 3), weight: x === 11 || x === 12 ? 2 : 1 })
     }
   }
   return heaviestColour(samples)
@@ -343,14 +404,34 @@ function around(rows, columns) {
   return [Math.min(...rows) - 1, Math.max(...rows) + 1].filter(y => y >= 8 && y < 16).flatMap(y => columns.map(x => [x, y]))
 }
 
+function standsOut(img, tone, y, colour) {
+  const between = [tone, texel(img, 11, y), texel(img, 12, y)].concat(y < 15 ? [texel(img, 11, y + 1), texel(img, 12, y + 1)] : [])
+  return between.every(other => colourDistance(colour, other) > DIFFERENT)
+}
+
+function eyeFits(img, tone, rows) {
+  if (rows.some(y => y < 8 || y >= 16)) return false
+  return EYE_COLUMNS.every(columns => {
+    const cells = rows.map(y => columns.map(x => texel(img, x, y)))
+    if (cells.flat().some(colour => colour[3] === 0)) return false
+    const mixed = cells.filter(([a, b]) => colourDistance(a, b) > DIFFERENT)
+    if (!mixed.length) return false
+    const colours = mixed.flat()
+    return cells.every(([a, b], i) => mixed.includes(cells[i]) ? standsOut(img, tone, rows[i], a) || standsOut(img, tone, rows[i], b) : standsOut(img, tone, rows[i], a) && colours.some(colour => colourDistance(colour, a) < GROUP_DISTANCE))
+  })
+}
+
 function suggestEyes(img, tone) {
   const columns = [9, 10, 13, 14]
   let best = null
   for (const option of EYES.filter(eye => eye.rows && eye.id !== "mirrored")) {
-    const inside = differs(img, option.rows.flatMap(y => columns.map(x => [x, y])), tone)
-    const score = inside - differs(img, around(option.rows, columns), tone)
-    const pupils = option.rows.every(y => colourDistance(texel(img, 10, y), texel(img, 9, y)) > DIFFERENT && colourDistance(texel(img, 13, y), texel(img, 14, y)) > DIFFERENT)
-    if (inside >= 0.75 && pupils && (!best || score > best.score)) best = { option, score }
+    if (!eyeFits(img, tone, option.rows)) continue
+    const top = Math.min(...option.rows)
+    const bottom = Math.max(...option.rows)
+    const leftover = [top - 1, bottom + 1].filter(y => eyeFits(img, tone, option.rows.concat([y]))).length
+    const contrast = differs(img, option.rows.flatMap(y => columns.map(x => [x, y])), tone) - differs(img, around(option.rows, columns), tone)
+    const score = (option.rows.length - leftover * 2) * 10 + contrast
+    if (!best || score > best.score) best = { option, score }
   }
   if (!best) return null
   const symmetric = best.option.rows.every(y => colourDistance(texel(img, 9, y), texel(img, 14, y)) < GROUP_DISTANCE)
@@ -364,7 +445,7 @@ function overlaps(a, b) {
 
 function suggestMouth(img, tone, eyes) {
   let best = null
-  for (const option of MOUTHS.filter(mouth => mouth.cells && !overlaps(mouth, eyes))) {
+  for (const option of MOUTHS.filter(mouth => mouth.cells && !overlaps(mouth, eyes) && !eyes?.rows?.includes(mouth.cells[0][1]))) {
     const row = option.cells[0][1]
     const columns = option.cells.map(([x]) => x)
     const inside = differs(img, option.cells, tone)
@@ -784,6 +865,7 @@ export default class Dungeons2SkinConverterPage extends Page {
         if (overlaps(eyes, mouth)) state.mouth = "none"
         const result = convert(state.eyes, state.mouth)
         drawFace(find("face"), result)
+        drawPortrait(find("portrait"), result)
         drawTexture(find("texture"), result)
         if (state.shownMerge !== state.merge) {
           find("layers").checked = !state.merge
