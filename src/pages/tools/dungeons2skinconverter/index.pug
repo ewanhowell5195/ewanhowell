@@ -15,73 +15,118 @@ template#download-icon: include /assets/images/svg/download.svg
         p.hint Optional. Shows a skin's outer layer on the body, arms and legs, which Dungeons II leaves out.
         a.button-download.mod-download(href = "https://www.nexusmods.com/minecraftdungeons2/mods/10", target = "_blank")
           span Download
-  p Please provide a Minecraft Java skin or cape.
-  file-input(accept = ".png,image/png")
-  #error
-  #skin.workspace.hidden
-    .column
-      .previews
+  .tabs
+    .tab.active(data-tab = "converter") Skin converter
+    .tab(data-tab = "mres") MRES helper
+  #converter-tab
+    p Please provide a Minecraft Java skin or cape.
+    file-input#skin-input(accept = ".png,image/png")
+    #error
+    #skin.workspace.hidden
+      .column
+        .previews
+          .panel
+            h2 3D preview
+            p.hint.mouse Drag to rotate, right drag to pan, and scroll to zoom.
+            p.hint.touch Drag to rotate, and use two fingers to pan and zoom.
+            #viewer.viewer
+            label.toggle
+              input#layers(type = "checkbox")
+              span Show with the Second Skin Layer mod
+          .panel
+            h2 Face
+            p.hint How the face looks in Dungeons II. Your character uses the eye and mouth pieces, and the hero list and party portraits show the face as drawn.
+            .faces
+              .face
+                canvas#face.preview-face(width = "8" height = "8")
+                span In game
+              .face
+                canvas#portrait.preview-face(width = "8" height = "8")
+                span Portraits
+        .panel.converted
+          h2 Converted skin
+          canvas#texture.preview-texture(width = "256" height = "256")
+        .panel.download
+          h2 Download
+          p.hint Rename the file to match the skin you want to replace, then put it in the mod's skins folder. The mod's default skins show the names to use.
+          .save
+            .button-download#skin-save
+              span Download
+      .column
+        .pair
+          .panel#arms-panel.hidden
+            h2 Arms
+            p.hint This skin has wide (Steve style) arms, which are 4 pixels wide. Dungeons II arms are 3 pixels wide, so one column of pixels is removed from each arm. Column 2 works for most skins.
+            .choices.small#arms
+          .panel#layer-panel.hidden
+            h2 Outer layer
+            p.hint This skin has an outer layer on its body, arms or legs. Dungeons II only has an outer layer for the hat, and the <a href = "https://www.nexusmods.com/minecraftdungeons2/mods/10" target = "_blank">Second Skin Layer</a> mod adds the rest.
+            .choices#layer
+        .panel
+          h2 Eyes
+          p.hint Dungeons II skins have a blank face, with the eyes and mouth as separate pieces that blink, look around and talk. Pick the shape your skin's eyes use to turn them into those pieces, or keep the face as drawn. The eyes need to be 2 pixels wide, 1 pixel in from each side of the face. The pupil can be on either side, and is moved to the inside.
+          p.note#eyes-note
+          .choices#eyes
+        .panel
+          h2 Mouth
+          p.hint The mouth needs to be in the middle of the face.
+          p.note#mouth-note
+          .choices#mouth
+    #cape.workspace.hidden
+      .column
         .panel
           h2 3D preview
           p.hint.mouse Drag to rotate, right drag to pan, and scroll to zoom.
           p.hint.touch Drag to rotate, and use two fingers to pan and zoom.
-          #viewer.viewer
-          label.toggle
-            input#layers(type = "checkbox")
-            span Show with the Second Skin Layer mod
+          #cape-viewer.viewer
         .panel
-          h2 Face
-          p.hint How the face looks in Dungeons II. Your character uses the eye and mouth pieces, and the hero list and party portraits show the face as drawn.
-          .faces
-            .face
-              canvas#face.preview-face(width = "8" height = "8")
-              span In game
-            .face
-              canvas#portrait.preview-face(width = "8" height = "8")
-              span Portraits
-      .panel.converted
-        h2 Converted skin
-        canvas#texture.preview-texture(width = "256" height = "256")
-      .panel.download
-        h2 Download
-        p.hint Rename the file to match the skin you want to replace, then put it in the mod's skins folder. The mod's default skins show the names to use.
-        .save
-          .button-download#skin-save
-            span Download
-    .column
-      .pair
-        .panel#arms-panel.hidden
-          h2 Arms
-          p.hint This skin has wide (Steve style) arms, which are 4 pixels wide. Dungeons II arms are 3 pixels wide, so one column of pixels is removed from each arm. Column 2 works for most skins.
-          .choices.small#arms
-        .panel#layer-panel.hidden
-          h2 Outer layer
-          p.hint This skin has an outer layer on its body, arms or legs. Dungeons II only has an outer layer for the hat, and the <a href = "https://www.nexusmods.com/minecraftdungeons2/mods/10" target = "_blank">Second Skin Layer</a> mod adds the rest.
-          .choices#layer
-      .panel
-        h2 Eyes
-        p.hint Dungeons II skins have a blank face, with the eyes and mouth as separate pieces that blink, look around and talk. Pick the shape your skin's eyes use to turn them into those pieces, or keep the face as drawn. The eyes need to be 2 pixels wide, 1 pixel in from each side of the face. The pupil can be on either side, and is moved to the inside.
-        p.note#eyes-note
-        .choices#eyes
-      .panel
-        h2 Mouth
-        p.hint The mouth needs to be in the middle of the face.
-        p.note#mouth-note
-        .choices#mouth
-  #cape.workspace.hidden
-    .column
-      .panel
-        h2 3D preview
-        p.hint.mouse Drag to rotate, right drag to pan, and scroll to zoom.
-        p.hint.touch Drag to rotate, and use two fingers to pan and zoom.
-        #cape-viewer.viewer
-      .panel
-        h2 Converted cape
-        canvas#cape-texture.preview-texture(width = "256" height = "128")
-    .column
-      .panel
-        h2 Download
-        p.hint Rename the file to match the cape you want to replace, then put it in the mod's capes folder. The mod's default capes show the names to use.
-        .save
-          .button-download#cape-save
-            span Download
+          h2 Converted cape
+          canvas#cape-texture.preview-texture(width = "256" height = "128")
+      .column
+        .panel
+          h2 Download
+          p.hint Rename the file to match the cape you want to replace, then put it in the mod's capes folder. The mod's default capes show the names to use.
+          .save
+            .button-download#cape-save
+              span Download
+  #mres-tab.hidden
+    p Every Dungeons II skin and cape also has an MRES texture, which controls how its surface reacts to light. Each of its colour channels is a greyscale map with a different job, where grey gives anything in between the black and white extremes. This tool splits an MRES texture into those channels so they are easy to edit, and puts them back together.
+    .modes
+      label.mode
+        input(type = "radio" name = "mres-mode" value = "guess" checked)
+        div
+          span Guess from a skin
+          p.hint Makes a starting MRES texture from your Dungeons II skin. Gold coloured pixels become metal, and pixels matching the face's skin tone get subsurface.
+      label.mode
+        input(type = "radio" name = "mres-mode" value = "split")
+        div
+          span Split an MRES texture
+          p.hint Splits an MRES texture you already have into its channels.
+    file-input#mres-input(accept = ".png,image/png")
+    #mres-error
+    #mres.workspace
+      .column
+        .panel
+          h2 MRES texture
+          p.note#mres-note Showing the default MRES texture. Upload a skin or an MRES texture to start from that instead.
+          p.hint Download a channel, edit it in any image editor, then put it back with Replace or by dropping it onto the channel.
+          p.hint Name the MRES texture &lt;Name&gt;_MRES.png and put it next to &lt;Name&gt;.png in the mod's skins or capes folder.
+          .save
+            .button-download#mres-save
+              span Download MRES
+      .column
+        .channels
+          each channel, index in [["Metallic", "Red channel. White reflects light tinted by the skin's colour, like gold or iron. Black is a non-metal like cloth or skin, and grey is in between. How shiny it is comes from Roughness."], ["Roughness", "Green channel. White is matte, black is shiny, and grey is in between."], ["Emissive", "Blue channel. White glows fully, black does not glow, and grey glows dimly."], ["Subsurface", "Alpha channel. White lets light soften through, which is used on skin. Grey gives a weaker effect."]]
+            .panel.channel(data-channel = index)
+              h2= channel[0]
+              p.hint= channel[1]
+              canvas(id = "channel-" + index)
+              .channel-buttons
+                .button-download.channel-save
+                  span Download
+                label.button
+                  img(src = "/assets/images/svg/upload.svg")
+                  span Replace
+                  input.channel-input.hidden(type = "file" accept = ".png,image/png")
+                .button.channel-reset
+                  span Reset

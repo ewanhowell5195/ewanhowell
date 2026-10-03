@@ -25,9 +25,84 @@ a
 .hidden
   display: none !important
 
-#error
+#error, #mres-error
   color: var(--color-red-light)
   padding-top: 12px
+  white-space: pre-wrap
+
+.tabs
+  display: flex
+  gap: 10px
+  margin-top: 16px
+
+.tab
+  background-color: var(--color-grey-dark)
+  cursor: pointer
+  border-top: 2px solid transparent
+  transition: background-color .15s, border-top .15s
+  user-select: none
+  padding: 10px 15px
+
+  &.active
+    background-color: var(--color-grey)
+    border-top: 2px solid var(--color-red-light)
+
+.modes
+  display: flex
+  flex-direction: column
+  gap: 12px
+  margin-bottom: 16px
+
+.mode
+  display: flex
+  align-items: flex-start
+  gap: 10px
+  cursor: pointer
+  user-select: none
+
+  input
+    accent-color: var(--color-download)
+    width: 18px
+    height: 18px
+    margin: 2px 0 0
+
+  span
+    font-size: 1.1rem
+    font-weight: 700
+
+  p
+    margin: 2px 0 0
+
+.channels
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 20px
+
+.channel
+  display: flex
+  flex-direction: column
+
+  .hint
+    flex: 1
+
+  canvas
+    width: 100%
+
+.channel-buttons
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  margin-top: 10px
+
+  > *
+    flex: 1
+
+@media only screen and (max-width: 1024px)
+  #mres
+    grid-template-columns: minmax(0, 1fr)
+
+    .save
+      align-items: flex-start
 
 .workspace
   display: grid
@@ -310,6 +385,9 @@ canvas
 
   #layer
     grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  .channels
+    grid-template-columns: minmax(0, 1fr)
 
   #arms
     grid-template-columns: repeat(4, minmax(0, 1fr))
