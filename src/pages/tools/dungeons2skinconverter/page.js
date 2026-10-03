@@ -703,11 +703,6 @@ function download(img, name) {
 const MRES_CHANNELS = ["Metallic", "Roughness", "Emissive", "Subsurface"]
 const MRES_SUFFIX = new RegExp(`_(MRES|${MRES_CHANNELS.join("|")})$`, "i")
 const DEFAULT_ROUGHNESS = Uint8Array.from(atob("1dre3s3By8XU2MvD0N3XzcrR0dXZ2NbP0dbRyczQ1NjR0dfW09Xa1Nbe3NrT1s/S1tbRztLZ2tbO0dLR2+LW0NrY09XUy8fB0tTAy9Hf38/R2NjY2dbb29fPz8fQycjd1dHV1tXU09Ha3tvS1dbR0dbXzdHR1NLQ2NHNzdDW1dDR2tHJ1NHDzNHJxcnP29vN0dzc1dbZ2dnX1tHO0MvR3tvV0dXY2NTZ29vb2dXNz9Xa1srN09HS0tTP0tHQ0tDNy9rRxMTFyMzNz8vH0NfZ2NjRx87W2djS1NbU0szMztje297azdTS1N7b2tzWxcbV1tHPyc/V0tTK0dvV0M3NzNXRw8LDw8PHxsTCxcvN1Nra1c3Q1tfW1dTR09LL0dvVys/R2NXW19bb2trX19fW19XPysvK0tLR19jX2d7Wy8nY1MLCx8bFxsHEwsPFxdHW1tfa1dLPz9TT0c/Kzdre2dHDwcrX09bb1Nnb1tbW19ja19PPzNHT0dfY1tze3tHP1NHIwsTGyszIxMXFx8vU1tTU1tbV0dHR08/MzdXP1dfVyL3G0tLY19La2dTS0dbY2tfV0dHS0dHW1tvX1trcxdfCxcjIzc/O0MvFxsfJ1t7Y3dnP1NHS0tHO0dTW1s/R09rByNHP0dHW2dbS0tHV2dnZ3d3Yzs/R0dXa2djc2tPNxsnNy9LU19XOx8fL19TLz9HY1NfV09DNz9nc1tXPztLW0c/UzMnO2tzW1dPR1tbX3dvX2dfW0dTS0NjZ39vbycbGydTX19fTzMnJ0NvX0MPAydbT09DJxNLc3tbW0dHXztDS1NDW2Njc29XT2tjR2t7X1dbd29vX2NHR29jb383JydDS29nU1c7M0M3Q2dTHvsPR0NDMx8nN09LYzs/Tzc/Q0tTW3dvX1dXW293b2dva19bW1tnb0dLNztHY0dXX19Tb19vX0NPV09DQy9DS1MLHz8zJx8zNzdDSzsTL09Xc1tjZ2dvW1NbY1tvZ2NbW0cva19bY0czJydHW39vO2dvX0tXV0NDZ19fU0MzJzMvJxsrHx8zMys/T1s3K09bP09XY2NvV1tfX2NjY29rU0c/R1tnY0s7Lx9Ha29bWztDX18vVztDX19Db2dPJxcXFxsbGx8fJzsvRzc7W1szN0NPW1tjW2N3b2NTX29ra1tHTzNLY0dLQz9HT1tnbydDLzc3L18vS1dTU19fXycLFxMTFxs7OzMfQ09LV0c7PytDS0dLY2dfW19bS09zb1NTS0tjZ1tDQ0dHTytHZ0c7M0M3Q0M7Q1NTQ0tDLzMnFxcXDw8bJx7/J0s3P0s/RzsvR0tDR1tjZ1tTTz9fe2NbV0tre2tnS0dXR0tnZ1tDM0czG0dTU0tTO0NDQysrKxcbHx87Ex83Tz8PKys3T1tTW1dfW1tfY2NjW1tbZ1tbW2NjW1NnP0dbT0Nvg2tjR097Cy9fSzdTRztDU18/Kx8XHx9DTyM/b2M3N0dTN0tfU1tbW19Ld29ba1tnY19LU1NTW1NjSytHX1tzY1drO0dbRyNfYzsvR0dHQ19XNzcTCxsjOz9HV1dXT1NTUzdLU2dvW1tbZ4trU2Nva2d3b1s/P0dLY1NHR0tbf09rRyM7TydjVzs/L0NHR0s/MwsXGydDTz8/U1dvY1dTR0djT0dHY2NDS29jT1tzY2dvb2dbW1NHY2dbY0NTY1NHY0MzR0cvQ0MzNztLUz9HMx8LEyNHU19bW1tja2NbX19nb1NHV1dLS1dbO0NrZ0dvd2tPW2tna1tTW0NLW19HNztbWyczRzszJy9LTztPPycPHxcnM0dbW093b1tnW2dnb3tbT3NfQ0dHVydXW1NTY2NjW1dPY2s/W1NDR1tjO0dXR0czI0cvExMzQzdLZ1sfCwsXNz9DU1Nni29TZ29fX2dnY19fb0tHPztDU1NDR0c7O1tTW087M0NPW1trXyc7U0c3NydPRwsfSy8/W2tjPwsfTzsjNzM/Z2dPW29bW2dnW1NTR0dTS1NPS1c7P0dLL0dLX1szLyMzP1drUzc3J0NTS1NXM0sjGz87Q0dPR0cfJ1s/Hx8jT2NLT29vW1tbW0NXRz9HT09PO1tbQ0NXWzdLW0dPOy9HKys3a08vGysrP1NbUzNTPw8jS09DLy9zNwsjPysTI19bM09bb1tbQ0NbW0NHV09POztDQ1tbb1srP1dHPzsvSz9XW19fW0crGyNre09jV1M/R0c/JxM/g2MnIysrHz9bV0tPQ1tbW0NDb0dLW1NPOyMPL0Nbb1c3NytDU09TVz9vg2dbY1dHP1NTX297X0c/S1NPUzMjJz9HV0czOztHUy9Xb1tbW0Nbb29DP2NTbztPTy8vL29PMx8nI0NXW1M/Z3NnRzdPZ2+DZ1NPT1tHMzc/V09LPx8fI1tPN0dHRzsfW29vW1djT1dfW1tbW19fSz83W1tfX19LLxsnX3tTW29vVx87Y3Nne2c/K0dfW1czMzsrN0NHT1tbMzdPVzcfR19nZ1NbUz9PU29rV1dXU1dfY3NrW19TS0NfX19vb2Nvb2M7Y3Nbb3NXIzdfZ1trPzdHNzsrQ19rUy8/V1dHU0dnb1tbUz8/R19ja09HT0dbc1dja0dDU1Nfe29fU1NrY09jf2NjZ29zXz9vb2dPY0dDQz8/R0MfQ1s/Q2NzZ2drZ19XV083HzNHW2dnV1NTU0NDc29bU2dvZ29fU19bU1dbV2NjV29jR1+Db19XW2dnX0c3Py9LW0cvR0dPRztDR1tjV0MzV1c3FzdLW19bV2NbU1trU1t3b29TY2dbW19XR1NfZ2M/R0dHZ4NfQ29fV1tbT18/R08XO09bcz9HZ2dXWz8jP0tXRzdLLytzW09XW1dTT0dvd29XX3t3S0dvW1tbW1tPX0c3M0dXX0NHa09HQ09LQ0s3HzdDa2s7T3NvU0tPT1NbT0dPRztHb29TS1dfX1Njb293b19PW1tbW29nW2NjY1s/U0dHR0c3L2dPLysrLz9HPzcnR19jW2dLO09TS19fS1tPRz9DR1NvY2tjN1NHU3dva29bMzdbX2tfO0d3X09HX2tbRz83M1M/Hx8vKxsjKx8TGy8vS2tfPytXT1dTPz9LS1NHV2M3L0dHWytHW2d3b2tbW0dLT2NrW2NfP0dPT2dvY29bMydjTw8fJx8XFwsXFxMnHy9PWztLS1tbMzMrNztHV1dLQyczP0NrW2d7V29vW1tHR0tPU1tPR2NHNz9PW2tvc0c7U0cnCxcTFxsbExMjJy8rS1c7T1dHSzszRy8rN19PMxsrIy8/P0d7b0tvZ1tPO0tLU1NTU1tbP09HS1tXW29vG1sPDycfJycjLx8XKzdHT2tXK0NXRz8/M0s7U1tjX1dLJxcfWztLd2tna19TP0djV0dPU1dbN0trW0dPU1tvZ1M/Hx8vM09HOzsnDyc3U2tbMzMrQ1dHT0s3W3trW2NXSz9TV1dfW1trW1tnT0tTW19fR1dXT2tnX2NrT09be29vJyMzO1tbR0M/P0cvKzdnUzMXIyM3T0c/K1t3a0M3V2dnf19PZ09bZ2tnY1tbX1djW1dbU1NvZ1tvc1tHZ2NvfzMnO1tfY0dHY1NHP1tbX19bSy8fJ1tnR09bZ1cnN1tzY29fR1dnW0tvb1tbW19jW09bY1tXY29vV09LRzdjQ09bT0sjQ19HQ19fY2N3c1tbT0c/W1tbZ2tfX2tbN29vW3d3V0M7X1cfX29LR1NXY2dTU1dTX0dTX1M7O09be283Y2tnU0tHP0c3V2tXY2tHR1NTW3dvX1dTZ2NPX4NrY2dra1tHO1tnO29rW1dnb2NbRy9La1s3OzdHN0tvb1tbO0dXWztfX0tHR0dDQ29rV1djb2NnW0dbX1tbW1dvY1NvY0tbV09rb19bb1Nbd29zV0dHO1tXU1tHQ0dTW2dvJ0c/Q0MzW1tbT09fW1NbZ1NXc2tjQ09bX1tbW0dTW2NjP0dLP0dTW1tfW1NLZ3dvW1dnb0dHV0dHR0dLK0dnRzszN0NTU0tDb1dHV1tXU09Ha29nU09PW09La0tPW1dbU1tHPzMzS09rb19bX2t3b2NTV0tfb29fOztHR2NnW0MzR0dHV1NLU29vV0dXX19TX2NjZ19jU0tfV1NbV09XX1tbR09bW0NLW1tfQ09rZ19nb1NTY29ra19bQ2+Da2dHT3srNz9DQy9Lb2dzZzdLQ0NbS0tbU0tbW1tTW1dTW2NTT1NXb3NbS19TT1dPT1NXW2dbW2NTb2tvb29jV2s7Q2NHN0tTOy9TSxMnT2M3Rzc3PzdHOzdPT0tXW1tfS1dbV09TS1tfS1tbW09POztHU29vW1tba4NnU2d/T2dLIztTJ29bS1dbb283Ny9DNys3R1NfV0c3NztbW1dTR1tXR09XU1NbP1dXR1NXV09XR1NTX2NHU2NrU1NnV0djQzNHRzNLR1NbT19rU0dHS0NDO0dTX1tbIyNHV1tjW1NbT1dXW1tTRztDT1dba19Ta1tLY1NPU1NTR0dbX0c7O19bJzNHS0dXY1tLT1dTY1tTY1NHV0dHW0tLW1NTV19bW0dPX1tHNzMjMztTa1dDT1dLV1tfU09HV0dbW08/T1dHRzMjR1tHV1s/R1NbY1M/T1NLV1tXS09XY2NbS0dTW1tDR19PRzc3Ry8nN2dPNzM3S09LV1tXU1NTW1NHKz9XRzs3J09jT0dHT09HR2NTOzc3S09PV1dbW1tbY0dHX2dXO0dbS0M/L0s7V1dfX1tHMy8/W1tbW1NDQ0dXQzMrP1NHU1c3U0dPMzdHW1dbX1tHLzM/W1tXW1tTX29vV1dbQ0c3R1NLU1c7Z3tnX19XRzdLS1dbX19TP0tXRz8fJy8/U1tPMzNLUzNHT1dXV19TRz9LT1NXX1tLQ2NvX19LR0MjKyM/V1tPP2dzZ0c7T2Nnc1tLW1NfTy9DV0dHRycfH293T2NHR1dTQzc3S0dDT1dXa1dDU1NbUzs/Y2NbU1tnUysbJ2dzU19rc1cjN1tvY3NfQ0dXTzMzK0NbU0c/T1dbb3tfTy9DW09HOzsjN1djW1tTP0dbP09bW1tbR2NnX08/W1tfb29ja2tfN2NrW29zVy9HX0czHys3S1tja4NrU09PW0cvKztPR0tHIy9LY2tbV1dPQydTa29fV2dbW2NbW29nX1dXa19PZ39jY2dvc19Da2tfLydDNzNne2dzZz8nR2NbSysvJyMvQ1NTX2NfS0tHQydHW2trT0tLS1dPb2NHWztXX19fX19nS0dnW0Nfe2tra18LX1dfb1tzc1cfN2NrW29DLzMzLytHX2N3W0dTT0dbT2N7X1NHT0Nfd2tvW0dPO09fR0dnT1tTP0dXT2t7X1dre39zY2drb3NfP3Nza1NnS0dDR1dTRyNHa08zX2tjY2dna1tHU1tLV29fZ29bV0M7Oztzc19jZ29bV0M7X19Xc3t/bz9Hd19HY4trY1Q=="), c => c.charCodeAt(0))
-const METAL_HUE = [35, 60]
-const METAL_SATURATION = 0.7
-const METAL_VALUE = 0.5
-const METAL_SHADING = 0.8
-const METALLIC = 220
 const SKIN_HUE = 10
 const SKIN_SATURATION = 0.16
 const SKIN_VALUE = 0.25
@@ -734,48 +729,15 @@ function defaultMres(width = 64, height = 64) {
   return { width, height, channels: [new Uint8Array(width * height), roughness, new Uint8Array(width * height), new Uint8Array(width * height)] }
 }
 
-function regions(mask, width) {
-  const seen = new Uint8Array(mask.length)
-  const out = []
-  for (let start = 0; start < mask.length; start++) {
-    if (!mask[start] || seen[start]) continue
-    const region = []
-    const stack = [start]
-    seen[start] = 1
-    while (stack.length) {
-      const p = stack.pop()
-      region.push(p)
-      const x = p % width
-      for (const n of [x > 0 ? p - 1 : -1, x < width - 1 ? p + 1 : -1, p - width, p + width]) {
-        if (n < 0 || n >= mask.length || !mask[n] || seen[n]) continue
-        seen[n] = 1
-        stack.push(n)
-      }
-    }
-    out.push(region)
-  }
-  return out
-}
-
 function guessMres(img) {
   const mres = defaultMres(img.width, img.height)
   const tone = faceTone(img)
-  const [toneHue, toneSaturation, toneValue] = tone ? hsv(tone) : []
-  const gold = new Uint8Array(img.width * img.height)
+  if (!tone) return mres
+  const [toneHue, toneSaturation, toneValue] = hsv(tone)
   for (let p = 0; p < img.width * img.height; p++) {
     if (!img.rgba[p * 4 + 3]) continue
     const [hue, saturation, value] = hsv(img.rgba.subarray(p * 4, p * 4 + 3))
-    if (hue >= METAL_HUE[0] && hue <= METAL_HUE[1] && saturation >= METAL_SATURATION && value >= METAL_VALUE) gold[p] = 1
-    else if (tone && Math.abs((hue - toneHue + 540) % 360 - 180) <= SKIN_HUE && Math.abs(saturation - toneSaturation) <= SKIN_SATURATION && Math.abs(value - toneValue) <= SKIN_VALUE) mres.channels[3][p] = 255
-  }
-  for (const region of regions(gold, img.width)) {
-    const colours = new Map()
-    for (const p of region) {
-      const key = img.rgba.subarray(p * 4, p * 4 + 3).join()
-      colours.set(key, (colours.get(key) || 0) + 1)
-    }
-    if (Math.max(...colours.values()) > region.length * METAL_SHADING) continue
-    for (const p of region) mres.channels[0][p] = METALLIC
+    if (Math.abs((hue - toneHue + 540) % 360 - 180) <= SKIN_HUE && Math.abs(saturation - toneSaturation) <= SKIN_SATURATION && Math.abs(value - toneValue) <= SKIN_VALUE) mres.channels[3][p] = 255
   }
   return mres
 }
