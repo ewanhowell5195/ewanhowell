@@ -29,7 +29,8 @@ export function entryPageClass(page, type) {
       const downloadIcon = $("#download-icon").contents()
       const guideIcon = $("#guide-icon").contents()
       $("#banner-background").css("background-image", `url("/assets/images/${entry.image ? `${type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`)
-      if (entry.logoless) $("#banner-content").prepend(
+      if (entry.plain) {}
+      else if (entry.logoless) $("#banner-content").prepend(
         E("div").attr("id", "logo").text(entryName)
       )
       else $("#banner-content").prepend(

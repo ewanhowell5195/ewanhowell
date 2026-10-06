@@ -89,7 +89,8 @@ export function indexPageClass(type, title) {
               const entryName = entry.name ?? entry.id.toTitleCase(true, true)
               const entryImages = E("div").addClass("entry-images").attr("id", entry.id)
               entryImages.append(E("div").addClass("entry-image").css("background-image", `url("/assets/images/${entry.image ? `${type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`))
-              if (entry.logoless) {
+              if (entry.plain) {}
+              else if (entry.logoless) {
                 const logo = E("div").addClass("logo").text(entryName).appendTo(entryImages)
                 if (entry.fontsize) logo.css("font-size", `${entry.fontsize}rem`)
               } else entryImages.append(
@@ -196,7 +197,7 @@ export function indexPageClass(type, title) {
             E("a", { is: "f-a" }).addClass("featured").attr("href", featured.attr("href")).append(
               E("div").addClass("entry-images featured-images").append(
                 E("div").addClass("entry-image").css("background-image", featured.find(".entry-image").css("background-image")),
-                E("div").addClass("logo featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text())
+                featured.find(".logo").length ? E("div").addClass("logo featured-logo").css("background-image", featured.find(".logo").css("background-image")).text(featured.find(".logo").text()) : null
               ),
               E("div").addClass("featured-details").append(
                 E("div").addClass("featured-category").text(featured.parent().prev().text()),

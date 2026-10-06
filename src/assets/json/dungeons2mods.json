@@ -1,0 +1,160 @@
+{
+  "categories": [
+    {
+      "name": "Utilities",
+      "entries": [
+        {
+          "id": "blueprint-loader",
+          "name": "Blueprint Loader",
+          "nexus": 2,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "freecam",
+          "name": "Freecam",
+          "nexus": 8,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "native-loader",
+          "name": "Native Loader",
+          "nexus": 98,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "online-to-offline-hero-converter",
+          "name": "Online to Offline Hero Converter",
+          "nexus": 107,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "texture-dumper",
+          "name": "Texture Dumper",
+          "nexus": 119,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "User Interface",
+      "entries": [
+        {
+          "id": "uncapped-cutscenes",
+          "name": "Uncapped Cutscenes",
+          "nexus": 3,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "dungeons-1-menu-camp",
+          "name": "Dungeons 1 Menu Camp",
+          "nexus": 72,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Visuals and Graphics",
+      "entries": [
+        {
+          "id": "edge-outlines",
+          "name": "Edge Outlines",
+          "nexus": 7,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Skins",
+      "entries": [
+        {
+          "id": "custom-skin-loader",
+          "name": "Custom Skin Loader",
+          "nexus": 9,
+          "image": "skin_loader_1",
+          "plain": true
+        },
+        {
+          "id": "second-skin-layer",
+          "name": "Second Skin Layer",
+          "nexus": 10,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "invisible-armor",
+          "name": "Invisible Armor",
+          "nexus": 13,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "3d-skin-layers",
+          "name": "3D Skin Layers",
+          "nexus": 16,
+          "image": "thumbnail",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Gameplay",
+      "entries": [
+        {
+          "id": "wasd-controls",
+          "name": "WASD Controls",
+          "nexus": 11,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "hold-to-jump",
+          "name": "Hold to Jump",
+          "nexus": 12,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "hold-to-roll",
+          "name": "Hold to Roll",
+          "nexus": 36,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "actually-pause-the-game",
+          "name": "Actually Pause the Game",
+          "nexus": 37,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "always-flip-when-jumping",
+          "name": "Always Flip When Jumping",
+          "nexus": 53,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Miscellaneous",
+      "entries": [
+        {
+          "id": "countdown-skip",
+          "name": "Countdown Skip",
+          "nexus": 115,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    }
+  ]
+}

@@ -75,7 +75,7 @@ String.prototype.toTitleCase = function(c, n) {
   return t.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase()).trim().replace(titlePattern, (a, b) => titleReplacements[b])
 }
 
-const types = ["resourcepacks", "plugins", "themes", "maps", "dungeonsmods"]
+const types = ["resourcepacks", "plugins", "themes", "maps", "dungeonsmods", "dungeons2mods"]
 
 async function generateType(type) {
   const data = JSON.parse(fs.readFileSync(`src/assets/json/${type}.json`, "utf-8")).categories
@@ -99,9 +99,12 @@ async function generateEntry(type, id, entry) {
   const img = await loadImage(await bgSharp.png().toBuffer())
   const canvas = new Canvas(640, 360)
   const ctx = canvas.getContext("2d")
-  ctx.filter = "blur(8px)"
-  ctx.drawImage(img, -10, -10, 660, 380)
-  ctx.filter = "none"
+  if (entry.plain) ctx.drawImage(img, 0, 0, 640, 360)
+  else {
+    ctx.filter = "blur(8px)"
+    ctx.drawImage(img, -10, -10, 660, 380)
+    ctx.filter = "none"
+  }
   fs.writeFileSync(`dist/${type}/${id}/index.html`, processPug(`extends /../includes/main.pug
 
 block meta
@@ -114,7 +117,8 @@ block meta
       icon: "${type}/${id}/icon.webp"
     }`), "utf-8")
 
-  if (entry.logoless) {
+  if (entry.plain) {}
+  else if (entry.logoless) {
     await drawText(entryName, {
       ctx,
       fontSize: 100,

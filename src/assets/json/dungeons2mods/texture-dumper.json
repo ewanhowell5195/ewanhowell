@@ -1,0 +1,20 @@
+{
+  "subtitle": "Dump every texture in Minecraft Dungeons II, straight from the game!",
+  "description": "<p>Saves every texture in the game as a PNG, or as an EXR for HDR textures, so you can get them without any extra tools. Normal maps are rebuilt properly, and textures from your other installed mods are included too.</p><h2>How to use</h2><p>Open the game's settings, go to the Mods tab and open Texture Dumper. Press Dump Textures to start. A progress bar shows how far it has got and roughly how long is left.</p><p>You can leave the page and carry on playing while it runs, and it keeps going through loading screens. Cancel Dump stops it, and Continue Dump picks up where it left off. When it finishes, press Open Folder to see the textures.</p><p>Each dump is saved into its own dated folder in the Dump folder inside this mod's folder.</p><h2>Requirements</h2><ul><li><a href=\"/dungeons2mods/blueprint-loader\">Blueprint Loader</a>, which loads this mod</li></ul><h2>Install</h2><ol><li>Close the game, and fully close the Minecraft Launcher if you use it.</li><li>Open your Minecraft Dungeons II Paks folder.<ul><li>Steam: Right click the game in your library, then Manage &gt; Browse local files, then open <code>Dungeons\\Content\\Paks</code></li><li>Minecraft Launcher: <code>C:\\XboxGames\\Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code></li></ul>If you picked a different install folder in the Minecraft Launcher, it is <code>Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code> inside that folder.</li><li>Create a folder called <code>~mods</code> inside the Paks folder if there is not one already.</li><li>Open the zip and move the <code>TextureDumper</code> folder inside it into <code>~mods</code>, so the files end up like this: <code>Paks\\~mods\\TextureDumper\\TextureDumper_P.pak</code></li></ol><h2>Uninstall</h2><p>Delete the <code>TextureDumper</code> folder from <code>~mods</code>.</p><h2>Support</h2><p>If you need help, join my <a href=\"https://discord.ewanhowell.com\" target=\"_blank\">Discord</a>!</p><p>Enjoying my mods? Support me on <a href=\"https://ko-fi.com/ewanhowell\" target=\"_blank\">Ko-fi</a> so I can keep making them for free!</p>",
+  "images": [
+    "01"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.nexusmods.com/minecraftdungeons2/mods/119"
+    }
+  ],
+  "links": [
+    {
+      "type": "entry",
+      "name": "blueprint-loader",
+      "text": "Blueprint Loader"
+    }
+  ]
+}

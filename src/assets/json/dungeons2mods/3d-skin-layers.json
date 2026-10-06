@@ -1,0 +1,24 @@
+{
+  "subtitle": "Turns the Java Edition second skin layer into real 3D blocks, like the Skin Layers 3D mod for Java!",
+  "description": "<p>Every pixel of the hat, jacket, sleeves and pants layers becomes its own block, so hair, hoods and clothes stand out from the body instead of sitting flat on it. The layers use the standard Java skin layout, and the hat sits out from the head at the proper Java size. The game's own skins use the hat layer, so their hair turns 3D too. The jacket, sleeves and pants layers only show on custom skins.</p><p>When armor is worn, the layers under it shrink down to fit inside, so they do not poke through.</p><p>Use it with the <a href=\"/dungeons2mods/custom-skin-loader\">Custom Skin Loader</a> to load your own Java skins with their second layer intact.</p><h2>Requirements</h2><ul><li><a href=\"/dungeons2mods/blueprint-loader\">Blueprint Loader</a>, which loads this mod</li></ul><h2>Install</h2><ol><li>Close the game, and fully close the Minecraft Launcher if you use it.</li><li>Open your Minecraft Dungeons II Paks folder.<ul><li>Steam: Right click the game in your library, then Manage &gt; Browse local files, then open <code>Dungeons\\Content\\Paks</code></li><li>Minecraft Launcher: <code>C:\\XboxGames\\Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code></li></ul>If you picked a different install folder in the Minecraft Launcher, it is <code>Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code> inside that folder.</li><li>Create a folder called <code>~mods</code> inside the Paks folder if there is not one already.</li><li>Extract the zip into a new folder called <code>SkinLayers3D</code> inside <code>~mods</code>, so the files end up in <code>Paks\\~mods\\SkinLayers3D</code></li></ol><h2>Uninstall</h2><p>Delete the <code>SkinLayers3D</code> folder from <code>~mods</code>.</p><h2>Support</h2><p>If you need help, join my <a href=\"https://discord.ewanhowell.com\" target=\"_blank\">Discord</a>!</p><p>Enjoying my mods? Support me on <a href=\"https://ko-fi.com/ewanhowell\" target=\"_blank\">Ko-fi</a> so I can keep making them for free!</p>",
+  "images": [
+    "thumbnail",
+    "01",
+    "02",
+    "03",
+    "04"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.nexusmods.com/minecraftdungeons2/mods/16"
+    }
+  ],
+  "links": [
+    {
+      "type": "entry",
+      "name": "blueprint-loader",
+      "text": "Blueprint Loader"
+    }
+  ]
+}

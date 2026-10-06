@@ -1,0 +1,17 @@
+{
+  "subtitle": "Blueprint Loader lets you install blueprint mods for Minecraft Dungeons II! Drop mods into your ~mods folder and they are loaded automatically every time a level loads, without replacing any game files. A template project for making your own mods is available separately.",
+  "description": "<p>Blueprint Loader lets you install blueprint mods for Minecraft Dungeons II!</p><p>Drop mods into your ~mods folder and they are loaded automatically every time a level loads, without replacing any game files. A template project for making your own mods is available separately.</p><h2>Mod Menu</h2><p>Blueprint Loader adds a Mods tab to the game's settings, with a list of every mod you have installed. Open it from the settings, or with the MODS button on the main menu.</p><p>Select a mod to see its page. Mods with settings show them there, and your changes are saved automatically. &quot;Reset mod&quot; puts that mod's settings back to their defaults.</p><p>Blueprint Loader has two settings of its own:</p><ul><li>Main Menu Label: shows the Blueprint Loader name and version in the top left of the main menu</li><li>Main Menu Mods Button: shows the MODS button on the main menu</li></ul><h2>Install</h2><p>There are two files on this page. To play with mods, you only need <b>Blueprint Loader</b>. <b>Blueprint Mod Template</b> is only for making mods.</p><ol><li>Download the <b>Blueprint Loader</b> file.</li><li>Close the game, and fully close the Minecraft Launcher if you use it.</li><li>Open your Minecraft Dungeons II Paks folder.<ul><li>Steam: Right click the game in your library, then Manage &gt; Browse local files, then open <code>Dungeons\\Content\\Paks</code></li><li>Minecraft Launcher: <code>C:\\XboxGames\\Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code></li></ul>If you picked a different install folder in the Minecraft Launcher, it is <code>Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code> inside that folder.</li><li>Create a folder called <code>~mods</code> inside the Paks folder if there is not one already.</li><li>Open the zip and move the <code>BlueprintLoader</code> folder inside it into <code>~mods</code>, so the files end up like this: <code>Paks\\~mods\\BlueprintLoader\\BlueprintLoader_P.pak</code></li></ol><h2>Uninstall</h2><p>Delete the <code>BlueprintLoader</code> folder from <code>~mods</code>.</p><h2>Making mods</h2><p>Download the <b>Blueprint Mod Template</b> file to make your own blueprint mods. It includes an example mod with settings, a build script that cooks and packs your mod into the files needed, and a readme covering mod info, settings pages, the rules and limitations.</p><h2>Support</h2><p>If you need help, join my <a href=\"https://discord.ewanhowell.com\" target=\"_blank\">Discord</a>!</p><p>Enjoying my mods? Support me on <a href=\"https://ko-fi.com/ewanhowell\" target=\"_blank\">Ko-fi</a> so I can keep making them for free!</p>",
+  "images": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.nexusmods.com/minecraftdungeons2/mods/2"
+    }
+  ]
+}

@@ -161,6 +161,8 @@ const routes = [
   pageRoute("theme", "/themes/:name"),
   pageRoute("dungeonsmods"),
   pageRoute("dungeonsmod", "/dungeonsmods/:name"),
+  pageRoute("dungeons2mods"),
+  pageRoute("dungeons2mod", "/dungeons2mods/:name"),
   pageRoute("renders"),
   pageRoute("npm"),
   pageRoute("tools"),
