@@ -1,41 +1,34 @@
 {
   "categories": [
     {
-      "name": "Utilities",
+      "name": "Skins",
       "entries": [
         {
-          "id": "blueprint-loader",
-          "name": "Blueprint Loader",
-          "nexus": 2,
+          "id": "custom-skin-loader",
+          "name": "Custom Skin Loader",
+          "nexus": 9,
+          "image": "skin_loader_1",
+          "plain": true
+        },
+        {
+          "id": "second-skin-layer",
+          "name": "Second Skin Layer",
+          "nexus": 10,
           "image": "01",
           "plain": true
         },
         {
-          "id": "freecam",
-          "name": "Freecam",
-          "nexus": 8,
+          "id": "invisible-armor",
+          "name": "Invisible Armor",
+          "nexus": 13,
           "image": "01",
           "plain": true
         },
         {
-          "id": "native-loader",
-          "name": "Native Loader",
-          "nexus": 98,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "online-to-offline-hero-converter",
-          "name": "Online to Offline Hero Converter",
-          "nexus": 107,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "texture-dumper",
-          "name": "Texture Dumper",
-          "nexus": 119,
-          "image": "01",
+          "id": "3d-skin-layers",
+          "name": "3D Skin Layers",
+          "nexus": 16,
+          "image": "thumbnail",
           "plain": true
         }
       ]
@@ -67,39 +60,6 @@
           "name": "Edge Outlines",
           "nexus": 7,
           "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
-      "name": "Skins",
-      "entries": [
-        {
-          "id": "custom-skin-loader",
-          "name": "Custom Skin Loader",
-          "nexus": 9,
-          "image": "skin_loader_1",
-          "plain": true
-        },
-        {
-          "id": "second-skin-layer",
-          "name": "Second Skin Layer",
-          "nexus": 10,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "invisible-armor",
-          "name": "Invisible Armor",
-          "nexus": 13,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "3d-skin-layers",
-          "name": "3D Skin Layers",
-          "nexus": 16,
-          "image": "thumbnail",
           "plain": true
         }
       ]
@@ -151,6 +111,46 @@
           "id": "countdown-skip",
           "name": "Countdown Skip",
           "nexus": 115,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "entries": [
+        {
+          "id": "blueprint-loader",
+          "name": "Blueprint Loader",
+          "nexus": 2,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "freecam",
+          "name": "Freecam",
+          "nexus": 8,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "native-loader",
+          "name": "Native Loader",
+          "nexus": 98,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "online-to-offline-hero-converter",
+          "name": "Online to Offline Hero Converter",
+          "nexus": 107,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "texture-dumper",
+          "name": "Texture Dumper",
+          "nexus": 119,
           "image": "01",
           "plain": true
         }

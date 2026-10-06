@@ -11,8 +11,16 @@ const INDEX = path.join(ROOT, `src/assets/json/${TYPE}.json`)
 const JSON_DIR = path.join(ROOT, `src/assets/json/${TYPE}`)
 const IMAGE_DIR = path.join(ROOT, `src/assets/images/${TYPE}`)
 const MAX_WIDTH = 1920
+const FIRST_CATEGORIES = ["Skins"]
+const LAST_CATEGORIES = ["Utilities"]
 
 let sharp
+
+function categoryRank(name) {
+  if (FIRST_CATEGORIES.includes(name)) return FIRST_CATEGORIES.indexOf(name) - FIRST_CATEGORIES.length
+  if (LAST_CATEGORIES.includes(name)) return LAST_CATEGORIES.indexOf(name) + 1
+  return 0
+}
 
 function slug(name) {
   return name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
@@ -199,8 +207,8 @@ export default async function updateMod({ game, project, projectPath, apiKey, sh
     if (!category) index.categories.push(category = { name: categoryName, entries: [] })
     category.entries.push(entry)
     category.entries.sort((a, b) => a.nexus - b.nexus)
-    index.categories.sort((a, b) => a.entries[0].nexus - b.entries[0].nexus)
   }
+  index.categories.sort((a, b) => categoryRank(a.name) - categoryRank(b.name) || a.entries[0].nexus - b.entries[0].nexus)
   for (const oldId of old) if (!shown || oldId !== id) await removeFiles(oldId)
   await writeJson(INDEX, index)
   console.log(shown ? `Updated ${project.name} on ewanhowell.com` : `${project.name} is not published, so it is not on ewanhowell.com`)
