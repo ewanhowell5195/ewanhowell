@@ -216,8 +216,7 @@ export default async function updateMod({ game, project, projectPath, apiKey, sh
     const slugs = new Map(index.categories.flatMap(e => e.entries).map(e => [e.nexus, e.id]))
     slugs.set(project.mod.id, id)
     const entry = await writeMod(project, path.resolve(projectPath), slugs)
-    const game = await api(apiKey, `games/${NEXUS_GAME}.json`)
-    const categoryName = game.categories.find(e => e.category_id === live.category_id)?.name ?? project.category?.name ?? "Mods"
+    const categoryName = project.category?.name ?? (await api(apiKey, `games/${NEXUS_GAME}.json`)).categories.find(e => e.category_id === live.category_id)?.name ?? "Mods"
     let category = index.categories.find(e => e.name === categoryName)
     if (!category) index.categories.push(category = { name: categoryName, entries: [] })
     category.entries.push(entry)
