@@ -12,7 +12,7 @@ const INDEX = path.join(ROOT, `src/assets/json/${TYPE}.json`)
 const JSON_DIR = path.join(ROOT, `src/assets/json/${TYPE}`)
 const IMAGE_DIR = path.join(ROOT, `src/assets/images/${TYPE}`)
 const MAX_WIDTH = 1920
-const FIRST_CATEGORIES = ["Skins"]
+const FIRST_CATEGORIES = ["Skins", "Gameplay"]
 const LAST_CATEGORIES = ["Utilities"]
 
 let sharp
