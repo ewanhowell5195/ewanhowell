@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process"
 import { fileURLToPath } from "node:url"
 import path from "node:path"
 import fs from "node:fs"
@@ -183,7 +184,21 @@ async function writeMod(project, projectPath, slugs) {
   return entry
 }
 
-export default async function updateMod({ game, project, projectPath, apiKey, sharp: managerSharp }) {
+function git(...args) {
+  return execFileSync("git", args, { cwd: ROOT, encoding: "utf-8", stdio: ["ignore", "pipe", "pipe"] }).trim()
+}
+
+function publish(message) {
+  const paths = [INDEX, JSON_DIR, IMAGE_DIR].map(e => path.relative(ROOT, e))
+  git("add", "-A", "--", ...paths)
+  if (!git("diff", "--cached", "--name-only", "--", ...paths)) return
+  git("commit", "-q", "-m", message, "--", ...paths)
+  git("pull", "-q", "--rebase", "--autostash")
+  git("push", "-q")
+  console.log("Pushed the website")
+}
+
+export default async function updateMod({ game, project, projectPath, apiKey, sharp: managerSharp, push = true }) {
   if (game !== GAME || !project?.mod?.id) return
   sharp ??= managerSharp ?? (await import("sharp")).default
   const index = await readIndex()
@@ -212,6 +227,7 @@ export default async function updateMod({ game, project, projectPath, apiKey, sh
   for (const oldId of old) if (!shown || oldId !== id) await removeFiles(oldId)
   await writeJson(INDEX, index)
   console.log(shown ? `Updated ${project.name} on ewanhowell.com` : `${project.name} is not published, so it is not on ewanhowell.com`)
+  if (push) publish(`dungeons ii mods: ${shown ? "update" : "remove"} ${project.name.toLowerCase()}`)
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -221,7 +237,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     for (const dir of await fs.promises.readdir(projects)) {
       const file = path.join(projects, dir, "project.json")
       if (!fs.existsSync(file)) continue
-      await updateMod({ game: GAME, project: JSON.parse(await fs.promises.readFile(file, "utf-8")), projectPath: path.join(projects, dir), apiKey })
+      await updateMod({ game: GAME, project: JSON.parse(await fs.promises.readFile(file, "utf-8")), projectPath: path.join(projects, dir), apiKey, push: false })
     }
   }
+  publish("dungeons ii mods: resync")
 }
