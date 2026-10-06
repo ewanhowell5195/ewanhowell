@@ -89,6 +89,13 @@
           "nexus": 72,
           "image": "01",
           "plain": true
+        },
+        {
+          "id": "countdown-skip",
+          "name": "Countdown Skip",
+          "nexus": 115,
+          "image": "01",
+          "plain": true
         }
       ]
     },
@@ -99,18 +106,6 @@
           "id": "edge-outlines",
           "name": "Edge Outlines",
           "nexus": 7,
-          "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
-      "name": "Miscellaneous",
-      "entries": [
-        {
-          "id": "countdown-skip",
-          "name": "Countdown Skip",
-          "nexus": 115,
           "image": "01",
           "plain": true
         }
