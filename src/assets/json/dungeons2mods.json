@@ -143,8 +143,8 @@
           "plain": true
         },
         {
-          "id": "texture-dumper",
-          "name": "Texture Dumper",
+          "id": "asset-dumper",
+          "name": "Asset Dumper",
           "nexus": 119,
           "image": "01",
           "plain": true
