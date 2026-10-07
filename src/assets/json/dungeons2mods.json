@@ -37,6 +37,13 @@
       "name": "Gameplay",
       "entries": [
         {
+          "id": "wasd-controls",
+          "name": "WASD Controls",
+          "nexus": 11,
+          "image": "01",
+          "plain": true
+        },
+        {
           "id": "hold-to-jump",
           "name": "Hold to Jump",
           "nexus": 12,
@@ -99,18 +106,6 @@
           "id": "edge-outlines",
           "name": "Edge Outlines",
           "nexus": 7,
-          "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
-      "name": "Miscellaneous",
-      "entries": [
-        {
-          "id": "wasd-controls",
-          "name": "WASD Controls",
-          "nexus": 11,
           "image": "01",
           "plain": true
         }
