@@ -1,60 +1,8 @@
 {
   "categories": [
     {
-      "name": "Gameplay",
+      "name": "Skins",
       "entries": [
-        {
-          "id": "wasd-controls",
-          "name": "WASD Controls",
-          "nexus": 11,
-          "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
-      "name": "User Interface",
-      "entries": [
-        {
-          "id": "uncapped-cutscenes",
-          "name": "Uncapped Cutscenes",
-          "nexus": 3,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "countdown-skip",
-          "name": "Countdown Skip",
-          "nexus": 115,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "clearer-world-map",
-          "name": "Clearer World Map",
-          "nexus": 125,
-          "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
-      "name": "Miscellaneous",
-      "entries": [
-        {
-          "id": "edge-outlines",
-          "name": "Edge Outlines",
-          "nexus": 7,
-          "image": "01",
-          "plain": true
-        },
-        {
-          "id": "freecam",
-          "name": "Freecam",
-          "nexus": 8,
-          "image": "01",
-          "plain": true
-        },
         {
           "id": "custom-skin-loader",
           "name": "Custom Skin Loader",
@@ -70,13 +18,6 @@
           "plain": true
         },
         {
-          "id": "hold-to-jump",
-          "name": "Hold to Jump",
-          "nexus": 12,
-          "image": "01",
-          "plain": true
-        },
-        {
           "id": "invisible-armor",
           "name": "Invisible Armor",
           "nexus": 13,
@@ -88,6 +29,25 @@
           "name": "3D Skin Layers",
           "nexus": 16,
           "image": "thumbnail",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Gameplay",
+      "entries": [
+        {
+          "id": "wasd-controls",
+          "name": "WASD Controls",
+          "nexus": 11,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "hold-to-jump",
+          "name": "Hold to Jump",
+          "nexus": 12,
+          "image": "01",
           "plain": true
         },
         {
@@ -110,11 +70,49 @@
           "nexus": 53,
           "image": "01",
           "plain": true
+        }
+      ]
+    },
+    {
+      "name": "User Interface",
+      "entries": [
+        {
+          "id": "uncapped-cutscenes",
+          "name": "Uncapped Cutscenes",
+          "nexus": 3,
+          "image": "01",
+          "plain": true
         },
         {
           "id": "dungeons-1-menu-camp",
           "name": "Dungeons 1 Menu Camp",
           "nexus": 72,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "countdown-skip",
+          "name": "Countdown Skip",
+          "nexus": 115,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "clearer-world-map",
+          "name": "Clearer World Map",
+          "nexus": 125,
+          "image": "01",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "name": "Visuals and Graphics",
+      "entries": [
+        {
+          "id": "edge-outlines",
+          "name": "Edge Outlines",
+          "nexus": 7,
           "image": "01",
           "plain": true
         }
@@ -127,6 +125,13 @@
           "id": "blueprint-loader",
           "name": "Blueprint Loader",
           "nexus": 2,
+          "image": "01",
+          "plain": true
+        },
+        {
+          "id": "freecam",
+          "name": "Freecam",
+          "nexus": 8,
           "image": "01",
           "plain": true
         },
