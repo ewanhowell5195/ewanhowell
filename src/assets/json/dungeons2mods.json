@@ -96,6 +96,13 @@
           "nexus": 115,
           "image": "01",
           "plain": true
+        },
+        {
+          "id": "clearer-world-map",
+          "name": "Clearer World Map",
+          "nexus": 125,
+          "image": "01",
+          "plain": true
         }
       ]
     },
