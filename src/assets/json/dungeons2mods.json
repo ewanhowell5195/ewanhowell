@@ -155,6 +155,13 @@
           "nexus": 119,
           "image": "01",
           "plain": true
+        },
+        {
+          "id": "hover-inspector",
+          "name": "Hover Inspector",
+          "nexus": 140,
+          "image": "01",
+          "plain": true
         }
       ]
     }
