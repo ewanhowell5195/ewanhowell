@@ -115,6 +115,13 @@
           "nexus": 7,
           "image": "01",
           "plain": true
+        },
+        {
+          "id": "no-cloud-shadows",
+          "name": "No Cloud Shadows",
+          "nexus": 142,
+          "image": "01",
+          "plain": true
         }
       ]
     },
