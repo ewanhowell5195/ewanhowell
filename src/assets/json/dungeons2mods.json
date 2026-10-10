@@ -126,18 +126,6 @@
       ]
     },
     {
-      "name": "Pets",
-      "entries": [
-        {
-          "id": "wolf-pet-customiser",
-          "name": "Wolf Pet Customiser",
-          "nexus": 152,
-          "image": "01",
-          "plain": true
-        }
-      ]
-    },
-    {
       "name": "Utilities",
       "entries": [
         {
