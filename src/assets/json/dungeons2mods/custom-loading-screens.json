@@ -1,0 +1,39 @@
+{
+  "subtitle": "Swap the loading screens for your own images!",
+  "description": "<p>Every loading screen shows a random image from a folder of your choice. By default it uses your Minecraft Java screenshots.</p><p>Pick a different folder with the Browse button in the Mods tab of the game's settings. Images in its subfolders are used too.</p><h2>Requirements</h2><ul><li><a href=\"/dungeons2mods/blueprint-loader\">Blueprint Loader</a>, which loads this mod</li><li><a href=\"/dungeons2mods/native-loader\">Native Loader</a>, which loads this mod's DLL</li></ul><h2>Install</h2><ol><li>Close the game, and fully close the Minecraft Launcher if you use it.</li><li>Open your Minecraft Dungeons II Paks folder.<ul><li>Steam: Right click the game in your library, then Manage &gt; Browse local files, then open <code>Dungeons\\Content\\Paks</code></li><li>Minecraft Launcher: <code>C:\\XboxGames\\Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code></li></ul>If you picked a different install folder in the Minecraft Launcher, it is <code>Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code> inside that folder.</li><li>Create a folder called <code>~mods</code> inside the Paks folder if there is not one already.</li><li>Open the zip and move the <code>CustomLoadingScreens</code> folder inside it into <code>~mods</code>, so the files end up like this: <code>Paks\\~mods\\CustomLoadingScreens\\CustomLoadingScreens_P.pak</code></li></ol><h2>Uninstall</h2><p>Delete the <code>CustomLoadingScreens</code> folder from <code>~mods</code>.</p><h2>Support</h2><p>If you need help, join my <a href=\"https://discord.ewanhowell.com\" target=\"_blank\">Discord</a>!</p><p>Enjoying my mods? Support me on <a href=\"https://ko-fi.com/ewanhowell\" target=\"_blank\">Ko-fi</a> so I can keep making them for free!</p>",
+  "images": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.nexusmods.com/minecraftdungeons2/mods/158"
+    }
+  ],
+  "links": [
+    {
+      "type": "entry",
+      "name": "blueprint-loader",
+      "text": "Blueprint Loader"
+    },
+    {
+      "type": "entry",
+      "name": "native-loader",
+      "text": "Native Loader"
+    }
+  ]
+}

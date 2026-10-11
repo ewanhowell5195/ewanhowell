@@ -103,6 +103,13 @@
           "nexus": 125,
           "image": "01",
           "plain": true
+        },
+        {
+          "id": "custom-loading-screens",
+          "name": "Custom Loading Screens",
+          "nexus": 158,
+          "image": "01",
+          "plain": true
         }
       ]
     },
