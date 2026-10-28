@@ -193,7 +193,7 @@ body::-webkit-scrollbar-thumb
     bottom: -8px
     transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19)
 
-#sidebar
+#sidebar:where(:not(.page *))
   right: 0
   position: fixed
   z-index: 1
@@ -240,7 +240,7 @@ body::-webkit-scrollbar-thumb
 
 // page
 
-#content
+#content:where(:not(.page *))
   min-height: calc(100vh - var(--header-height) * 2)
 
 .page
