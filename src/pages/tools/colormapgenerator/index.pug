@@ -54,9 +54,9 @@ template#download-icon: include /assets/images/svg/download.svg
           p.hint Each column is a biome by numeric ID, and each row is a world Y level, starting at the bottom of the world. Unused columns use plains as a neutral default for mod biomes. Hover the grid to see the biome and Y level.
           #grid-holder
           p.note#grid-info
-        .panel#fixed-wrap
+        .panel.vanilla-only#fixed-wrap
           h2 Hardcoded colours
-          p.hint These biomes ignore the vanilla colormap and always use the same colour. In a grid colormap they are ordinary columns that OptiFine reads like any other, so the generated grid fills them with that colour at every height, even in Altitude mode.
+          p.hint These biomes ignore the colormap and always use the same colour, or change the colour they read from it.
           #fixed-biomes
         .panel.grid-only.setup
           h2 Resource pack setup
