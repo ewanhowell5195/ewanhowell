@@ -1,0 +1,27 @@
+{
+  "subtitle": "The pack where every entity has a healthbar!\nNow Dokucraft style!",
+  "description": "This pack adds healthbars to all of the entities that support OptiFine entity models!\n\nWhen you damage an entity, you can now see its health update live. You never need to wonder again if an entity is about to crush you, or almost dead!",
+  "images": [
+    "all",
+    "mobs",
+    "wolves",
+    "striders"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/entity-healthbars-dokucraft"
+    }
+  ],
+  "links": [
+    {
+      "text": "Dokucraft",
+      "link": "https://dokucraft.co.uk/"
+    },
+    {
+      "text": "Base Pack",
+      "type": "entry",
+      "name": "entity-healthbars"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "subtitle": "Hold the roll button to keep rolling!",
+  "description": "<p>While a roll key is held, you roll again as soon as you can, just like mashing the button. It works for both directional and forward dodges on keyboard and controller, and follows your keybinds if you have rebound them.</p><p>Also see <a href=\"/dungeons2mods/hold-to-jump\">Hold to Jump</a>!</p><h2>Requirements</h2><ul><li><a href=\"/dungeons2mods/blueprint-loader\">Blueprint Loader</a>, which loads this mod</li></ul><h2>Install</h2><ol><li>Close the game, and fully close the Minecraft Launcher if you use it.</li><li>Open your Minecraft Dungeons II Paks folder.<ul><li>Steam: Right click the game in your library, then Manage &gt; Browse local files, then open <code>Dungeons\\Content\\Paks</code></li><li>Minecraft Launcher: <code>C:\\XboxGames\\Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code></li></ul>If you picked a different install folder in the Minecraft Launcher, it is <code>Minecraft Dungeons II\\Content\\Dungeons\\Content\\Paks</code> inside that folder.</li><li>Create a folder called <code>~mods</code> inside the Paks folder if there is not one already.</li><li>Open the zip and move the <code>HoldToRoll</code> folder inside it into <code>~mods</code>, so the files end up like this: <code>Paks\\~mods\\HoldToRoll\\HoldToRoll_P.pak</code></li></ol><h2>Uninstall</h2><p>Delete the <code>HoldToRoll</code> folder from <code>~mods</code>.</p><h2>Support</h2><p>If you need help, join my <a href=\"https://discord.ewanhowell.com\" target=\"_blank\">Discord</a>!</p><p>Enjoying my mods? Support me on <a href=\"https://ko-fi.com/ewanhowell\" target=\"_blank\">Ko-fi</a> so I can keep making them for free!</p>",
+  "images": [
+    "01"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.nexusmods.com/minecraftdungeons2/mods/36"
+    }
+  ],
+  "links": [
+    {
+      "type": "entry",
+      "name": "blueprint-loader",
+      "text": "Blueprint Loader"
+    }
+  ]
+}

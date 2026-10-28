@@ -1,0 +1,16 @@
+{
+  "subtitle": "A pack that adds Dragonflies to the game!",
+  "description": "This pack adds dragonflies to the game, which replace the bees.\n\nThere are three different colours of Dragonfly which can be found, all spawning randomly.",
+  "optifine": "OptiFine is used to add support for remodelling bees and randomising entity textures.",
+  "video": "pCnBhaqKaD4",
+  "images": [
+    "dragonflies",
+    "showcase"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/dragonflies"
+    }
+  ]
+}

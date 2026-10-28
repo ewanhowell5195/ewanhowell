@@ -1,0 +1,24 @@
+{
+  "author": "hatsondogs",
+  "subtitle": "Ravagers are now Elephants!",
+  "description": "This is a resource pack that replaces the ravager with an elephant!",
+  "optifine": "OptiFine is used to add support for remodelling ravagers.",
+  "video": "DNB-VQmdTxo",
+  "images": [
+    "elephants",
+    "elephants2",
+    "beach"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/elephant-ravagers/"
+    }
+  ],
+  "links": [
+    {
+      "text": "By hatsondogs",
+      "link": "https://twitter.com/hatsondogsmc"
+    }
+  ]
+}

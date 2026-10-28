@@ -1,0 +1,20 @@
+{
+  "subtitle": "Bring the Black Mesa skyboxes into Minecraft",
+  "description": "This pack adds the skybox textures from the game Black Mesa into Minecraft. Experience the skyboxes from around the Black Mesa facility in the overworld, and the skyboxes from Xen in the End dimension!",
+  "optifine": "OptiFine is used to add support for custom skyboxes",
+  "video": "E6_Cxt1mocY",
+  "images": [
+    "end1",
+    "day",
+    "evening",
+    "night",
+    "end2",
+    "end3"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/black-mesa-skyboxes"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subtitle": "Create Minecraft-styled title models!",
+  "description": "This plugin adds a new format that allows you to create Minecraft-styled title models that you can render in high quality.\n\n<h2>Getting started</h2><p>To use this plugin, start by creating a new <strong>Minecraft Title</strong> project from the start screen, or go to <strong>File &gt; New &gt; Minecraft Title</strong>. You can then use the pop-up dialog to add some text to the project. Don't forget to set the text type! You can add more text by using the <strong>Add Text</strong> button in the outliner.\n\nOnce you are done configuring your text, you can go to the <strong>Render</strong> tab at the top right to produce a high-quality render of your title. The <strong>Position Camera</strong> button will set the camera angle for you.</p>",
+  "video": "iGaufrACVj4",
+  "images": [
+    "logo",
+    "start_screen",
+    "dialog",
+    "textures",
+    "scene",
+    "dokucraft",
+    "waves_and_rails",
+    "epic",
+    "mix",
+    "faithless"
+  ],
+  "links": [
+    {
+      "text": "View Plugin",
+      "link": "https://www.blockbench.net/plugins/minecraft_title_generator"
+    },
+    {
+      "text": "Install Plugin",
+      "link": "https://web.blockbench.net/?plugins=minecraft_title_generator"
+    }
+  ]
+}

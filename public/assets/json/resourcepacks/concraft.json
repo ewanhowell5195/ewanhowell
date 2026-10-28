@@ -1,0 +1,19 @@
+{
+  "subtitle": "A Flat, Concrete Like Resource Pack",
+  "description": "This pack turns every block texture into a 1x1 resolution, resulting in a Concrete appearance.",
+  "video": "m9yx6oATSQM",
+  "images": [
+    "forest",
+    "house",
+    "spruce",
+    "nether",
+    "crimson",
+    "warped"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/concraft"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "subtitle": "The cursed spiders resource pack",
+  "description": "This pack makes spiders cursed, based off the first image",
+  "optifine": "OptiFine is used to add support for remodelling spiders.",
+  "video": "cSBoa5APLZk",
+  "images": [
+    "original",
+    "spiders",
+    "id"
+  ],
+  "downloads": [
+    {
+      "text": "Download [Java]",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/cursed-spiders/"
+    }
+  ]
+}

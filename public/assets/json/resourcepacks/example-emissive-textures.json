@@ -1,0 +1,23 @@
+{
+  "subtitle": "An example of OptiFine emissive textures",
+  "description": "This is an example resource pack that shows users how to create OptiFine emissive textures.\n\nIncluded examples:\n- Emissive properties file\n- Emissive block textures\n- Emissive item textures\n- Emissive entity textures\n- Emissive armour trims\n\nUsing the provided examples, you should be able to understand how OptiFine emissive textures work, and be able to apply them to your own resource pack.",
+  "optifine": "OptiFine is used to add support for emissive textures.",
+  "images": [
+    "ores",
+    "zombies",
+    "player"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/example-emissive-textures"
+    }
+  ],
+  "links": [
+    {
+      "text": "Guide",
+      "type": "guide",
+      "name": "emissive-textures"
+    }
+  ]
+}

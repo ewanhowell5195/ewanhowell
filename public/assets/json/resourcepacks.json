@@ -1,0 +1,1534 @@
+{
+  "versions": [
+    "26.3",
+    "26.2",
+    "26.1.2",
+    "1.21.11",
+    "1.21.10",
+    "1.21.8",
+    "1.21.6",
+    "1.21.5",
+    "1.21.4",
+    "1.21.3",
+    "1.21.1",
+    "1.20",
+    "1.19",
+    "1.18",
+    "1.17",
+    "1.16",
+    "1.15",
+    "1.14",
+    "1.13",
+    "1.8"
+  ],
+  "categories": [
+    {
+      "name": "Texture Packs",
+      "entries": [
+        {
+          "id": "f8thful",
+          "image": "house",
+          "optifine": 1,
+          "versions": [
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17",
+            "1.16",
+            "1.15",
+            "1.8"
+          ]
+        },
+        {
+          "id": "oledcraft",
+          "name": "OLEDcraft",
+          "image": "cave",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17",
+            "1.16",
+            "1.15"
+          ]
+        },
+        {
+          "id": "snowstorm",
+          "image": "forest",
+          "optifine": 2,
+          "versions": [
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "scrolling-textures",
+          "image": "scroll",
+          "versions": [
+            "26.3",
+            "1.21.8",
+            "1.20",
+            "1.16",
+            "1.14"
+          ]
+        },
+        {
+          "id": "pack-and-white",
+          "name": "Pack & White",
+          "image": "house",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.16",
+            "1.15"
+          ]
+        },
+        {
+          "id": "4thful",
+          "image": "house",
+          "optifine": 1,
+          "versions": [
+            "1.17"
+          ]
+        },
+        {
+          "id": "pixelblocks",
+          "name": "pixelBlocks",
+          "image": "farm",
+          "optifine": 1,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.4",
+            "1.17"
+          ]
+        },
+        {
+          "id": "flat-packed",
+          "image": "grass",
+          "versions": [
+            "1.16",
+            "1.15"
+          ]
+        },
+        {
+          "id": "concraft",
+          "image": "forest",
+          "versions": [
+            "1.16",
+            "1.15"
+          ]
+        },
+        {
+          "id": "borderlined",
+          "image": "stone",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "tiny-blocks",
+          "image": "ground",
+          "optifine": 1,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "dimension-shift",
+          "image": "crimson",
+          "versions": [
+            "1.16",
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "basically-faithful",
+          "image": "farm",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tweaks",
+      "entries": [
+        {
+          "id": "skeleton-physics",
+          "image": "bones",
+          "optifine": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "better-bows",
+          "image": "ewan",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17"
+          ]
+        },
+        {
+          "id": "umbrella-villagers",
+          "image": "under",
+          "optifine": 2,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "double-pixel-eyes",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2"
+          ]
+        },
+        {
+          "id": "vanilla-emissive-ores",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.3"
+          ]
+        },
+        {
+          "id": "vanilla-emissive-rails",
+          "image": "rails",
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3"
+          ]
+        },
+        {
+          "id": "capeless-wings",
+          "image": "wings",
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3"
+          ]
+        },
+        {
+          "id": "better-jockeys",
+          "image": "all",
+          "optifine": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.20"
+          ]
+        },
+        {
+          "id": "minecarts-with-wheels",
+          "name": "Minecarts with Wheels",
+          "image": "left",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "boomerangs",
+          "image": "primed",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17"
+          ]
+        },
+        {
+          "id": "butterflies",
+          "image": "multiple",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.16"
+          ]
+        },
+        {
+          "id": "minecraft-experience-lily-pads",
+          "image": "lilypads",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "solar-eclipse",
+          "image": "forest",
+          "optifine": 2,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.16"
+          ]
+        },
+        {
+          "id": "paritysheep",
+          "name": "ParitySheep",
+          "image": "sheep",
+          "optifine": 2,
+          "versions": [
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "legacy-sheep",
+          "image": "flock",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5"
+          ]
+        },
+        {
+          "id": "throwing-axes",
+          "image": "target",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.19",
+            "1.18",
+            "1.17"
+          ]
+        },
+        {
+          "id": "quindent",
+          "image": "quindent",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17",
+            "1.16"
+          ]
+        },
+        {
+          "id": "swarm-of-bees",
+          "image": "orange_flowers",
+          "optifine": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.16"
+          ]
+        },
+        {
+          "id": "dragonflies",
+          "image": "dragonflies",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.16"
+          ]
+        },
+        {
+          "id": "legacy-ghasts",
+          "image": "blue",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fixes",
+      "entries": [
+        {
+          "id": "vibrating-wither-fix",
+          "image": "withers",
+          "optifine": 2,
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Update Packs",
+      "entries": [
+        {
+          "id": "1-18-panorama",
+          "name": "1.18 Panorama",
+          "image": "noui",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.17"
+          ]
+        },
+        {
+          "id": "deep-dark",
+          "image": "cave",
+          "optifine": 2,
+          "versions": [
+            "1.17"
+          ]
+        },
+        {
+          "id": "mob-vote",
+          "image": "moobloom",
+          "optifine": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.17",
+            "1.16"
+          ]
+        },
+        {
+          "id": "rebearth-remastered",
+          "image": "swamp",
+          "optifine": 2,
+          "versions": [
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.16"
+          ]
+        },
+        {
+          "id": "1-17-entities",
+          "name": "1.17 Entities",
+          "image": "sand",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "chillagers",
+          "image": "chillager",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.16"
+          ]
+        },
+        {
+          "id": "cave-update",
+          "image": "plants",
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "rebearth",
+          "image": "mobs",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        },
+        {
+          "id": "nether-update",
+          "image": "art",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        },
+        {
+          "id": "unused-biome-update",
+          "image": "both",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Examples",
+      "entries": [
+        {
+          "id": "example-random-entity-textures",
+          "image": "cows",
+          "optifine": 2,
+          "logoless": true,
+          "fontsize": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.20"
+          ]
+        },
+        {
+          "id": "example-emissive-textures",
+          "image": "ores",
+          "optifine": 2,
+          "logoless": true,
+          "fontsize": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "example-trident-cit",
+          "name": "Example Trident CIT",
+          "image": "tridents",
+          "optifine": 2,
+          "logoless": true,
+          "fontsize": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5"
+          ]
+        },
+        {
+          "id": "example-custom-model-data",
+          "image": "player",
+          "logoless": true,
+          "fontsize": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cursed",
+      "entries": [
+        {
+          "id": "consistent-baby-mobs",
+          "image": "pigs",
+          "versions": [
+            "26.1.2"
+          ]
+        },
+        {
+          "id": "sheepified-remastered",
+          "image": "group1",
+          "optifine": 2,
+          "versions": [
+            "1.20",
+            "1.16"
+          ]
+        },
+        {
+          "id": "fandom-overlay",
+          "image": "overlay",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "google-images",
+          "image": "house",
+          "versions": [
+            "1.17"
+          ]
+        },
+        {
+          "id": "sheep-ender-dragon",
+          "image": "pillar",
+          "optifine": 2,
+          "versions": [
+            "1.17"
+          ]
+        },
+        {
+          "id": "striderchan",
+          "image": "group",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "playermodelmobs",
+          "name": "PlayerModelMobs",
+          "image": "mobs2",
+          "optifine": 2,
+          "versions": [
+            "1.16",
+            "1.14"
+          ]
+        },
+        {
+          "id": "stevified",
+          "image": "steve",
+          "optifine": 2,
+          "versions": [
+            "1.16",
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "rolling-entities",
+          "image": "cows",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "cursed-spiders",
+          "image": "spiders",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "glide",
+          "image": "dragon",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "packstralia",
+          "image": "kitchen",
+          "versions": [
+            "1.15"
+          ]
+        },
+        {
+          "id": "sheepified",
+          "image": "dragon",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        },
+        {
+          "id": "the-cursed-pack",
+          "image": "mobs",
+          "versions": [
+            "1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pack Development",
+      "entries": [
+        {
+          "id": "solid-block-transparency-support",
+          "image": "transparent",
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "solid-entity-transparency-support",
+          "image": "transparent",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8"
+          ]
+        },
+        {
+          "id": "template-unique-sheep",
+          "image": "sheep",
+          "optifine": 2,
+          "logoless": true,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "template-remodellable-beds",
+          "image": "beds",
+          "logoless": true,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8"
+          ]
+        },
+        {
+          "id": "template-green",
+          "image": "bg",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.16"
+          ]
+        },
+        {
+          "id": "flipped-uvs",
+          "name": "Flipped UVs",
+          "image": "bg",
+          "optifine": 2,
+          "versions": [
+            "1.21.8",
+            "1.19"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other",
+      "entries": [
+        {
+          "id": "black-mesa-skyboxes",
+          "image": "end1",
+          "optifine": 2,
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "spinning-skull",
+          "image": "painting",
+          "logoless": true,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "fences-plus",
+          "image": "oak",
+          "name": "Fences+",
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "packommunity",
+          "image": "dragon",
+          "optifine": 2,
+          "versions": [
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "better-3d",
+          "name": "Better 3D",
+          "image": "redstone",
+          "optifine": 1,
+          "versions": [
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "better-3d-foliage",
+          "name": "Better 3D: Foliage",
+          "image": "grass",
+          "logoless": true,
+          "versions": [
+            "1.14"
+          ]
+        },
+        {
+          "id": "fluorescence",
+          "image": "forest",
+          "optifine": 2,
+          "versions": [
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "rerender",
+          "image": "end",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PvP",
+      "entries": [
+        {
+          "id": "mini-items",
+          "image": "sword",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.16",
+            "1.14",
+            "1.8"
+          ]
+        },
+        {
+          "id": "translucencraft",
+          "image": "bow",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.16"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Addons",
+      "entries": [
+        {
+          "id": "fresh-skeleton-physics",
+          "image": "dead",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "fresh-umbrella-villagers",
+          "image": "swamp",
+          "optifine": 2,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8"
+          ]
+        },
+        {
+          "id": "vanilla-emissive-ores-sodium",
+          "name": "Vanilla Emissive Ores [Sodium]",
+          "image": "wall",
+          "logoless": true,
+          "versions": [
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3"
+          ]
+        },
+        {
+          "id": "f8thful-font",
+          "image": "menu",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "minecarts-with-wheels-faithful",
+          "name": "Minecarts with Wheels: Faithful",
+          "image": "left",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19"
+          ]
+        },
+        {
+          "id": "entity-healthbars-hearts",
+          "name": "Entity Healthbars: Hearts",
+          "image": "all",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "entity-healthbars-32x",
+          "name": "Entity Healthbars: 32x",
+          "image": "all_entities",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "entity-healthbars-64x",
+          "name": "Entity Healthbars: 64x",
+          "image": "all",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "entity-healthbars-dokucraft",
+          "name": "Entity Healthbars: Dokucraft",
+          "image": "all",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "visual-shulker-labels-2d-display",
+          "name": "Visual Shulker Labels: 2D Display",
+          "image": "gui",
+          "optifine": 2,
+          "versions": [
+            "1.19"
+          ]
+        },
+        {
+          "id": "mob-vote-faithful",
+          "name": "Mob Vote: Faithful",
+          "image": "moobloom",
+          "optifine": 2,
+          "versions": [
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.17"
+          ]
+        },
+        {
+          "id": "pack-and-white-crimson-chrome",
+          "name": "Pack & White: Crimson Chrome",
+          "image": "forest",
+          "optifine": 1,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "pack-and-white-faithful",
+          "name": "Pack & White: Faithful",
+          "image": "entities",
+          "optifine": 1,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "fandom-overlay-ublock-origin-edition",
+          "name": "Fandom Overlay: uBlock Origin Edition",
+          "image": "overlay",
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "fences-plus-faithful",
+          "name": "Fences+: Faithful",
+          "image": "fences",
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "the-pewdiepack-faithful",
+          "name": "The PewDiePack: Faithful",
+          "image": "elytra",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "entries": [
+        {
+          "id": "boat-utilities",
+          "image": "multiple",
+          "optifine": 2,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20"
+          ]
+        },
+        {
+          "id": "entity-healthbars",
+          "image": "banner",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "visual-shulker-labels",
+          "image": "gui",
+          "versions": [
+            "1.21.8",
+            "1.19"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Packs I Have Contributed To",
+      "entries": [
+        {
+          "id": "elephant-ravagers",
+          "image": "elephants",
+          "optifine": 2,
+          "versions": [
+            "1.20",
+            "1.19",
+            "1.16"
+          ]
+        },
+        {
+          "id": "barely-default",
+          "image": "banner",
+          "optifine": 1,
+          "versions": [
+            "26.3",
+            "26.2",
+            "26.1.2",
+            "1.21.11",
+            "1.21.10",
+            "1.21.8",
+            "1.21.6",
+            "1.21.5",
+            "1.21.4",
+            "1.21.3",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.17",
+            "1.16",
+            "1.14",
+            "1.13"
+          ]
+        },
+        {
+          "id": "chubby-cheeks",
+          "image": "chonk",
+          "optifine": 2,
+          "versions": [
+            "1.20",
+            "1.18",
+            "1.16"
+          ]
+        },
+        {
+          "id": "caelesti",
+          "image": "twisting-vines",
+          "optifine": 2,
+          "versions": [
+            "1.21.8",
+            "1.21.4",
+            "1.21.1",
+            "1.20",
+            "1.19",
+            "1.18",
+            "1.16",
+            "1.15"
+          ]
+        },
+        {
+          "id": "overgrowth",
+          "image": "village",
+          "optifine": 1,
+          "versions": [
+            "1.18",
+            "1.17",
+            "1.16",
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "devolution",
+          "image": "1.14+5",
+          "optifine": 2,
+          "versions": [
+            "1.17"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seasonal",
+      "entries": [
+        {
+          "id": "packtober-remastered",
+          "image": "leaves",
+          "optifine": 2,
+          "versions": [
+            "1.19",
+            "1.17",
+            "1.16"
+          ],
+          "featured": [
+            10
+          ]
+        },
+        {
+          "id": "craftmas-remastered",
+          "image": "cane",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ],
+          "featured": [
+            12
+          ]
+        },
+        {
+          "id": "packtober",
+          "image": "trumpet-skeleton",
+          "versions": [
+            "1.16",
+            "1.14"
+          ],
+          "featured": [
+            10
+          ]
+        },
+        {
+          "id": "craftmas",
+          "image": "fence",
+          "optifine": 2,
+          "versions": [
+            "1.16",
+            "1.14"
+          ],
+          "featured": [
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "name": "YouTube",
+      "entries": [
+        {
+          "id": "pewdiepack-remastered",
+          "name": "PewDiePack Remastered",
+          "image": "acacia",
+          "optifine": 2,
+          "versions": [
+            "1.16"
+          ]
+        },
+        {
+          "id": "the-pewdiepack",
+          "name": "The PewDiePack",
+          "image": "creeper",
+          "optifine": 2,
+          "versions": [
+            "1.15",
+            "1.14"
+          ]
+        },
+        {
+          "id": "packsepticeye",
+          "image": "flag",
+          "optifine": 2,
+          "versions": [
+            "1.14"
+          ]
+        }
+      ]
+    }
+  ]
+}

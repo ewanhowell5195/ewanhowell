@@ -1,0 +1,33 @@
+{
+  "subtitle": "The ultimate halloween themed resource pack",
+  "description": "This pack adds lots of halloween related features, from ghost Piglins, to chests that jump up and bite you!",
+  "optifine": "OptiFine is used to add support for custom entity models, connected textures, emissive textures, and custom colours.",
+  "video": "447HkFIq93k",
+  "images": [
+    "leaves",
+    "pumpkin",
+    "villagers",
+    "endermen",
+    "bones",
+    "signs",
+    "beds",
+    "lanterns",
+    "ore",
+    "dragon",
+    "end-city",
+    "shulkers"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/packtober-remastered"
+    }
+  ],
+  "links": [
+    {
+      "text": "Legacy version",
+      "type": "entry",
+      "name": "packtober"
+    }
+  ]
+}

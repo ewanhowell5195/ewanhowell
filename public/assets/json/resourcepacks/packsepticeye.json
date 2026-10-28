@@ -1,0 +1,20 @@
+{
+  "subtitle": "The official Jacksepticeye themed resource pack!",
+  "description": "Jacksepticeye's channel spread across the whole game, from Sam and the septiceyes to Irish beds, golden potatoes and a bartender witch.",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "wjsFcWSnr2c",
+  "images": [
+    "menu",
+    "logo"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/packsepticeye"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "https://www.curseforge.com/minecraft-bedrock/addons/packsepticeye-bedrock/"
+    }
+  ]
+}

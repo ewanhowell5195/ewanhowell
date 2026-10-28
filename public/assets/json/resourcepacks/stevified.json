@@ -1,0 +1,16 @@
+{
+  "subtitle": "The pack where every entity is Steve!",
+  "description": "This pack replaces all entities that can be modelled with a Steve model and Texture.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "z2mVXMIH-E8",
+  "images": [
+    "steve",
+    "wither"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/stevified"
+    }
+  ]
+}

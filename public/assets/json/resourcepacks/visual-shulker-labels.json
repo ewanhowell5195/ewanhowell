@@ -1,0 +1,16 @@
+{
+  "subtitle": "Label your shulkers with style",
+  "description": "This pack makes it so that you can give a shulker box an item name and the shulker gets a visual label of the item on it!\n\nShulkers must be named to exactly match the name of the item you wish it to display. Names are case sensitive, but fully lowercase and fully uppercase are also supported!",
+  "video": "WUfUnJDw7IU",
+  "images": [
+    "gui2",
+    "orange",
+    "yellow"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/visual-shulker-labels"
+    }
+  ]
+}

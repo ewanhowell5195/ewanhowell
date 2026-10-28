@@ -1,0 +1,23 @@
+{
+  "subtitle": "Turn striders into Striderchan!",
+  "description": "This pack turns the striders into Striderchan!",
+  "optifine": "OptiFine is used to add support for remodelling striders.",
+  "video": "169FdqyYAfc",
+  "images": [
+    "strider",
+    "group",
+    "render"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft/texture-packs/striderchan/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Model By MCVinnyq",
+      "link": "https://twitter.com/MCVinnyq"
+    }
+  ]
+}

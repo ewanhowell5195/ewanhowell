@@ -1,0 +1,17 @@
+{
+  "subtitle": "A pack where bees come in swarms!",
+  "description": "This pack makes it so that the Bee model is a swarm of 6 small bees!",
+  "optifine": "OptiFine is used to add support for remodelling bees.",
+  "video": "uK8c3BhIxAU",
+  "images": [
+    "orange_flowers",
+    "white_flowers",
+    "single"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/swarm-of-bees"
+    }
+  ]
+}

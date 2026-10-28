@@ -1,0 +1,26 @@
+{
+  "subtitle": "The remastered PewDiePie themed resource pack!",
+  "description": "A complete rebuild of the original pack, with remodelled mobs, blocks and items from PewDiePie's videos.",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "hAmZDoVQjbs",
+  "images": [
+    "beds",
+    "cake",
+    "dj",
+    "acacia",
+    "menu"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/pewdiepack-remastered"
+    }
+  ],
+  "links": [
+    {
+      "text": "Legacy version",
+      "type": "entry",
+      "name": "the-pewdiepack"
+    }
+  ]
+}

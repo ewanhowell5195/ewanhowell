@@ -1,0 +1,20 @@
+{
+  "subtitle": "A pack made entirely from community suggestions",
+  "description": "This pack is made entirely from suggestions and ideas from the community.",
+  "optifine": "OptiFine is used to add support for custom entity models and emissive textures.",
+  "video": "oi1UdNojCUk",
+  "images": [
+    "dragon",
+    "sheep"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/packommunity"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "https://www.curseforge.com/minecraft-bedrock/addons/packommunity/"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "subtitle": "The Vanilla 8x8 Resource Pack",
+  "description": "F8thful is a vanilla friendly resource pack where every texture has been recreated in 8x8!",
+  "optifine": "OptiFine is used to add connected textures to better hide repeated textures.\n\nCustom entity models are also included to make entity models work better with 8x8 textures.",
+  "video": "ApNzlL2JDp4",
+  "images": [
+    "house",
+    "farm",
+    "underwater",
+    "lush",
+    "swamp",
+    "delta",
+    "crimson",
+    "lush2",
+    "dripstone",
+    "warped",
+    "farm2",
+    "cherry"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/f8thful"
+    },
+    {
+      "text": "Download [Bedrock]",
+      "link": "https://www.curseforge.com/minecraft-bedrock/texture-packs/f8thful-bedrock/"
+    }
+  ],
+  "links": [
+    {
+      "text": "Font Pack",
+      "type": "entry",
+      "name": "f8thful-font"
+    }
+  ]
+}

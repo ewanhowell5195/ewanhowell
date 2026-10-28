@@ -1,0 +1,17 @@
+{
+  "subtitle": "Bring a Solar Eclipse to your world.",
+  "description": "This pack modifies the sky, sun, moon, and lightmap to make it look like there is a solar eclipse!",
+  "optifine": "OptiFine is used to change the sky colour and to change the lightmap.",
+  "video": "pfWo9oLVK1w",
+  "images": [
+    "sun",
+    "forest",
+    "chickens"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/solar-eclipse"
+    }
+  ]
+}

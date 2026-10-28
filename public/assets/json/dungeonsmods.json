@@ -1,0 +1,87 @@
+{
+  "categories": [
+    {
+      "name": "Pet Mods",
+      "entries": [
+        {
+          "id": "companion-cube",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "wall-e",
+          "name": "WALL-E",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "bb-8",
+          "name": "BB-8",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "claptrap",
+          "name": "ClapTrap",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "worm",
+          "image": "render",
+          "logoless": true
+        },
+        {
+          "id": "strider",
+          "image": "strider",
+          "logoless": true
+        },
+        {
+          "id": "glados",
+          "name": "GLaDOS",
+          "image": "glados",
+          "logoless": true
+        }
+      ]
+    },
+    {
+      "name": "Texture Packs",
+      "entries": [
+        {
+          "id": "f8thful-dungeons",
+          "image": "zombie"
+        }
+      ]
+    },
+    {
+      "name": "Utility",
+      "entries": [
+        {
+          "id": "invisible-steve",
+          "image": "steve",
+          "logoless": true
+        }
+      ]
+    },
+    {
+      "name": "Mods I've Contributed To",
+      "entries": [
+        {
+          "id": "the-warden",
+          "image": "warden",
+          "logoless": true
+        },
+        {
+          "id": "striderchan",
+          "image": "nether",
+          "logoless": true
+        },
+        {
+          "id": "manhacks",
+          "image": "render",
+          "logoless": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "subtitle": "An example of OptiFine random entity textures",
+  "description": "This is an example resource pack that shows users how to create OptiFine random entity textures.\n\nIncluded examples:\n- Randomised textures\n- Weight based textures\n- Name based textures\n- Biome based textures\n- NBT based textures\n\nUsing the provided examples, you should be able to understand how OptiFine random entity textures works, and be able to apply it to your own resource pack.",
+  "optifine": "OptiFine is used to add support for random entity textures.",
+  "images": [
+    "cows",
+    "chickens",
+    "endermen"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/example-random-entity-textures"
+    }
+  ],
+  "links": [
+    {
+      "text": "Guide",
+      "type": "guide",
+      "name": "random-entity-textures"
+    }
+  ]
+}

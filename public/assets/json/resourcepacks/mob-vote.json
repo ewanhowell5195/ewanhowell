@@ -1,0 +1,26 @@
+{
+  "subtitle": "The pack that adds the Mob Vote entities.",
+  "description": "This pack adds 6 entities from the mob votes, excluding the Phantom and Glow Squid as they are already in the game.\n\nEntities:\n- The Lurker - Random squid spawn\n- The Great Hunger - Random spider spawn\n- The Blaze Knight - Random blaze spawn\n- The Iceologer - Evokers spawned in cold biomes\n- The Moobloom - Cows sspawned in flower biomes\n- The Glare - Random bee spawn",
+  "optifine": "OptiFine is used to add support for custom entity models and random entity textures.",
+  "video": "SeSEVDqPE9c",
+  "images": [
+    "iceologer",
+    "great-hunger",
+    "blaze-knight",
+    "lurker",
+    "moobloom"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/mob-vote"
+    }
+  ],
+  "links": [
+    {
+      "text": "Faithful Version",
+      "type": "entry",
+      "name": "mob-vote-faithful"
+    }
+  ]
+}

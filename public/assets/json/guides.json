@@ -1,0 +1,21 @@
+[
+  {
+    "id": "random-entity-textures",
+    "description": "How to add texture variations to entities based on things like name, biome, Y level, NBT data, and more!",
+    "optifine": true
+  },
+  {
+    "id": "emissive-textures",
+    "description": "How to add emissive textures to make blocks, items, and entities glow!",
+    "optifine": true
+  },
+  {
+    "id": "slicer-1-20-2",
+    "name": "Slicer 1.20.2",
+    "description": "How to update your resource pack GUI to 1.20.2 using Mojang's Slicer tool!"
+  },
+  {
+    "id": "9minecraft-dmca-takedown",
+    "description": "How to get your stolen resource packs removed from 9Minecraft (and other similar websites)."
+  }
+]

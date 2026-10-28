@@ -1,0 +1,24 @@
+{
+  "subtitle": "The PewDiePie themed resource pack, now in 32x!",
+  "description": "The PewDiePack rebuilt at 32x so it fits alongside Faithful.",
+  "optifine": "OptiFine is used to add support for custom entity models, random entity textures, and custom item textures.",
+  "video": "qrmkvNkRlnI",
+  "images": [
+    "elytra",
+    "dr-phillager",
+    "gfuel"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/the-pewdiepack-faithful"
+    }
+  ],
+  "links": [
+    {
+      "text": "Original version",
+      "type": "entry",
+      "name": "the-pewdiepack"
+    }
+  ]
+}

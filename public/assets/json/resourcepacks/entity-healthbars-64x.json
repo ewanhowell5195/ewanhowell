@@ -1,0 +1,23 @@
+{
+  "subtitle": "Add Healthbars To All The Entities - Now In 64x",
+  "description": "This pack adds 64x resolution healthbars to all of the entities that support OptiFine entity models!\n\nWhen you damage an entity, you can now see its health update live. You never need to wonder again if an entity is about to crush you, or almost dead!",
+  "video": "EF7SNETTMvU",
+  "images": [
+    "all",
+    "endermen",
+    "piglins"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/entity-healthbars-64x"
+    }
+  ],
+  "links": [
+    {
+      "text": "Base Pack",
+      "type": "entry",
+      "name": "entity-healthbars"
+    }
+  ]
+}

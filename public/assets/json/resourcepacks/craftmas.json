@@ -1,0 +1,22 @@
+{
+  "subtitle": "The Christmas themed resource pack",
+  "description": "This is a resource pack that is perfect for Christmas and Winter Time as it makes the entire world snowy! A lot of other christmas references are in there too, such as Candy Cane Fences.",
+  "optifine": "OptiFine is used to add support for remodelling entities.",
+  "video": "w-ZKOcfPeNA",
+  "images": [
+    "fence"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/craftmas-pack"
+    }
+  ],
+  "links": [
+    {
+      "text": "Remastered version",
+      "type": "entry",
+      "name": "craftmas-remastered"
+    }
+  ]
+}

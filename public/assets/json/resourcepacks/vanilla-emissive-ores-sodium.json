@@ -1,0 +1,24 @@
+{
+  "subtitle": "Make the ore textures emissive, completely in vanilla!",
+  "description": "AFTER MINECRAFT 26.1, THIS SODIUM VERSION IS NO LONGER NEEDED! USE THE REGULAR PACK INSTEAD!\n\nThis pack utilises the new emissive block models feature from 1.21.2 to add emissive ore textures!\n\nThis version of the resource pack supports the Sodium mod, but is more performance heavy.",
+  "images": [
+    "wall",
+    "ores",
+    "cave",
+    "cave_with_water",
+    "underwater_cave"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/vanilla-emissive-ores-sodium"
+    }
+  ],
+  "links": [
+    {
+      "text": "Original Version",
+      "type": "entry",
+      "name": "vanilla-emissive-ores"
+    }
+  ]
+}

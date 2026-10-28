@@ -1,0 +1,30 @@
+{
+  "subtitle": "Make Minecraft Black & White",
+  "description": "This pack is the regular vanilla Minecraft, but everything is now black and white!\n\nThis pack is compatible with almost any other resource pack.\n\nFabulous graphics are optional, but recommended for the full effect!",
+  "video": "vehclKJo_1o",
+  "images": [
+    "house",
+    "farm",
+    "forest",
+    "houses",
+    "ice",
+    "cave",
+    "lava",
+    "lush",
+    "crimson",
+    "warped"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/pack-and-white"
+    }
+  ],
+  "links": [
+    {
+      "text": "Crimson Chrome Version",
+      "type": "entry",
+      "name": "pack-and-white-crimson-chrome"
+    }
+  ]
+}

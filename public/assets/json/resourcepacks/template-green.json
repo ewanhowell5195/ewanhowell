@@ -1,0 +1,15 @@
+{
+  "subtitle": "Coloured versions of the grayscaled blocks",
+  "description": "This resource pack contains all the normally greyscaled textures in their coloured format, so that it is easy to use them for whatever you need to use them for.",
+  "images": [
+    "blocks",
+    "files",
+    "redstone"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/template-green"
+    }
+  ]
+}

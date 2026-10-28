@@ -1,0 +1,17 @@
+{
+  "subtitle": "The five-pronged Trident",
+  "description": "This pack remodeles the Trident into a Quindent, which is a Trident with 5 prongs!",
+  "optifine": "OptiFine is required to add support for remodelling the Trident",
+  "video": "DbeCkY1yajI",
+  "images": [
+    "throw",
+    "hold",
+    "quindent"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://modrinth.com/resourcepack/quindent"
+    }
+  ]
+}

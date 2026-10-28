@@ -1,0 +1,15 @@
+{
+  "subtitle": "The ClapTrap pet mod for Minecraft Dungeons",
+  "description": "This is a pet mod for Minecraft Dungeons that replaces the baby pig pet with ClapTrap!",
+  "images": [
+    "render",
+    "menu",
+    "inventory"
+  ],
+  "downloads": [
+    {
+      "text": "Download",
+      "link": "https://www.curseforge.com/minecraft-dungeons/mods/claptrap"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "subtitle": "View the project backups from the Blockbench start screen.",
+  "description": "This plugin adds a a backup tab to the start screen that allows you to quickly and easily see your project backups.\n\n<h2>Usage</h2><p>On the <b>Recent Models</b> view on the start screen, a new <b>Backup</b> tab will be added. Select this tab to view your backups. Both grid view and list view are available</p>",
+  "images": [ "backups" ],
+  "links": [
+    {
+      "text": "View Plugin",
+      "link": "https://www.blockbench.net/plugins/backup_viewer"
+    }
+  ]
+}
