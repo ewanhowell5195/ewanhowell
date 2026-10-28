@@ -99,6 +99,7 @@ async function generateEntry(type, id, entry) {
     icon: `${type}/${id}/icon.webp`
   })
 
+  if (fs.existsSync(`public/assets/images/${type}/${id}/cover.jpg`)) return
   if (entry.plain) {}
   else if (entry.logoless) {
     await drawText(entryName, {
