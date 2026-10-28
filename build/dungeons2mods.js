@@ -198,7 +198,7 @@ function publish(message) {
   console.log("Pushed the website")
 }
 
-export default async function updateMod({ game, project, projectPath, apiKey, sharp: managerSharp, push = true }) {
+export default async function updateMod({ game, project, projectPath, apiKey, sharp: managerSharp, push = true, published }) {
   if (game !== GAME || !project?.mod?.id) return
   sharp ??= managerSharp ?? (await import("sharp")).default
   const index = await readIndex()
@@ -210,7 +210,7 @@ export default async function updateMod({ game, project, projectPath, apiKey, sh
   index.categories = index.categories.filter(e => e.entries.length)
 
   const live = await api(apiKey, `games/${NEXUS_GAME}/mods/${project.mod.id}.json`)
-  const shown = live.status === "published" && live.available
+  const shown = published ?? ((live.status === "published" && live.available) || (old.length > 0 && live.status === "not_published"))
   const id = slug(project.name)
   if (shown) {
     const slugs = new Map(index.categories.flatMap(e => e.entries).map(e => [e.nexus, e.id]))
