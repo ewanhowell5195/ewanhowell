@@ -81,15 +81,17 @@ async function generateEntry(type, id, entry) {
   let bgPath
   if (entry.image) bgPath = `public/assets/images/${type}/${id}/images/${entry.image}.webp`
   else bgPath = "public/assets/images/home/logo_3d.webp"
+  const coverPath = `public/assets/images/${type}/${id}/cover.jpg`
+  const hasCover = fs.existsSync(coverPath)
   writePage(`${type}/${id}`, {
     title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
     description: data.subtitle.replace(/\n/g, " "),
     image: `${type}/${id}/cover.jpg`,
-    colour: `#${(await sharp(bgPath).resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}`,
+    colour: `#${(await sharp(hasCover ? coverPath : bgPath).resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}`,
     icon: `${type}/${id}/icon.webp`
   })
 
-  if (fs.existsSync(`public/assets/images/${type}/${id}/cover.jpg`)) return
+  if (hasCover) return
   const img = await loadImage(await sharp(bgPath).png().toBuffer())
   const canvas = new Canvas(640, 360)
   const ctx = canvas.getContext("2d")
