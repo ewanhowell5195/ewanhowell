@@ -81,8 +81,16 @@ async function generateEntry(type, id, entry) {
   let bgPath
   if (entry.image) bgPath = `public/assets/images/${type}/${id}/images/${entry.image}.webp`
   else bgPath = "public/assets/images/home/logo_3d.webp"
-  const bgSharp = sharp(bgPath)
-  const img = await loadImage(await bgSharp.png().toBuffer())
+  writePage(`${type}/${id}`, {
+    title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
+    description: data.subtitle.replace(/\n/g, " "),
+    image: `${type}/${id}/cover.jpg`,
+    colour: `#${(await sharp(bgPath).resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}`,
+    icon: `${type}/${id}/icon.webp`
+  })
+
+  if (fs.existsSync(`public/assets/images/${type}/${id}/cover.jpg`)) return
+  const img = await loadImage(await sharp(bgPath).png().toBuffer())
   const canvas = new Canvas(640, 360)
   const ctx = canvas.getContext("2d")
   if (entry.plain) ctx.drawImage(img, 0, 0, 640, 360)
@@ -91,15 +99,6 @@ async function generateEntry(type, id, entry) {
     ctx.drawImage(img, -10, -10, 660, 380)
     ctx.filter = "none"
   }
-  writePage(`${type}/${id}`, {
-    title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
-    description: data.subtitle.replace(/\n/g, " "),
-    image: `${type}/${id}/cover.jpg`,
-    colour: `#${(await bgSharp.resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}`,
-    icon: `${type}/${id}/icon.webp`
-  })
-
-  if (fs.existsSync(`public/assets/images/${type}/${id}/cover.jpg`)) return
   if (entry.plain) {}
   else if (entry.logoless) {
     await drawText(entryName, {
