@@ -78,20 +78,27 @@ async function generateEntry(type, id, entry) {
   const entryName = entry.name ?? toTitleCase(id, true, true)
   if (!fs.existsSync(`public/assets/json/${type}/${id}.json`)) return
   const data = JSON.parse(fs.readFileSync(`public/assets/json/${type}/${id}.json`, "utf-8"))
-  let bgPath
-  if (entry.image) bgPath = `public/assets/images/${type}/${id}/images/${entry.image}.webp`
-  else bgPath = "public/assets/images/home/logo_3d.webp"
-  const coverPath = `public/assets/images/${type}/${id}/cover.jpg`
-  const hasCover = fs.existsSync(coverPath)
+  if (!fs.existsSync(`public/assets/images/${type}/${id}/cover.jpg`)) await drawCover(type, id, entry, entryName)
   writePage(`${type}/${id}`, {
     title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
     description: data.subtitle.replace(/\n/g, " "),
     image: `${type}/${id}/cover.jpg`,
-    colour: `#${(await sharp(hasCover ? coverPath : bgPath).resize(1, 1).raw().toBuffer()).toString("hex").slice(0, 6)}`,
+    colour: await leftColour(`dist/assets/images/${type}/${id}/cover.jpg`),
     icon: `${type}/${id}/icon.webp`
   })
+}
 
-  if (hasCover) return
+async function leftColour(file) {
+  const image = sharp(file)
+  const { width, height } = await image.metadata()
+  const pixel = await image.extract({ left: 0, top: 0, width: Math.max(1, Math.round(width / 10)), height }).resize(1, 1).raw().toBuffer()
+  return `#${pixel.toString("hex").slice(0, 6)}`
+}
+
+async function drawCover(type, id, entry, entryName) {
+  let bgPath
+  if (entry.image) bgPath = `public/assets/images/${type}/${id}/images/${entry.image}.webp`
+  else bgPath = "public/assets/images/home/logo_3d.webp"
   const img = await loadImage(await sharp(bgPath).png().toBuffer())
   const canvas = new Canvas(640, 360)
   const ctx = canvas.getContext("2d")
