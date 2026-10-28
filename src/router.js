@@ -17,11 +17,13 @@ export const router = createRouter({
   })).concat({ path: catchAll, component: { render: () => null } })
 })
 
-let silent = false
+let silent = 0
 
 export function silentNavigate(to, replace) {
-  silent = true
-  return (replace ? router.replace(to) : router.push(to)).finally(() => silent = false)
+  silent++
+  const { path, query, hash } = router.resolve(to)
+  const location = { path, query, hash, force: true }
+  return (replace ? router.replace(location) : router.push(location)).finally(() => silent--)
 }
 
 export function parentRoute(route) {
