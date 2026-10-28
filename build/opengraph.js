@@ -91,7 +91,7 @@ async function generateEntry(type, id, entry) {
 async function leftColour(file) {
   const image = sharp(file)
   const { width, height } = await image.metadata()
-  const pixel = await image.extract({ left: 0, top: 0, width: Math.max(1, Math.round(width / 10)), height }).resize(1, 1).raw().toBuffer()
+  const pixel = await image.extract({ left: 0, top: 0, width: Math.max(1, Math.round(width * 0.4)), height }).resize(1, 1).raw().toBuffer()
   return `#${pixel.toString("hex").slice(0, 6)}`
 }
 
