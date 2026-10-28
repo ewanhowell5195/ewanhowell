@@ -374,7 +374,7 @@ load()
   svg
     overflow: visible
 
-  path
+  :deep(path)
     fill: white
     filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
 
