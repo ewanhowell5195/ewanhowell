@@ -33,14 +33,14 @@ body
   overflow: auto
   min-height: 100vh
 
-*
+*:where(:not(.page *))
   font-family: Arial
   color: var(--color-text-white)
   
-.hidden
+.hidden:where(:not(.page *))
   display: none !important
 
-.spacer
+.spacer:where(:not(.page *))
   flex: 1
 
 // scrollbar
@@ -120,7 +120,7 @@ body::-webkit-scrollbar-thumb
   &.logo > span::before
     content: "Home"
 
-.logo
+.logo:where(:not(.page *))
   padding-left: 0
 
   img
@@ -193,7 +193,7 @@ body::-webkit-scrollbar-thumb
     bottom: -8px
     transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19)
 
-#sidebar
+#sidebar:where(:not(.page *))
   right: 0
   position: fixed
   z-index: 1
@@ -240,7 +240,7 @@ body::-webkit-scrollbar-thumb
 
 // page
 
-#content
+#content:where(:not(.page *))
   min-height: calc(100vh - var(--header-height) * 2)
 
 .page
@@ -257,6 +257,36 @@ body::-webkit-scrollbar-thumb
     pointer-events: none
     animation: none
     opacity: 0
+
+  .progress-bar
+    position: absolute
+    top: 0
+    left: 0
+    background-color: var(--color-text-white)
+    transition: width 100ms, height 250ms
+    z-index: 9999
+
+  .page-body
+    display: block
+    overflow-x: clip
+
+  [data-popupable], [data-popupable] *
+    cursor: pointer
+
+  ::-webkit-scrollbar
+    width: 10px
+    height: 10px
+
+  ::-webkit-scrollbar-thumb
+    box-shadow: none
+    min-height: 0
+    background-color: var(--color-red)
+
+    &:hover
+      background-color: var(--color-red-light)
+
+      &:active
+        background-color: var(--color-red-dark)
 
 // footer
 

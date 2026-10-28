@@ -1,23 +1,24 @@
 {
+  "name": "ewanhowell",
+  "private": true,
   "type": "module",
-  "webbuilder": {
-    "cloudflare_spa_router": true,
-    "uglify": true,
-    "watch": [
-      "src",
-      "includes"
-    ],
-    "pugLocals": {
-      "domain": "ewanhowell.com"
-    },
-    "stylusPaths": [
-      "includes/stylus"
-    ]
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node build/opengraph.js",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "vue": "^3.5.44",
+    "vue-router": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
     "sharp": "^0.32.5",
     "skia-canvas": "^1.0.2",
     "skia-canvas-draw-text": "^1.3.1",
-    "webbuilder": "github:EvenTorset/WebBuilder"
+    "stylus": "^0.64.0",
+    "vite": "^8.0.0"
   }
 }
