@@ -1,193 +1,193 @@
 <script setup>
-import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from "vue"
-import { useRoute } from "vue-router"
-import Page from "../components/Page.vue"
-import Link from "../components/Link.vue"
-import Icon from "../components/Icon.js"
-import { site } from "../lib/site.js"
-import { silentNavigate } from "../router.js"
-import { fetchJSON, entryName, getURLParams, toURLParams, gtag, analytics } from "../lib/utils.js"
+  import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from "vue"
+  import { useRoute } from "vue-router"
+  import Page from "../components/Page.vue"
+  import Link from "../components/Link.vue"
+  import Icon from "../components/Icon.js"
+  import { site } from "../lib/site.js"
+  import { silentNavigate } from "../router.js"
+  import { fetchJSON, entryName, getURLParams, toURLParams, gtag, analytics } from "../lib/utils.js"
 
-const props = defineProps({ type: String })
+  const props = defineProps({ type: String })
 
-site.selected = `/${props.type}`
+  site.selected = `/${props.type}`
 
-const route = useRoute()
-const title = route.meta.title.split(" - ")[0]
+  const route = useRoute()
+  const title = route.meta.title.split(" - ")[0]
 
-const loading = ref(true)
-const hasVersions = ref(false)
-const versions = ref([])
-const current = ref()
-const query = ref("")
-const searchValue = ref("")
-const collapsed = reactive(new Set)
-const featured = reactive({})
-const tabs = ref()
-const headerTop = ref()
-let searchTimeout
+  const loading = ref(true)
+  const hasVersions = ref(false)
+  const versions = ref([])
+  const current = ref()
+  const query = ref("")
+  const searchValue = ref("")
+  const collapsed = reactive(new Set)
+  const featured = reactive({})
+  const tabs = ref()
+  const headerTop = ref()
+  let searchTimeout
 
-function build(data) {
-  const month = new Date().getMonth() + 1
-  if (data.versions) for (const category of data.categories) {
-    category.entries.sort((a, b) => {
-      const aHas = a.featured?.includes(month)
-      const bHas = b.featured?.includes(month)
-      if (aHas && !bHas) return -1
-      else if (!aHas && bHas) return 1
-      return data.versions.indexOf(a.versions[0]) - data.versions.indexOf(b.versions[0])
-    })
-  }
-  const list = data.versions?.map(e => ({ id: e, categories: [] })) ?? []
-  list.unshift({ id: "all", categories: data.categories })
-  if (data.versions) for (const category of data.categories) {
-    category.featured = []
-    for (const entry of category.entries) {
-      if (entry.featured) {
-        for (const month of entry.featured) {
-          if (!category.featured.includes(month)) {
-            category.featured.push(month)
+  function build(data) {
+    const month = new Date().getMonth() + 1
+    if (data.versions) for (const category of data.categories) {
+      category.entries.sort((a, b) => {
+        const aHas = a.featured?.includes(month)
+        const bHas = b.featured?.includes(month)
+        if (aHas && !bHas) return -1
+        else if (!aHas && bHas) return 1
+        return data.versions.indexOf(a.versions[0]) - data.versions.indexOf(b.versions[0])
+      })
+    }
+    const list = data.versions?.map(e => ({ id: e, categories: [] })) ?? []
+    list.unshift({ id: "all", categories: data.categories })
+    if (data.versions) for (const category of data.categories) {
+      category.featured = []
+      for (const entry of category.entries) {
+        if (entry.featured) {
+          for (const month of entry.featured) {
+            if (!category.featured.includes(month)) {
+              category.featured.push(month)
+            }
           }
         }
-      }
-      for (const version of entry.versions) {
-        const versionData = list.find(e => e.id === version)
-        let categoryData = versionData.categories.find(e => e.name === category.name)
-        if (!categoryData) {
-          categoryData = { name: category.name, entries: [], featured: category.featured }
-          versionData.categories.push(categoryData)
+        for (const version of entry.versions) {
+          const versionData = list.find(e => e.id === version)
+          let categoryData = versionData.categories.find(e => e.name === category.name)
+          if (!categoryData) {
+            categoryData = { name: category.name, entries: [], featured: category.featured }
+            versionData.categories.push(categoryData)
+          }
+          categoryData.entries.push(entry)
         }
-        categoryData.entries.push(entry)
       }
     }
+    if (data.versions) for (const version of list) {
+      version.categories.sort((a, b) => {
+        const aHas = a.featured.includes(month)
+        const bHas = b.featured.includes(month)
+        if (aHas && !bHas) return -1
+        else if (!aHas && bHas) return 1
+        return 0
+      })
+    }
+    return list
   }
-  if (data.versions) for (const version of list) {
-    version.categories.sort((a, b) => {
-      const aHas = a.featured.includes(month)
-      const bHas = b.featured.includes(month)
-      if (aHas && !bHas) return -1
-      else if (!aHas && bHas) return 1
-      return 0
-    })
+
+  function matches(entry, category) {
+    const text = query.value
+    if (!text) return true
+    const spaceless = text.replace(/\s/g, "")
+    const name = entryName(entry).toLowerCase().replace(/&/g, "and")
+    const simple = name.replace(/[^a-zA-Z0-9]/g, "")
+    return category.name.toLowerCase().includes(text) || entry.id.toLowerCase().includes(text) || name.includes(text) || simple.includes(spaceless)
   }
-  return list
-}
 
-function matches(entry, category) {
-  const text = query.value
-  if (!text) return true
-  const spaceless = text.replace(/\s/g, "")
-  const name = entryName(entry).toLowerCase().replace(/&/g, "and")
-  const simple = name.replace(/[^a-zA-Z0-9]/g, "")
-  return category.name.toLowerCase().includes(text) || entry.id.toLowerCase().includes(text) || name.includes(text) || simple.includes(spaceless)
-}
-
-function categoryVisible(category) {
-  return category.entries.some(e => matches(e, category))
-}
-
-const noResults = computed(() => {
-  const version = versions.value.find(e => e.id === current.value)
-  return version && !version.categories.some(categoryVisible)
-})
-
-function versionId(id) {
-  return id.replaceAll(".", "-")
-}
-
-function categoryClass(name) {
-  return name.replace(/ /g, "-")
-}
-
-function backgroundImage(entry) {
-  return `url("/assets/images/${entry.image ? `${props.type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`
-}
-
-function logoStyle(entry) {
-  if (entry.logoless) return entry.fontsize ? { fontSize: `${entry.fontsize}rem` } : {}
-  return { backgroundImage: `url("/assets/images/${props.type}/${entry.id}/logo.webp")` }
-}
-
-async function addFeatured(version) {
-  if (version.id in featured) return
-  const entries = version.categories.flatMap(category => category.entries.map(entry => ({ entry, category })))
-  if (entries.length <= 5) return
-  featured[version.id] = null
-  const d = new Date(Date.now())
-  const { entry, category } = entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length]
-  const description = await fetch(`/assets/json/${props.type}/${entry.id}.json`).then(e => e.json()).then(e => e.description)
-  featured[version.id] = { entry, category, description }
-}
-
-function selectTab(version) {
-  current.value = version.id
-  silentNavigate(`/${props.type}/?version=${version.id}`)
-  sessionStorage.setItem(`${props.type}Version`, version.id)
-  if (!noResults.value) addFeatured(version)
-  const parts = document.title.split(" - ")
-  if (version.id === "all") document.title = [parts[0], parts[parts.length - 1]].join(" - ")
-  else document.title = [parts[0], version.id, parts[parts.length - 1]].join(" - ")
-  analytics()
-}
-
-function toggleCategory(name) {
-  if (collapsed.has(name)) collapsed.delete(name)
-  else collapsed.add(name)
-}
-
-function onSearch(e) {
-  clearTimeout(searchTimeout)
-  searchValue.value = e.currentTarget.value
-  const text = searchValue.value.toLowerCase().replace(/&/g, "and")
-  query.value = text
-  const params = getURLParams() ?? {}
-  params.search = text
-  if (!params.search) delete params.search
-  silentNavigate(`/${props.type}/${toURLParams(params)}`, true)
-  searchTimeout = setTimeout(() => {
-    gtag("event", "search", { "search_term": text })
-  }, 1000)
-}
-
-const searchInput = ref()
-
-function onResize() {
-  headerTop.value = `${tabs.value.offsetHeight}px`
-}
-
-fetchJSON(props.type).then(async data => {
-  hasVersions.value = !!data.versions
-  versions.value = build(data)
-  let { version, search } = route.query
-  if (!data.versions) version = "all"
-  else if (!version) {
-    version = sessionStorage.getItem(`${props.type}Version`)
-    if (!version) version = "all"
+  function categoryVisible(category) {
+    return category.entries.some(e => matches(e, category))
   }
-  if (data.versions && !versions.value.some(e => e.id === version)) version = data.versions[0]
-  current.value = version
-  addFeatured(versions.value.find(e => e.id === version))
-  sessionStorage.setItem(`${props.type}Version`, version)
-  if (!data.versions) version = undefined
-  if (version && version !== "all") {
+
+  const noResults = computed(() => {
+    const version = versions.value.find(e => e.id === current.value)
+    return version && !version.categories.some(categoryVisible)
+  })
+
+  function versionId(id) {
+    return id.replaceAll(".", "-")
+  }
+
+  function categoryClass(name) {
+    return name.replace(/ /g, "-")
+  }
+
+  function backgroundImage(entry) {
+    return `url("/assets/images/${entry.image ? `${props.type}/${entry.id}/images/${entry.image}` : "/home/logo_3d"}.webp")`
+  }
+
+  function logoStyle(entry) {
+    if (entry.logoless) return entry.fontsize ? { fontSize: `${entry.fontsize}rem` } : {}
+    return { backgroundImage: `url("/assets/images/${props.type}/${entry.id}/logo.webp")` }
+  }
+
+  async function addFeatured(version) {
+    if (version.id in featured) return
+    const entries = version.categories.flatMap(category => category.entries.map(entry => ({ entry, category })))
+    if (entries.length <= 5) return
+    featured[version.id] = null
+    const d = new Date(Date.now())
+    const { entry, category } = entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length]
+    const description = await fetch(`/assets/json/${props.type}/${entry.id}.json`).then(e => e.json()).then(e => e.description)
+    featured[version.id] = { entry, category, description }
+  }
+
+  function selectTab(version) {
+    current.value = version.id
+    silentNavigate(`/${props.type}/?version=${version.id}`)
+    sessionStorage.setItem(`${props.type}Version`, version.id)
+    if (!noResults.value) addFeatured(version)
     const parts = document.title.split(" - ")
-    document.title = [parts[0], version, parts[1]].join(" - ")
+    if (version.id === "all") document.title = [parts[0], parts[parts.length - 1]].join(" - ")
+    else document.title = [parts[0], version.id, parts[parts.length - 1]].join(" - ")
+    analytics()
   }
-  loading.value = false
-  await nextTick()
-  onResize()
-  await silentNavigate(`/${props.type}/${toURLParams({ version, search })}`, true)
-  if (search) {
-    searchInput.value.value = search
-    setTimeout(() => searchInput.value.dispatchEvent(new Event("input")), 0)
-  }
-})
 
-onMounted(() => addEventListener("resize", onResize))
-onBeforeUnmount(() => {
-  removeEventListener("resize", onResize)
-  clearTimeout(searchTimeout)
-})
+  function toggleCategory(name) {
+    if (collapsed.has(name)) collapsed.delete(name)
+    else collapsed.add(name)
+  }
+
+  function onSearch(e) {
+    clearTimeout(searchTimeout)
+    searchValue.value = e.currentTarget.value
+    const text = searchValue.value.toLowerCase().replace(/&/g, "and")
+    query.value = text
+    const params = getURLParams() ?? {}
+    params.search = text
+    if (!params.search) delete params.search
+    silentNavigate(`/${props.type}/${toURLParams(params)}`, true)
+    searchTimeout = setTimeout(() => {
+      gtag("event", "search", { "search_term": text })
+    }, 1000)
+  }
+
+  const searchInput = ref()
+
+  function onResize() {
+    headerTop.value = `${tabs.value.offsetHeight}px`
+  }
+
+  fetchJSON(props.type).then(async data => {
+    hasVersions.value = !!data.versions
+    versions.value = build(data)
+    let { version, search } = route.query
+    if (!data.versions) version = "all"
+    else if (!version) {
+      version = sessionStorage.getItem(`${props.type}Version`)
+      if (!version) version = "all"
+    }
+    if (data.versions && !versions.value.some(e => e.id === version)) version = data.versions[0]
+    current.value = version
+    addFeatured(versions.value.find(e => e.id === version))
+    sessionStorage.setItem(`${props.type}Version`, version)
+    if (!data.versions) version = undefined
+    if (version && version !== "all") {
+      const parts = document.title.split(" - ")
+      document.title = [parts[0], version, parts[1]].join(" - ")
+    }
+    loading.value = false
+    await nextTick()
+    onResize()
+    await silentNavigate(`/${props.type}/${toURLParams({ version, search })}`, true)
+    if (search) {
+      searchInput.value.value = search
+      setTimeout(() => searchInput.value.dispatchEvent(new Event("input")), 0)
+    }
+  })
+
+  onMounted(() => addEventListener("resize", onResize))
+  onBeforeUnmount(() => {
+    removeEventListener("resize", onResize)
+    clearTimeout(searchTimeout)
+  })
 </script>
 
 <template>
@@ -244,316 +244,316 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="stylus" scoped>
-.container
-  max-width: var(--content-width)
-  margin: 0 auto
+  .container
+    max-width: var(--content-width)
+    margin: 0 auto
 
-.hidden
-  display: none !important
+  .hidden
+    display: none !important
 
-#tabs
-  display: flex
-  position: sticky
-  top: 0
-  z-index: 1
-  background-color: var(--color-green)
-  box-shadow: var(--box-shadow)
-  flex-wrap: wrap
-  min-height: var(--header-height)
+  #tabs
+    display: flex
+    position: sticky
+    top: 0
+    z-index: 1
+    background-color: var(--color-green)
+    box-shadow: var(--box-shadow)
+    flex-wrap: wrap
+    min-height: var(--header-height)
   
-#search
-  display: flex
-  align-items: center
-  background-color: var(--color-green-light)
-  width: 168px
-  position: relative
-  
-  svg
-    width: 32px
-    height: 32px
-    padding: 0 4px
-    fill: var(--color-text-white)
-
-  input
-    position: absolute
-    left: 40px
-    border: none
-    outline: none
+  #search
+    display: flex
+    align-items: center
     background-color: var(--color-green-light)
-    height: 40px
-    width: 128px
-    font-size: 1.2em
-    transition: width .5s
-    text-overflow: ellipsis
-    padding: 0
-    border-radius: 0
+    width: 168px
+    position: relative
+  
+    svg
+      width: 32px
+      height: 32px
+      padding: 0 4px
+      fill: var(--color-text-white)
+
+    input
+      position: absolute
+      left: 40px
+      border: none
+      outline: none
+      background-color: var(--color-green-light)
+      height: 40px
+      width: 128px
+      font-size: 1.2em
+      transition: width .5s
+      text-overflow: ellipsis
+      padding: 0
+      border-radius: 0
     
-    &:focus
-      width: clamp(128px, calc(100vw - 40px), calc(var(--content-width) - 40px))
+      &:focus
+        width: clamp(128px, calc(100vw - 40px), calc(var(--content-width) - 40px))
 
-.tab
-  flex: 1
-  display: flex
-  min-height: var(--header-height)
-  cursor: pointer
-  user-select: none
-  transition: background-color 0.15s
-  text-shadow: var(--text-shadow)
-  text-decoration: none
-  color: var(--color-text-white)
-  text-transform: capitalize
-  min-width: 50px
-  height: 100%
-  align-items: center
-  justify-content: center
+  .tab
+    flex: 1
+    display: flex
+    min-height: var(--header-height)
+    cursor: pointer
+    user-select: none
+    transition: background-color 0.15s
+    text-shadow: var(--text-shadow)
+    text-decoration: none
+    color: var(--color-text-white)
+    text-transform: capitalize
+    min-width: 50px
+    height: 100%
+    align-items: center
+    justify-content: center
   
-  &:hover
-    background-color: var(--color-green-light)
+    &:hover
+      background-color: var(--color-green-light)
   
-.selected
-  background-color: var(--color-green-dark) !important
-  cursor: default
+  .selected
+    background-color: var(--color-green-dark) !important
+    cursor: default
   
-.version
-  padding: 0 20px
-  display: none
-
-#versions
-  padding-bottom: 60px
-
-.shown
-  display: block !important
-  animation: fadeIn .25s forwards 1
-  opacity: 0
-
-  @keyframes fadeIn
-    from
-      opacity: 0
-    to
-      opacity: 1
-
-#no-results
-  display: none
-  
-#no-results-text
-  display: flex
-  justify-content: center
-  margin-top: 128px
-  font-weight: 700
-  letter-spacing: 2px
-  text-shadow: -4px 4px 1px var(--color-text-shadow)
-  font-size: 2em
-
-.entries
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
-  justify-content: space-around
-  gap: 10px
-  padding: 0 20px
-  
-  &.collapsed
+  .version
+    padding: 0 20px
     display: none
 
-.entry
-  display: flex
-  flex-direction: column
-  align-items: center
-  gap: 10px
-  text-decoration: none
-  transition: background-color .15s
-  
-  &:hover .entry-image
-    scale: 1.05
-    filter: blur(2px)
-  
-.entry-name
-  color: var(--color-text-white)
-  font-size: 1.2em
-  letter-spacing: 1px
-  font-weight: 700
-  padding-bottom: 10px
-  text-align: center
+  #versions
+    padding-bottom: 60px
 
-.entry-images
-  min-width: 256px
-  height: 128px
-  display: flex
-  justify-content: center
-  align-items: center
-  cursor: pointer
-  text-decoration: none
-  color: var(--color-text-white)
-  position: relative
-  overflow: hidden
-  align-self: stretch
-  box-shadow: var(--box-shadow)
+  .shown
+    display: block !important
+    animation: fadeIn .25s forwards 1
+    opacity: 0
+
+    @keyframes fadeIn
+      from
+        opacity: 0
+      to
+        opacity: 1
+
+  #no-results
+    display: none
   
-.entry-image
-  width: 100%
-  height: 100%
-  background-size: cover
-  background-position: 50% 50%
-  position: relative
-  transition: scale .3s, filter .3s
-
-.logo
-  position: absolute
-  inset: 16px
-  background-size: contain
-  background-position: 50% 50%
-  background-repeat: no-repeat
-  filter: drop-shadow(0 10px 4px var(--color-text-shadow))
-  display: flex
-  align-items: center
-  font-size: 2.25rem
-  text-align: center
-  font-weight: 700
-  justify-content: center
-
-.optifine
-  position: absolute
-  bottom: 0
-  right: 0
-  width: 32px
-  height: 32px
-
-.category-header
-  position: sticky
-  background-color: var(--color-grey-darker)
-  z-index: 1
-  padding: 20px 0
-  
-  h1
-    margin: 0
+  #no-results-text
+    display: flex
+    justify-content: center
+    margin-top: 128px
+    font-weight: 700
+    letter-spacing: 2px
     text-shadow: -4px 4px 1px var(--color-text-shadow)
-    
-  svg
-    user-select: none
-    fill: var(--color-text-white)
-    position: absolute
-    top: 14px
-    right: 0
-    width: 38px
-    transform: rotateZ(90deg)
-    cursor: pointer
-    filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
-    transition: fill .15s, transform .15s, filter .15s
-      
+    font-size: 2em
+
+  .entries
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
+    justify-content: space-around
+    gap: 10px
+    padding: 0 20px
+  
     &.collapsed
-      transform: rotateZ(0)
-      filter: drop-shadow(-4px 4px 1px var(--color-text-shadow))
+      display: none
 
-.featured-entry
-  padding: var(--header-height)
-  display: flex
-  align-items: center
-  flex-direction: column
-  gap: 20px
-
-.featured-title
-  font-weight: 700
-  font-size: 2rem
-  text-shadow: -4px 4px 1px var(--color-text-shadow)
-
-.featured
-  display: flex
-  justify-content: center
-  text-decoration: none
-  color: var(--color-text-white)
-  gap: 20px
-  background-color: var(--color-grey)
-  padding: 10px 20px 10px 10px
-  box-shadow: var(--box-shadow)
-  transition: background-color .15s
+  .entry
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 10px
+    text-decoration: none
+    transition: background-color .15s
   
-  .logo
-    inset: 24px
-  
-  &:hover
-    background-color: var(--color-grey-light)
-    
-    .entry-image
+    &:hover .entry-image
       scale: 1.05
       filter: blur(2px)
-      
-.featured-images
-  min-width: 384px
-  height: 192px
-
-.featured-category
-  margin-bottom: 5px
-  text-transform: uppercase
-  letter-spacing: 5px
-  font-size: 0.75rem
-
-.featured-name
-  font-weight: 700
-  font-size: 1.5rem
-  text-shadow: var(--text-shadow)
-  margin-bottom: 10px
-
-.featured-description
-  line-height: 1.5rem
-  display: flex
-  flex-direction: column
-  max-height: 135px
-  overflow-y: auto
-  white-space: pre-wrap
-  padding-right: 10px
-  margin-right: -10px
   
-  :deep(code)
-    font-size: 16px
-    background-color: black
-    padding: 0 4px
-    font-family: Consolas, monospace
-    
-  :deep(li)
-    margin-top: 5px
-  
-  :deep(img)
-    image-rendering: pixelated
-    max-width: 100%
-    
-  :deep(p)
-    margin-top: 0
-
-// mobile
-
-@media only screen and (max-width: 900px)
-  .featured
-    flex-direction: column
+  .entry-name
+    color: var(--color-text-white)
+    font-size: 1.2em
+    letter-spacing: 1px
+    font-weight: 700
+    padding-bottom: 10px
     text-align: center
-    padding: 10px
-    
-  .featured-images
-    min-width: initial
-    
-  .featured-details
-    padding: 0 10px 10px
 
-@media only screen and (max-width: 768px)
+  .entry-images
+    min-width: 256px
+    height: 128px
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    text-decoration: none
+    color: var(--color-text-white)
+    position: relative
+    overflow: hidden
+    align-self: stretch
+    box-shadow: var(--box-shadow)
+  
+  .entry-image
+    width: 100%
+    height: 100%
+    background-size: cover
+    background-position: 50% 50%
+    position: relative
+    transition: scale .3s, filter .3s
+
+  .logo
+    position: absolute
+    inset: 16px
+    background-size: contain
+    background-position: 50% 50%
+    background-repeat: no-repeat
+    filter: drop-shadow(0 10px 4px var(--color-text-shadow))
+    display: flex
+    align-items: center
+    font-size: 2.25rem
+    text-align: center
+    font-weight: 700
+    justify-content: center
+
+  .optifine
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 32px
+    height: 32px
+
   .category-header
-    font-size: 0.75em
-    padding: 10px 0
+    position: sticky
+    background-color: var(--color-grey-darker)
+    z-index: 1
+    padding: 20px 0
+  
+    h1
+      margin: 0
+      text-shadow: -4px 4px 1px var(--color-text-shadow)
     
     svg
-      top: 0
-      width: 24px
-    
-  .entries
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
-    
-  .entry
-    .entry-images
-      min-width: 160px
-      height: 80px
-    
-    .logo
-      inset: 8px
-      font-size: 1.3rem !important
-    
+      user-select: none
+      fill: var(--color-text-white)
+      position: absolute
+      top: 14px
+      right: 0
+      width: 38px
+      transform: rotateZ(90deg)
+      cursor: pointer
+      filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
+      transition: fill .15s, transform .15s, filter .15s
+      
+      &.collapsed
+        transform: rotateZ(0)
+        filter: drop-shadow(-4px 4px 1px var(--color-text-shadow))
+
+  .featured-entry
+    padding: var(--header-height)
+    display: flex
+    align-items: center
+    flex-direction: column
+    gap: 20px
+
   .featured-title
+    font-weight: 700
+    font-size: 2rem
+    text-shadow: -4px 4px 1px var(--color-text-shadow)
+
+  .featured
+    display: flex
+    justify-content: center
+    text-decoration: none
+    color: var(--color-text-white)
+    gap: 20px
+    background-color: var(--color-grey)
+    padding: 10px 20px 10px 10px
+    box-shadow: var(--box-shadow)
+    transition: background-color .15s
+  
+    .logo
+      inset: 24px
+  
+    &:hover
+      background-color: var(--color-grey-light)
+    
+      .entry-image
+        scale: 1.05
+        filter: blur(2px)
+      
+  .featured-images
+    min-width: 384px
+    height: 192px
+
+  .featured-category
+    margin-bottom: 5px
+    text-transform: uppercase
+    letter-spacing: 5px
+    font-size: 0.75rem
+
+  .featured-name
+    font-weight: 700
     font-size: 1.5rem
-    text-align: center
+    text-shadow: var(--text-shadow)
+    margin-bottom: 10px
+
+  .featured-description
+    line-height: 1.5rem
+    display: flex
+    flex-direction: column
+    max-height: 135px
+    overflow-y: auto
+    white-space: pre-wrap
+    padding-right: 10px
+    margin-right: -10px
+  
+    :deep(code)
+      font-size: 16px
+      background-color: black
+      padding: 0 4px
+      font-family: Consolas, monospace
+    
+    :deep(li)
+      margin-top: 5px
+  
+    :deep(img)
+      image-rendering: pixelated
+      max-width: 100%
+    
+    :deep(p)
+      margin-top: 0
+
+  // mobile
+
+  @media only screen and (max-width: 900px)
+    .featured
+      flex-direction: column
+      text-align: center
+      padding: 10px
+    
+    .featured-images
+      min-width: initial
+    
+    .featured-details
+      padding: 0 10px 10px
+
+  @media only screen and (max-width: 768px)
+    .category-header
+      font-size: 0.75em
+      padding: 10px 0
+    
+      svg
+        top: 0
+        width: 24px
+    
+    .entries
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+    
+    .entry
+      .entry-images
+        min-width: 160px
+        height: 80px
+    
+      .logo
+        inset: 8px
+        font-size: 1.3rem !important
+    
+    .featured-title
+      font-size: 1.5rem
+      text-align: center
 </style>

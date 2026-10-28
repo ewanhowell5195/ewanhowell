@@ -1,6 +1,6 @@
 <script setup>
-defineOptions({ inheritAttrs: false })
-defineProps({ to: String })
+  defineOptions({ inheritAttrs: false })
+  defineProps({ to: String })
 </script>
 
 <template>

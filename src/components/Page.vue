@@ -1,15 +1,15 @@
 <script setup>
-import { watch, nextTick } from "vue"
-import { analytics } from "../lib/utils.js"
+  import { watch, nextTick } from "vue"
+  import { analytics } from "../lib/utils.js"
 
-const props = defineProps({
-  loading: Boolean,
-  progress: Object
-})
+  const props = defineProps({
+    loading: Boolean,
+    progress: Object
+  })
 
-watch(() => props.loading, loading => {
-  if (!loading) nextTick(analytics)
-}, { immediate: true })
+  watch(() => props.loading, loading => {
+    if (!loading) nextTick(analytics)
+  }, { immediate: true })
 </script>
 
 <template>

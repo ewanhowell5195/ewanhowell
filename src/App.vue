@@ -1,45 +1,45 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue"
-import { site } from "./lib/site.js"
-import Link from "./components/Link.vue"
-import Icon from "./components/Icon.js"
+  import { ref, onMounted, onBeforeUnmount } from "vue"
+  import { site } from "./lib/site.js"
+  import Link from "./components/Link.vue"
+  import Icon from "./components/Icon.js"
 
-const sidebarActive = ref(false)
-const sidebar = ref()
-const sidebarButton = ref()
+  const sidebarActive = ref(false)
+  const sidebar = ref()
+  const sidebarButton = ref()
 
-const socials = [
-  ["https://www.youtube.com/ewanhowell", "youtube"],
-  ["https://twitter.com/ewanhowell5195", "twitter"],
-  ["https://github.com/ewanhowell5195", "github"],
-  ["https://www.reddit.com/r/ewanhowell5195/", "reddit"],
-  ["https://www.instagram.com/ewan.howell/", "instagram"]
-]
+  const socials = [
+    ["https://www.youtube.com/ewanhowell", "youtube"],
+    ["https://twitter.com/ewanhowell5195", "twitter"],
+    ["https://github.com/ewanhowell5195", "github"],
+    ["https://www.reddit.com/r/ewanhowell5195/", "reddit"],
+    ["https://www.instagram.com/ewan.howell/", "instagram"]
+  ]
 
-const isNarrow = () => innerWidth < 1330 + parseFloat(getComputedStyle(sidebar.value).width) * 2 + 200
+  const isNarrow = () => innerWidth < 1330 + parseFloat(getComputedStyle(sidebar.value).width) * 2 + 200
 
-function onClick(e) {
-  const target = e.target
-  const inSidebar = sidebar.value.contains(target) && target !== sidebar.value
-  const inButton = sidebarButton.value.contains(target)
-  if (isNarrow() && (target.classList.contains("page-button") || target.parentElement?.closest(".page-button") && inSidebar || sidebarActive.value && !(target === sidebar.value || inSidebar) && !inButton)) {
-    sidebarActive.value = false
+  function onClick(e) {
+    const target = e.target
+    const inSidebar = sidebar.value.contains(target) && target !== sidebar.value
+    const inButton = sidebarButton.value.contains(target)
+    if (isNarrow() && (target.classList.contains("page-button") || target.parentElement?.closest(".page-button") && inSidebar || sidebarActive.value && !(target === sidebar.value || inSidebar) && !inButton)) {
+      sidebarActive.value = false
+    }
   }
-}
 
-function onResize() {
-  if (isNarrow() && sidebarActive.value) sidebarActive.value = false
-}
+  function onResize() {
+    if (isNarrow() && sidebarActive.value) sidebarActive.value = false
+  }
 
-onMounted(() => {
-  addEventListener("click", onClick)
-  addEventListener("resize", onResize)
-})
+  onMounted(() => {
+    addEventListener("click", onClick)
+    addEventListener("resize", onResize)
+  })
 
-onBeforeUnmount(() => {
-  removeEventListener("click", onClick)
-  removeEventListener("resize", onResize)
-})
+  onBeforeUnmount(() => {
+    removeEventListener("click", onClick)
+    removeEventListener("resize", onResize)
+  })
 </script>
 
 <template>

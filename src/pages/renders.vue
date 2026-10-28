@@ -1,10 +1,10 @@
 <script setup>
-import Page from "../components/Page.vue"
-import { site } from "../lib/site.js"
+  import Page from "../components/Page.vue"
+  import { site } from "../lib/site.js"
 
-site.selected = "/renders"
+  site.selected = "/renders"
 
-const renders = ["aerial_faith_plate", "bb-8", "claptrap", "claw", "combine_turret", "companion_cube", "cyclone", "dog", "ewan", "glados", "loader", "manhack", "panel", "pickup_truck", "room", "room_new", "runner", "sabre_turret", "snowplough", "space_core", "storage_cube", "storage_cube_active", "striderchan", "tank", "turret", "wall-e", "warden", "wheatley", "wheatley_evil_glados", "worm", "wynem", "wynem2", "x-wing"]
+  const renders = ["aerial_faith_plate", "bb-8", "claptrap", "claw", "combine_turret", "companion_cube", "cyclone", "dog", "ewan", "glados", "loader", "manhack", "panel", "pickup_truck", "room", "room_new", "runner", "sabre_turret", "snowplough", "space_core", "storage_cube", "storage_cube_active", "striderchan", "tank", "turret", "wall-e", "warden", "wheatley", "wheatley_evil_glados", "worm", "wynem", "wynem2", "x-wing"]
 </script>
 
 <template>
@@ -19,27 +19,27 @@ const renders = ["aerial_faith_plate", "bb-8", "claptrap", "claw", "combine_turr
 </template>
 
 <style lang="stylus" scoped>
-.container
-  max-width: var(--content-width)
-  margin: 0 auto
-  padding: 0 20px
+  .container
+    max-width: var(--content-width)
+    margin: 0 auto
+    padding: 0 20px
   
-h1
-  margin: 0
-  padding: 22px 0
+  h1
+    margin: 0
+    padding: 22px 0
   
-.renders
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
-  justify-content: space-around
-  gap: 10px
-  padding-bottom: 20px
+  .renders
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr))
+    justify-content: space-around
+    gap: 10px
+    padding-bottom: 20px
     
-  > div
-    min-width: 256px
-    height: 128px
-    background-position: 50% 50%
-    background-size: cover
-    cursor: pointer
-    box-shadow: var(--box-shadow)
+    > div
+      min-width: 256px
+      height: 128px
+      background-position: 50% 50%
+      background-size: cover
+      cursor: pointer
+      box-shadow: var(--box-shadow)
 </style>

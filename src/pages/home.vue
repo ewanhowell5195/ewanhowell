@@ -1,29 +1,29 @@
 <script setup>
-import { onMounted } from "vue"
-import { useRoute, useRouter } from "vue-router"
-import Page from "../components/Page.vue"
-import Link from "../components/Link.vue"
-import { site } from "../lib/site.js"
+  import { onMounted } from "vue"
+  import { useRoute, useRouter } from "vue-router"
+  import Page from "../components/Page.vue"
+  import Link from "../components/Link.vue"
+  import { site } from "../lib/site.js"
 
-site.selected = "/"
+  site.selected = "/"
 
-const route = useRoute()
-const router = useRouter()
+  const route = useRoute()
+  const router = useRouter()
 
-function getRedirect(params) {
-  if (params.pack) return `/resourcepacks/${params.pack}`
-  if ("resourcepacks" in params || "pack" in params) return "/resourcepacks"
-  if (params.map) return `/maps/${params.map}`
-  if ("maps" in params || "map" in params) return "/maps"
-  if (params.dungeon) return `/dungeonsmods/${params.dungeon}`
-  if ("dungeons" in params || "dungeon" in params) return "/dungeonsmods"
-  if ("renders" in params) return "/renders"
-}
+  function getRedirect(params) {
+    if (params.pack) return `/resourcepacks/${params.pack}`
+    if ("resourcepacks" in params || "pack" in params) return "/resourcepacks"
+    if (params.map) return `/maps/${params.map}`
+    if ("maps" in params || "map" in params) return "/maps"
+    if (params.dungeon) return `/dungeonsmods/${params.dungeon}`
+    if ("dungeons" in params || "dungeon" in params) return "/dungeonsmods"
+    if ("renders" in params) return "/renders"
+  }
 
-onMounted(() => {
-  const redirect = getRedirect(route.query)
-  if (redirect) router.replace(redirect)
-})
+  onMounted(() => {
+    const redirect = getRedirect(route.query)
+    if (redirect) router.replace(redirect)
+  })
 </script>
 
 <template>
@@ -87,43 +87,43 @@ onMounted(() => {
 </template>
 
 <style lang="stylus" scoped>
-.container
-  max-width: var(--content-width)
-  margin: 0 auto
-  flex: 1
+  .container
+    max-width: var(--content-width)
+    margin: 0 auto
+    flex: 1
 
-.img-block
-  max-height: 512px
-  min-height: 256px
-  height: calc(50vw / 2)
-  width: 100%
-  background-size: cover
-  background-position: 50% 50%
-  display: flex
-  justify-content: center
-  box-shadow: var(--box-shadow)
+  .img-block
+    max-height: 512px
+    min-height: 256px
+    height: calc(50vw / 2)
+    width: 100%
+    background-size: cover
+    background-position: 50% 50%
+    display: flex
+    justify-content: center
+    box-shadow: var(--box-shadow)
   
-h1
-  margin: 0
-  padding: 50px 0 0 10%
-  font-size: clamp(1.5em, 3em, 5vw)
-  text-shadow: -4px 4px 1px var(--color-text-shadow)
+  h1
+    margin: 0
+    padding: 50px 0 0 10%
+    font-size: clamp(1.5em, 3em, 5vw)
+    text-shadow: -4px 4px 1px var(--color-text-shadow)
 
-a
-  color: var(--color-link-blue)
+  a
+    color: var(--color-link-blue)
   
-.text-block
-  max-width: 100%
-  min-height: 256px
-  display: flex
-  justify-content: space-around
-  align-items: center
-  padding: 0 40px
-  flex-wrap: wrap;
-  box-sizing: border-box
+  .text-block
+    max-width: 100%
+    min-height: 256px
+    display: flex
+    justify-content: space-around
+    align-items: center
+    padding: 0 40px
+    flex-wrap: wrap;
+    box-sizing: border-box
 
-.text-box
-  padding: 10px
-  width: 300px
-  flex-shrink: 1
+  .text-box
+    padding: 10px
+    width: 300px
+    flex-shrink: 1
 </style>

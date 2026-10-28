@@ -1,304 +1,304 @@
 <script setup>
-import { ref, reactive, shallowReactive, nextTick, onMounted, useTemplateRef } from "vue"
-import { saveAs } from "file-saver"
-import Page from "../../components/Page.vue"
-import FileInput from "../../components/FileInput.vue"
-import Icon from "../../components/Icon.js"
-import { site } from "../../lib/site.js"
-import { EYES, MOUTHS, MAX_SKIN_SIZE, EYE_DESIGNS, MOUTH_DESIGNS, MRES_CHANNELS, MRES_SUFFIX, blank, drawImage, downscale, expandLegacy, isSlim, wideToSlim, hasOuterLayer, toDungeons, capeScale, toDungeonsCape, drawFace, drawPortrait, drawTexture, faceTone, suggestEyes, overlaps, suggestMouth, createViewer, loadViewerData, readImage, download, defaultMres, guessMres, splitMres, channelFrom, resample, interleave, encodePng, readExact, drawDesign, remembered, remember, fileToDataUrl } from "./dungeons2skinconverter.js"
+  import { ref, reactive, shallowReactive, nextTick, onMounted, useTemplateRef } from "vue"
+  import { saveAs } from "file-saver"
+  import Page from "../../components/Page.vue"
+  import FileInput from "../../components/FileInput.vue"
+  import Icon from "../../components/Icon.js"
+  import { site } from "../../lib/site.js"
+  import { EYES, MOUTHS, MAX_SKIN_SIZE, EYE_DESIGNS, MOUTH_DESIGNS, MRES_CHANNELS, MRES_SUFFIX, blank, drawImage, downscale, expandLegacy, isSlim, wideToSlim, hasOuterLayer, toDungeons, capeScale, toDungeonsCape, drawFace, drawPortrait, drawTexture, faceTone, suggestEyes, overlaps, suggestMouth, createViewer, loadViewerData, readImage, download, defaultMres, guessMres, splitMres, channelFrom, resample, interleave, encodePng, readExact, drawDesign, remembered, remember, fileToDataUrl } from "./dungeons2skinconverter.js"
 
-site.selected = null
+  site.selected = null
 
-const CHANNEL_HINTS = ["Red channel. White reflects light tinted by the skin's colour, like gold or iron. Black is a non-metal like cloth or skin, and grey is in between. How shiny it is comes from Roughness.", "Green channel. White is matte, black is shiny, and grey is in between.", "Blue channel. White glows fully, black does not glow, and grey glows dimly.", "Alpha channel. White lets light soften through, which is used on skin. Grey gives a weaker effect."]
-const ARMS = [1, 2, 3, 4].map(n => ({ id: n, label: `Column ${n}` }))
-const LAYER = [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }]
+  const CHANNEL_HINTS = ["Red channel. White reflects light tinted by the skin's colour, like gold or iron. Black is a non-metal like cloth or skin, and grey is in between. How shiny it is comes from Roughness.", "Green channel. White is matte, black is shiny, and grey is in between.", "Blue channel. White glows fully, black does not glow, and grey glows dimly.", "Alpha channel. White lets light soften through, which is used on skin. Grey gives a weaker effect."]
+  const ARMS = [1, 2, 3, 4].map(n => ({ id: n, label: `Column ${n}` }))
+  const LAYER = [{ id: true, label: "Merge", note: "Onto the base layer, so it shows in game" }, { id: false, label: "Leave separate", note: "Only shows with the Second Skin Layer mod" }]
 
-const loading = ref(true)
-const tab = ref("converter")
-const error = ref("")
-const mresError = ref("")
-const showSkin = ref(false)
-const showCape = ref(false)
-const built = ref(false)
-const layers = ref(false)
-const eyesNote = ref("")
-const mouthNote = ref("")
-const mresMode = ref("guess")
-const mresNote = ref("Showing the default MRES texture. Upload a skin or an MRES texture to start from that instead.")
-const channelDefault = reactive([true, true, true, true])
+  const loading = ref(true)
+  const tab = ref("converter")
+  const error = ref("")
+  const mresError = ref("")
+  const showSkin = ref(false)
+  const showCape = ref(false)
+  const built = ref(false)
+  const layers = ref(false)
+  const eyesNote = ref("")
+  const mouthNote = ref("")
+  const mresMode = ref("guess")
+  const mresNote = ref("Showing the default MRES texture. Upload a skin or an MRES texture to start from that instead.")
+  const channelDefault = reactive([true, true, true, true])
 
-const state = shallowReactive({ source: null, wide: false, layer: false, arms: 2, merge: true, eyes: "none", mouth: "none", skinName: "converted_skin", capeName: "converted_cape" })
-const mres = { data: defaultMres(), name: "Skin" }
-const canvases = { eyes: [], mouth: [], arms: [], merge: [], channels: [] }
+  const state = shallowReactive({ source: null, wide: false, layer: false, arms: 2, merge: true, eyes: "none", mouth: "none", skinName: "converted_skin", capeName: "converted_cape" })
+  const mres = { data: defaultMres(), name: "Skin" }
+  const canvases = { eyes: [], mouth: [], arms: [], merge: [], channels: [] }
 
-const faceCanvas = useTemplateRef("face")
-const portraitCanvas = useTemplateRef("portrait")
-const textureCanvas = useTemplateRef("texture")
-const capeTextureCanvas = useTemplateRef("capeTexture")
-const viewerElement = useTemplateRef("viewerContainer")
-const capeViewerElement = useTemplateRef("capeViewerContainer")
+  const faceCanvas = useTemplateRef("face")
+  const portraitCanvas = useTemplateRef("portrait")
+  const textureCanvas = useTemplateRef("texture")
+  const capeTextureCanvas = useTemplateRef("capeTexture")
+  const viewerElement = useTemplateRef("viewerContainer")
+  const capeViewerElement = useTemplateRef("capeViewerContainer")
 
-let viewer = null
-let capeViewer = null
+  let viewer = null
+  let capeViewer = null
 
-function rememberSkin(values) {
-  remember({ skin: Object.assign(remembered().skin || {}, values) })
-}
-
-function baseName(file) {
-  return file.name.toLowerCase().endsWith(".png") ? file.name.slice(0, -4) : file.name
-}
-
-async function viewers() {
-  await loadViewerData()
-  if (!viewer) viewer = createViewer(viewerElement.value)
-  if (!capeViewer) capeViewer = createViewer(capeViewerElement.value, { yaw: 0.45 + Math.PI, capeOnly: true })
-}
-
-function prepared(source = state.source) {
-  return state.wide ? wideToSlim(source, state.arms) : source
-}
-
-function convert(eyes, mouth, source = state.source) {
-  const features = [EYES.find(e => e.id === eyes), MOUTHS.find(m => m.id === mouth)].filter(f => f.pieces)
-  return toDungeons(prepared(source), state.merge, features)
-}
-
-function drawArm(canvas, column) {
-  const slim = wideToSlim(state.preview, column)
-  const arms = blank(8, 22, slim.scale)
-  for (const [x, y, dx] of [[44, 16, 0], [44, 32, 0], [36, 48, 5], [52, 48, 5]]) {
-    drawImage(slim, x, y, 3, 4, arms, dx, 0)
-    drawImage(slim, x, y + 4, 3, 12, arms, dx, 5)
-    drawImage(slim, x + 3, y, 3, 4, arms, dx, 18)
+  function rememberSkin(values) {
+    remember({ skin: Object.assign(remembered().skin || {}, values) })
   }
-  canvas.width = arms.width
-  canvas.height = arms.height
-  drawTexture(canvas, arms)
-}
 
-function choices(key, options, suggestion, blocked = null) {
-  return options.map(option => {
-    const disabled = blocked ? overlaps(option, blocked.with) : false
-    return { option, className: option.id === state[key] ? "choice selected" : disabled ? "choice disabled" : "choice", detected: option.id === suggestion, note: disabled ? blocked.note : option.note, disabled }
-  })
-}
-
-const eyeChoices = () => choices("eyes", EYES, state.eyeSuggestion, { with: MOUTHS.find(m => m.id === state.mouth), note: "Overlaps the chosen mouth" })
-const mouthChoices = () => choices("mouth", MOUTHS, state.mouthSuggestion, { with: EYES.find(e => e.id === state.eyes), note: "Overlaps the chosen eyes" })
-
-function choose(key, card) {
-  if (card.disabled) return
-  state[key] = card.option.id
-  refresh()
-}
-
-function drawChoices(key, options, render) {
-  for (const [index, option] of options.entries()) {
-    const canvas = canvases[key][index]
-    canvas.width = 64
-    canvas.height = 64
-    render(canvas, option)
+  function baseName(file) {
+    return file.name.toLowerCase().endsWith(".png") ? file.name.slice(0, -4) : file.name
   }
-}
 
-async function refresh() {
-  const eyes = EYES.find(e => e.id === state.eyes)
-  const mouth = MOUTHS.find(m => m.id === state.mouth)
-  if (overlaps(eyes, mouth)) state.mouth = "none"
-  const result = convert(state.eyes, state.mouth)
-  drawFace(faceCanvas.value, result)
-  drawPortrait(portraitCanvas.value, result)
-  drawTexture(textureCanvas.value, result)
-  if (state.shownMerge !== state.merge) {
-    layers.value = !state.merge
-    state.shownMerge = state.merge
+  async function viewers() {
+    await loadViewerData()
+    if (!viewer) viewer = createViewer(viewerElement.value)
+    if (!capeViewer) capeViewer = createViewer(capeViewerElement.value, { yaw: 0.45 + Math.PI, capeOnly: true })
   }
-  if (viewer) {
-    viewer.setSkin(result)
-    viewer.setLayers(layers.value)
-  }
-  rememberSkin({ settings: { arms: state.arms, merge: state.merge, eyes: state.eyes, mouth: state.mouth, layers: layers.value } })
-  built.value = true
-  await nextTick()
-  const eyesDrawn = convert("none", state.mouth, state.preview)
-  const mouthDrawn = convert(state.eyes, "none", state.preview)
-  drawChoices("eyes", EYES, (canvas, option) => option.id === "none" ? drawFace(canvas, eyesDrawn, false) : drawDesign(canvas, EYE_DESIGNS[option.id], null))
-  drawChoices("mouth", MOUTHS, (canvas, option) => option.id === "none" ? drawFace(canvas, mouthDrawn, false) : drawDesign(canvas, null, MOUTH_DESIGNS[option.id]))
-  if (state.wide) drawChoices("arms", ARMS, (canvas, option) => drawArm(canvas, option.id))
-  const flat = prepared(state.preview)
-  if (state.layer) drawChoices("merge", LAYER, (canvas, option) => drawTexture(canvas, toDungeons(flat, option.id, [])))
-}
 
-async function load(file, settings, restoring) {
-  error.value = ""
-  showSkin.value = false
-  showCape.value = false
-  let img
-  try {
-    img = await readImage(file)
-  } catch {
-    error.value = `${file.name} could not be opened as an image.`
-    return
+  function prepared(source = state.source) {
+    return state.wide ? wideToSlim(source, state.arms) : source
   }
-  const scale = capeScale(img)
-  if (scale) {
-    state.cape = toDungeonsCape(img, scale)
-    state.capeName = baseName(file)
-    drawTexture(capeTextureCanvas.value, state.cape)
-    if (!restoring) remember({ cape: { image: await fileToDataUrl(file), name: file.name }, showing: "cape" })
-    showCape.value = true
-    await viewers()
-    capeViewer.setCape(state.cape)
-    return
-  }
-  if (img.width % 64 || img.width > MAX_SKIN_SIZE || (img.height !== img.width && img.height * 2 !== img.width)) {
-    error.value = `${file.name} is ${img.width}×${img.height}. Skins need to be 64×64 or the old 64×32, or a multiple of that size up to ${MAX_SKIN_SIZE}×${MAX_SKIN_SIZE}.`
-    return
-  }
-  if (!restoring) remember({ skin: { image: await fileToDataUrl(file), name: file.name }, showing: "skin" })
-  state.skinName = baseName(file)
-  img.scale = img.width / 64
-  state.source = img.height < img.width ? expandLegacy(img) : img
-  state.preview = downscale(state.source, 4)
-  state.wide = !isSlim(state.source)
-  state.arms = settings?.arms ?? 2
-  const slim = prepared()
-  state.layer = hasOuterLayer(slim)
-  state.merge = settings?.merge ?? true
-  const tone = faceTone(slim)
-  state.eyeSuggestion = tone ? suggestEyes(slim, tone) : null
-  state.mouthSuggestion = tone ? suggestMouth(slim, tone, EYES.find(e => e.id === state.eyeSuggestion)) : null
-  state.eyes = settings?.eyes ?? (state.eyeSuggestion || "none")
-  state.mouth = settings?.mouth ?? (state.mouthSuggestion || "none")
-  eyesNote.value = state.eyeSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The eyes could not be detected automatically, so they are kept as drawn. Pick a shape if your skin uses a compatible one."
-  mouthNote.value = state.mouthSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The mouth could not be detected automatically, so it is kept as drawn. Pick a shape if your skin uses a compatible one."
-  if (settings && settings.layers !== undefined) {
-    layers.value = settings.layers
-    state.shownMerge = state.merge
-  } else {
-    state.shownMerge = null
-  }
-  showSkin.value = true
-  await viewers()
-  refresh()
-}
 
-function layersChange() {
-  if (viewer) viewer.setLayers(layers.value)
-  rememberSkin({ settings: Object.assign(remembered().skin?.settings || {}, { layers: layers.value }) })
-}
-
-function drawMres() {
-  const { width, height, channels } = mres.data
-  const defaults = defaultMres(width, height).channels
-  for (const [index, channel] of channels.entries()) {
-    const canvas = canvases.channels[index]
-    canvas.width = width
-    canvas.height = height
-    canvas.getContext("2d").putImageData(new ImageData(new Uint8ClampedArray(interleave([channel, channel, channel, new Uint8Array(channel.length).fill(255)])), width, height), 0, 0)
-    channelDefault[index] = channel.every((value, p) => value === defaults[index][p])
+  function convert(eyes, mouth, source = state.source) {
+    const features = [EYES.find(e => e.id === eyes), MOUTHS.find(m => m.id === mouth)].filter(f => f.pieces)
+    return toDungeons(prepared(source), state.merge, features)
   }
-}
 
-function mresName(file) {
-  return baseName(file).replace(MRES_SUFFIX, "")
-}
-
-async function loadMres(file) {
-  mresError.value = ""
-  let img
-  try {
-    img = await readExact(file)
-  } catch {
-    mresError.value = `${file.name} could not be opened as an image.`
-    return
+  function drawArm(canvas, column) {
+    const slim = wideToSlim(state.preview, column)
+    const arms = blank(8, 22, slim.scale)
+    for (const [x, y, dx] of [[44, 16, 0], [44, 32, 0], [36, 48, 5], [52, 48, 5]]) {
+      drawImage(slim, x, y, 3, 4, arms, dx, 0)
+      drawImage(slim, x, y + 4, 3, 12, arms, dx, 5)
+      drawImage(slim, x + 3, y, 3, 4, arms, dx, 18)
+    }
+    canvas.width = arms.width
+    canvas.height = arms.height
+    drawTexture(canvas, arms)
   }
-  if (mresMode.value === "guess") {
-    if (img.width % 64 || img.width > MAX_SKIN_SIZE || img.height !== img.width) {
-      mresError.value = `${file.name} is ${img.width}×${img.height}. Guessing needs a Dungeons II skin, 64×64 or a multiple of that size up to ${MAX_SKIN_SIZE}×${MAX_SKIN_SIZE}.`
+
+  function choices(key, options, suggestion, blocked = null) {
+    return options.map(option => {
+      const disabled = blocked ? overlaps(option, blocked.with) : false
+      return { option, className: option.id === state[key] ? "choice selected" : disabled ? "choice disabled" : "choice", detected: option.id === suggestion, note: disabled ? blocked.note : option.note, disabled }
+    })
+  }
+
+  const eyeChoices = () => choices("eyes", EYES, state.eyeSuggestion, { with: MOUTHS.find(m => m.id === state.mouth), note: "Overlaps the chosen mouth" })
+  const mouthChoices = () => choices("mouth", MOUTHS, state.mouthSuggestion, { with: EYES.find(e => e.id === state.eyes), note: "Overlaps the chosen eyes" })
+
+  function choose(key, card) {
+    if (card.disabled) return
+    state[key] = card.option.id
+    refresh()
+  }
+
+  function drawChoices(key, options, render) {
+    for (const [index, option] of options.entries()) {
+      const canvas = canvases[key][index]
+      canvas.width = 64
+      canvas.height = 64
+      render(canvas, option)
+    }
+  }
+
+  async function refresh() {
+    const eyes = EYES.find(e => e.id === state.eyes)
+    const mouth = MOUTHS.find(m => m.id === state.mouth)
+    if (overlaps(eyes, mouth)) state.mouth = "none"
+    const result = convert(state.eyes, state.mouth)
+    drawFace(faceCanvas.value, result)
+    drawPortrait(portraitCanvas.value, result)
+    drawTexture(textureCanvas.value, result)
+    if (state.shownMerge !== state.merge) {
+      layers.value = !state.merge
+      state.shownMerge = state.merge
+    }
+    if (viewer) {
+      viewer.setSkin(result)
+      viewer.setLayers(layers.value)
+    }
+    rememberSkin({ settings: { arms: state.arms, merge: state.merge, eyes: state.eyes, mouth: state.mouth, layers: layers.value } })
+    built.value = true
+    await nextTick()
+    const eyesDrawn = convert("none", state.mouth, state.preview)
+    const mouthDrawn = convert(state.eyes, "none", state.preview)
+    drawChoices("eyes", EYES, (canvas, option) => option.id === "none" ? drawFace(canvas, eyesDrawn, false) : drawDesign(canvas, EYE_DESIGNS[option.id], null))
+    drawChoices("mouth", MOUTHS, (canvas, option) => option.id === "none" ? drawFace(canvas, mouthDrawn, false) : drawDesign(canvas, null, MOUTH_DESIGNS[option.id]))
+    if (state.wide) drawChoices("arms", ARMS, (canvas, option) => drawArm(canvas, option.id))
+    const flat = prepared(state.preview)
+    if (state.layer) drawChoices("merge", LAYER, (canvas, option) => drawTexture(canvas, toDungeons(flat, option.id, [])))
+  }
+
+  async function load(file, settings, restoring) {
+    error.value = ""
+    showSkin.value = false
+    showCape.value = false
+    let img
+    try {
+      img = await readImage(file)
+    } catch {
+      error.value = `${file.name} could not be opened as an image.`
       return
     }
+    const scale = capeScale(img)
+    if (scale) {
+      state.cape = toDungeonsCape(img, scale)
+      state.capeName = baseName(file)
+      drawTexture(capeTextureCanvas.value, state.cape)
+      if (!restoring) remember({ cape: { image: await fileToDataUrl(file), name: file.name }, showing: "cape" })
+      showCape.value = true
+      await viewers()
+      capeViewer.setCape(state.cape)
+      return
+    }
+    if (img.width % 64 || img.width > MAX_SKIN_SIZE || (img.height !== img.width && img.height * 2 !== img.width)) {
+      error.value = `${file.name} is ${img.width}×${img.height}. Skins need to be 64×64 or the old 64×32, or a multiple of that size up to ${MAX_SKIN_SIZE}×${MAX_SKIN_SIZE}.`
+      return
+    }
+    if (!restoring) remember({ skin: { image: await fileToDataUrl(file), name: file.name }, showing: "skin" })
+    state.skinName = baseName(file)
     img.scale = img.width / 64
-    mres.data = guessMres(img)
-    mresNote.value = `Guessed from ${file.name}. Check it over, and fix anything it got wrong.`
-  } else {
-    mres.data = splitMres(img)
-    mresNote.value = `Split from ${file.name}.`
+    state.source = img.height < img.width ? expandLegacy(img) : img
+    state.preview = downscale(state.source, 4)
+    state.wide = !isSlim(state.source)
+    state.arms = settings?.arms ?? 2
+    const slim = prepared()
+    state.layer = hasOuterLayer(slim)
+    state.merge = settings?.merge ?? true
+    const tone = faceTone(slim)
+    state.eyeSuggestion = tone ? suggestEyes(slim, tone) : null
+    state.mouthSuggestion = tone ? suggestMouth(slim, tone, EYES.find(e => e.id === state.eyeSuggestion)) : null
+    state.eyes = settings?.eyes ?? (state.eyeSuggestion || "none")
+    state.mouth = settings?.mouth ?? (state.mouthSuggestion || "none")
+    eyesNote.value = state.eyeSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The eyes could not be detected automatically, so they are kept as drawn. Pick a shape if your skin uses a compatible one."
+    mouthNote.value = state.mouthSuggestion ? "The shape was detected automatically. Check the preview, and pick a different one if it is wrong." : "The mouth could not be detected automatically, so it is kept as drawn. Pick a shape if your skin uses a compatible one."
+    if (settings && settings.layers !== undefined) {
+      layers.value = settings.layers
+      state.shownMerge = state.merge
+    } else {
+      state.shownMerge = null
+    }
+    showSkin.value = true
+    await viewers()
+    refresh()
   }
-  mres.name = mresName(file)
-  drawMres()
-}
 
-async function replaceChannel(index, file) {
-  let img
-  try {
-    img = await readExact(file)
-  } catch {
-    return `${file.name} could not be opened as an image.`
+  function layersChange() {
+    if (viewer) viewer.setLayers(layers.value)
+    rememberSkin({ settings: Object.assign(remembered().skin?.settings || {}, { layers: layers.value }) })
   }
-  const { width, height } = mres.data
-  if (img.width * height !== img.height * width) return `${file.name} is ${img.width}×${img.height}, which does not match the ${width}×${height} MRES texture.`
-  const size = img.width > width ? [img.width, img.height] : [width, height]
-  mres.data.channels = mres.data.channels.map(channel => resample(channel, width, height, ...size))
-  mres.data.channels[index] = resample(channelFrom(img), img.width, img.height, ...size)
-  mres.data.width = size[0]
-  mres.data.height = size[1]
-}
 
-async function replace(index, file) {
-  mresError.value = await replaceChannel(index, file) || ""
-  drawMres()
-}
-
-function channelDrop(index, e) {
-  if (e.dataTransfer.files[0]) replace(index, e.dataTransfer.files[0])
-}
-
-function channelInput(index, e) {
-  if (e.target.files[0]) replace(index, e.target.files[0])
-  e.target.value = ""
-}
-
-function channelReset(index) {
-  mres.data.channels[index] = defaultMres(mres.data.width, mres.data.height).channels[index]
-  drawMres()
-}
-
-async function channelSave(index) {
-  saveAs(await encodePng(mres.data.width, mres.data.height, mres.data.channels[index], 0), `${mres.name}_${MRES_CHANNELS[index]}.png`)
-}
-
-async function mresSave() {
-  saveAs(await encodePng(mres.data.width, mres.data.height, interleave(mres.data.channels), 6), `${mres.name}_MRES.png`)
-}
-
-function mresInput(files) {
-  if (files[0] && tab.value === "mres") loadMres(files[0])
-}
-
-function skinInput(files) {
-  if (files[0] && tab.value === "converter") load(files[0])
-}
-
-function skinSave() {
-  download(convert(state.eyes, state.mouth), state.skinName)
-}
-
-function capeSave() {
-  download(state.cape, state.capeName)
-}
-
-onMounted(async () => {
-  drawMres()
-  const memory = remembered()
-  const last = memory[memory.showing]
-  if (last) {
-    const blob = await fetch(last.image).then(r => r.blob())
-    load(new File([blob], last.name, { type: "image/png" }), last.settings, true)
+  function drawMres() {
+    const { width, height, channels } = mres.data
+    const defaults = defaultMres(width, height).channels
+    for (const [index, channel] of channels.entries()) {
+      const canvas = canvases.channels[index]
+      canvas.width = width
+      canvas.height = height
+      canvas.getContext("2d").putImageData(new ImageData(new Uint8ClampedArray(interleave([channel, channel, channel, new Uint8Array(channel.length).fill(255)])), width, height), 0, 0)
+      channelDefault[index] = channel.every((value, p) => value === defaults[index][p])
+    }
   }
-  loading.value = false
-})
+
+  function mresName(file) {
+    return baseName(file).replace(MRES_SUFFIX, "")
+  }
+
+  async function loadMres(file) {
+    mresError.value = ""
+    let img
+    try {
+      img = await readExact(file)
+    } catch {
+      mresError.value = `${file.name} could not be opened as an image.`
+      return
+    }
+    if (mresMode.value === "guess") {
+      if (img.width % 64 || img.width > MAX_SKIN_SIZE || img.height !== img.width) {
+        mresError.value = `${file.name} is ${img.width}×${img.height}. Guessing needs a Dungeons II skin, 64×64 or a multiple of that size up to ${MAX_SKIN_SIZE}×${MAX_SKIN_SIZE}.`
+        return
+      }
+      img.scale = img.width / 64
+      mres.data = guessMres(img)
+      mresNote.value = `Guessed from ${file.name}. Check it over, and fix anything it got wrong.`
+    } else {
+      mres.data = splitMres(img)
+      mresNote.value = `Split from ${file.name}.`
+    }
+    mres.name = mresName(file)
+    drawMres()
+  }
+
+  async function replaceChannel(index, file) {
+    let img
+    try {
+      img = await readExact(file)
+    } catch {
+      return `${file.name} could not be opened as an image.`
+    }
+    const { width, height } = mres.data
+    if (img.width * height !== img.height * width) return `${file.name} is ${img.width}×${img.height}, which does not match the ${width}×${height} MRES texture.`
+    const size = img.width > width ? [img.width, img.height] : [width, height]
+    mres.data.channels = mres.data.channels.map(channel => resample(channel, width, height, ...size))
+    mres.data.channels[index] = resample(channelFrom(img), img.width, img.height, ...size)
+    mres.data.width = size[0]
+    mres.data.height = size[1]
+  }
+
+  async function replace(index, file) {
+    mresError.value = await replaceChannel(index, file) || ""
+    drawMres()
+  }
+
+  function channelDrop(index, e) {
+    if (e.dataTransfer.files[0]) replace(index, e.dataTransfer.files[0])
+  }
+
+  function channelInput(index, e) {
+    if (e.target.files[0]) replace(index, e.target.files[0])
+    e.target.value = ""
+  }
+
+  function channelReset(index) {
+    mres.data.channels[index] = defaultMres(mres.data.width, mres.data.height).channels[index]
+    drawMres()
+  }
+
+  async function channelSave(index) {
+    saveAs(await encodePng(mres.data.width, mres.data.height, mres.data.channels[index], 0), `${mres.name}_${MRES_CHANNELS[index]}.png`)
+  }
+
+  async function mresSave() {
+    saveAs(await encodePng(mres.data.width, mres.data.height, interleave(mres.data.channels), 6), `${mres.name}_MRES.png`)
+  }
+
+  function mresInput(files) {
+    if (files[0] && tab.value === "mres") loadMres(files[0])
+  }
+
+  function skinInput(files) {
+    if (files[0] && tab.value === "converter") load(files[0])
+  }
+
+  function skinSave() {
+    download(convert(state.eyes, state.mouth), state.skinName)
+  }
+
+  function capeSave() {
+    download(state.cape, state.capeName)
+  }
+
+  onMounted(async () => {
+    drawMres()
+    const memory = remembered()
+    const last = memory[memory.showing]
+    if (last) {
+      const blob = await fetch(last.image).then(r => r.blob())
+      load(new File([blob], last.name, { type: "image/png" }), last.settings, true)
+    }
+    loading.value = false
+  })
 </script>
 
 <template>
@@ -515,409 +515,409 @@ onMounted(async () => {
 </template>
 
 <style lang="stylus" scoped>
-@import "../../styles/buttons.styl"
+  @import "../../styles/buttons.styl"
 
-.container
-  max-width: var(--content-width)
-  margin: 0 auto
-  min-height: calc(100% - var(--header-height))
-  padding: 0 20px 40px
-  display: flex
-  flex-direction: column
+  .container
+    max-width: var(--content-width)
+    margin: 0 auto
+    min-height: calc(100% - var(--header-height))
+    padding: 0 20px 40px
+    display: flex
+    flex-direction: column
 
-h1
-  margin: 0
-  padding: 22px 0 0
+  h1
+    margin: 0
+    padding: 22px 0 0
 
-h2
-  margin: 0 0 4px
-  font-size: 1.2rem
-
-p
-  white-space: pre-wrap
-
-a
-  color: var(--color-link-blue)
-
-:deep(.hidden)
-  display: none !important
-
-#error, #mres-error
-  color: var(--color-red-light)
-  padding-top: 12px
-  white-space: pre-wrap
-
-.tabs
-  display: flex
-  gap: 10px
-  margin-top: 16px
-
-.tab
-  background-color: var(--color-grey-dark)
-  cursor: pointer
-  border-top: 2px solid transparent
-  transition: background-color .15s, border-top .15s
-  user-select: none
-  padding: 10px 15px
-
-  &.active
-    background-color: var(--color-grey)
-    border-top: 2px solid var(--color-red-light)
-
-.modes
-  display: flex
-  flex-direction: column
-  gap: 12px
-  margin-bottom: 16px
-
-.mode
-  display: flex
-  align-items: flex-start
-  gap: 10px
-  cursor: pointer
-  user-select: none
-
-  input
-    accent-color: var(--color-download)
-    width: 18px
-    height: 18px
-    margin: 2px 0 0
-
-  span
-    font-size: 1.1rem
-    font-weight: 700
+  h2
+    margin: 0 0 4px
+    font-size: 1.2rem
 
   p
-    margin: 2px 0 0
+    white-space: pre-wrap
 
-.channels
-  display: grid
-  grid-template-columns: repeat(2, minmax(0, 1fr))
-  gap: 20px
+  a
+    color: var(--color-link-blue)
 
-.channel
-  display: flex
-  flex-direction: column
+  :deep(.hidden)
+    display: none !important
 
-  .hint
-    flex: 1
+  #error, #mres-error
+    color: var(--color-red-light)
+    padding-top: 12px
+    white-space: pre-wrap
 
-  canvas
-    width: 100%
+  .tabs
+    display: flex
+    gap: 10px
+    margin-top: 16px
 
-.channel-buttons
-  display: flex
-  flex-wrap: wrap
-  gap: 10px
-  margin-top: 10px
+  .tab
+    background-color: var(--color-grey-dark)
+    cursor: pointer
+    border-top: 2px solid transparent
+    transition: background-color .15s, border-top .15s
+    user-select: none
+    padding: 10px 15px
 
-  > *
-    flex: 1
+    &.active
+      background-color: var(--color-grey)
+      border-top: 2px solid var(--color-red-light)
 
-@media only screen and (max-width: 1024px)
-  #mres
-    grid-template-columns: minmax(0, 1fr)
+  .modes
+    display: flex
+    flex-direction: column
+    gap: 12px
+    margin-bottom: 16px
 
-    .save
-      align-items: flex-start
-
-.workspace
-  display: grid
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr)
-  gap: 20px
-  padding-top: 20px
-
-.column, .previews
-  display: flex
-  flex-direction: column
-  gap: 20px
-  min-width: 0
-
-.panel
-  background-color: var(--color-grey)
-  padding: 16px
-  box-shadow: var(--box-shadow)
-
-  p
-    margin: 0 0 8px
-
-.hint
-  opacity: .75
-  font-size: .9rem
-
-.touch
-  display: none
-
-@media (hover: none) and (pointer: coarse)
-  .mouse
-    display: none
-
-  .touch
-    display: block
-
-.note
-  font-size: .9rem
-  color: var(--color-text-optifine)
-
-  &:empty
-    display: none
-
-:deep(canvas)
-  image-rendering: pixelated
-  background-image: url("/assets/images/misc/transparent_dark.webp")
-  display: block
-  max-width: 100%
-
-.preview-face
-  width: 100%
-  aspect-ratio: 1
-
-.faces
-  display: grid
-  grid-template-columns: repeat(2, minmax(0, 1fr))
-  gap: 10px
-
-.face
-  display: flex
-  flex-direction: column
-  gap: 4px
-  font-size: .85rem
-  text-align: center
-
-.viewer
-  position: relative
-  width: 100%
-  aspect-ratio: 1
-  background-image: url("/assets/images/misc/transparent_dark.webp")
-  cursor: grab
-  touch-action: none
-  user-select: none
-
-  &:active
-    cursor: grabbing
-
-  :deep(canvas)
-    background: none
-    width: 100% !important
-    height: 100% !important
-
-  :deep(.reset)
-    position: absolute
-    top: 8px
-    right: 8px
-    font: inherit
-    font-size: .85rem
-    color: var(--color-text-white)
-    background-color: var(--color-grey-light)
-    border: none
-    padding: 6px 10px
-    box-shadow: var(--box-shadow)
+  .mode
+    display: flex
+    align-items: flex-start
+    gap: 10px
     cursor: pointer
     user-select: none
+
+    input
+      accent-color: var(--color-download)
+      width: 18px
+      height: 18px
+      margin: 2px 0 0
+
+    span
+      font-size: 1.1rem
+      font-weight: 700
+
+    p
+      margin: 2px 0 0
+
+  .channels
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 20px
+
+  .channel
+    display: flex
+    flex-direction: column
+
+    .hint
+      flex: 1
+
+    canvas
+      width: 100%
+
+  .channel-buttons
+    display: flex
+    flex-wrap: wrap
+    gap: 10px
+    margin-top: 10px
+
+    > *
+      flex: 1
+
+  @media only screen and (max-width: 1024px)
+    #mres
+      grid-template-columns: minmax(0, 1fr)
+
+      .save
+        align-items: flex-start
+
+  .workspace
+    display: grid
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr)
+    gap: 20px
+    padding-top: 20px
+
+  .column, .previews
+    display: flex
+    flex-direction: column
+    gap: 20px
+    min-width: 0
+
+  .panel
+    background-color: var(--color-grey)
+    padding: 16px
+    box-shadow: var(--box-shadow)
+
+    p
+      margin: 0 0 8px
+
+  .hint
+    opacity: .75
+    font-size: .9rem
+
+  .touch
+    display: none
+
+  @media (hover: none) and (pointer: coarse)
+    .mouse
+      display: none
+
+    .touch
+      display: block
+
+  .note
+    font-size: .9rem
+    color: var(--color-text-optifine)
+
+    &:empty
+      display: none
+
+  :deep(canvas)
+    image-rendering: pixelated
+    background-image: url("/assets/images/misc/transparent_dark.webp")
+    display: block
+    max-width: 100%
+
+  .preview-face
+    width: 100%
+    aspect-ratio: 1
+
+  .faces
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 10px
+
+  .face
+    display: flex
+    flex-direction: column
+    gap: 4px
+    font-size: .85rem
+    text-align: center
+
+  .viewer
+    position: relative
+    width: 100%
+    aspect-ratio: 1
+    background-image: url("/assets/images/misc/transparent_dark.webp")
+    cursor: grab
+    touch-action: none
+    user-select: none
+
+    &:active
+      cursor: grabbing
+
+    :deep(canvas)
+      background: none
+      width: 100% !important
+      height: 100% !important
+
+    :deep(.reset)
+      position: absolute
+      top: 8px
+      right: 8px
+      font: inherit
+      font-size: .85rem
+      color: var(--color-text-white)
+      background-color: var(--color-grey-light)
+      border: none
+      padding: 6px 10px
+      box-shadow: var(--box-shadow)
+      cursor: pointer
+      user-select: none
+      transition: background-color .15s
+
+      &:hover
+        background-color: var(--color-grey-lighter)
+
+  .toggle
+    display: flex
+    align-items: center
+    gap: 8px
+    margin-top: 10px
+    font-size: .9rem
+    cursor: pointer
+    user-select: none
+
+    input
+      accent-color: var(--color-download)
+      margin: 0
+
+  .preview-texture
+    width: 100%
+
+  .choices
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))
+    gap: 10px
+
+    &.small
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr))
+
+  .choice
+    position: relative
+    display: flex
+    flex-direction: column
+    gap: 6px
+    padding: 8px
+    background-color: var(--color-grey-light)
+    outline: 2px solid transparent
+    cursor: pointer
+    user-select: none
+    font-size: .9rem
     transition: background-color .15s
 
     &:hover
       background-color: var(--color-grey-lighter)
 
-.toggle
-  display: flex
-  align-items: center
-  gap: 8px
-  margin-top: 10px
-  font-size: .9rem
-  cursor: pointer
-  user-select: none
+    &.selected
+      outline-color: var(--color-download)
 
-  input
-    accent-color: var(--color-download)
-    margin: 0
+    &.disabled
+      opacity: .4
+      cursor: not-allowed
 
-.preview-texture
-  width: 100%
-
-.choices
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))
-  gap: 10px
-
-  &.small
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr))
-
-.choice
-  position: relative
-  display: flex
-  flex-direction: column
-  gap: 6px
-  padding: 8px
-  background-color: var(--color-grey-light)
-  outline: 2px solid transparent
-  cursor: pointer
-  user-select: none
-  font-size: .9rem
-  transition: background-color .15s
-
-  &:hover
-    background-color: var(--color-grey-lighter)
-
-  &.selected
-    outline-color: var(--color-download)
-
-  &.disabled
-    opacity: .4
-    cursor: not-allowed
-
-    &:hover
-      background-color: var(--color-grey-light)
-
-  canvas
-    width: 100%
-    aspect-ratio: 1
-
-  small
-    opacity: .7
-
-#arms
-  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr))
-
-  span
-    white-space: nowrap
-
-  canvas
-    width: 56px
-    height: 154px
-    aspect-ratio: auto
-    align-self: center
-
-.pair
-  display: flex
-  flex-wrap: wrap
-  gap: 20px
-
-  > .panel
-    flex: 1 1 280px
-
-  &:not(:has(> .panel:not(.hidden)))
-    display: none
-
-.badge
-  position: absolute
-  top: 12px
-  left: 12px
-  right: 12px
-  background-color: var(--color-download)
-  padding: 2px 6px
-  font-size: .75rem
-  font-weight: 700
-  text-align: center
-  box-shadow: var(--box-shadow)
-
-.mods
-  margin-bottom: 4px
-
-.mod-list
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
-  gap: 12px
-  margin-top: 8px
-
-.mod
-  display: flex
-  flex-direction: column
-  gap: 6px
-  padding: 12px
-  background-color: var(--color-grey-light)
-
-  h3
-    margin: 0
-    font-size: 1.05rem
-
-  p
-    margin: 0
-    flex: 1
-
-  .button-download
-    align-self: flex-start
-
-.save
-  display: flex
-  flex-direction: column
-  gap: 10px
-  align-items: stretch
-
-@media only screen and (max-width: 768px)
-  .workspace
-    grid-template-columns: minmax(0, 1fr)
-
-  #skin
-    display: flex
-    flex-direction: column
-
-    .column
-      display: contents
-
-  .previews
-    position: sticky
-    top: var(--header-height)
-    z-index: 2
-    display: grid
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
-    align-items: start
-    gap: 10px
-    margin: -10px -20px 0
-    padding: 10px 20px
-    background-color: var(--color-grey-darker)
-
-    .panel
-      padding: 8px
-      display: flex
-      flex-direction: column
-
-    h2, .hint
-      display: none
-
-    .toggle
-      margin-top: 6px
-      font-size: .75rem
-
-    .faces
-      gap: 6px
-
-    .face
-      font-size: .75rem
-
-  .converted
-    order: 1
-
-  .download
-    order: 2
-
-  .choices
-    grid-template-columns: repeat(3, minmax(0, 1fr))
-    gap: 8px
-
-  .choice
-    padding: 6px
-    gap: 4px
-    font-size: .8rem
-
-  #layer
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-
-  .channels
-    grid-template-columns: minmax(0, 1fr)
-
-  #arms
-    grid-template-columns: repeat(4, minmax(0, 1fr))
+      &:hover
+        background-color: var(--color-grey-light)
 
     canvas
       width: 100%
-      height: auto
-      aspect-ratio: 8 / 22
+      aspect-ratio: 1
+
+    small
+      opacity: .7
+
+  #arms
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr))
+
+    span
+      white-space: nowrap
+
+    canvas
+      width: 56px
+      height: 154px
+      aspect-ratio: auto
+      align-self: center
+
+  .pair
+    display: flex
+    flex-wrap: wrap
+    gap: 20px
+
+    > .panel
+      flex: 1 1 280px
+
+    &:not(:has(> .panel:not(.hidden)))
+      display: none
 
   .badge
-    top: 8px
-    left: 8px
-    right: 8px
-    padding: 2px 4px
-    font-size: .65rem
+    position: absolute
+    top: 12px
+    left: 12px
+    right: 12px
+    background-color: var(--color-download)
+    padding: 2px 6px
+    font-size: .75rem
+    font-weight: 700
+    text-align: center
+    box-shadow: var(--box-shadow)
+
+  .mods
+    margin-bottom: 4px
+
+  .mod-list
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+    gap: 12px
+    margin-top: 8px
+
+  .mod
+    display: flex
+    flex-direction: column
+    gap: 6px
+    padding: 12px
+    background-color: var(--color-grey-light)
+
+    h3
+      margin: 0
+      font-size: 1.05rem
+
+    p
+      margin: 0
+      flex: 1
+
+    .button-download
+      align-self: flex-start
+
+  .save
+    display: flex
+    flex-direction: column
+    gap: 10px
+    align-items: stretch
+
+  @media only screen and (max-width: 768px)
+    .workspace
+      grid-template-columns: minmax(0, 1fr)
+
+    #skin
+      display: flex
+      flex-direction: column
+
+      .column
+        display: contents
+
+    .previews
+      position: sticky
+      top: var(--header-height)
+      z-index: 2
+      display: grid
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+      align-items: start
+      gap: 10px
+      margin: -10px -20px 0
+      padding: 10px 20px
+      background-color: var(--color-grey-darker)
+
+      .panel
+        padding: 8px
+        display: flex
+        flex-direction: column
+
+      h2, .hint
+        display: none
+
+      .toggle
+        margin-top: 6px
+        font-size: .75rem
+
+      .faces
+        gap: 6px
+
+      .face
+        font-size: .75rem
+
+    .converted
+      order: 1
+
+    .download
+      order: 2
+
+    .choices
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+      gap: 8px
+
+    .choice
+      padding: 6px
+      gap: 4px
+      font-size: .8rem
+
+    #layer
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+
+    .channels
+      grid-template-columns: minmax(0, 1fr)
+
+    #arms
+      grid-template-columns: repeat(4, minmax(0, 1fr))
+
+      canvas
+        width: 100%
+        height: auto
+        aspect-ratio: 8 / 22
+
+    .badge
+      top: 8px
+      left: 8px
+      right: 8px
+      padding: 2px 4px
+      font-size: .65rem
 </style>
