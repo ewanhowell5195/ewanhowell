@@ -4,9 +4,9 @@ import "/js/components/file-input.js"
 const API = "https://minecraft-biome-colors.ewanh.workers.dev"
 
 const CHANNELS = {
-  grass:      { tex: "grass",      color: "grassColor",      fixed: "grassColorFixed",      file: "grass" },
-  foliage:    { tex: "foliage",    color: "foliageColor",    fixed: "foliageColorFixed",    file: "foliage" },
-  dryFoliage: { tex: "dryFoliage", color: "dryFoliageColor", fixed: "dryFoliageColorFixed", file: "dry_foliage" }
+  grass:      { tex: "grass",      color: "grassColor",      fixed: "grassColorFixed",      file: "grass",       label: "Grass" },
+  foliage:    { tex: "foliage",    color: "foliageColor",    fixed: "foliageColorFixed",    file: "foliage",     label: "Foliage" },
+  dryFoliage: { tex: "dryFoliage", color: "dryFoliageColor", fixed: "dryFoliageColorFixed", file: "dry_foliage", label: "Dry Foliage" }
 }
 
 const BLOCKS = {
@@ -28,15 +28,14 @@ function triangleCoords(temp, downfall) {
   return [Math.floor((1 - t) * 255), Math.floor((1 - d) * 255)]
 }
 
-// vanilla altitude adjustment, float32 like the game, noise term omitted
-const altitudeTemp = (temp, worldY) =>
-  worldY > 80 ? fr(fr(temp) - fr(fr(fr(worldY - 80) * fr(0.05)) / 40)) : temp
-
 function samplePacked(data, temp, downfall) {
   const [x, y] = triangleCoords(temp, downfall)
   const i = (y * 256 + x) * 4
   return (data[i] << 16) | (data[i + 1] << 8) | data[i + 2]
 }
+
+const altitudeTemp = (temp, worldY) =>
+  worldY > 80 ? fr(fr(temp) - fr(fr(fr(worldY - 80) * fr(0.05)) / 40)) : temp
 
 function biomeColumn(biome, channel, texData, minY, height, mode) {
   if (biome[channel.fixed] || mode === "flat") {
@@ -56,6 +55,26 @@ function trianglePoint(biome) {
   return triangleCoords(biome.temperature, biome.downfall)
 }
 
+function fitPixels(element, width, height, { pad = 0, maxHeight = Infinity } = {}) {
+  const container = element.parentElement
+  let attached = false
+  const observer = new ResizeObserver(() => {
+    if (!element.isConnected) {
+      if (attached) observer.disconnect()
+      return
+    }
+    attached = true
+    const style = getComputedStyle(container)
+    const available = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+    const dpr = devicePixelRatio
+    const fit = Math.min(available / width, maxHeight / height) * dpr
+    const scale = fit >= 1 ? Math.floor(fit) : fit
+    element.style.width = `${(width + pad * 2) * scale / dpr}px`
+    if (pad) element.style.margin = `0 auto ${-pad * scale / dpr}px`
+  })
+  observer.observe(container)
+}
+
 function saveText(name, text) {
   saveAs(new Blob([text], { type: "text/plain" }), name)
 }
@@ -67,9 +86,9 @@ export default class ColormapGeneratorPage extends Page {
       $(".button-download").prepend(() => downloadIcon.clone(true))
 
       const status = $("#status")
-      const results = $("#results")
+      fitPixels($("#triangle-wrap")[0], 256, 256, { pad: 8, maxHeight: 512 })
       const cache = new Map()
-      const state = { version: null, channel: "grass", mode: "altitude", size: "full", entry: null, convert: { version: null, entry: null, imgData: null } }
+      const state = { tab: "vanilla", version: null, channel: "grass", mode: "flat", size: "full", entry: null, convert: { version: null, entry: null, imgData: null } }
 
       const loadVersion = async version => {
         if (cache.has(version)) return cache.get(version)
@@ -89,6 +108,39 @@ export default class ColormapGeneratorPage extends Page {
         const entry = { doc, textures }
         cache.set(version, entry)
         return entry
+      }
+
+      function gridView(canvas, doc, minY) {
+        const names = new Array(256).fill(null)
+        for (const biome of doc.biomes) names[biome.numericId] = biome.id
+        const ctx = canvas.getContext("2d", { willReadFrequently: true })
+        const tooltip = E("div").addClass("tooltip grid-tooltip hidden")
+        const wrap = E("div").addClass("grid-wrap").append(canvas, tooltip)
+        canvas.on("mousemove", e => {
+          const rect = canvas.getBoundingClientRect()
+          const x = Math.max(0, Math.min(255, Math.floor((e.clientX - rect.left) / rect.width * 256)))
+          const y = Math.max(0, Math.min(canvas.height - 1, Math.floor((e.clientY - rect.top) / rect.height * canvas.height)))
+          const [r, g, b] = ctx.getImageData(x, y, 1, 1).data
+          const hex = packedToCss(r << 16 | g << 8 | b)
+          tooltip.empty().removeClass("hidden").append(
+            E("div").addClass("tooltip-biome").append(
+              E("span").addClass("swatch").css("background-color", hex),
+              E("span").text(names[x] ?? "unused (plains)"),
+              E("span").addClass("tooltip-hex").text(hex)
+            ),
+            E("div").addClass("tooltip-meta").text(`Y ${minY + y}, column ${x}`)
+          )
+          const left = e.clientX - rect.left + 16
+          const top = e.clientY - rect.top + 16
+          const flip = e.clientX + 16 + tooltip[0].offsetWidth > document.documentElement.clientWidth - 8
+          tooltip.css({ left: flip ? left - 32 - tooltip[0].offsetWidth : left, top })
+        }).on("mouseleave", () => tooltip.addClass("hidden"))
+        return wrap
+      }
+
+      function showGrid(holder, wrap, height, maxHeight) {
+        holder.append(wrap)
+        fitPixels(wrap[0], 256, height, { maxHeight })
       }
 
       const renderGrid = () => {
@@ -119,9 +171,10 @@ export default class ColormapGeneratorPage extends Page {
           }
         }
 
-        const canvas = new Canvas(256, height, true, 1024)
-        canvas.getContext("2d").putImageData(img, 0, 0)
-        $("#grid-holder").empty().append(canvas)
+        const canvas = new Canvas(256, height)
+        canvas.getContext("2d", { willReadFrequently: true }).putImageData(img, 0, 0)
+        showGrid($("#grid-holder").empty(), gridView(canvas, doc, minY), height, 768)
+        $("#size-full-note").text(`Y ${doc.worldMinY} to ${doc.worldMaxY - 1}, needs a yOffset`)
         $("#grid-info").text(`256×${height}, covers Y ${minY} to ${minY + height - 1}${minY < 0 ? ` (needs yOffset=${minY})` : ""}`)
         $("#properties-example").text([
           `# ${channel.file}.properties`,
@@ -133,29 +186,11 @@ export default class ColormapGeneratorPage extends Page {
         state.gridCanvas = canvas
       }
 
-      // the exact pixels the game samples for this biome from Y=80 to the world top
-      const altitudePixels = biome => {
-        const maxY = state.entry.doc.worldMaxY - 1
-        const pixels = new Set()
-        for (let worldY = 80; worldY <= maxY; worldY++) {
-          const temp = altitudeTemp(biome.temperature, worldY)
-          const [x, y] = triangleCoords(temp, biome.downfall)
-          pixels.add(x + y * 256)
-          if (temp <= 0) break
-        }
-        return pixels
-      }
-
-      const drawAltitudeLine = (ctx, biome, colour, off = 0) => {
-        ctx.fillStyle = colour
-        for (const pixel of altitudePixels(biome)) ctx.fillRect(pixel % 256 + off, (pixel / 256 | 0) + off, 1, 1)
-      }
-
       // 3x3 square marker with a white centre pixel
-      const drawDot = (ctx, group, off = 0) => {
-        ctx.fillStyle = "#000"
+      const drawDot = (ctx, group, off = 0, outer = "#000", inner = "#fff") => {
+        ctx.fillStyle = outer
         ctx.fillRect(group.x - 1 + off, group.y - 1 + off, 3, 3)
-        ctx.fillStyle = "#fff"
+        ctx.fillStyle = inner
         ctx.fillRect(group.x + off, group.y + off, 1, 1)
       }
 
@@ -163,9 +198,6 @@ export default class ColormapGeneratorPage extends Page {
       const clearUnused = (ctx, off = 0) => {
         for (let y = 0; y < 255; y++) ctx.clearRect(off + y + 1, off + y, 255 - y, 1)
       }
-
-      // one altitude line per unique temperature/downfall pair in the group
-      const groupLines = group => [...new Map(group.biomes.map(b => [`${b.temperature},${b.downfall}`, b])).values()]
 
       const buildGroups = channel => {
         const texData = state.entry.textures[channel.tex].data
@@ -212,10 +244,7 @@ export default class ColormapGeneratorPage extends Page {
           hovered = group
           ctx.clearRect(0, 0, size, size)
           ctx.drawImage(base, 0, 0)
-          if (group) {
-            for (const biome of groupLines(group)) drawAltitudeLine(ctx, biome, "#fff", pad)
-            drawDot(ctx, group, pad)
-          }
+          if (group) drawDot(ctx, group, pad, "#fff", "#000")
         }
 
         canvas.on("mousemove", e => {
@@ -233,18 +262,21 @@ export default class ColormapGeneratorPage extends Page {
           setHovered(nearest)
           if (!nearest) return tooltip.addClass("hidden")
           tooltip.empty().removeClass("hidden")
-          if (nearest.held) {
-            tooltip.append(E("div").addClass("tooltip-biome").append(
-              E("span").addClass("swatch").css("background-color", heldColour),
-              E("span").text("held/dropped blocks"),
-              E("span").addClass("tooltip-hex").text(heldColour)
-            ))
-          }
+          const byColour = new Map()
+          if (nearest.held) byColour.set(heldColour.toLowerCase(), ["held and dropped blocks"])
           for (const biome of nearest.biomes) {
-            tooltip.append(E("div").addClass("tooltip-biome").append(
-              E("span").addClass("swatch").css("background-color", biome[channel.color]),
-              E("span").text(biome.id),
-              E("span").addClass("tooltip-hex").text(biome[channel.color])
+            const hex = biome[channel.color].toLowerCase()
+            if (!byColour.has(hex)) byColour.set(hex, [])
+            byColour.get(hex).push(channel.tex === "grass" && biome.grassColorModifier === "dark_forest" ? `${biome.id} (colormap darkened with #28340a)` : biome.id)
+          }
+          for (const [hex, names] of byColour) {
+            tooltip.append(E("div").addClass("tooltip-group").append(
+              E("div").addClass("tooltip-biome").append(
+                E("span").addClass("swatch").css("background-color", hex),
+                E("span").addClass("tooltip-hex").text(hex),
+                E("span").addClass("tooltip-count").text(names.length === 1 ? "" : `${names.length} biomes`)
+              ),
+              E("div").addClass("tooltip-names").append(names.map(name => E("div").text(name)))
             ))
           }
           const first = nearest.biomes[0]
@@ -260,14 +292,15 @@ export default class ColormapGeneratorPage extends Page {
         wrap.children("canvas").remove()
         wrap.prepend(canvas)
 
-        $("#fixed-wrap").toggleClass("hidden", !fixed.length)
+        const modified = channel.tex === "grass" ? state.entry.doc.biomes.filter(b => !b[channel.fixed] && b.grassColorModifier === "dark_forest") : []
+        $("#fixed-wrap").toggleClass("hidden", !fixed.length && !modified.length)
         const fixedHolder = $("#fixed-biomes").empty()
-        for (const biome of fixed) {
+        for (const biome of fixed.concat(modified)) {
           fixedHolder.append(E("div").addClass("fixed-chip").append(
             E("span").addClass("swatch swatch-large").css("background-color", biome[channel.color]),
             E("div").addClass("fixed-chip-text").append(
               E("span").text(biome.id),
-              E("span").addClass("fixed-chip-hex").text(biome[channel.color])
+              E("span").addClass("fixed-chip-hex").text(modified.includes(biome) ? `${biome[channel.color]}, colormap darkened with #28340a` : biome[channel.color])
             )
           ))
         }
@@ -312,6 +345,7 @@ export default class ColormapGeneratorPage extends Page {
       const renderConvert = () => {
         const out = $("#convert-output").empty()
         const convert = state.convert
+        $("#convert-empty").toggleClass("hidden", !!convert.imgData)
         if (!convert.imgData || !convert.entry || !state.entry) return
         const tgtDoc = state.entry.doc
         const srcDoc = convert.entry.doc
@@ -338,14 +372,14 @@ export default class ColormapGeneratorPage extends Page {
           if (srcIds.has(biome.id)) {
             columns[biome.numericId] = { copy: srcIds.get(biome.id) % srcW }
           } else {
-            columns[biome.numericId] = { synth: biomeColumn(biome, channel, texData, minY, height, "altitude") }
+            columns[biome.numericId] = { synth: biomeColumn(biome, channel, texData, minY, height, "flat") }
             generated.push(biome.id)
           }
         }
         const plains = tgtDoc.biomes.find(b => b.id === "plains") ?? tgtDoc.biomes[0]
         const fill = srcIds.has(plains.id)
           ? { copy: srcIds.get(plains.id) % srcW }
-          : { synth: biomeColumn(plains, channel, texData, minY, height, "altitude") }
+          : { synth: biomeColumn(plains, channel, texData, minY, height, "flat") }
         for (let x = 0; x < 256; x++) if (!columns[x]) columns[x] = fill
 
         const img = new ImageData(256, height)
@@ -370,45 +404,60 @@ export default class ColormapGeneratorPage extends Page {
           }
         }
 
-        const canvas = new Canvas(256, height, true, 1024)
-        canvas.getContext("2d").putImageData(img, 0, 0)
+        const canvas = new Canvas(256, height)
+        canvas.getContext("2d", { willReadFrequently: true }).putImageData(img, 0, 0)
 
         const dropped = srcDoc.biomes.filter(b => !tgtIds.has(b.id)).map(b => b.id)
-        out.append(E("p").addClass("convert-info").text(`256×${height}, covers Y ${minY} to ${minY + height - 1}${minY < 0 ? ` (needs yOffset=${minY})` : ""}`))
-        if (generated.length) out.append(E("p").addClass("convert-info").text(`Generated from vanilla (not in ${convert.version}): ${generated.join(", ")}`))
-        if (dropped.length) out.append(E("p").addClass("convert-info").text(`Dropped (not in ${state.version}): ${dropped.join(", ")}`))
-        out.append(canvas)
-        out.append(E("div").addClass("buttons").append(
-          E("div").addClass("button-download").append(
-            downloadIcon.clone(true),
-            E("span").text("Download PNG")
-          ).on("click", () => canvas.saveAs(`${channel.file}_grid_${state.version}.png`))
-        ))
+        out.append(E("p").addClass("hint").text(`256×${height}, covers Y ${minY} to ${minY + height - 1}${minY < 0 ? ` (needs yOffset=${minY})` : ""}`))
+        if (generated.length) out.append(E("p").addClass("note").text(`Generated from vanilla (not in ${convert.version}): ${generated.join(", ")}`))
+        if (dropped.length) out.append(E("p").addClass("note").text(`Dropped (not in ${state.version}): ${dropped.join(", ")}`))
+        showGrid(out, gridView(canvas, tgtDoc, minY), height, 768)
+        out.append(E("div").addClass("button-download").append(
+          downloadIcon.clone(true),
+          E("span").text("Download")
+        ).on("click", () => canvas.saveAs(`${channel.file}_grid_${state.version}.png`)))
+      }
+
+      const renderChannelChoices = () => {
+        const { textures } = state.entry
+        for (const holder of Array.from($(".channel-choices"))) {
+          const choices = $(holder).empty()
+          for (const [key, channel] of Object.entries(CHANNELS)) {
+            if (!textures[channel.tex]) continue
+            const canvas = new Canvas(256, 256)
+            const ctx = canvas.getContext("2d")
+            ctx.drawImage(textures[channel.tex].bitmap, 0, 0)
+            clearUnused(ctx)
+            choices.append(E("div").addClass("choice").toggleClass("selected", key === state.channel).attr("data-channel", key).append(
+              canvas,
+              E("span").text(channel.label)
+            ))
+          }
+        }
+      }
+
+      const showTab = () => {
+        $("#generator-tab").toggleClass("hidden", state.tab === "converter" || !state.entry).attr("data-view", state.tab)
+        $("#converter-tab").toggleClass("hidden", state.tab !== "converter" || !state.entry)
       }
 
       const render = () => {
         const { doc } = state.entry
         $(".size-wrap").toggleClass("hidden", doc.worldMinY === 0 && doc.worldMaxY === 256)
-        const hasDry = !!doc.textures.dryFoliage
-        $('[data-channel="dryFoliage"]').toggleClass("hidden", !hasDry)
-        if (!hasDry && state.channel === "dryFoliage") {
-          state.channel = "grass"
-          $(".channel-tabs .type-option").removeClass("selected")
-          $('.channel-tabs [data-channel="grass"]').addClass("selected")
-        }
+        if (!doc.textures.dryFoliage && state.channel === "dryFoliage") state.channel = "grass"
+        renderChannelChoices()
         renderGrid()
         renderTriangle()
         renderTable()
         renderConvert()
-        results.toggleClass("hidden", $('#page-tabs [data-tab="converter"]').hasClass("selected"))
+        showTab()
       }
 
       const selectVersion = async version => {
         state.version = version
         $("#version").val(version)
         $("#convert-to").val(version)
-        status.text("Loading...")
-        results.addClass("hidden")
+        status.text(`Loading ${version}...`)
         try {
           state.entry = await loadVersion(version)
         } catch (err) {
@@ -419,47 +468,35 @@ export default class ColormapGeneratorPage extends Page {
         render()
       }
 
-      $("#page-tabs").on("click", ".type-option", e => {
-        const tab = e.currentTarget.dataset.tab
-        $("#page-tabs .type-option").removeClass("selected")
-        $(e.currentTarget).addClass("selected")
-        $("#tab-converter").toggleClass("hidden", tab !== "converter")
-        $("#tab-generator").toggleClass("hidden", tab === "converter")
-        results.toggleClass("hidden", tab === "converter" || !state.entry)
+      $("#page-tabs").on("click", ".tab", e => {
+        state.tab = e.currentTarget.dataset.tab
+        $("#page-tabs .tab").removeClass("active")
+        $(e.currentTarget).addClass("active")
+        showTab()
       })
 
-      $("#views").on("click", ".type-option", e => {
-        const view = e.currentTarget.dataset.view
-        $("#views .type-option").removeClass("selected")
-        $(e.currentTarget).addClass("selected")
-        $("#view-vanilla").toggleClass("hidden", view !== "vanilla")
-        $("#view-grid").toggleClass("hidden", view !== "grid")
-      })
-
-      $(".channel-tabs").on("click", ".type-option", e => {
+      $(".channel-choices").on("click", ".choice", e => {
         const channel = e.currentTarget.dataset.channel
         if (channel === state.channel) return
         state.channel = channel
-        $(".channel-tabs .type-option").removeClass("selected")
-        $(`.channel-tabs [data-channel="${channel}"]`).addClass("selected")
         if (state.entry) render()
       })
 
-      $(".mode-tabs").on("click", ".type-option", e => {
+      $("#modes").on("click", ".choice", e => {
         const mode = e.currentTarget.dataset.mode
         if (mode === state.mode) return
         state.mode = mode
-        $(".mode-tabs .type-option").removeClass("selected")
-        $(`.mode-tabs [data-mode="${mode}"]`).addClass("selected")
+        $("#modes .choice").removeClass("selected")
+        $(e.currentTarget).addClass("selected")
         if (state.entry) renderGrid()
       })
 
-      $(".size-tabs").on("click", ".type-option", e => {
+      $("#sizes").on("click", ".choice", e => {
         const size = e.currentTarget.dataset.size
         if (size === state.size) return
         state.size = size
-        $(".size-tabs .type-option").removeClass("selected")
-        $(`.size-tabs [data-size="${size}"]`).addClass("selected")
+        $("#sizes .choice").removeClass("selected")
+        $(e.currentTarget).addClass("selected")
         if (state.entry) renderGrid()
       })
 
@@ -514,10 +551,6 @@ export default class ColormapGeneratorPage extends Page {
         const ctx = canvas.getContext("2d")
         ctx.drawImage(state.entry.textures[channel.tex].bitmap, 0, 0)
         clearUnused(ctx)
-        // semi-transparent so overlapping paths from different biomes stack visibly
-        for (const group of groups.values()) {
-          for (const biome of groupLines(group)) drawAltitudeLine(ctx, biome, "rgba(255, 255, 255, .35)")
-        }
         for (const group of groups.values()) drawDot(ctx, group)
         canvas.saveAs(`${channel.file}_map_${state.version}.png`)
       })

@@ -1,85 +1,95 @@
 template#download-icon: include /assets/images/svg/download.svg
 .container
   h1 Biome Colormap Generator
-  p This is a tool that generates Minecraft biome colormaps for any version, from 1.16.2 up to the latest release. The biome data is extracted from the actual game files of each version, so ids and colours are always accurate to the version you pick.
-  p It generates the default OptiFine grid colormap, a biome ID list, and a map of where each biome sits on the vanilla colormap.
-  details.how
-    summary How vanilla biome colours work
-    p Vanilla Minecraft colours grass and leaves using two 256×256 colormap images. Each biome has a temperature and a downfall value, and these pick a single pixel from the colormap. Above Y=80 the temperature slowly drops, so the sampled colour slides across the colormap as you build higher.
-    p Some biomes don't use the colormap at all and instead have hardcoded colours, like swamps and badlands. These are listed separately below the colormap map.
-    p OptiFine grid colormaps work differently: each column is one biome (by numeric ID), and each row is a world Y level. This gives every biome its own colour gradient, which is what this tool generates.
-  .types.views#page-tabs
-    .type-option.selected(data-tab = "generator") Generator
-    .type-option(data-tab = "converter") Grid Converter
+  p This is a tool that generates Minecraft biome colormaps for any version from 1.16.2 onwards, using biome data read from each version's game files. It maps where each biome sits on the vanilla colormap, makes OptiFine grid colormaps and biome ID lists, and converts grid colormaps between versions.
+  .tabs#page-tabs
+    .tab.active(data-tab = "vanilla") Vanilla Generator
+    .tab(data-tab = "grid") Grid Generator
+    .tab(data-tab = "converter") Grid Converter
   #status
-  #tab-generator
-    h3 Version
-    select#version
-      option Loading...
-  #results.hidden
-    .types.views#views
-      .type-option.selected(data-view = "vanilla") Vanilla
-      .type-option(data-view = "grid") OptiFine Grid
-    section#view-vanilla
-      p This is the actual vanilla colormap texture from this version, with every biome plotted at the position it samples from, and the line it moves along at high altitude. Hover the dots to see which biomes sample there. The square marker in the middle is the colour used for held and dropped blocks.
-      .types.channel-tabs
-        .type-option.selected(data-channel = "grass") Grass
-        .type-option(data-channel = "foliage") Foliage
-        .type-option(data-channel = "dryFoliage") Dry Foliage
-      .triangle-wrap#triangle-wrap
-        #triangle-tooltip.hidden
-      #fixed-wrap
-        h3 Hardcoded biome colours
-        #fixed-biomes
-      .buttons
-        .button-download#download-texture
-          span Download map
-    section#view-grid.hidden
-      p Each column is one biome, each row is a world Y level. The top row is the bottom of the world. Unused columns are filled with the plains gradient as a neutral default for mod biomes.
-      h3 Mode
-      .types.mode-tabs
-        .type-option.selected(data-mode = "altitude") Altitude
-        .type-option(data-mode = "flat") Flat
-      p#mode-hint Altitude reproduces the vanilla altitude gradient, so columns slowly change colour above Y=80. Flat fills each column with the biome's sea level colour.
-      .size-wrap.hidden
-        h3 Size
-        .types.size-tabs
-          .type-option.selected(data-size = "full") Full Height
-          .type-option(data-size = "square") Square
-        p#size-hint Full height covers the entire world, from Y=-64 to Y=319, and needs a yOffset in the colormap properties. Square is the classic 256×256 format covering Y=0 to Y=255, where anything below Y=0 uses the top row.
-      p#grid-info
-      .types.channel-tabs
-        .type-option.selected(data-channel = "grass") Grass
-        .type-option(data-channel = "foliage") Foliage
-        .type-option(data-channel = "dryFoliage") Dry Foliage
-      #grid-holder
-      .buttons
-        .button-download#download-grid
-          span Download PNG
-        .button-download#download-ids
-          span Download ID list
-      details.how
-        summary Using this in a resource pack
-        p Vanilla #[code grass.png] and #[code foliage.png] are always in the vanilla format, so to use a grid colormap you need to create an OptiFine custom colormap. Save the PNG and create a #[code .properties] file next to it in #[code assets/minecraft/optifine/colormap/blocks/]#[span :]
-        pre#properties-example
-    section
+  #generator-tab.hidden(data-view = "vanilla")
+    .workspace#generator
+      .column
+        .panel
+          h2 Version
+          select#version
+        .panel
+          h2 Colormap
+          .choices.channel-choices
+        .panel.grid-only
+          h2 Grid mode
+          .choices.text-choices#modes
+            .choice.selected(data-mode = "flat")
+              span Flat
+              small One colour per biome at every height, like vanilla
+            .choice(data-mode = "altitude")
+              span Altitude
+              small Colours shift as it gets colder above Y=80
+          .size-wrap.hidden
+            h2.sub Grid size
+            .choices.text-choices#sizes
+              .choice.selected(data-size = "full")
+                span Full height
+                small#size-full-note
+              .choice(data-size = "square")
+                span Square
+                small Y 0 to 255, the classic 256×256
+        .panel.download
+          h2 Download
+          .save
+            .button-download.grid-only#download-grid
+              span Grid colormap
+            .button-download.grid-only#download-ids
+              span Biome ID list
+            .button-download.vanilla-only#download-texture
+              span Colormap map
+      .column
+        .panel.vanilla-only
+          h2 Vanilla colormap
+          p.hint Each biome samples one pixel, picked by its temperature and downfall, and uses that colour at every height. Hover a marker to see its biomes. The centre marker is the colour of held and dropped blocks.
+          .triangle-wrap#triangle-wrap
+            #triangle-tooltip.hidden
+        .panel.grid-only
+          h2 OptiFine grid
+          p.hint Each column is a biome by numeric ID, and each row is a world Y level, starting at the bottom of the world. Unused columns use plains as a neutral default for mod biomes. Hover the grid to see the biome and Y level.
+          #grid-holder
+          p.note#grid-info
+        .panel#fixed-wrap
+          h2 Hardcoded colours
+          p.hint These biomes ignore the vanilla colormap and always use the same colour. In a grid colormap they are ordinary columns that OptiFine reads like any other, so the generated grid fills them with that colour at every height, even in Altitude mode.
+          #fixed-biomes
+        .panel.grid-only.setup
+          h2 Resource pack setup
+          p.hint Vanilla #[code grass.png] and #[code foliage.png] only use the vanilla format, so a grid colormap needs OptiFine. Save the grid in #[code assets/minecraft/optifine/colormap/blocks/] with this properties file next to it.
+          pre#properties-example
+    .panel.biome-data
       h2 Biome data
-      p All of the data for this version. Numeric IDs are the grid colormap column positions.
+      p.hint Every biome in this version. Numeric IDs are the column positions in the grid colormap.
       .table-wrap
         table#biome-table
-  section#tab-converter.hidden
-    p Converts an OptiFine grid colormap from one version to another. Every biome column is moved to its numeric ID in the target version, and biomes that don't exist in the source version get their default vanilla column generated instead.
-    .convert-versions
-      div
-        h3 Convert from
-        select#convert-from
-      div
-        h3 Convert to
-        select#convert-to
-    p Provide the grid colormap PNG made for the version being converted from.
-    file-input(accept = ".png,image/png")
-    .types.channel-tabs
-      .type-option.selected(data-channel = "grass") Grass
-      .type-option(data-channel = "foliage") Foliage
-      .type-option(data-channel = "dryFoliage") Dry Foliage
-    #convert-output
+  #converter-tab.hidden
+    p Converts an OptiFine grid colormap from one version to another. Every biome column moves to its numeric ID in the target version, and biomes the source version doesn't have get their vanilla column generated.
+    .workspace
+      .column
+        .panel
+          h2 Versions
+          .convert-versions
+            label
+              span.hint From
+              select#convert-from
+            label
+              span.hint To
+              select#convert-to
+        .panel
+          h2 Colormap
+          p.hint Used to generate the columns for new biomes.
+          .choices.channel-choices
+      .column
+        .panel
+          h2 Grid colormap
+          p.hint The grid PNG made for the version you are converting from.
+          file-input(accept = ".png,image/png")
+        .panel#convert-result
+          h2 Converted grid
+          p.hint#convert-empty Provide a grid colormap to convert it.
+          #convert-output
