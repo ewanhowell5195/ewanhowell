@@ -1,5 +1,6 @@
 <script setup>
   import { ref, computed, onMounted, onBeforeUnmount } from "vue"
+  import Icon from "./Icon.js"
 
   const props = defineProps({
     multiple: Boolean,
@@ -46,7 +47,7 @@
   <div class="file-input" @drop="onDrop" @dragover.prevent>
     <div class="file-drop" :class="{ active }">
       <span class="file-drop-button">
-        <img src="/assets/images/svg/upload.svg">
+        <Icon name="upload" />
         <span>Choose file{{ multiple ? "s" : "" }}</span>
       </span>
       <span class="file-drop-text">{{ text }}</span>
@@ -92,9 +93,10 @@
   .file-drop:active > .file-drop-button > *
     transform: translateY(4px)
 
-  .file-drop-button > img
-    width: 28px
-    filter: invert() drop-shadow(-2px 2px 1px var(--color-svg-shadow))
+  .file-drop-button > .icon
+    font-size: 28px
+    color: white
+    filter: drop-shadow(-2px 2px 1px var(--color-svg-shadow))
 
   .file-drop-button > span
     text-shadow: var(--text-shadow)

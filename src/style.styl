@@ -33,6 +33,20 @@ body
   overflow: auto
   min-height: 100vh
 
+.icon
+  font-size: 24px
+  width: 1em
+  height: 1em
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  line-height: 1
+  user-select: none
+
+  &.fa-brands::before
+    font-size: calc(20em / 24)
+
 *:where(:not(.page *))
   font-family: Arial
   color: var(--color-text-white)
@@ -104,8 +118,8 @@ body::-webkit-scrollbar-thumb
   & > span
     transition: transform .15s
 
-  & > svg
-    fill: var(--color-text-white)
+  & > .icon
+    color: var(--color-text-white)
     filter: drop-shadow(var(--text-shadow))
 
   &:hover
@@ -231,9 +245,9 @@ body::-webkit-scrollbar-thumb
   display: flex
   justify-content: space-around
   
-  path
-    fill: var(--color-text-white)
-    
+  .icon
+    color: var(--color-text-white)
+
   a
     display: flex
     align-items: center
@@ -376,10 +390,9 @@ body::-webkit-scrollbar-thumb
   justify-content: center
   cursor: pointer
 
-  svg
-    min-width: 28px
-    min-height: 28px
-    fill: var(--color-text-optifine)
+  .icon
+    font-size: 28px
+    color: var(--color-text-optifine)
     filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
     transition: transform .15s
   
@@ -427,10 +440,9 @@ body::-webkit-scrollbar-thumb
       span
         color: var(--color-text-optifine)
       
-      svg
-        width: 28px
-        height: 28px
-        fill: var(--color-text-optifine)
+      .icon
+        font-size: 28px
+        color: var(--color-text-optifine)
         filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
         
       &:hover

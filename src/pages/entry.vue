@@ -107,8 +107,8 @@
                 <div v-if="data.video" class="video-container showcase-image" :class="{ shown: img === 0 }" id="image-0">
                   <iframe :src="`https://www.youtube.com/embed/${data.video}${data.video.includes('?') ? '&' : '?'}rel=0`" frameborder="0" allow="picture-in-picture" allowfullscreen width="100%" height="100%"></iframe>
                 </div>
-                <div id="prev" class="image-button" :class="{ disabled: !img }" @click="prev"><Icon name="arrow_left" /></div>
-                <div id="next" class="image-button" :class="{ disabled: nextDisabled }" @click="next"><Icon name="arrow_right" /></div>
+                <div id="prev" class="image-button" :class="{ disabled: !img }" @click="prev"><Icon name="arrow_back_ios_new" /></div>
+                <div id="next" class="image-button" :class="{ disabled: nextDisabled }" @click="next"><Icon name="arrow_forward_ios" /></div>
               </div>
               <div id="thumbnail-row" :class="{ hidden: thumbnailsHidden }">
                 <div v-if="data.video" id="thumbnail-0" class="thumbnail-image" :class="{ selected: img === 0 }" :style="{ backgroundImage: `url(&quot;https://img.youtube.com/vi/${data.video.split('?')[0]}/maxresdefault.jpg&quot;)` }" @click="img = 0"></div>
@@ -143,15 +143,15 @@
               <div>
                 <template v-for="link of data.links">
                   <Link v-if="link.type === 'entry'" class="button" :to="`/${type}/${link.name}`">
-                    <Icon name="local_link" />
+                    <Icon name="link" />
                     <span>{{ link.text }}</span>
                   </Link>
                   <Link v-else-if="link.type === 'guide'" class="button" :to="`/guides/${link.name}`">
-                    <Icon name="guide" />
+                    <Icon name="menu_book" />
                     <span>{{ link.text }}</span>
                   </Link>
                   <a v-else class="button" :href="link.link" target="_blank">
-                    <img v-if="link.icon" :src="`../assets/images/svg/${link.icon}.svg`">
+                    <Icon v-if="link.icon" :name="link.icon" />
                     <Icon v-else name="open_in_new" />
                     <span>{{ link.text }}</span>
                   </a>
@@ -302,11 +302,10 @@
       span
         text-align: center
 
-      svg
+      .icon
         padding-right: 10px
-        min-width: 28px
-        min-height: 28px
-        fill: var(--color-text-optifine)
+        font-size: 28px
+        color: var(--color-text-optifine)
         filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
 
       &:hover
@@ -371,11 +370,9 @@
         opacity: 1
         transform: translateY(-50%) scale(1.4)
 
-    svg
-      overflow: visible
-
-    :deep(path)
-      fill: white
+    .icon
+      font-size: 48px
+      color: white
       filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
 
     &.disabled

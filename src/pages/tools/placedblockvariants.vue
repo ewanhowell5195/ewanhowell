@@ -570,7 +570,7 @@
               <span>Download</span>
             </div>
             <div class="button" @click="copy">
-              <Icon name="copy" />
+              <Icon name="content_copy" />
               <span>Copy</span>
             </div>
             <div v-if="output.mode === 'separate' && output.data.configFile" class="button" @click="downloadConfig">
@@ -769,10 +769,9 @@
     &:hover
       filter: brightness(1.3)
 
-    svg
-      width: 18px
-      height: 18px
-      fill: var(--color-text-white)
+    .icon
+      font-size: 18px
+      color: var(--color-text-white)
 
   #add-single, #add-region
     display: inline-flex

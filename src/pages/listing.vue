@@ -224,7 +224,7 @@
           <div v-for="category of version.categories" class="category" :class="{ hidden: !categoryVisible(category) }" :id="category.name">
             <div class="category-header" :style="{ top: headerTop }">
               <h1>{{ category.name }}</h1>
-              <Icon name="arrow_right" :class="[`arrow-${categoryClass(category.name)}`, { collapsed: collapsed.has(category.name) }]" @click="toggleCategory(category.name)" />
+              <Icon name="arrow_forward_ios" :class="[`arrow-${categoryClass(category.name)}`, { collapsed: collapsed.has(category.name) }]" @click="toggleCategory(category.name)" />
             </div>
             <div class="entries" :class="[`category-${categoryClass(category.name)}`, { collapsed: collapsed.has(category.name) }]">
               <Link v-for="entry of category.entries" class="entry" :class="{ hidden: !matches(entry, category) }" :to="`/${type}/${entry.id}`" :data-id="entry.id">
@@ -268,11 +268,10 @@
     width: 168px
     position: relative
   
-    svg
-      width: 32px
-      height: 32px
+    .icon
+      font-size: 32px
       padding: 0 4px
-      fill: var(--color-text-white)
+      color: var(--color-text-white)
 
     input
       position: absolute
@@ -427,17 +426,17 @@
       margin: 0
       text-shadow: -4px 4px 1px var(--color-text-shadow)
     
-    svg
+    .icon
       user-select: none
-      fill: var(--color-text-white)
+      color: var(--color-text-white)
       position: absolute
       top: 14px
       right: 0
-      width: 38px
+      font-size: 38px
       transform: rotateZ(90deg)
       cursor: pointer
       filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
-      transition: fill .15s, transform .15s, filter .15s
+      transition: color .15s, transform .15s, filter .15s
       
       &.collapsed
         transform: rotateZ(0)
@@ -537,9 +536,9 @@
       font-size: 0.75em
       padding: 10px 0
     
-      svg
+      .icon
         top: 0
-        width: 24px
+        font-size: 24px
     
     .entries
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))

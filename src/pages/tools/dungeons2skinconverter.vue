@@ -497,7 +497,7 @@
                 <div class="channel-buttons">
                   <div class="button-download channel-save" @click="channelSave(index)"><Icon name="download" /><span>Download</span></div>
                   <label class="button">
-                    <img src="/assets/images/svg/upload.svg">
+                    <Icon name="upload" />
                     <span>Replace</span>
                     <input class="channel-input hidden" type="file" accept=".png,image/png" @change="e => channelInput(index, e)">
                   </label>

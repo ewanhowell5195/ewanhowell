@@ -161,7 +161,7 @@
         h("div", { class: "codeblock-banner" }, [
           h("div", { class: "codeblock-name" }, node.name),
           h("div", { class: "codeblock-copy", onClick: () => copyCode(node) }, [
-            h(Icon, { name: "copy" }),
+            h(Icon, { name: "content_copy" }),
             h("div", state.copyText[node.key])
           ])
         ]),
@@ -244,14 +244,14 @@
         <div id="mobile-links" :class="{ collapsed: linksCollapsed }">
           <div id="mobile-links-header" @click="toggleLinks">
             <h1>Useful Links</h1>
-            <Icon name="arrow_right" />
+            <Icon name="arrow_forward_ios" />
           </div>
           <div id="mobile-links-content" ref="linksContent" :style="{ maxHeight: linksMaxHeight }">
             <template v-for="group of linkGroups">
               <div class="sidebar-subtitle">{{ group.title }}</div>
               <div class="sidebar-links">
                 <template v-for="link of group.links">
-                  <Link v-if="link.to" class="button link-example" :to="link.to"><Icon name="local_link" /><span>{{ link.text }}</span></Link>
+                  <Link v-if="link.to" class="button link-example" :to="link.to"><Icon name="link" /><span>{{ link.text }}</span></Link>
                   <a v-else class="button" :href="link.href" target="_blank"><Icon :name="link.icon" /><span>{{ link.text }}</span></a>
                 </template>
               </div>
@@ -261,7 +261,7 @@
         <div id="mobile-contents" :class="{ collapsed: contentsCollapsed }">
           <div id="mobile-contents-header" @click="toggleContents">
             <h1>Table of Contents</h1>
-            <Icon name="arrow_right" />
+            <Icon name="arrow_forward_ios" />
           </div>
           <div id="mobile-contents-content" ref="contentsContent" :style="{ maxHeight: contentsMaxHeight }">
             <Link v-for="item of contents.slice(1)" :to="item.link" :class="`sidebar-contents-${item.type}`" :style="{ marginLeft: `${item.depth * 20}px` }">{{ item.text }}</Link>
@@ -278,7 +278,7 @@
             <div class="sidebar-subtitle">{{ group.title }}</div>
             <div class="sidebar-links">
               <template v-for="link of group.links">
-                <Link v-if="link.to" class="button link-example" :to="link.to"><Icon name="local_link" /><span>{{ link.text }}</span></Link>
+                <Link v-if="link.to" class="button link-example" :to="link.to"><Icon name="link" /><span>{{ link.text }}</span></Link>
                 <a v-else class="button" :href="link.href" target="_blank"><Icon :name="link.icon" /><span>{{ link.text }}</span></a>
               </template>
             </div>
@@ -423,11 +423,10 @@
       span
         text-align: center
 
-      svg
+      .icon
         padding-right: 10px
-        min-width: 28px
-        min-height: 28px
-        fill: var(--color-text-optifine)
+        font-size: 28px
+        color: var(--color-text-optifine)
         filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
 
       &:hover
@@ -660,10 +659,9 @@
     transition: opacity .15s
     position: relative
 
-    svg
-      fill: var(--color-text-white)
-      width: 18px
-      height: 18px
+    .icon
+      color: var(--color-text-white)
+      font-size: 18px
 
     &:hover
       opacity: 1
@@ -696,14 +694,14 @@
       text-shadow: -3px 3px 1px var(--color-text-shadow)
       font-size: 24px
 
-    svg
-      fill: var(--color-text-white)
+    .icon
+      color: var(--color-text-white)
       transform: rotateZ(90deg)
       filter: drop-shadow(3px 3px 1px var(--color-text-shadow))
       position: absolute
       top: 1px
       right: 15px
-      width: 30px
+      font-size: 30px
       transition: transform .15s, filter .15s
 
   #mobile-links-content, #mobile-contents-content
@@ -742,7 +740,7 @@
       padding-bottom: 20px
 
   .collapsed
-    #mobile-links-header svg, #mobile-contents-header svg
+    #mobile-links-header .icon, #mobile-contents-header .icon
       transform: rotateZ(0)
       filter: drop-shadow(-3px 3px 1px var(--color-text-shadow))
 

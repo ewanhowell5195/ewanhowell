@@ -511,8 +511,8 @@
           <div class="ctm-compact-tiles ctm">
             <div v-for="(tile, i) of tiles" :key="tile.id">
               <div class="tile-buttons">
-                <Icon name="arrow_left" @click="move(i, i - 1)" />
-                <Icon name="arrow_right" @click="move(i, i + 1)" />
+                <Icon name="arrow_back_ios_new" @click="move(i, i - 1)" />
+                <Icon name="arrow_forward_ios" @click="move(i, i + 1)" />
               </div>
               <canvas v-draw="tile.canvas"></canvas>
             </div>
@@ -601,13 +601,13 @@
     overflow: hidden
     user-select: none
 
-    svg
-      fill: white
+    .icon
+      color: white
       filter: drop-shadow(0 0 4px black)
       position: absolute
-      transition: left .15s, right .15s, width .15s
+      transition: left .15s, right .15s, font-size .15s
       cursor: pointer
-      width: 32px
+      font-size: 32px
 
       &:first-child
         left: -40px
@@ -616,9 +616,9 @@
         right: -40px
 
       &:hover
-        width: 48px
+        font-size: 48px
 
-    &:hover > svg
+    &:hover > .icon
       &:first-child
         left: 0
 
@@ -626,10 +626,10 @@
         right: 0
 
   .ctm-compact-tiles
-    > div:first-child svg:first-child
+    > div:first-child .icon:first-child
       display: none
 
-    > div:last-child svg:last-child
+    > div:last-child .icon:last-child
       display: none
 
   .ctm
