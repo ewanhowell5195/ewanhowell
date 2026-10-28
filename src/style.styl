@@ -1,0 +1,461 @@
+:root
+  color-scheme: dark
+  --color-red-light: #C75949
+  --color-red: #AE3535
+  --color-red-dark: #812838
+  --color-green-light: #314340
+  --color-green: #23302D
+  --color-green-dark: #17201C
+  --color-text-white: #FFF
+  --color-box-shadow: #00000030
+  --color-text-shadow: #00000080
+  --color-svg-shadow: #000000c0
+  --color-text-optifine: #FABD26
+  --color-text-shadow-optifine: #45110E
+  --color-shadow: #00000080
+  --color-grey-lighter: #5E5E5E
+  --color-grey-light: #343434
+  --color-grey: #232323
+  --color-grey-dark: #1A1A1A
+  --color-grey-darker: #121212
+  --color-link-blue: #6C80F6
+  --color-download: #12A86C
+  --header-height: 40px
+  --content-width: 1280px
+  --box-shadow: 0 10px 10px var(--color-box-shadow)
+  --gradient-optifine: linear-gradient(#912F2D, #922D2F, #83262A, #761E23, #6D1720)
+  --text-shadow: -2px 2px 1px var(--color-text-shadow)
+  scroll-padding-top: calc(var(--header-height) + 20px)
+
+body
+  margin: 0
+  background-color: var(--color-grey-darker)
+  overflow: auto
+  min-height: 100vh
+
+*:where(:not(.page *))
+  font-family: Arial
+  color: var(--color-text-white)
+  
+.hidden:where(:not(.page *))
+  display: none !important
+
+.spacer:where(:not(.page *))
+  flex: 1
+
+// scrollbar
+
+::-webkit-scrollbar
+  width: 10px
+  height: 10px
+
+::-webkit-scrollbar-thumb
+  box-shadow: inset 0 0 10px 10px var(--color-red)
+  min-height: var(--header-height)
+
+  &:hover
+    box-shadow: inset 0 0 10px 10px var(--color-red-light)
+
+    &:active
+      box-shadow: inset 0 0 10px 10px var(--color-red)
+
+body::-webkit-scrollbar
+  border-top: var(--header-height) solid var(--color-red)
+
+body::-webkit-scrollbar-thumb
+  border-top: var(--header-height) solid transparent
+  min-height: calc(var(--header-height) * 2)
+
+// header
+
+#header-container
+  background-color: var(--color-red)
+  width: 100%
+  display: flex
+  justify-content: center
+  height: var(--header-height)
+  position: sticky
+  top: 0
+  box-shadow: var(--box-shadow)
+  z-index: 2
+  overflow: hidden
+
+#header
+  width: var(--content-width)
+  display: flex
+  position: relative
+  padding-right: calc(min(45px, 45px - (100vw - var(--content-width)) / 2))
+  box-sizing: border-box
+
+.page-button
+  text-decoration: none
+  display: flex
+  align-items: center
+  color: white
+  font-weight: 700
+  letter-spacing: 1px
+  padding: 0 10px
+  text-shadow: var(--text-shadow)
+  transition: background-color .15s
+  user-select: none
+  min-height: var(--header-height)
+  gap: 10px
+
+  & > span
+    transition: transform .15s
+
+  & > svg
+    fill: var(--color-text-white)
+    filter: drop-shadow(var(--text-shadow))
+
+  &:hover
+    background-color: var(--color-red-light)
+
+  &:active > span
+    transform: translateY(3px)
+
+  &.selected
+    background-color: var(--color-red-dark)
+
+  &.logo > span::before
+    content: "Home"
+
+.logo:where(:not(.page *))
+  padding-left: 0
+
+  img
+    height: var(--header-height)
+
+#logo-side
+  position: absolute
+  right: 100%
+
+// sidebar
+
+.hamburger-container
+  cursor: pointer
+  transition: background-color .15s
+  width: 25px
+  padding: 0 10px
+  
+  &.outside
+    position: absolute
+    top: 0
+    right: 0
+
+  &:hover
+    background-color: var(--color-red-light)
+
+  &.active
+    background-color: var(--color-red-dark)
+
+    .hamburger-line
+      transition-delay: .12s
+      transition-timing-function: cubic-bezier(.215, .61, .355, 1)
+      transform: rotate(45deg)
+
+      &:before
+        top: 0
+        transition: top 75ms ease, opacity 75ms ease .12s
+        opacity: 0
+
+      &:after
+        bottom: 0
+        transition: bottom 75ms ease, transform 75ms cubic-bezier(.215, .61, .355, 1) .12s
+        transform: rotate(-90deg)
+
+.hamburger
+  filter: drop-shadow(var(--text-shadow))
+  display: flex
+  align-items: center
+  height: var(--header-height)
+
+.hamburger-line
+  position: relative
+  display: block
+  transition-timing-function: cubic-bezier(.55, .055, .675, .19)
+  transition-duration: 75ms
+
+  &, &:before, &:after
+    content: ""
+    width: 25px
+    height: 4px
+    border-radius: 4px
+    background-color: #fff
+
+  &:before
+    position: absolute
+    top: -8px
+    transition: top 75ms ease .12s, opacity 75ms ease
+
+  &:after
+    position: absolute
+    bottom: -8px
+    transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19)
+
+#sidebar
+  right: 0
+  position: fixed
+  z-index: 1
+  top: var(--header-height)
+  bottom: 0
+  background-color: var(--color-green-dark)
+  box-shadow: initial
+  transition: transform .5s ease, box-shadow .5s ease
+  padding: 20px 0 10px
+  transform: translateX(100%)
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto
+  
+  &.active
+    transform: translateX(0)
+    box-shadow: 0 0 100px black
+    
+  .page-button
+    &:hover
+      background-color: var(--color-green-light)
+
+    &.selected
+      background-color: var(--color-green)
+      
+  .line
+    background-color: var(--color-text-white)
+    width: calc(100% - 20px)
+    min-height: 2px
+    margin: 10px 10px
+    opacity: 0.5
+
+.sidebar-link-icons
+  padding: 0 10px
+  display: flex
+  justify-content: space-around
+  
+  path
+    fill: var(--color-text-white)
+    
+  a
+    display: flex
+    align-items: center
+
+// page
+
+#content
+  min-height: calc(100vh - var(--header-height) * 2)
+
+.page
+  position: relative
+  display: block
+  width: 100%
+
+  &:not(.loading)
+    opacity: 0
+    animation: fadeIn 1 250ms forwards
+
+  &.loading
+    visibility: hidden
+    pointer-events: none
+    animation: none
+    opacity: 0
+
+  .progress-bar
+    position: absolute
+    top: 0
+    left: 0
+    background-color: var(--color-text-white)
+    transition: width 100ms, height 250ms
+    z-index: 9999
+
+  .page-body
+    display: block
+    overflow-x: clip
+
+  [data-popupable], [data-popupable] *
+    cursor: pointer
+
+  ::-webkit-scrollbar
+    width: 10px
+    height: 10px
+
+  ::-webkit-scrollbar-thumb
+    box-shadow: none
+    min-height: 0
+    background-color: var(--color-red)
+
+    &:hover
+      background-color: var(--color-red-light)
+
+      &:active
+        background-color: var(--color-red-dark)
+
+// footer
+
+#footer-container
+  position: relative
+  background-color: var(--color-red)
+  width: 100%
+  display: flex
+  justify-content: center
+  height: var(--header-height)
+  box-shadow: 0 -10px 10px var(--color-box-shadow)
+  overflow: hidden
+
+#footer
+  width: var(--content-width)
+  display: flex
+
+#footer-username
+  margin: auto
+
+  &::before
+    content: "@ewanhowell5195"
+    font-weight: 700
+    letter-spacing: 1px
+    text-shadow: var(--text-shadow)
+    padding: 0 10px
+
+@media only screen and (max-width: 768px)
+  #footer-username::before
+    display: none
+
+// popups
+
+.popup
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #00000080
+  z-index: 99
+  display: flex
+  justify-content: center
+  align-items: center
+  animation: fadeIn .25s forwards 1
+  opacity: 0
+
+  @keyframes fadeIn
+    from
+      opacity: 0
+    to
+      opacity: 1    
+
+.popup-container
+  position: relative
+  user-select: none
+  box-shadow: 0 8px 16px black
+  max-width: 90vw
+  max-height: calc(100vh - 40px)
+  overflow: hidden
+
+.popup-optifine
+  max-width: 405px
+  background-color: var(--color-grey)
+  
+#popup-optifine-banner
+  display: flex
+  background-image: var(--gradient-optifine)
+  align-items: center
+  max-height: 50px
+  box-shadow: var(--box-shadow)
+  gap: 15px
+  width: 100%
+  
+  div
+    color: var(--color-text-optifine)
+    text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
+    font-weight: 700
+    
+#popup-optifine-close
+  width: 40px
+  height: 40px
+  padding: 5px
+  transition: background-color .15s
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+
+  svg
+    min-width: 28px
+    min-height: 28px
+    fill: var(--color-text-optifine)
+    filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+    transition: transform .15s
+  
+  &:hover
+    background-color: #A93931
+
+  &:active > *
+    transform: translateY(4px)
+
+#popup-optifine-content
+  overflow-y: auto
+  max-height: calc(100vh - 90px)
+
+#popup-optifine-text
+  white-space: pre-wrap
+  padding: 28px
+  user-select: text
+  
+  h3
+    margin: 30px 0 10px
+      
+#popup-optifine-download
+  width: 100%
+  display: flex
+  justify-content: center
+  padding-bottom: 28px
+  
+  div
+    background-image: var(--gradient-optifine)
+    box-shadow: var(--box-shadow)
+  
+    a
+      display: flex
+      align-items: center
+      font-weight: 700
+      text-decoration: none
+      text-shadow: 0 3px 1px var(--color-text-shadow-optifine)
+      gap: 10px
+      padding: 10px
+      transition: background-color .15s
+      
+      & > *
+        transition: transform .15s
+      
+      span
+        color: var(--color-text-optifine)
+      
+      svg
+        width: 28px
+        height: 28px
+        fill: var(--color-text-optifine)
+        filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
+        
+      &:hover
+        background-image: none
+        background-color: #A93931
+
+      &:active > *
+        transform: translateY(4px)
+
+// animations
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+// mobile
+
+@media only screen and (max-width: 768px)
+  .page-button.logo 
+    background-color: transparent
+
+    > span::before
+      content: "Ewan Howell"
+  
+  #header > .page-button:not(.logo)
+    display: none
