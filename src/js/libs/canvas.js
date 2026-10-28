@@ -21,36 +21,37 @@ export async function loadImage(file) {
   })
 }
 
-export class Canvas extends HTMLCanvasElement {
-  constructor(width, height, popupable, scale) {
-    super()
-    this.width = width
-    this.height = height
-    if (popupable) {
-      this.setAttribute("data-popupable", "")
-      if (scale) this.setAttribute("data-popupable-no-upscale", "")
-    }
+export function Canvas(width, height, popupable, scale) {
+  const canvas = Object.assign(document.createElement("canvas"), canvasMethods)
+  canvas.width = width
+  canvas.height = height
+  if (popupable) {
+    canvas.setAttribute("data-popupable", "")
+    if (scale) canvas.setAttribute("data-popupable-no-upscale", "")
   }
+  return canvas
+}
 
+const canvasMethods = {
   addClass(classNames) {
     this.classList.add(...classNames.trim().split(/\s+/))
     return this
-  }
+  },
 
   on(event, func) {
     this.addEventListener(event, func)
     return this
-  }
+  },
 
   appendTo(element) {
     if (element instanceof jQuery) element = element[0]
     element.appendChild(this)
     return this
-  }
+  },
 
   saveAs(name, type = "png", quality = 1) {
     this.toBlob(blob => saveAs(blob, name), `image/${type}`, quality)
-  }
+  },
 
   trim() {
     const ctx = this.getContext("2d")
@@ -76,8 +77,6 @@ export class Canvas extends HTMLCanvasElement {
     return this
   }
 }
-
-customElements.define("ewan-canvas", Canvas, { extends: "canvas" })
 
 function rowBlank(imageData, width, y) {
   for (let x = 0; x < width; ++x) if (imageData.data[y * width * 4 + x * 4 + 3] !== 0) return false

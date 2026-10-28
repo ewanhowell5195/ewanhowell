@@ -58,7 +58,8 @@ function trianglePoint(biome) {
 function fitPixels(element, width, height, { pad = 0, maxHeight = Infinity } = {}) {
   const container = element.parentElement
   let attached = false
-  const observer = new ResizeObserver(() => {
+  let lastAvailable
+  const observer = new ResizeObserver(() => requestAnimationFrame(() => {
     if (!element.isConnected) {
       if (attached) observer.disconnect()
       return
@@ -66,12 +67,14 @@ function fitPixels(element, width, height, { pad = 0, maxHeight = Infinity } = {
     attached = true
     const style = getComputedStyle(container)
     const available = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+    if (available === lastAvailable) return
+    lastAvailable = available
     const dpr = devicePixelRatio
     const fit = Math.min(available / width, maxHeight / height) * dpr
     const scale = fit >= 1 ? Math.floor(fit) : fit
     element.style.width = `${(width + pad * 2) * scale / dpr}px`
     if (pad) element.style.margin = `0 auto ${-pad * scale / dpr}px`
-  })
+  }))
   observer.observe(container)
 }
 
