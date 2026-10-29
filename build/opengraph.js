@@ -5,6 +5,8 @@ import sharp from "sharp"
 import fs from "node:fs"
 import routes from "../src/routes.js"
 import { toTitleCase } from "../src/lib/titles.js"
+import pluginExtras from "../src/plugins.json" with { type: "json" }
+import { repo, slug, isMine } from "../src/lib/pluginRepo.js"
 
 const domain = "ewanhowell.com"
 const template = fs.readFileSync("dist/index.html", "utf-8")
@@ -58,7 +60,7 @@ for (const route of routes) {
   if (route.meta?.description) writePage(route.path.slice(1), route.meta)
 }
 
-const types = ["resourcepacks", "plugins", "themes", "maps", "dungeonsmods", "dungeons2mods"]
+const types = ["resourcepacks", "themes", "maps", "dungeonsmods", "dungeons2mods"]
 
 for (const type of types) {
   const data = JSON.parse(fs.readFileSync(`public/assets/json/${type}.json`, "utf-8")).categories
@@ -69,6 +71,8 @@ for (const type of types) {
     }
   }
 }
+
+await generatePlugins()
 
 generateGuides()
 
@@ -86,6 +90,29 @@ async function generateEntry(type, id, entry) {
     colour: await leftColour(`dist/assets/images/${type}/${id}/cover.jpg`),
     icon: `${type}/${id}/icon.webp`
   })
+}
+
+async function generatePlugins() {
+  const all = await fetch(`${repo}/plugins.json`).then(r => r.json())
+  const pages = []
+  for (const [id, plugin] of Object.entries(all)) {
+    if (!isMine(plugin)) continue
+    const name = slug(id)
+    pages.push(name)
+    const card = pluginExtras[id]?.card
+    const dir = `public/assets/images/plugins/${name}`
+    if (!fs.existsSync(`${dir}/cover.jpg`)) await drawCover("plugins", name, { image: card, logoless: !fs.existsSync(`${dir}/logo.webp`) }, plugin.title)
+    const page = {
+      title: `${plugin.title} - ${plugin.author}`,
+      description: plugin.description,
+      image: `plugins/${name}/cover.jpg`,
+      colour: await leftColour(`dist/assets/images/plugins/${name}/cover.jpg`)
+    }
+    if (fs.existsSync(`${dir}/icon.webp`)) page.icon = `plugins/${name}/icon.webp`
+    writePage(`plugins/${name}`, page)
+    console.log(`plugins images - ${name}`)
+  }
+  fs.writeFileSync("dist/assets/json/plugin-pages.json", JSON.stringify(pages))
 }
 
 async function leftColour(file) {

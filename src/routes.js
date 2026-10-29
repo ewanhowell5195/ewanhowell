@@ -26,8 +26,7 @@ export default [
   { path: "/maps/:name([^/.]+)", page: "entry", type: "maps" },
   {
     path: "/plugins",
-    page: "listing",
-    type: "plugins",
+    page: "plugins",
     meta: {
       title: "Plugins - Ewan Howell",
       description: "View all of Ewan Howell's Blockbench plugins",
@@ -35,7 +34,7 @@ export default [
       colour: "#21252A"
     }
   },
-  { path: "/plugins/:name([^/.]+)", page: "entry", type: "plugins" },
+  { path: "/plugins/:name([^/.]+)", page: "plugin" },
   {
     path: "/themes",
     page: "listing",

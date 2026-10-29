@@ -1,0 +1,137 @@
+{
+  "minecraft_title_generator": {
+    "card": "banner",
+    "logo": true,
+    "images": [
+      "logo",
+      "start_screen",
+      "dialog",
+      "textures",
+      "scene",
+      "dokucraft",
+      "waves_and_rails",
+      "epic",
+      "mix",
+      "faithless"
+    ]
+  },
+  "cem_template_loader": {
+    "card": "entities",
+    "logo": true,
+    "images": [
+      "entities",
+      "dialog",
+      "blockbench"
+    ]
+  },
+  "asset_browser": {
+    "card": "grid",
+    "logo": true,
+    "images": [
+      "textures",
+      "home",
+      "start_screen",
+      "models",
+      "sounds",
+      "compare_mode",
+      "comparison"
+    ],
+    "video": "_JIQbH998xk"
+  },
+  "resource_pack_utilities": {
+    "card": "grid",
+    "logo": true,
+    "images": [
+      "menu",
+      "utility",
+      "log"
+    ],
+    "video": "ZwIx6dj_Fmw"
+  },
+  "free_rotation": {
+    "card": "game",
+    "images": [
+      "game",
+      "export",
+      "inventory",
+      "item_frame"
+    ]
+  },
+  "optifine_player_models": {
+    "card": "edit",
+    "logo": true,
+    "images": [
+      "edit",
+      "blockbench"
+    ],
+    "video": "0rT-q95dpV0"
+  },
+  "scene_recorder": {
+    "card": "recorder",
+    "images": [
+      "dialog",
+      "recorder"
+    ]
+  },
+  "preview_scene_customiser": {
+    "card": "scene",
+    "images": [
+      "scene",
+      "settings",
+      "manage",
+      "store"
+    ]
+  },
+  "workspaces": {
+    "card": "workspaces",
+    "images": [
+      "workspaces",
+      "start_screen"
+    ]
+  },
+  "live_dev_reloader": {
+    "card": "theme",
+    "images": [
+      "theme",
+      "editing",
+      "menu"
+    ]
+  },
+  "activity_tracker": {
+    "card": "activitytracker",
+    "images": [
+      "activitytracker",
+      "project"
+    ]
+  },
+  "splash_art_customiser": {
+    "card": "snowplough",
+    "images": [
+      "splash",
+      "manage",
+      "settings"
+    ]
+  },
+  "backup_viewer": {
+    "card": "backups",
+    "images": [
+      "backups"
+    ]
+  },
+  "collapsible_start_screen_categories": {
+    "card": "start",
+    "logo": true,
+    "images": [
+      "start",
+      "blockbench"
+    ]
+  },
+  "colour_gradient_generator": {
+    "card": "colours",
+    "logo": true,
+    "images": [
+      "colours",
+      "blockbench"
+    ]
+  }
+}
