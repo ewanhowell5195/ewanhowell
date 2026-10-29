@@ -27,6 +27,7 @@ export function loadPlugins() {
     slug: slug(id),
     icon: iconIsFile(p.icon) ? `${repo}/plugins/${id}/${p.icon}` : p.icon,
     weekly: thisWeek && fiveWeeks ? Math.round(((fiveWeeks[id] ?? 0) - (thisWeek[id] ?? 0)) / 4) : null,
+    lastWeek: thisWeek ? thisWeek[id] ?? 0 : null,
     total: total ? total[id] ?? 0 : null
   })))
   plugins.catch(() => plugins = null)

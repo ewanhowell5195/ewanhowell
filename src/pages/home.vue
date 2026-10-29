@@ -10,6 +10,7 @@
   import MinecraftTitle from "../components/MinecraftTitle.vue"
   import { site } from "../lib/site.js"
   import { fetchJSON, entryName } from "../lib/utils.js"
+  import { loadPlugins } from "../lib/plugins.js"
 
   site.selected = "/"
 
@@ -55,10 +56,11 @@
     wynemStats.value = [[info.guilds, "Servers"], [info.userInstalls, "User installs"], [info.commandsProcessed, "Commands run"]].filter(([value]) => value !== undefined).map(([value, label]) => [compact(value), label])
   })
 
-  const titlesGenerated = ref()
+  const pluginStats = ref([])
 
-  fetch("https://api.wynem.com/blockbench/minecrafttitlegenerator/statsall").then(r => r.json()).then(stats => {
-    titlesGenerated.value = compact(stats.filter(e => !e.id.includes(".") || e.id.startsWith("tileable.")).reduce((total, e) => total + e.count, 0))
+  loadPlugins().then(plugins => {
+    if (plugins[0]?.total === null) return
+    pluginStats.value = [[plugins.reduce((sum, p) => sum + p.total, 0), "Downloads"], [plugins.reduce((sum, p) => sum + p.lastWeek, 0), "Downloads last week"]].map(([value, label]) => [compact(value), label])
   })
 
   const packIds =["f8thful", "skeleton-physics", "entity-healthbars", "oledcraft", "better-bows", "snowstorm", "umbrella-villagers", "pack-and-white", "minecarts-with-wheels", "butterflies", "boomerangs", "quindent"]
@@ -187,10 +189,10 @@
         <div class="feature-text">
           <h2>Blockbench Plugins</h2>
           <p>I make plugins for Blockbench, the 3D model editor used for Minecraft. They add things like entity model templates, a vanilla asset browser, and Minecraft Title Generator, which makes Minecraft styled title models like this one.</p>
-          <div v-if="titlesGenerated" class="stats">
-            <div>
-              <strong>{{ titlesGenerated }}</strong>
-              <span>Titles generated</span>
+          <div v-if="pluginStats.length" class="stats">
+            <div v-for="[value, label] of pluginStats">
+              <strong>{{ value }}</strong>
+              <span>{{ label }}</span>
             </div>
           </div>
           <div class="feature-buttons">
