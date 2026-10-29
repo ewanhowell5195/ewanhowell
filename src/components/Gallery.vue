@@ -13,6 +13,11 @@
   const thumbsEl = ref()
   let main, thumbs
 
+  function fitHeight(index = main.index) {
+    const slide = main.Components.Slides.getAt(index)?.slide
+    if (slide) main.Components.Elements.track.style.height = `${slide.offsetHeight}px`
+  }
+
   function thumbnail(item) {
     return item.video ? `https://img.youtube.com/vi/${item.video.split("?")[0]}/maxresdefault.jpg` : item.image
   }
@@ -45,7 +50,9 @@
     }
     main.on("move", (index, prev) => {
       mainEl.value.querySelectorAll(".splide__slide")[prev]?.querySelector("iframe")?.contentWindow.postMessage(JSON.stringify({ event: "command", func: "pauseVideo", args: [] }), "*")
+      fitHeight(index)
     })
+    main.on("mounted resized", () => fitHeight())
     main.mount()
     if (thumbs) {
       thumbs.mount()
@@ -83,7 +90,7 @@
             <div v-if="item.video" class="video">
               <iframe :src="`https://www.youtube.com/embed/${item.video}${item.video.includes('?') ? '&' : '?'}rel=0&enablejsapi=1`" frameborder="0" allow="picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img v-else :src="item.image" data-popupable>
+            <img v-else :src="item.image" data-popupable @load="fitHeight()">
           </li>
         </ul>
       </div>
@@ -106,6 +113,12 @@
   .main
     position: relative
     overflow: hidden
+
+    .splide__track
+      transition: height .4s
+
+    .splide__list
+      align-items: flex-start
 
     img
       display: block
