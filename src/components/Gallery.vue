@@ -47,7 +47,21 @@
       mainEl.value.querySelectorAll(".splide__slide")[prev]?.querySelector("iframe")?.contentWindow.postMessage(JSON.stringify({ event: "command", func: "pauseVideo", args: [] }), "*")
     })
     main.mount()
-    thumbs?.mount()
+    if (thumbs) {
+      thumbs.mount()
+      const { Controller, Move, Layout } = thumbs.Components
+      // Splide resolves a drag past the last scroll position to the final slide, not the next one
+      Controller.toDest = toDest
+
+      function toDest(destination) {
+        if (Move.exceededLimit(false, destination)) return 0
+        if (Move.exceededLimit(true, destination)) {
+          const firstAtEnd = Math.round(Math.abs(Move.getLimit(true)) / Layout.slideSize(0))
+          return thumbs.index >= firstAtEnd ? Math.min(thumbs.index + 1, thumbs.length - 1) : firstAtEnd
+        }
+        return Math.min(Math.max(thumbs.index + Math.round((Move.toPosition(thumbs.index, true) - destination) / Layout.slideSize(0)), 0), thumbs.length - 1)
+      }
+    }
   })
 
   onBeforeUnmount(() => {
