@@ -12,7 +12,7 @@
     ["https://www.youtube.com/ewanhowell", "youtube"],
     ["https://twitter.com/ewanhowell5195", "twitter"],
     ["https://github.com/ewanhowell5195", "github"],
-    ["https://www.reddit.com/r/ewanhowell5195/", "reddit"],
+    ["https://www.reddit.com/user/ewanhowell5195/", "reddit"],
     ["https://www.instagram.com/ewan.howell/", "instagram"]
   ]
 
