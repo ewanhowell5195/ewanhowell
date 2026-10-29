@@ -145,11 +145,10 @@
     if (version.id in featured) return
     const entries = version.categories.flatMap(category => category.entries.map(entry => ({ entry, category })))
     if (entries.length <= 5) return
-    featured[version.id] = null
     const d = new Date(Date.now())
     const { entry, category } = entries[(d.getUTCFullYear() * 764900 + d.getUTCMonth() * 51470 + d.getUTCDate() * 311) % entries.length]
-    const description = await fetch(`/assets/json/${props.type}/${entry.id}.json`).then(e => e.json()).then(e => e.description)
-    featured[version.id] = { entry, category, description }
+    featured[version.id] = { entry, category, description: "" }
+    featured[version.id].description = await fetch(`/assets/json/${props.type}/${entry.id}.json`).then(e => e.json()).then(e => e.description)
   }
 
   function selectTab(version) {
@@ -576,6 +575,7 @@
 
   .featured
     display: flex
+    align-self: stretch
     justify-content: center
     text-decoration: none
     color: var(--color-text-white)
@@ -598,6 +598,9 @@
   .featured-images
     min-width: 384px
     height: 192px
+
+  .featured-details
+    flex: 1
 
   .featured-category
     margin-bottom: 5px
@@ -650,6 +653,9 @@
     
     .featured-details
       padding: 0 10px 10px
+
+    .featured-description
+      height: 135px
 
   @media only screen and (max-width: 768px)
     #version-label
