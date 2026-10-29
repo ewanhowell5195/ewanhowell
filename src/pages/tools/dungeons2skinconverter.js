@@ -40,7 +40,7 @@ export const MAX_SKIN_SIZE = 1024
 const PUPIL_SCALE = 0.74
 const PUPIL_PIVOT = 0.61
 
-const EYE_COLUMNS = [[9, 10], [14, 13]]
+export const EYE_COLUMNS = [[9, 10], [14, 13]]
 
 function separateEyes(u, v, y, height) {
   const rows = Array.from({ length: height }, (_, j) => y + j)
@@ -202,7 +202,7 @@ function luminance(colour) {
   return colour[0] * 0.299 + colour[1] * 0.587 + colour[2] * 0.114
 }
 
-function pupilCells(img, rows, columns) {
+export function pupilCells(img, rows, columns) {
   const cells = rows.flatMap(y => columns.map(x => ({ x, y, colour: texel(img, x, y) })))
   const groups = []
   for (const cell of cells) {
@@ -250,7 +250,7 @@ function neighbourWeight(region, x, y) {
   return weight
 }
 
-function fillFromSurroundings(img, region) {
+export function fillFromSurroundings(img, region) {
   const samples = []
   for (let y = Math.min(...region.map(([, ry]) => ry)); y < 16; y++) {
     for (let x = 8; x < 16; x++) {
