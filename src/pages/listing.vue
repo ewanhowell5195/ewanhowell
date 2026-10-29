@@ -25,6 +25,39 @@
   const featured = reactive({})
   const tabs = ref()
   const headerTop = ref()
+  const picker = ref()
+  const pickerOpen = ref(false)
+
+  const versionGroups = computed(() => {
+    const groups = []
+    for (const version of versions.value.slice(1)) {
+      const parts = version.id.split(".")
+      const name = parts[0] === "1" ? parts.slice(0, 2).join(".") : parts[0]
+      if (groups.at(-1)?.name === name) groups.at(-1).versions.push(version)
+      else groups.push({ name, versions: [version] })
+    }
+    const merged = []
+    for (const group of groups) {
+      const last = merged.at(-1)
+      if (group.versions.length === 1 && last?.older) last.versions.push(group.versions[0])
+      else if (group.versions.length === 1 && merged.length) merged.push({ name: "Older", versions: group.versions, older: true })
+      else merged.push(group)
+    }
+    return merged
+  })
+
+  function entryCount(version) {
+    return version.categories.reduce((total, category) => total + category.entries.length, 0)
+  }
+
+  function choose(version) {
+    pickerOpen.value = false
+    if (version.id !== current.value) selectTab(version)
+  }
+
+  function closePicker(e) {
+    if (pickerOpen.value && (e.key === "Escape" || e.type === "pointerdown" && !picker.value?.contains(e.target))) pickerOpen.value = false
+  }
   let searchTimeout
 
   function build(data) {
@@ -183,9 +216,15 @@
     }
   })
 
-  onMounted(() => addEventListener("resize", onResize))
+  onMounted(() => {
+    addEventListener("resize", onResize)
+    addEventListener("pointerdown", closePicker)
+    addEventListener("keydown", closePicker)
+  })
   onBeforeUnmount(() => {
     removeEventListener("resize", onResize)
+    removeEventListener("pointerdown", closePicker)
+    removeEventListener("keydown", closePicker)
     clearTimeout(searchTimeout)
   })
 </script>
@@ -193,14 +232,27 @@
 <template>
   <Page :loading="loading">
     <div class="container">
-      <div id="tabs" ref="tabs">
-        <div id="search" @click="searchInput.focus()">
+      <div id="toolbar" ref="tabs">
+        <label id="search">
           <Icon name="search" />
-          <input ref="searchInput" placeholder="Search..." @keypress.enter="e => e.currentTarget.blur()" @input="onSearch">
+          <input ref="searchInput" :placeholder="`Search ${title.toLowerCase()}...`" @keypress.enter="e => e.currentTarget.blur()" @input="onSearch">
+        </label>
+        <div v-if="hasVersions" id="version-picker" ref="picker">
+          <button id="version-button" :class="{ open: pickerOpen }" @click="pickerOpen = !pickerOpen">
+            <span id="version-label">Version</span>
+            <span id="version-value">{{ current === "all" ? "All" : current }}</span>
+            <Icon name="expand_more" />
+          </button>
+          <div v-if="pickerOpen" id="version-panel">
+            <a class="version-option" :class="{ selected: current === 'all' }" :href="`/${type}/?version=all`" @click.prevent="choose(versions[0])">All versions<span class="count">{{ entryCount(versions[0]) }}</span></a>
+            <div v-for="group of versionGroups" class="version-group">
+              <div class="version-group-name">{{ group.name }}</div>
+              <div class="version-group-options">
+                <a v-for="version of group.versions" class="version-option" :class="{ selected: version.id === current }" :href="`/${type}/?version=${version.id}`" @click.prevent="choose(version)">{{ version.id }}<span class="count">{{ entryCount(version) }}</span></a>
+              </div>
+            </div>
+          </div>
         </div>
-        <template v-if="hasVersions">
-          <a v-for="version of versions" class="tab" :class="{ selected: version.id === current }" :href="`/${type}/?version=${version.id}`" @click.prevent="selectTab(version)">{{ version.id }}</a>
-        </template>
       </div>
       <div id="versions">
         <div id="no-results" :class="{ shown: noResults }">
@@ -251,68 +303,136 @@
   .hidden
     display: none !important
 
-  #tabs
+  #toolbar
     display: flex
     position: sticky
     top: 0
-    z-index: 1
+    z-index: 2
     background-color: var(--color-green)
     box-shadow: var(--box-shadow)
-    flex-wrap: wrap
     min-height: var(--header-height)
-  
+
   #search
+    flex: 1
     display: flex
     align-items: center
+    gap: 4px
+    padding: 0 8px
     background-color: var(--color-green-light)
-    width: 168px
-    position: relative
-  
+    cursor: text
+
     .icon
-      font-size: 32px
-      padding: 0 4px
+      font-size: 28px
       color: var(--color-text-white)
 
     input
-      position: absolute
-      left: 40px
+      flex: 1
+      min-width: 0
       border: none
       outline: none
-      background-color: var(--color-green-light)
-      height: 40px
-      width: 128px
-      font-size: 1.2em
-      transition: width .5s
+      background: none
+      color: var(--color-text-white)
+      height: var(--header-height)
+      font-family: inherit
+      font-size: 1.1em
+      padding: 0 4px
       text-overflow: ellipsis
-      padding: 0
-      border-radius: 0
-    
-      &:focus
-        width: clamp(128px, calc(100vw - 40px), calc(var(--content-width) - 40px))
 
-  .tab
-    flex: 1
+      &::placeholder
+        color: #FFFFFF80
+
+  #version-picker
+    position: relative
     display: flex
+
+  #version-button
+    display: flex
+    align-items: center
+    gap: 8px
+    padding: 0 10px 0 16px
     min-height: var(--header-height)
+    background-color: var(--color-green)
+    border: none
+    color: var(--color-text-white)
+    font-family: inherit
+    font-size: 1em
     cursor: pointer
     user-select: none
-    transition: background-color 0.15s
-    text-shadow: var(--text-shadow)
-    text-decoration: none
-    color: var(--color-text-white)
-    text-transform: capitalize
-    min-width: 50px
-    height: 100%
-    align-items: center
-    justify-content: center
-  
+    transition: background-color .15s
+
     &:hover
       background-color: var(--color-green-light)
-  
-  .selected
-    background-color: var(--color-green-dark) !important
-    cursor: default
-  
+
+    &.open
+      background-color: var(--color-green-dark)
+
+      .icon
+        transform: rotate(180deg)
+
+    .icon
+      transition: transform .15s
+
+  #version-label
+    color: #FFFFFFA0
+    font-size: .8em
+    text-transform: uppercase
+    letter-spacing: 2px
+
+  #version-value
+    font-weight: 700
+    text-shadow: var(--text-shadow)
+
+  #version-panel
+    position: absolute
+    top: 100%
+    right: 0
+    width: 440px
+    max-width: calc(100vw - 32px)
+    max-height: 70vh
+    overflow-y: auto
+    box-sizing: border-box
+    padding: 12px
+    display: flex
+    flex-direction: column
+    gap: 14px
+    background-color: var(--color-green-dark)
+    box-shadow: var(--box-shadow)
+
+  .version-group-name
+    font-size: .75em
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: 2px
+    color: #FFFFFF90
+    margin-bottom: 6px
+
+  .version-group-options
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr))
+    gap: 6px
+
+  .version-option
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 6px
+    padding: 7px 10px
+    background-color: var(--color-green)
+    color: var(--color-text-white)
+    text-decoration: none
+    user-select: none
+    transition: background-color .15s
+
+    &:hover
+      background-color: var(--color-green-light)
+
+    &.selected
+      background-color: var(--color-red)
+
+    .count
+      font-size: .75em
+      opacity: .6
+
   .version
     padding: 0 20px
     display: none
@@ -532,6 +652,9 @@
       padding: 0 10px 10px
 
   @media only screen and (max-width: 768px)
+    #version-label
+      display: none
+
     .category-header
       font-size: 0.75em
       padding: 10px 0
