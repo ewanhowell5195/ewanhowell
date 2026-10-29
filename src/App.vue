@@ -100,7 +100,7 @@
       <a v-for="[href, icon] of socials" class="page-button" :href="href" target="_blank"><Icon :name="icon" /></a>
       <div id="footer-username"></div>
       <div class="spacer"></div>
-      <a class="page-button" href="https://ko-fi.com/ewanhowell" target="_blank"><span>Donate</span></a>
+      <a class="page-button" href="https://ko-fi.com/ewanhowell" target="_blank"><span>Support</span></a>
       <a class="page-button" href="mailto:contact@ewanhowell.com" target="_blank"><span>Contact</span></a>
     </div>
   </div>
