@@ -459,7 +459,7 @@
       filter: brightness(1.2)
 
     &.selected
-      background-color: var(--color-download)
+      background-color: var(--color-accent)
 
   .hidden
     display: none
@@ -562,7 +562,7 @@
     margin-top: 30px
     padding: 10px 14px
     width: 100%
-    border: 2px dashed var(--color-download)
+    border: 2px dashed var(--color-accent)
 
     &.err
       border-color: var(--color-red-light)

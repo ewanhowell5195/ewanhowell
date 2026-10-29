@@ -713,7 +713,7 @@
       height: 7px
       margin-left: 8px
       border-radius: 50%
-      background-color: var(--color-download)
+      background-color: var(--color-accent)
       vertical-align: middle
 
   #single-rows, #region-rows
@@ -793,7 +793,7 @@
     margin-top: 30px
     padding: 10px 14px
     width: 100%
-    border: 2px dashed var(--color-download)
+    border: 2px dashed var(--color-accent)
 
     &.err
       border-color: var(--color-red-light)
@@ -892,7 +892,7 @@
   .progress-fill
     height: 100%
     width: 0
-    background-color: var(--color-download)
+    background-color: var(--color-accent)
     transition: width .1s linear
 
   .progress-text

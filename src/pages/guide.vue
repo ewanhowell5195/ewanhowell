@@ -472,7 +472,7 @@
     gap: 15px
 
   .link-example
-    background-color: var(--color-download)
+    background-color: var(--color-accent)
 
   #sidebar-contents
     width: 100%

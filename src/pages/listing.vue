@@ -425,7 +425,7 @@
       background-color: var(--color-green-light)
 
     &.selected
-      background-color: var(--color-red)
+      background-color: var(--color-accent)
 
     .count
       font-size: .75em

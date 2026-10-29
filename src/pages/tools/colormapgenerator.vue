@@ -908,7 +908,7 @@
     cursor: pointer
 
     &:focus
-      outline: 2px solid var(--color-download)
+      outline: 2px solid var(--color-accent)
 
   .convert-versions
     display: grid
@@ -944,7 +944,7 @@
       background-color: var(--color-grey-lighter)
 
     &.selected
-      outline-color: var(--color-download)
+      outline-color: var(--color-accent)
 
     span
       font-weight: 700

@@ -578,7 +578,7 @@
     user-select: none
 
     input
-      accent-color: var(--color-download)
+      accent-color: var(--color-accent)
       width: 18px
       height: 18px
       margin: 2px 0 0
@@ -729,7 +729,7 @@
     user-select: none
 
     input
-      accent-color: var(--color-download)
+      accent-color: var(--color-accent)
       margin: 0
 
   .preview-texture
@@ -760,7 +760,7 @@
       background-color: var(--color-grey-lighter)
 
     &.selected
-      outline-color: var(--color-download)
+      outline-color: var(--color-accent)
 
     &.disabled
       opacity: .4
@@ -804,7 +804,7 @@
     top: 12px
     left: 12px
     right: 12px
-    background-color: var(--color-download)
+    background-color: var(--color-accent)
     padding: 2px 6px
     font-size: .75rem
     font-weight: 700

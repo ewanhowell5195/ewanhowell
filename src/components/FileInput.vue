@@ -74,7 +74,7 @@
     min-width: 150px
     color: var(--color-text-white)
     padding: 10px
-    background-color: var(--color-download)
+    background-color: var(--color-accent)
     align-items: center
     font-weight: 700
     box-shadow: 0 8px 5px rgba(0, 0, 0, .314)
