@@ -4,6 +4,7 @@
   import Page from "../components/Page.vue"
   import Link from "../components/Link.vue"
   import Icon from "../components/Icon.js"
+  import Gallery from "../components/Gallery.vue"
   import { site } from "../lib/site.js"
   import { notFound } from "../router.js"
   import { fetchJSON, entryName, setFavicon } from "../lib/utils.js"
@@ -18,29 +19,16 @@
   const entry = ref()
   const category = ref()
   const versions = ref()
-  const img = ref(0)
   const linksTab = ref("main")
   const popup = ref(false)
 
   const name = computed(() => entryName(entry.value))
   const optifineType = props.type.slice(0, props.type.length - 1).replace("resource", "")
-  const offset = computed(() => data.value.video ? 1 : 0)
-  const thumbnailsHidden = computed(() => !data.value.images || (!data.value.video && data.value.images.length < 2) || (data.value.video && !data.value.images))
-  const nextDisabled = computed(() => !data.value.images || img.value === data.value.images.length - 1 + offset.value)
+  const gallery = computed(() => (data.value.video ? [{ video: data.value.video }] : []).concat((data.value.images ?? []).map(image => ({ image: imagePath(image) }))))
   const popupText = computed(() => `OptiFine is a mod that adds a lot of extra resource pack related features to Minecraft.\n\nSome resource packs may be enhanced by OptiFine, or completely rely on it to function correctly.\n<h3>${name.value} OptiFine requirement: </h3>${entry.value.optifine === 1 ? "Optional" : "Required"}${data.value.optifine ? `\n<h3>${name.value} specific information:</h3>${data.value.optifine}` : ""}`)
 
   function imagePath(image) {
     return `/assets/images/${props.type}/${entry.value.id}/images/${image}.webp`
-  }
-
-  function prev() {
-    if (!img.value) return
-    img.value--
-  }
-
-  function next() {
-    if (nextDisabled.value) return
-    img.value++
   }
 
   function closePopup(e) {
@@ -101,20 +89,7 @@
           <div id="title">{{ name }}</div>
           <div id="subtitle">{{ data.subtitle }}</div>
           <div id="images">
-            <div id="image-box">
-              <div id="image-container" :data-popupable-group="data.images ? `${type}-${entry.id}` : null">
-                <img v-for="(image, i) of data.images" :id="`image-${i + offset}`" class="showcase-image" :class="{ shown: img === i + offset }" :src="imagePath(image)" data-popupable>
-                <div v-if="data.video" class="video-container showcase-image" :class="{ shown: img === 0 }" id="image-0">
-                  <iframe :src="`https://www.youtube.com/embed/${data.video}${data.video.includes('?') ? '&' : '?'}rel=0`" frameborder="0" allow="picture-in-picture" allowfullscreen width="100%" height="100%"></iframe>
-                </div>
-                <div id="prev" class="image-button" :class="{ disabled: !img }" @click="prev"><Icon name="arrow_back_ios_new" /></div>
-                <div id="next" class="image-button" :class="{ disabled: nextDisabled }" @click="next"><Icon name="arrow_forward_ios" /></div>
-              </div>
-              <div id="thumbnail-row" :class="{ hidden: thumbnailsHidden }">
-                <div v-if="data.video" id="thumbnail-0" class="thumbnail-image" :class="{ selected: img === 0 }" :style="{ backgroundImage: `url(&quot;https://img.youtube.com/vi/${data.video.split('?')[0]}/maxresdefault.jpg&quot;)` }" @click="img = 0"></div>
-                <div v-for="(image, i) of data.images" :id="`thumbnail-${i + offset}`" class="thumbnail-image" :class="{ selected: img === i + offset }" :style="{ backgroundImage: `url(&quot;${imagePath(image)}&quot;)` }" @click="img = i + offset"></div>
-              </div>
-            </div>
+            <Gallery v-if="gallery.length" :items="gallery" :group="`${type}-${entry.id}`" />
           </div>
           <div id="description" v-html="data.description"></div>
         </div>
@@ -340,113 +315,6 @@
     max-width: 720px
     width: clamp(50vw, 50vw, 80vw)
 
-    img
-      max-width: 100%
-
-  .image-button
-    cursor: pointer
-    position: absolute
-    top: calc(50% - 50px)
-    transform: translateY(-50%)
-    padding: 20px
-    box-sizing: border-box
-    z-index: 1
-    opacity: 0
-    transition: left .15s, right .15s, opacity .15s, transform .15s
-
-    &#next
-      right: -60px
-
-      &:hover
-        right: 0
-        opacity: 1
-        transform: translateY(-50%) scale(1.4)
-
-    &#prev
-      left: -60px
-
-      &:hover
-        left: 0
-        opacity: 1
-        transform: translateY(-50%) scale(1.4)
-
-    .icon
-      font-size: 48px
-      color: white
-      filter: drop-shadow(4px 4px 1px var(--color-text-shadow))
-
-    &.disabled
-      opacity: 0 !important
-      cursor: default
-
-  .showcase-image
-    display: none
-    max-width: 720px
-    width: clamp(50vw, 50vw, 80vw)
-
-    &:hover ~ #prev
-      left: 0
-      opacity: 1
-
-    &:hover ~ #next
-      right: 0
-      opacity: 1
-
-  .video-container
-    position: relative
-    padding-bottom: 56.25%
-    height: 0
-  
-    iframe
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-
-  .shown
-    display: block
-    animation: fadeIn .25s forwards 1
-    opacity: 0
-
-    @keyframes fadeIn
-      from
-        opacity: 0
-      to
-        opacity: 1
-
-  #thumbnail-row 
-    display: flex
-    width: 100%
-
-    div
-      height: 100px
-      flex: 1
-      background-size: cover
-      background-position: 50% 50%
-      filter: grayscale(100%)
-      opacity: 0.6
-      transition: filter .15s, opacity .15s
-      cursor: pointer
-    
-      &:hover
-        filter: grayscale(0)
-        opacity: 1
-
-    .selected
-      filter: grayscale(0)
-      opacity: 1
-      position: relative
-    
-      &::after
-        content: ""
-        position: absolute
-        bottom: 0
-        left: 0
-        right: 0
-        height: 5px
-        background-color: var(--color-red-light)
-
   #title
     font-size: 4em
     padding: 32px 0 10px
@@ -638,20 +506,9 @@
     #category-name
       right: initial
     
-    #images, .showcase-image
+    #images
       width: 80vw
     
-    .image-button
-      padding: 10px
-    
-      &#prev
-        left: 0
-        opacity: 1
-      
-      &#next
-        right: 0
-        opacity: 1
-
   @media only screen and (max-width: 750px)
     #optifine.required
       #optifine-info .text::after
