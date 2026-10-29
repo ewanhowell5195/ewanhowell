@@ -6,7 +6,7 @@ import fs from "node:fs"
 import routes from "../src/routes.js"
 import { toTitleCase } from "../src/lib/titles.js"
 import pluginExtras from "../src/plugins.json" with { type: "json" }
-import { repo, slug, isMine } from "../src/lib/pluginRepo.js"
+import { repo, slug, iconIsFile, isMine } from "../src/lib/pluginRepo.js"
 
 const domain = "ewanhowell.com"
 const template = fs.readFileSync("dist/index.html", "utf-8")
@@ -101,18 +101,28 @@ async function generatePlugins() {
     snapshot[id] = plugin
     const card = pluginExtras[id]?.card
     const dir = `public/assets/images/plugins/${name}`
-    if (!fs.existsSync(`${dir}/cover.jpg`)) await drawCover("plugins", name, { image: card, logoless: !fs.existsSync(`${dir}/logo.webp`) }, plugin.title)
     const page = {
       title: `${plugin.title} - ${plugin.author}`,
-      description: plugin.description,
-      image: `plugins/${name}/cover.jpg`,
-      colour: await leftColour(`dist/assets/images/plugins/${name}/cover.jpg`)
+      description: plugin.description
+    }
+    if (card || fs.existsSync(`${dir}/cover.jpg`)) {
+      if (!fs.existsSync(`${dir}/cover.jpg`)) await drawCover("plugins", name, { image: card, logoless: !fs.existsSync(`${dir}/logo.webp`) }, plugin.title)
+      page.image = `plugins/${name}/cover.jpg`
+      page.colour = await leftColour(`dist/assets/images/plugins/${name}/cover.jpg`)
     }
     if (fs.existsSync(`${dir}/icon.webp`)) page.icon = `plugins/${name}/icon.webp`
+    else if (!page.image && iconIsFile(plugin.icon)) page.icon = await writePluginIcon(id, name, plugin.icon)
     writePage(`plugins/${name}`, page)
     console.log(`plugins images - ${name}`)
   }
   fs.writeFileSync("dist/assets/json/plugin-snapshot.json", JSON.stringify(snapshot))
+}
+
+async function writePluginIcon(id, name, icon) {
+  const source = Buffer.from(await fetch(`${repo}/plugins/${id}/${icon}`).then(r => r.arrayBuffer()))
+  fs.mkdirSync(`dist/assets/images/plugins/${name}`, { recursive: true })
+  await sharp(source, { density: 384 }).resize(256, 256, { fit: "contain", background: "#0000", kernel: "nearest" }).png().toFile(`dist/assets/images/plugins/${name}/icon.png`)
+  return `plugins/${name}/icon.png`
 }
 
 async function leftColour(file) {
