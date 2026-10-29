@@ -442,16 +442,6 @@
     &.online
       color: #23A55A
 
-      &::before
-        animation: pulse 2s infinite
-
-  @keyframes pulse
-    0%
-      box-shadow: 0 0 0 0 rgba(35, 165, 90, 0.6)
-
-    70%, 100%
-      box-shadow: 0 0 0 8px rgba(35, 165, 90, 0)
-
   .button-discord
     background-color: #5865F2
 
