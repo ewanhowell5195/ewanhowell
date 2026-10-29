@@ -52,14 +52,17 @@ export function renderPage(template, meta, base = origin) {
   ]
   if ("image" in meta) tags.push(`<meta property="twitter:card" content="summary_large_image">`)
   tags.push(`<meta name="theme-color" content="${escape(defaults.colour)}">`)
-  if (meta.component?.thumbnail || meta.component?.gallery.length) tags.push(`<script id="discord:component-embed" type="application/json">${componentEmbed(Object.assign({}, meta.component, { colour: meta.component.colour ?? defaults.colour }), base)}</script>`)
+  if (meta.component?.thumbnail || meta.component?.gallery?.length) tags.push(`<script id="discord:component-embed" type="application/json">${componentEmbed(Object.assign({}, meta.component, { colour: meta.component.colour ?? defaults.colour }), base)}</script>`)
   return template.replace(metaBlock, tags.join("\n    "))
 }
 
-function componentEmbed({ title, description, colour, thumbnail, gallery }, base) {
+function componentEmbed({ title, description, colour, thumbnail, gallery, buttons }, base) {
   const text = { type: 10, content: `## ${title}\n${description}` }
   const components = [thumbnail ? { type: 9, components: [text], accessory: { type: 11, media: { url: `${base}/assets/images/${thumbnail}` } } } : text]
   if (gallery?.length) components.push({ type: 12, items: gallery.map(image => ({ media: { url: `${base}/assets/images/${image}` } })) })
+  for (let i = 0; i < (buttons?.length ?? 0); i += 5) {
+    components.push({ type: 1, components: buttons.slice(i, i + 5).map(({ label, url }) => ({ type: 2, style: 5, label, url: url.startsWith("/") ? base + url : url })) })
+  }
   const json = JSON.stringify({ component: { type: 17, accent_color: parseInt(colour.slice(1), 16), components } }).replace(/</g, "\\u003c")
   if (Buffer.byteLength(json) > 3000) throw new Error(`Component embed for "${title}" is ${Buffer.byteLength(json)} bytes, over Discord's 3000 byte limit`)
   return json
@@ -73,7 +76,7 @@ export function loadPlugins() {
 }
 
 export async function listPages() {
-  const paths = routes.filter(route => route.meta?.description).map(route => route.path)
+  const paths = ["/"].concat(routes.filter(route => route.meta?.description).map(route => route.path))
   for (const type of types) {
     for (const category of readJSON(`public/assets/json/${type}.json`).categories) {
       for (const entry of category.entries) paths.push(`/${type}/${entry.id}`)
@@ -86,6 +89,13 @@ export async function listPages() {
 
 export async function resolvePage(pathname) {
   pathname = pathname.replace(/(.)\/$/, "$1")
+  if (pathname === "/") return homePage()
+  const page = await findPage(pathname)
+  if (page?.meta.component) page.meta.component.buttons = [{ label: "Open", url: pathname }].concat(page.meta.component.buttons ?? [])
+  return page
+}
+
+async function findPage(pathname) {
   const route = routes.find(route => route.path === pathname && route.meta?.description)
   if (route) return routePage(route)
   const [, type, id] = pathname.match(/^\/([^/]+)\/([^/.]+)$/) ?? []
@@ -152,9 +162,28 @@ async function pluginPage(name) {
     description: plugin.description,
     colour: thumbnail ? await averageColour(assets[thumbnail] ?? `public/assets/images/${thumbnail}`) : meta.colour,
     thumbnail,
-    gallery: (meta.image ? [meta.image] : []).concat((pluginExtras[id]?.images ?? []).map(image => `plugins/${name}/images/${image}.webp`)).slice(0, 4)
+    gallery: (meta.image ? [meta.image] : []).concat((pluginExtras[id]?.images ?? []).map(image => `plugins/${name}/images/${image}.webp`)).slice(0, 4),
+    buttons: (plugin.variant === "desktop" ? [] : [{ label: "Open in Blockbench Web", url: `https://web.blockbench.net/?plugins=${id}` }]).concat({ label: "View on blockbench.net", url: `https://www.blockbench.net/plugins/${id}` })
   }
   return { meta, assets }
+}
+
+function homePage() {
+  return {
+    meta: {
+      component: {
+        title: "Ewan Howell",
+        description: "Home to all of Ewan Howell's projects. From Minecraft resource packs, to Blockbench plugins, to Discord bots, everything is here!",
+        thumbnail: "logo/logo.webp",
+        buttons: [
+          { label: "Resource Packs", url: "/resourcepacks" },
+          { label: "Blockbench Plugins", url: "/plugins" },
+          { label: "Wynem", url: "https://wynem.com/" }
+        ]
+      }
+    },
+    assets: {}
+  }
 }
 
 async function routePage(route) {
