@@ -35,9 +35,9 @@ function renderPage(meta) {
   }
 
   const tags = [
-    `<title>${escape(meta.title ?? "")}</title>`,
-    `<link rel="icon" type="image/webp" sizes="16x16" href="/assets/images/logo/${escape(defaults.icon16)}">`,
-    `<link rel="icon" type="image/webp" sizes="32x32" href="/assets/images/logo/${escape(defaults.icon32)}">`,
+    `<title>${escape(defaults.title)}</title>`,
+    `<link rel="icon" sizes="16x16" href="/assets/images/${escape(defaults.icon16)}">`,
+    `<link rel="icon" sizes="32x32" href="/assets/images/${escape(defaults.icon32)}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:title" content="${escape(defaults.title)}">`,
     `<meta property="og:description" content="${escape(defaults.description)}">`,
