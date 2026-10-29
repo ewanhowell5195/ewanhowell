@@ -94,11 +94,11 @@ async function generateEntry(type, id, entry) {
 
 async function generatePlugins() {
   const all = await fetch(`${repo}/plugins.json`).then(r => r.json())
-  const pages = []
+  const snapshot = {}
   for (const [id, plugin] of Object.entries(all)) {
     if (!isMine(plugin)) continue
     const name = slug(id)
-    pages.push(name)
+    snapshot[id] = plugin
     const card = pluginExtras[id]?.card
     const dir = `public/assets/images/plugins/${name}`
     if (!fs.existsSync(`${dir}/cover.jpg`)) await drawCover("plugins", name, { image: card, logoless: !fs.existsSync(`${dir}/logo.webp`) }, plugin.title)
@@ -112,7 +112,7 @@ async function generatePlugins() {
     writePage(`plugins/${name}`, page)
     console.log(`plugins images - ${name}`)
   }
-  fs.writeFileSync("dist/assets/json/plugin-pages.json", JSON.stringify(pages))
+  fs.writeFileSync("dist/assets/json/plugin-snapshot.json", JSON.stringify(snapshot))
 }
 
 async function leftColour(file) {

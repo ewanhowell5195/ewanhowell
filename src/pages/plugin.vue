@@ -97,10 +97,10 @@
       <div v-if="plugin.deprecation_note" id="deprecated">{{ plugin.deprecation_note }}</div>
       <div id="stats">
         <div class="stat"><div class="stat-value">{{ plugin.version }}</div><div class="stat-name">Version</div></div>
-        <div class="stat"><div class="stat-value">{{ formatCount(plugin.weekly) }}</div><div class="stat-name">Installs per week</div></div>
-        <div class="stat" :title="plugin.total.toLocaleString()"><div class="stat-value">{{ formatCount(plugin.total) }}</div><div class="stat-name">Installs in total</div></div>
+        <div v-if="plugin.weekly !== null" class="stat"><div class="stat-value">{{ formatCount(plugin.weekly) }}</div><div class="stat-name">Installs per week</div></div>
+        <div v-if="plugin.total !== null" class="stat" :title="plugin.total.toLocaleString()"><div class="stat-value">{{ formatCount(plugin.total) }}</div><div class="stat-name">Installs in total</div></div>
         <div v-if="plugin.creation_date" class="stat"><div class="stat-value">{{ formatDate(plugin.creation_date) }}</div><div class="stat-name">Released</div></div>
-        <div v-if="changelog[0]?.date" class="stat"><div class="stat-value">{{ formatDate(changelog[0].date) }}</div><div class="stat-name">Last updated</div></div>
+        <div v-if="changelog[0]?.date && formatDate(changelog[0].date) !== formatDate(plugin.creation_date)" class="stat"><div class="stat-value">{{ formatDate(changelog[0].date) }}</div><div class="stat-name">Last updated</div></div>
         <div class="stat"><div class="stat-value">{{ platforms[plugin.variant] ?? plugin.variant }}</div><div class="stat-name">Blockbench {{ plugin.min_version }}+</div></div>
       </div>
       <div id="content">

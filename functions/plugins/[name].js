@@ -2,11 +2,11 @@ import { repo, slug, iconIsFile, isMine } from "../../src/lib/pluginRepo.js"
 
 export async function onRequestGet({ request, env, params }) {
   const url = new URL(request.url)
-  const known = await env.ASSETS.fetch(new URL("/assets/json/plugin-pages.json", url)).then(r => r.json())
-  if (known.includes(params.name)) return env.ASSETS.fetch(request)
+  const snapshot = await env.ASSETS.fetch(new URL("/assets/json/plugin-snapshot.json", url)).then(r => r.json())
+  if (Object.keys(snapshot).some(id => slug(id) === params.name)) return env.ASSETS.fetch(request)
 
-  const all = await fetch(`${repo}/plugins.json`, { cf: { cacheTtl: 300, cacheEverything: true } }).then(r => r.json())
-  const found = Object.entries(all).find(([id, plugin]) => slug(id) === params.name && isMine(plugin))
+  const all = await fetch(`${repo}/plugins.json`, { cf: { cacheTtl: 300, cacheEverything: true } }).then(r => r.ok ? r.json() : null).catch(() => null)
+  const found = all && Object.entries(all).find(([id, plugin]) => slug(id) === params.name && isMine(plugin))
   if (!found) return env.ASSETS.fetch(request)
 
   const [id, plugin] = found

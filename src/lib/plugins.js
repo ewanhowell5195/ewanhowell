@@ -4,27 +4,38 @@ import { repo, slug, iconIsFile, isMine } from "./pluginRepo.js"
 
 const stats = "https://cors.ewanhowell.com/https://blckbn.ch/api/stats/plugins"
 
+function fetchJSON(url) {
+  return fetch(url).then(r => r.ok ? r.json() : Promise.reject(new Error(`${url}: ${r.status}`)))
+}
+
+function fetchStats(weeks) {
+  return fetchJSON(`${stats}?weeks=${weeks}`).catch(err => {
+    console.warn("Plugin stats unavailable", err)
+    return null
+  })
+}
+
 let plugins
 export function loadPlugins() {
   plugins ??= Promise.all([
-    fetch(`${repo}/plugins.json`).then(r => r.json()),
-    fetch(`${stats}?weeks=1`).then(r => r.json()),
-    fetch(`${stats}?weeks=5`).then(r => r.json()),
-    fetch(`${stats}?weeks=1000`).then(r => r.json())
+    fetchJSON(`${repo}/plugins.json`).catch(() => fetchJSON("/assets/json/plugin-snapshot.json")),
+    fetchStats(1),
+    fetchStats(5),
+    fetchStats(1000)
   ]).then(([all, thisWeek, fiveWeeks, total]) => Object.entries(all).filter(([, p]) => isMine(p)).map(([id, p]) => Object.assign({}, p, extras[id], {
     id,
     slug: slug(id),
     icon: iconIsFile(p.icon) ? `${repo}/plugins/${id}/${p.icon}` : p.icon,
-    weekly: Math.round(((fiveWeeks[id] ?? 0) - (thisWeek[id] ?? 0)) / 4),
-    total: total[id] ?? 0
+    weekly: thisWeek && fiveWeeks ? Math.round(((fiveWeeks[id] ?? 0) - (thisWeek[id] ?? 0)) / 4) : null,
+    total: total ? total[id] ?? 0 : null
   })))
   plugins.catch(() => plugins = null)
   return plugins
 }
 
 export async function loadAbout(id) {
-  const r = await fetch(`${repo}/plugins/${id}/about.md`)
-  if (!r.ok) return { html: null, links: [], video: null }
+  const r = await fetch(`${repo}/plugins/${id}/about.md`).catch(() => null)
+  if (!r?.ok) return { html: null, links: [], video: null }
   const template = document.createElement("template")
   template.innerHTML = marked.parse((await r.text()).replace(/\bmaterial-icons\b/g, "material-symbols-outlined"))
   const list = template.content.querySelector("#about-markdown-links")
@@ -43,8 +54,8 @@ function youtubeId(href) {
 }
 
 export async function loadChangelog(id) {
-  const r = await fetch(`${repo}/plugins/${id}/changelog.json`)
-  if (!r.ok) return []
+  const r = await fetch(`${repo}/plugins/${id}/changelog.json`).catch(() => null)
+  if (!r?.ok) return []
   return Object.values(await r.json()).reverse().map(change => Object.assign(change, { categories: change.categories.map(c => Object.assign(c, { list: c.list.map(item => marked.parseInline(item.replace(/^-\s*/, ""))) })) }))
 }
 

@@ -33,6 +33,8 @@
     for (const t of plugins.value.flatMap(p => p.tags ?? [])) counts[t] = (counts[t] ?? 0) + 1
     return Object.keys(counts).filter(t => counts[t] > 1 || t === tag.value).sort()
   })
+  const hasStats = computed(() => plugins.value.length > 0 && plugins.value[0].weekly !== null)
+  const visibleSorts = computed(() => Object.fromEntries(Object.entries(sorts).filter(([id]) => id !== "used" || hasStats.value)))
   const totals = computed(() => plugins.value.reduce((t, p) => ({ weekly: t.weekly + p.weekly, total: t.total + p.total }), { weekly: 0, total: 0 }))
   const shown = computed(() => {
     const q = search.value.trim().toLowerCase()
@@ -45,7 +47,10 @@
     return p.logo ? `linear-gradient(#00000060, #00000060), ${image}` : image
   }
 
-  loadPlugins().then(data => plugins.value = data, () => failed.value = true).finally(() => loading.value = false)
+  loadPlugins().then(data => {
+    plugins.value = data
+    if (!hasStats.value && sort.value === "used") sort.value = "new"
+  }, () => failed.value = true).finally(() => loading.value = false)
 </script>
 
 <template>
@@ -56,8 +61,10 @@
         <p>Plugins that extend <a href="https://www.blockbench.net" target="_blank">Blockbench</a>, from Minecraft title logos and entity templates to colour gradient palettes.</p>
         <div v-if="plugins.length" id="totals">
           <div class="total"><span class="number">{{ plugins.length }}</span> plugins</div>
-          <div class="total"><span class="number">{{ formatCount(totals.total) }}</span> installs</div>
-          <div class="total"><span class="number">{{ formatCount(totals.weekly) }}</span> per week</div>
+          <template v-if="hasStats">
+            <div class="total"><span class="number">{{ formatCount(totals.total) }}</span> installs</div>
+            <div class="total"><span class="number">{{ formatCount(totals.weekly) }}</span> per week</div>
+          </template>
         </div>
       </div>
       <div id="controls">
@@ -66,7 +73,7 @@
           <input v-model="search" placeholder="Search plugins..." @keypress.enter="e => e.currentTarget.blur()">
         </label>
         <div id="sorts">
-          <button v-for="(s, id) of sorts" class="sort" :class="{ selected: sort === id }" @click="sort = id">{{ s.name }}</button>
+          <button v-for="(s, id) of visibleSorts" class="sort" :class="{ selected: sort === id }" @click="sort = id">{{ s.name }}</button>
         </div>
       </div>
       <div id="tags">
@@ -90,7 +97,7 @@
             <div class="card-description">{{ p.description }}</div>
             <div class="card-meta">
               <span>v{{ p.version }}</span>
-              <span class="installs" :title="`${p.total.toLocaleString()} installs in total`">{{ formatCount(p.weekly) }} / week</span>
+              <span v-if="p.weekly !== null" class="installs" :title="`${p.total.toLocaleString()} installs in total`">{{ formatCount(p.weekly) }} / week</span>
               <span v-if="p.variant === 'desktop'" class="badge">Desktop only</span>
               <span v-else-if="p.variant === 'web'" class="badge">Web only</span>
             </div>
