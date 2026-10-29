@@ -22,7 +22,7 @@
     const target = e.target
     const inSidebar = sidebar.value.contains(target) && target !== sidebar.value
     const inButton = sidebarButton.value.contains(target)
-    if (isNarrow() && (target.classList.contains("page-button") || target.parentElement?.closest(".page-button") && inSidebar || sidebarActive.value && !(target === sidebar.value || inSidebar) && !inButton)) {
+    if (sidebarActive.value && !(target === sidebar.value || inSidebar) && !inButton || isNarrow() && (target.classList.contains("page-button") || target.parentElement?.closest(".page-button") && inSidebar)) {
       sidebarActive.value = false
     }
   }
