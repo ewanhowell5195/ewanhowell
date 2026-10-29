@@ -98,7 +98,7 @@
             <div id="main-tab" :class="{ selected: linksTab === 'main' }" @click="linksTab = 'main'">Downloads</div>
             <div id="mirrors-tab" :class="{ selected: linksTab === 'mirrors' }" @click="linksTab = 'mirrors'">Mirrors</div>
           </div>
-          <div id="entry-links-contents" :style="data.downloads ? null : { height: 'calc(100% - 60px)' }">
+          <div id="entry-links-contents" :style="data.downloads ? null : { height: '100%' }">
             <div id="downloads" :class="{ hidden: !data.downloads }">
               <div id="main" :class="{ selected: linksTab === 'main' }">
                 <a v-for="link of data.downloads" class="button-download" :href="`http://adfoc.us/serve/sitelinks/?id=546537&url=${link.link}`" target="_blank">
@@ -205,7 +205,7 @@
 
   #logo
     padding: 50px
-    height: 128px
+    height: 228px
     image-rendering: pixelated
     filter: drop-shadow(0 10px 4px var(--color-text-shadow))
     font-size: 3.25rem
@@ -278,7 +278,7 @@
         text-align: center
 
       .icon
-        padding-right: 10px
+        margin-right: 10px
         font-size: 28px
         color: var(--color-text-optifine)
         filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
@@ -359,7 +359,7 @@
     width: 256px
 
   #entry-links-contents
-    height: calc(100% - 110px)
+    height: calc(100% - 50px)
     background-color: var(--color-grey)
     box-shadow: -10px 0 10px var(--color-box-shadow)
     padding-bottom: 60px
@@ -374,7 +374,7 @@
     overflow-y: hidden
 
     div
-      height: 38px
+      height: 40px
       flex: 1
       background-color: var(--color-grey-dark)
       cursor: pointer
@@ -405,7 +405,7 @@
       display: flex
 
   .button-download
-    width: 206px
+    width: 226px
   
     &.mirror
       filter: hue-rotate(90deg)
@@ -439,7 +439,7 @@
       color: var(--color-text-white)
       background-color: var(--color-grey-lighter)
       padding: 4px 8px
-      width: 46px
+      width: 62px
       border-radius: 100px
       text-align: center
       box-shadow: var(--box-shadow)
@@ -447,7 +447,7 @@
       text-decoration: none
 
   .button
-    width: 206px
+    width: 226px
     padding: 5px 10px
 
   // mobile
@@ -500,7 +500,7 @@
       align-items: center
     
       img
-        max-width: 80vw
+        max-width: calc(80vw + 100px)
         height: auto
       
     #category-name

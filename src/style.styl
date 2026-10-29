@@ -27,6 +27,9 @@
   --text-shadow: -2px 2px 1px var(--color-text-shadow)
   scroll-padding-top: calc(var(--header-height) + 20px)
 
+*, *::before, *::after
+  box-sizing: border-box
+
 body
   margin: 0
   background-color: var(--color-grey-darker)
@@ -99,7 +102,6 @@ body::-webkit-scrollbar-thumb
   display: flex
   position: relative
   padding-right: calc(min(45px, 45px - (100vw - var(--content-width)) / 2))
-  box-sizing: border-box
 
 .page-button
   text-decoration: none
@@ -149,7 +151,7 @@ body::-webkit-scrollbar-thumb
 .hamburger-container
   cursor: pointer
   transition: background-color .15s
-  width: 25px
+  width: 45px
   padding: 0 10px
   
   &.outside

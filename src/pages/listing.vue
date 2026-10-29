@@ -389,7 +389,6 @@
     max-width: calc(100vw - 32px)
     max-height: 70vh
     overflow-y: auto
-    box-sizing: border-box
     padding: 12px
     display: flex
     flex-direction: column

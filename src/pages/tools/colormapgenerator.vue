@@ -804,7 +804,7 @@
   @import "../../styles/buttons.styl"
 
   .container
-    max-width: var(--content-width)
+    max-width: calc(var(--content-width) + 40px)
     margin: 0 auto
     min-height: calc(100% - var(--header-height))
     padding: 0 20px 40px
@@ -898,7 +898,6 @@
     display: none
 
   select
-    box-sizing: border-box
     width: 100%
     background-color: var(--color-grey-light)
     color: var(--color-text-white)
@@ -997,7 +996,6 @@
     z-index: 10
     width: 260px
     max-width: 70%
-    box-sizing: border-box
     font-size: .85rem
 
     .tooltip-group + .tooltip-group
@@ -1101,14 +1099,14 @@
 
   .swatch
     display: inline-block
-    width: 14px
-    height: 14px
+    width: 16px
+    height: 16px
     flex-shrink: 0
     border: 1px solid #000
 
   .swatch-large
-    width: 28px
-    height: 28px
+    width: 30px
+    height: 30px
 
   .setup pre
     background-color: var(--color-grey-dark)

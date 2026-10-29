@@ -120,10 +120,9 @@
     align-items: center
     padding: 0 40px
     flex-wrap: wrap;
-    box-sizing: border-box
 
   .text-box
     padding: 10px
-    width: 300px
+    width: 320px
     flex-shrink: 1
 </style>

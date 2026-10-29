@@ -43,7 +43,7 @@
 
 <style lang="stylus" scoped>
   .container
-    max-width: var(--content-width)
+    max-width: calc(var(--content-width) + 40px)
     margin: 0 auto
     padding: 0 20px
     display: flex

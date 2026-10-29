@@ -631,7 +631,7 @@
   @import "../../styles/buttons.styl"
 
   .container
-    max-width: var(--content-width)
+    max-width: calc(var(--content-width) + 40px)
     margin: 0 auto
     min-height: calc(100% - var(--header-height))
     padding: 0 20px
@@ -657,7 +657,6 @@
     padding: 1px 5px
 
   input
-    box-sizing: border-box
     background-color: #fff
     border: none
     color: #000
@@ -669,7 +668,6 @@
       outline: 2px solid var(--color-link-blue)
 
   .how
-    box-sizing: border-box
     background-color: var(--color-grey)
     box-shadow: var(--box-shadow)
     margin-top: 20px
@@ -792,7 +790,6 @@
     opacity: .8
 
   .verdict
-    box-sizing: border-box
     margin-top: 30px
     padding: 10px 14px
     width: 100%
@@ -808,7 +805,6 @@
     width: 100%
 
   .stat
-    box-sizing: border-box
     background-color: var(--color-grey)
     padding: 12px
     box-shadow: var(--box-shadow)
@@ -847,13 +843,11 @@
       outline: 2px solid var(--color-link-blue)
 
   .config-warning
-    box-sizing: border-box
     width: 100%
     padding: 10px 14px
     border: 2px dashed var(--color-red-light)
 
   .calc
-    box-sizing: border-box
     width: 100%
     background-color: var(--color-grey)
     box-shadow: var(--box-shadow)
@@ -889,7 +883,6 @@
     opacity: .55
 
   .progress
-    box-sizing: border-box
     width: 100%
     height: 22px
     background-color: var(--color-grey-dark)
@@ -907,7 +900,6 @@
     font-variant-numeric: tabular-nums
 
   .result-json
-    box-sizing: border-box
     width: 100%
     min-height: 320px
     background-color: var(--color-grey)
@@ -921,7 +913,6 @@
     white-space: pre
 
   .errors, .errors-inline
-    box-sizing: border-box
     background-color: var(--color-grey)
     padding: 12px 16px
     box-shadow: var(--box-shadow)

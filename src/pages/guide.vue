@@ -424,7 +424,7 @@
         text-align: center
 
       .icon
-        padding-right: 10px
+        margin-right: 10px
         font-size: 28px
         color: var(--color-text-optifine)
         filter: drop-shadow(0 3px 1px var(--color-text-shadow-optifine))
@@ -493,7 +493,7 @@
     max-height: calc(100vh - var(--header-height) * 2 - 72px)
     overflow-y: auto
     overflow-x: clip
-    width: calc(100% - 40px)
+    width: 100%
     display: flex
     flex-direction: column
     gap: 10px
@@ -565,7 +565,7 @@
     width: 100%
     gap: 10px
     padding: 0 10px
-    max-width: calc(100% - 20px)
+    max-width: 100%
     overflow-x: auto
 
     &::-webkit-scrollbar-track
@@ -687,7 +687,7 @@
     position: relative
     cursor: pointer
     user-select: none
-    width: calc(100% - 40px)
+    width: 100%
 
     h1
       margin: 0
@@ -719,7 +719,7 @@
       justify-content: center
 
     a.button
-      min-width: 206px
+      min-width: 226px
       flex: 1
 
   #mobile-contents-content

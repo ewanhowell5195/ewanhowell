@@ -71,7 +71,7 @@
     background-color: var(--color-grey-light)
 
   .file-drop-button
-    min-width: 130px
+    min-width: 150px
     color: var(--color-text-white)
     padding: 10px
     background-color: var(--color-download)

@@ -401,7 +401,7 @@
   @import "../../styles/buttons.styl"
 
   .container
-    max-width: var(--content-width)
+    max-width: calc(var(--content-width) + 40px)
     margin: 0 auto
     min-height: calc(100% - var(--header-height))
     padding: 0 20px
@@ -427,7 +427,6 @@
     padding: 1px 5px
 
   .how
-    box-sizing: border-box
     background-color: var(--color-grey)
     box-shadow: var(--box-shadow)
     margin-top: 20px
@@ -448,7 +447,6 @@
     margin-bottom: 20px
 
   .type-option
-    box-sizing: border-box
     background-color: var(--color-grey)
     box-shadow: var(--box-shadow)
     padding: 10px 16px
@@ -484,7 +482,6 @@
     gap: 8px
 
     input
-      box-sizing: border-box
       background-color: #fff
       border: none
       color: #000
@@ -544,7 +541,6 @@
       font-weight: 700
 
     input
-      box-sizing: border-box
       background-color: #fff
       border: none
       color: #000
@@ -563,7 +559,6 @@
     align-items: flex-start
 
   .verdict
-    box-sizing: border-box
     margin-top: 30px
     padding: 10px 14px
     width: 100%
@@ -579,7 +574,6 @@
     width: 100%
 
   .stat
-    box-sizing: border-box
     background-color: var(--color-grey)
     padding: 12px
     box-shadow: var(--box-shadow)
@@ -601,7 +595,6 @@
     flex-wrap: wrap
 
   .result-json
-    box-sizing: border-box
     width: 100%
     min-height: 320px
     background-color: var(--color-grey)
@@ -615,7 +608,6 @@
     white-space: pre
 
   .errors
-    box-sizing: border-box
     background-color: var(--color-grey)
     padding: 12px 16px
     box-shadow: var(--box-shadow)

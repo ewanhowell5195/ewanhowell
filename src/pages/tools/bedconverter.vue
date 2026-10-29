@@ -234,7 +234,7 @@
   @import "../../styles/buttons.styl"
 
   .container
-    max-width: var(--content-width)
+    max-width: calc(var(--content-width) + 40px)
     margin: 0 auto
     min-height: calc(100% - var(--header-height))
     padding: 0 20px
