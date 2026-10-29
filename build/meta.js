@@ -10,6 +10,9 @@ import { repo, slug, iconIsFile, isMine } from "../src/lib/pluginRepo.js"
 export const origin = "https://ewanhowell.com"
 const metaBlock = /<title>[\s\S]*?<meta name="theme-color"[^>]*>/
 const types = ["resourcepacks", "themes", "maps", "dungeonsmods", "dungeons2mods"]
+const featured = {
+  resourcepacks: ["f8thful", "skeleton-physics", "entity-healthbars", "umbrella-villagers"]
+}
 
 function escape(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
@@ -49,7 +52,17 @@ export function renderPage(template, meta, base = origin) {
   ]
   if ("image" in meta) tags.push(`<meta property="twitter:card" content="summary_large_image">`)
   tags.push(`<meta name="theme-color" content="${escape(defaults.colour)}">`)
+  if (meta.component?.thumbnail || meta.component?.gallery.length) tags.push(`<script id="discord:component-embed" type="application/json">${componentEmbed(Object.assign({}, meta.component, { colour: meta.component.colour ?? defaults.colour }), base)}</script>`)
   return template.replace(metaBlock, tags.join("\n    "))
+}
+
+function componentEmbed({ title, description, colour, thumbnail, gallery }, base) {
+  const text = { type: 10, content: `## ${title}\n${description}` }
+  const components = [thumbnail ? { type: 9, components: [text], accessory: { type: 11, media: { url: `${base}/assets/images/${thumbnail}` } } } : text]
+  if (gallery?.length) components.push({ type: 12, items: gallery.map(image => ({ media: { url: `${base}/assets/images/${image}` } })) })
+  const json = JSON.stringify({ component: { type: 17, accent_color: parseInt(colour.slice(1), 16), components } }).replace(/</g, "\\u003c")
+  if (Buffer.byteLength(json) > 3000) throw new Error(`Component embed for "${title}" is ${Buffer.byteLength(json)} bytes, over Discord's 3000 byte limit`)
+  return json
 }
 
 let plugins
@@ -74,7 +87,7 @@ export async function listPages() {
 export async function resolvePage(pathname) {
   pathname = pathname.replace(/(.)\/$/, "$1")
   const route = routes.find(route => route.path === pathname && route.meta?.description)
-  if (route) return { meta: route.meta, assets: {} }
+  if (route) return routePage(route)
   const [, type, id] = pathname.match(/^\/([^/]+)\/([^/.]+)$/) ?? []
   if (types.includes(type)) return entryPage(type, id)
   if (type === "plugins") return pluginPage(id)
@@ -89,16 +102,23 @@ async function entryPage(type, id) {
   const entryName = entry.name ?? toTitleCase(id, true, true)
   const assets = {}
   const cover = await coverFile(type, id, entry, entryName, assets)
-  return {
-    meta: {
-      title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
-      description: data.subtitle.replace(/\n/g, " "),
-      image: `${type}/${id}/cover.jpg`,
-      colour: await leftColour(cover),
-      icon: `${type}/${id}/icon.webp`
-    },
-    assets
+  const meta = {
+    title: `${entryName} - ${data.author ?? "Ewan Howell"}`,
+    description: data.subtitle.replace(/\n/g, " "),
+    image: `${type}/${id}/cover.jpg`,
+    colour: await leftColour(cover),
+    icon: `${type}/${id}/icon.webp`
   }
+  const hasIcon = !entry.plain && fs.existsSync(`public/assets/images/${meta.icon}`)
+  const screenshots = (data.images ?? []).map(image => `${type}/${id}/images/${image}.webp`)
+  meta.component = {
+    title: entryName,
+    description: data.subtitle,
+    colour: hasIcon ? await averageColour(`public/assets/images/${meta.icon}`) : meta.colour,
+    thumbnail: hasIcon && meta.icon,
+    gallery: (entry.plain ? screenshots : [meta.image].concat(screenshots)).slice(0, 4)
+  }
+  return { meta, assets }
 }
 
 async function pluginPage(name) {
@@ -122,17 +142,68 @@ async function pluginPage(name) {
     meta.icon = `plugins/${name}/icon.png`
     assets[meta.icon] = await pluginIcon(id, plugin.icon)
   }
+  let thumbnail = meta.icon
+  if (!thumbnail && iconIsFile(plugin.icon)) {
+    thumbnail = `plugins/${name}/icon.png`
+    assets[thumbnail] = await pluginIcon(id, plugin.icon)
+  }
+  meta.component = {
+    title: plugin.title,
+    description: plugin.description,
+    colour: thumbnail ? await averageColour(assets[thumbnail] ?? `public/assets/images/${thumbnail}`) : meta.colour,
+    thumbnail,
+    gallery: (meta.image ? [meta.image] : []).concat((pluginExtras[id]?.images ?? []).map(image => `plugins/${name}/images/${image}.webp`)).slice(0, 4)
+  }
+  return { meta, assets }
+}
+
+async function routePage(route) {
+  const assets = {}
+  const gallery = []
+  if (types.includes(route.type)) {
+    const ids = featured[route.type] ?? readJSON(`public/assets/json/${route.type}.json`).categories.flatMap(category => category.entries).map(entry => entry.id)
+    for (const id of ids) {
+      if (gallery.length === 4) break
+      const page = await entryPage(route.type, id)
+      if (!page) continue
+      gallery.push(page.meta.image)
+      Object.assign(assets, page.assets)
+    }
+  } else if (route.path === "/plugins") {
+    for (const id of Object.keys(pluginExtras)) {
+      if (gallery.length === 4) break
+      const page = await pluginPage(slug(id))
+      if (!page?.meta.image) continue
+      gallery.push(page.meta.image)
+      Object.assign(assets, page.assets)
+    }
+  } else if (route.path === "/guides") {
+    gallery.push(...readJSON("public/assets/json/guides.json").slice(0, 4).map(guide => `guides/${guide.id}/thumbnail.webp`))
+  } else if (route.path === "/tools") {
+    gallery.push(...routes.filter(tool => tool.path.startsWith("/tools/") && tool.meta?.image).slice(0, 4).map(tool => tool.meta.image))
+  } else if (route.meta.image) gallery.push(route.meta.image)
+  const meta = Object.assign({}, route.meta, {
+    component: {
+      title: route.meta.title.replace(/ - Ewan Howell$/, ""),
+      description: route.meta.description,
+      colour: route.meta.colour,
+      gallery
+    }
+  })
   return { meta, assets }
 }
 
 function guidePage(id) {
   const data = readJSON("public/assets/json/guides.json").find(guide => guide.id === id)
   if (!data) return null
+  const title = data.name ?? toTitleCase(data.id, true)
+  const image = `guides/${data.id}/thumbnail.webp`
   return {
     meta: {
-      title: `${data.name ?? toTitleCase(data.id, true)} - Guides - Ewan Howell`,
+      title: `${title} - Guides - Ewan Howell`,
       description: data.description,
-      image: `guides/${data.id}/thumbnail.webp`
+      image,
+      component: { title, description: data.description, gallery: [image] }
     },
     assets: {}
   }
@@ -154,6 +225,18 @@ async function leftColour(input) {
   const { width, height } = await image.metadata()
   const pixel = await image.extract({ left: 0, top: 0, width: Math.max(1, Math.round(width * 0.4)), height }).resize(1, 1).raw().toBuffer()
   return `#${pixel.toString("hex").slice(0, 6)}`
+}
+
+async function averageColour(file) {
+  const pixels = await sharp(file).ensureAlpha().raw().toBuffer()
+  const sum = [0, 0, 0, 0]
+  for (let i = 0; i < pixels.length; i += 4) {
+    const alpha = pixels[i + 3]
+    for (let c = 0; c < 3; c++) sum[c] += pixels[i + c] * alpha
+    sum[3] += alpha
+  }
+  if (!sum[3]) return "#000000"
+  return `#${sum.slice(0, 3).map(value => Math.round(value / sum[3]).toString(16).padStart(2, "0")).join("")}`
 }
 
 async function drawCover(type, id, entry, entryName) {
