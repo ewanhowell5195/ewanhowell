@@ -14,7 +14,16 @@ export const router = createRouter({
     component: pages[`./pages/${r.page}.vue`],
     props: route => Object.assign({}, r.type && { type: r.type }, route.params),
     meta: Object.assign({ title: "Ewan Howell" }, r.meta)
-  })).concat({ path: catchAll, component: { render: () => null } })
+  })).concat({ path: catchAll, component: { render: () => null } }),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      document.documentElement.style.overflowAnchor = "none"
+      setTimeout(() => document.documentElement.style.overflowAnchor = "", 1000)
+      return savedPosition
+    }
+    if (silent || to.path === from.path) return false
+    return { top: 0 }
+  }
 })
 
 let silent = 0
