@@ -14,6 +14,7 @@
   let resizer
 
   function onPointerMove(e) {
+    if (e.pointerType !== "mouse") return
     pointer = { x: e.clientX, y: e.clientY }
   }
 
